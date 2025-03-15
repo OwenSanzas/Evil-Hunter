@@ -910,6 +910,8 @@ function Trig________________u_Actions takes nothing returns nothing
     set udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[0] = GetLastCreatedUnit()
     set bj_forLoopAIndex = 1
     set bj_forLoopAIndexEnd = 4
+
+    // TODO: 生成2波木箱
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(gg_rct_______Baowu01)
@@ -929,6 +931,27 @@ function Trig________________u_Actions takes nothing returns nothing
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200])
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
     endloop
+
+    loop
+        exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
+        set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(gg_rct_______Baowu01)
+        call CreateNUnitsAtLoc(1, 'n01Y', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
+        call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200])
+        set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(gg_rct_______Baowu02)
+        call CreateNUnitsAtLoc(1, 'n01Y', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
+        call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200])
+        set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(gg_rct_______Baowu04)
+        call CreateNUnitsAtLoc(1, 'n01Y', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
+        call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200])
+        set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(gg_rct_______Baowu03)
+        call CreateNUnitsAtLoc(1, 'n01Y', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
+        call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200])
+        set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(gg_rct_______Baowu05)
+        call CreateNUnitsAtLoc(1, 'n01Y', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
+        call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200])
+        set bj_forLoopAIndex = bj_forLoopAIndex + 1
+    endloop
+
     call CreateNUnitsAtLoc(1, 'n01X', Player(PLAYER_NEUTRAL_AGGRESSIVE), Location(6367., - 11762.), bj_UNIT_FACING)
     call CreateNUnitsAtLoc(1, 'n01X', Player(PLAYER_NEUTRAL_AGGRESSIVE), Location(10495., - 3201.), bj_UNIT_FACING)
     call CreateNUnitsAtLoc(1, 'n01X', Player(PLAYER_NEUTRAL_AGGRESSIVE), Location( - 1701., - 13928.), bj_UNIT_FACING)
@@ -1042,17 +1065,17 @@ function Trig_multiboard2_Func026Func002Func011C takes nothing returns boolean
     return true
 endfunction
 function Trig_multiboard2_Actions takes nothing returns nothing
-    call CreateMultiboardBJ(10, 11, "游戏玩家排行榜")
-    set udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[1] = "|cffffff00玩家|r"
-    set udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[2] = "|cffffff00功勋|r"
-    set udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[3] = "|cffffff00战绩|r"
-    set udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[4] = "|cffffff00武器|r"
-    set udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[5] = "|cffffff00铠甲|r"
-    set udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[6] = "|cffffff00战兽|r"
-    set udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[7] = "|cffffff00成长|r"
-    set udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[8] = "|cffffff00战死|r"
-    set udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[9] = "|cffffff00杀敌|r"
-    set udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[10] = "|cffffff00经验|r"
+    call CreateMultiboardBJ(10, 11, "Player Rank")
+    set udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[1] = "|cffffff00Player|r"      // Player -> Plyr
+    set udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[2] = "|cffffff00Merit|r"     // 功勋 -> Merit
+    set udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[3] = "|cffffff00Rec|r"       // 战绩 -> Record (缩短为 Rec)
+    set udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[4] = "|cffffff00Weap|r"      // 武器 -> Weapon (缩短为 Weap)
+    set udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[5] = "|cffffff00Arm|r"       // 铠甲 -> Armor (缩短为 Arm)
+    set udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[6] = "|cffffff00Mnt|r"       // 战兽 -> Mount (缩短为 Mnt)
+    set udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[7] = "|cffffff00Gth|r"       // 成长 -> Growth (缩短为 Gth)
+    set udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[8] = "|cffffff00Dth|r"       // 战死 -> Deaths (缩短为 Dth)
+    set udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[9] = "|cffffff00Kill|r"      // 杀敌 -> Kill (原本就短)
+    set udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[10] = "|cffffff00XP|r"       // 经验 -> XP (欧美标准缩写)
     set bj_forLoopAIndex = 1
     set bj_forLoopAIndexEnd = 10
     loop
@@ -1091,7 +1114,7 @@ function Trig_multiboard2_Actions takes nothing returns nothing
             else
             endif
             if(Trig_multiboard2_Func026Func002Func007C())then
-                call MultiboardSetItemValueBJ(GetLastCreatedMultiboard(), GetForLoopIndexB(), (GetForLoopIndexA() + 1), (udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[GetForLoopIndexA()] + "冒险者"))
+                call MultiboardSetItemValueBJ(GetLastCreatedMultiboard(), GetForLoopIndexB(), (GetForLoopIndexA() + 1), (udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[GetForLoopIndexA()] + "Adventurer"))
             else
             endif
             if(Trig_multiboard2_Func026Func002Func008C())then
@@ -1099,15 +1122,15 @@ function Trig_multiboard2_Actions takes nothing returns nothing
             else
             endif
             if(Trig_multiboard2_Func026Func002Func009C())then
-                call MultiboardSetItemValueBJ(GetLastCreatedMultiboard(), GetForLoopIndexB(), (GetForLoopIndexA() + 1), (udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[GetForLoopIndexA()] + "赤手"))
+                call MultiboardSetItemValueBJ(GetLastCreatedMultiboard(), GetForLoopIndexB(), (GetForLoopIndexA() + 1), (udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[GetForLoopIndexA()] + "Fists"))
             else
             endif
             if(Trig_multiboard2_Func026Func002Func010C())then
-                call MultiboardSetItemValueBJ(GetLastCreatedMultiboard(), GetForLoopIndexB(), (GetForLoopIndexA() + 1), (udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[GetForLoopIndexA()] + "布衣"))
+                call MultiboardSetItemValueBJ(GetLastCreatedMultiboard(), GetForLoopIndexB(), (GetForLoopIndexA() + 1), (udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[GetForLoopIndexA()] + "No Armor"))
             else
             endif
             if(Trig_multiboard2_Func026Func002Func011C())then
-                call MultiboardSetItemValueBJ(GetLastCreatedMultiboard(), GetForLoopIndexB(), (GetForLoopIndexA() + 1), (udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[GetForLoopIndexA()] + "未捕捉"))
+                call MultiboardSetItemValueBJ(GetLastCreatedMultiboard(), GetForLoopIndexB(), (GetForLoopIndexA() + 1), (udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[GetForLoopIndexA()] + "None"))
             else
             endif
             set bj_forLoopBIndex = bj_forLoopBIndex + 1
@@ -1193,21 +1216,34 @@ function InitTrig_BeiBao2B takes nothing returns nothing
 endfunction
 function Trig_help_Actions takes nothing returns nothing
     call FlashQuestDialogButton()
-    call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "清除作弊", "TRIGSTR_1", "ReplaceableTextures\\CommandButtons\\BTNOrbOfVenom.blp")
-    call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "踢人指令", "红色主机输入-fuck[空隔][玩家索引]可以把不受欢迎的玩家踢出游戏\n-fuck 1踢出红色玩家\n-fuck 2踢出蓝色玩家\n-fuck 3踢出青色玩家\n-fuck 4踢出紫色玩家\n-fuck 5踢出黄色玩家\n-fuck 6踢出橙色玩家\n-fuck 7踢出绿色玩家", "ReplaceableTextures\\CommandButtons\\BTNOrbOfVenom.blp")
-    call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "版权声明", "本地图为共享软体，由sunness.com制作，有建议或发现BUG请加入QQ群58954706提交。未经书面允许，任何单位及个人不得私自修改本地图，sunness.com保留追究任何侵犯著作权行为的权利。本地图目前还处于调试测试阶段，在平衡好攻防后将逐步增加内容！", "ReplaceableTextures\\CommandButtons\\BTNOrbOfFire.blp")
-    call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "难度选择", "第二难度起英雄每次死亡都会丢失一半的金钱，多保重啊\n第一难度BOSS降临时间间隔为700秒\n第二难度BOSS降临时间间隔为600秒 技能升级费用翻倍\n第三难度BOSS降临时间间隔为500秒 技能升级费用翻倍\n第四难度BOSS降临时间间隔为400秒 技能升级费用翻倍", "ReplaceableTextures\\CommandButtons\\BTNOrbOfFire.blp")
-    call CreateQuestBJ(bj_QUESTTYPE_OPT_DISCOVERED, "功能提示", "1.按键盘方向键[←]选择删除技能面板的主动技能\n2.按键盘方向键[→]选择删除魔法书里的被动技能\n3.按键盘方向键[ ↑ ]选择升级技能面板的主动技能\n4.按键盘方向键[ ↓ ]选择升级魔法书里的被动技能\n*.按键盘Q键切换背包，一共三个背包\n*.输入-kill自杀，当英雄重生被地形卡住时使用\n*.输入-kill自杀还原，如果火神套装引起变身后技能丢失\n*.在联盟窗口送金币给盟友时，按Ctrl点击每次为100金币", "ReplaceableTextures\\CommandButtons\\BTNOrbOfLightning.blp")
-    call CreateQuestBJ(bj_QUESTTYPE_OPT_DISCOVERED, "新手攻略", "本图为生存类地图，初期不要与敌人纠缠，尽快探路寻找宝箱合成高级装备，因为敌人会越来越密集，错过时间将很难发展。\n1.出生后马上到最近的方尖碑购买医疗/攻击技能各一个\n2.玩家初始可沿着铺着石头的道路推进寻找宝箱合成装备\n3.箱子最容易掉齐的套装为|cffCC33FF天使手镯|r跟|cffCC33FF魔源结晶|r二种\n4.得到天使手镯或魔源结晶后可以尝试进入中间的沼泽地刷怪物，会掉落较多的绿色装备\n5.尝试按A键攻击中立怪，容易掉落高级武器的合成组件\n6.总攻击力超150后及配有天使手镯可以尝试进入雪山/火山/死谷地区刷装备，会掉落蓝色的物品供合成最终套装。", "ReplaceableTextures\\CommandButtons\\BTNOrbOfFire.blp")
-    call CreateQuestBJ(bj_QUESTTYPE_OPT_DISCOVERED, "物品收集", "敏捷型建议收集：火神套装(专署)、战神套装、死神套装\n力量型建议收集：土神套装(专署)、战神套装、死神套装\n弓箭型建议收集：风神套装(专署)、雷神套装\n法师型建议收集：水神套装(专署)、冥王套装、精灵王套装", "ReplaceableTextures\\CommandButtons\\BTNOrbOfLightning.blp")
-    call CreateQuestBJ(bj_QUESTTYPE_OPT_DISCOVERED, "刷宝位置", "*.火山盆地的怪物有较高的机率掉落：\n  火神、土神套装组件物品\n*.冰雪山脉的怪物有较高的机率掉落：\n  风神、水神、雷神、冥皇套装组件物品\n*.亡灵山谷的怪物有较高的机率掉落：\n  死神与战神套装组件物品", "ReplaceableTextures\\CommandButtons\\BTNOrbOfLightning.blp")
-    call CreateQuestBJ(bj_QUESTTYPE_OPT_DISCOVERED, "物品大全", "TRIGSTR_2", "ReplaceableTextures\\CommandButtons\\BTNOrbOfLightning.blp")
+
+    // TODO: 设置任务栏：
+    call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "Kick Command", "Red host can kick unwanted players by typing:\n-fuck [index]\n-fuck 1 kicks Red\n-fuck 2 kicks Blue\n-fuck 3 kicks Teal\n-fuck 4 kicks Purple\n-fuck 5 kicks Yellow\n-fuck 6 kicks Orange\n-fuck 7 kicks Green.", "ReplaceableTextures\\CommandButtons\\BTNOrbOfVenom.blp")
+
+    call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "Copyright Notice", "This map is freeware by sunness.com.\nBug reports & suggestions: QQ 58954706.\nUnauthorized modifications are prohibited.\nsunness.com reserves the right to pursue copyright violations.\nThe map is in testing phase and will be expanded after balance adjustments.", "ReplaceableTextures\\CommandButtons\\BTNOrbOfFire.blp")
+
+    call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "Difficulty Levels", "From Hard mode, heroes lose half their gold on death.\nEasy: Boss every 700s.\nNormal: Boss every 600s, skill cost x2.\nHard: Boss every 500s, skill cost x2.\nHell: Boss every 400s, skill cost x2.", "ReplaceableTextures\\CommandButtons\\BTNOrbOfFire.blp")
+
+    call CreateQuestBJ(bj_QUESTTYPE_OPT_DISCOVERED, "Game Tips", "[←] Remove active skills.\n[→] Remove passive skills.\n[↑] Upgrade active skills.\n[↓] Upgrade passive skills.\n[Q] Switch backpacks (3 total).\nType -kill to suicide if stuck.\nType -kill to reset skills after Fire God set.\nCtrl+Click when sending gold to allies to transfer 100 gold.", "ReplaceableTextures\\CommandButtons\\BTNOrbOfLightning.blp")
+
+    call CreateQuestBJ(bj_QUESTTYPE_OPT_DISCOVERED, "Beginner Guide", "Survival map. Avoid early fights, scout for chests to craft gear.\nBuy heal & attack skills at the Obelisk.\nFollow stone roads to find chests.\nEasiest sets: |cffCC33FFAngel Bracelet|r & |cffCC33FFMana Crystal|r.\nWith these, farm the swamp for green items.\nPress A to attack neutral monsters for weapon materials.\nWith 150+ attack & Angel Bracelet, farm Snow Mountain/Volcano/Dead Valley for blue gear.", "ReplaceableTextures\\CommandButtons\\BTNOrbOfFire.blp")
+
+    call CreateQuestBJ(bj_QUESTTYPE_OPT_DISCOVERED, "Item Collection", "Agility: Fire God (Exclusive), War God, Death God.\nStrength: Earth God (Exclusive), War God, Death God.\nArcher: Wind God (Exclusive), Thunder God.\nMage: Water God (Exclusive), Underworld King, Elf King.", "ReplaceableTextures\\CommandButtons\\BTNOrbOfLightning.blp")
+
+    call CreateQuestBJ(bj_QUESTTYPE_OPT_DISCOVERED, "Best Farm Spots", "Volcano Basin: Fire God, Earth God set pieces.\nSnow Mountains: Wind God, Water God, Thunder God, Underworld King.\nUndead Valley: Death God, War God set pieces.", "ReplaceableTextures\\CommandButtons\\BTNOrbOfLightning.blp")
+
+    // call CreateQuestBJ(bj_QUESTTYPE_OPT_DISCOVERED, "Item Encyclopedia", "TRIGSTR_2", "ReplaceableTextures\\CommandButtons\\BTNOrbOfLightning.blp")
+
     call DestroyTrigger(GetTriggeringTrigger())
 endfunction
+
 function InitTrig_help takes nothing returns nothing
     set gg_trg_help = CreateTrigger()
     call TriggerAddAction(gg_trg_help, function Trig_help_Actions)
 endfunction
+
+// ----------------------------- 工资相关函数 START--------------------------------
+// TODO: 设置工资
 function Trig_GongZi_Func001Func001C takes nothing returns boolean
     if(not(GetPlayerSlotState(ConvertedPlayer(GetForLoopIndexA())) == PLAYER_SLOT_STATE_PLAYING))then
         return false
@@ -1217,24 +1253,30 @@ function Trig_GongZi_Func001Func001C takes nothing returns boolean
     endif
     return true
 endfunction
+
+
 function Trig_GongZi_Actions takes nothing returns nothing
     set bj_forLoopAIndex = 1
     set bj_forLoopAIndexEnd = 7
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         if(Trig_GongZi_Func001Func001C())then
-            call AdjustPlayerStateBJ(50, ConvertedPlayer(GetForLoopIndexA()), PLAYER_STATE_RESOURCE_GOLD)
+            call AdjustPlayerStateBJ(75, ConvertedPlayer(GetForLoopIndexA()), PLAYER_STATE_RESOURCE_GOLD)
         else
         endif
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
     endloop
 endfunction
+
+
 function InitTrig_GongZi takes nothing returns nothing
     set gg_trg_GongZi = CreateTrigger()
     call DisableTrigger(gg_trg_GongZi)
     call TriggerRegisterTimerEventPeriodic(gg_trg_GongZi, 5.11)
     call TriggerAddAction(gg_trg_GongZi, function Trig_GongZi_Actions)
 endfunction
+
+
 function Trig_GongZi2_Func001Func001C takes nothing returns boolean
     if(not(GetPlayerSlotState(ConvertedPlayer(GetForLoopIndexA())) == PLAYER_SLOT_STATE_PLAYING))then
         return false
@@ -1244,24 +1286,30 @@ function Trig_GongZi2_Func001Func001C takes nothing returns boolean
     endif
     return true
 endfunction
+
+
 function Trig_GongZi2_Actions takes nothing returns nothing
     set bj_forLoopAIndex = 1
     set bj_forLoopAIndexEnd = 7
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         if(Trig_GongZi2_Func001Func001C())then
-            call AdjustPlayerStateBJ(25, ConvertedPlayer(GetForLoopIndexA()), PLAYER_STATE_RESOURCE_GOLD)
+            call AdjustPlayerStateBJ(50, ConvertedPlayer(GetForLoopIndexA()), PLAYER_STATE_RESOURCE_GOLD)
         else
         endif
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
     endloop
 endfunction
+
+
 function InitTrig_GongZi2 takes nothing returns nothing
     set gg_trg_GongZi2 = CreateTrigger()
     call DisableTrigger(gg_trg_GongZi2)
     call TriggerRegisterTimerEventPeriodic(gg_trg_GongZi2, 5.12)
     call TriggerAddAction(gg_trg_GongZi2, function Trig_GongZi2_Actions)
 endfunction
+
+
 function Trig_GongZi3_Func001Func001C takes nothing returns boolean
     if(not(GetPlayerSlotState(ConvertedPlayer(GetForLoopIndexA())) == PLAYER_SLOT_STATE_PLAYING))then
         return false
@@ -1271,30 +1319,38 @@ function Trig_GongZi3_Func001Func001C takes nothing returns boolean
     endif
     return true
 endfunction
+
+
 function Trig_GongZi3_Actions takes nothing returns nothing
     set bj_forLoopAIndex = 1
     set bj_forLoopAIndexEnd = 7
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         if(Trig_GongZi3_Func001Func001C())then
-            call AdjustPlayerStateBJ(15, ConvertedPlayer(GetForLoopIndexA()), PLAYER_STATE_RESOURCE_GOLD)
+            call AdjustPlayerStateBJ(35, ConvertedPlayer(GetForLoopIndexA()), PLAYER_STATE_RESOURCE_GOLD)
         else
         endif
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
     endloop
 endfunction
+
 function InitTrig_GongZi3 takes nothing returns nothing
     set gg_trg_GongZi3 = CreateTrigger()
     call DisableTrigger(gg_trg_GongZi3)
     call TriggerRegisterTimerEventPeriodic(gg_trg_GongZi3, 5.13)
     call TriggerAddAction(gg_trg_GongZi3, function Trig_GongZi3_Actions)
 endfunction
+
+// ----------------------------- 工资相关函数 END--------------------------------
+
+// ----------------------------- 玩家输入相关函数 START--------------------------------
 function Trig_PlayerInput_Func001C takes nothing returns boolean
     if(not(GetEventPlayerChatString() == "-kill"))then
         return false
     endif
     return true
 endfunction
+
 function Trig_PlayerInput_Func002Func005C takes nothing returns boolean
     if((GetEventPlayerChatString() == "-JLW"))then
         return true
@@ -1328,11 +1384,37 @@ function Trig_PlayerInput_Func003Func001C takes nothing returns boolean
     endif
     return true
 endfunction
+//------------------- 自定义玩家输入函数 START -------------------
+function Trig_PlayerInput_Func004C takes nothing returns boolean
+    return GetEventPlayerChatString() == "-give"
+endfunction
+
+function Trig_PlayerInput_Func004Actions takes nothing returns nothing
+    local integer playerId = GetConvertedPlayerId(GetTriggerPlayer())
+    local unit hero = udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[playerId]
+    local item newItem
+    
+    if hero == null then
+        call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "|cffff0000Error: Player has no hero.|r")
+        return
+    endif
+    
+    set newItem = CreateItem('I005', GetUnitX(hero), GetUnitY(hero))
+    call UnitAddItem(hero, newItem)
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "|cff00ff00Item is given！|r")
+endfunction
+
+//------------------- 自定义玩家输入函数 END -------------------
 function Trig_PlayerInput_Actions takes nothing returns nothing
     if(Trig_PlayerInput_Func001C())then
         call KillUnit(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])
     else
     endif
+
+    if Trig_PlayerInput_Func004C() then
+        call Trig_PlayerInput_Func004Actions()
+    endif
+
     if(Trig_PlayerInput_Func002C())then
         call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_HINT, "|cffFF8040合成公式：|r|cff00FFFF(风)飘逸之戒+(土)锁链流星锤+(水)水之心=雅露的微笑")
         call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_HINT, "|cffFF8040合成公式：|r|cff00FFFF[风]闪电手套+[土]刻着神秘符纹的石锤+[水]海妖壳甲=雅露的温馨")
@@ -1375,6 +1457,8 @@ function InitTrig_PlayerInput takes nothing returns nothing
     call TriggerRegisterPlayerChatEvent(gg_trg_PlayerInput, Player(6), "-", false)
     call TriggerAddAction(gg_trg_PlayerInput, function Trig_PlayerInput_Actions)
 endfunction
+
+// ----------------------------- 玩家输入相关函数 END--------------------------------
 function Trig_PlayerKill_Func004Func001C takes nothing returns boolean
     if(not(udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[GetForLoopIndexA()] == GetConvertedPlayerId(ConvertedPlayer(S2I(SubStringBJ(GetEventPlayerChatString(), 7, 7))))))then
         return false
@@ -1400,8 +1484,8 @@ function Trig_PlayerKill_Func006C takes nothing returns boolean
     return true
 endfunction
 function Trig_PlayerKill_Actions takes nothing returns nothing
-    call CustomDefeatBJ(ConvertedPlayer(S2I(SubStringBJ(GetEventPlayerChatString(), 7, 7))), "失败!")
-    call DisplayTimedTextToForce(GetPlayersAll(), 30, (("|cff00FFFF玩家：" + GetPlayerName(ConvertedPlayer(S2I(SubStringBJ(GetEventPlayerChatString(), 7, 7))))) + "被主机踢出了游戏！"))
+    call CustomDefeatBJ(ConvertedPlayer(S2I(SubStringBJ(GetEventPlayerChatString(), 7, 7))), "Failed!")
+    call DisplayTimedTextToForce(GetPlayersAll(), 30, (("|cff00FFFFPlayer: " + GetPlayerName(ConvertedPlayer(S2I(SubStringBJ(GetEventPlayerChatString(), 7, 7))))) + " is kicked out of the game!"))
     set bj_forLoopAIndex = 911
     set bj_forLoopAIndexEnd = 915
     loop
@@ -1494,7 +1578,7 @@ function Trig_PlayerLeave_Actions takes nothing returns nothing
     call UnitApplyTimedLifeBJ(.1, 'BTLF', udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])
     call ShowUnitHide(udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])
     set udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] = null
-    call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_MISSIONFAILED, ("|cffFF0066玩家：" + (GetPlayerName(GetTriggerPlayer()) + " 离开了游戏！")))
+    call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_MISSIONFAILED, ("|cffFF0066Player: " + (GetPlayerName(GetTriggerPlayer()) + " Left the game!")))
     call MultiboardSetItemValueBJ(GetLastCreatedMultiboard(), 1, (GetConvertedPlayerId(GetTriggerPlayer()) + 1), ("|cffE1E1E1" + GetPlayerName(GetTriggerPlayer())))
     set bj_forLoopAIndex = 911
     set bj_forLoopAIndexEnd = 915
@@ -3084,12 +3168,12 @@ function Trig_OgreDie_Actions takes nothing returns nothing
         if(Trig_OgreDie_Func022Func022C())then
             return
         else
-            call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_MISSIONFAILED, "|cff00FFFF任务失败：\n1.全部英雄死亡\n2.最后死亡玩家金币数小于250！")
+            call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_MISSIONFAILED, "|cff00FFFFMission Failed:\n1.All Champions dead\n2.Last dead player gold less than 250!")
             set bj_forLoopAIndex = 1
             set bj_forLoopAIndexEnd = 9
             loop
                 exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-                call CustomDefeatBJ(ConvertedPlayer(GetForLoopIndexA()), "失败!")
+                call CustomDefeatBJ(ConvertedPlayer(GetForLoopIndexA()), "Failed!")
                 set bj_forLoopAIndex = bj_forLoopAIndex + 1
             endloop
         endif
@@ -3127,7 +3211,7 @@ function Trig_HeroUP_Actions takes nothing returns nothing
     if(Trig_HeroUP_Func003C())then
         set udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[11] = GetHeroLevel(GetTriggerUnit())
         if(Trig_HeroUP_Func003Func002001())then
-            call DisplayTextToForce(GetPlayersAll(), "|cffff0000英雄等级到6级将有BOSS降临，如果没天使手镯，将可能抵挡不住BOSS的攻击！|r\n|cff00FFFF注意小地图上紫色的圆圈信号，那代表BOSS的移动方位！|r")
+            call DisplayTextToForce(GetPlayersAll(), "|cffff0000WARNING: When a Champion reaches level 6, a BOSS will appear! Without the Angel's Bracelet, you may not survive its devastating attacks!|r\n|cff00FFFFKeep an eye on the purple pings on the minimap - they indicate the BOSS's movement and position!|r")
         else
             call DoNothing()
         endif
@@ -3136,7 +3220,7 @@ function Trig_HeroUP_Actions takes nothing returns nothing
     if(Trig_HeroUP_Func005C())then
         call SetUnitAbilityLevelSwapped('A0CE', udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))], GetUnitLevel(GetTriggerUnit()))
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 11)] = GetUnitLoc(GetTriggerUnit())
-        call CreateTextTagLocBJ("战兽升级", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 11)], 150., 15., .0, 100., 100., 50.)
+        call CreateTextTagLocBJ("Mount Upgrade", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 11)], 150., 15., .0, 100., 100., 50.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 11)])
         call SetTextTagVelocityBJ(GetLastCreatedTextTag(), 64, 90)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
@@ -3281,7 +3365,7 @@ function Trig_HeroRelive_Actions takes nothing returns nothing
     call PanCameraToTimedLocForPlayer(GetTriggerPlayer(), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 100) + 1)], 0)
     call SelectUnitForPlayerSingle(GetTriggerUnit(), GetTriggerPlayer())
     call UnitApplyTimedLifeBJ(.1, 'BTLF', udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 1)])
-    call DisplayTextToPlayer(GetOwningPlayer(GetTriggerUnit()), 0, 0, "*.输入-kill自杀，当英雄重生被地形卡住时使用")
+    call DisplayTextToPlayer(GetOwningPlayer(GetTriggerUnit()), 0, 0, "*.Input -kill to commit suicide, use when your champion is stuck in the terrain")
     call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 100) + 1)])
 endfunction
 function InitTrig_HeroRelive takes nothing returns nothing
@@ -3325,7 +3409,7 @@ endfunction
 function Trig_ZhongLi_Actions takes nothing returns nothing
     if(Trig_ZhongLi_Func001C())then
         call SetUnitOwner(GetTriggerUnit(), Player(PLAYER_NEUTRAL_AGGRESSIVE), false)
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_ALWAYSHINT, ("|cffff0000" + (GetPlayerName(GetOwningPlayer(GetAttacker())) + ("攻击了" + (GetUnitName(GetTriggerUnit()) + "，  愤怒的中立生物决定对入侵者展开疯狂的报复！|r")))))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_ALWAYSHINT, ("|cffff0000" + (GetPlayerName(GetOwningPlayer(GetAttacker())) + (" attacked " + (GetUnitName(GetTriggerUnit()) + "! The enraged neutral creatures have decided to unleash furious vengeance upon the invader!|r")))))
         call SetUnitMoveSpeed(GetTriggerUnit(), 300.)
         call SetUnitAcquireRange(GetTriggerUnit(), 20000.)
         call IssueTargetOrder(GetTriggerUnit(), "attack", GetAttacker())
@@ -3372,7 +3456,7 @@ function Trig_BossB_Actions takes nothing returns nothing
     set udg_M9P2Q7U5l4V5W9O45lO7041D2G5MK3[999] = GetLastCreatedUnit()
     call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[201])
     call StartTimerBJ(udg_M9P2Q7U5l4V5W9O45lO7041D2IG5K3[1], false, udg_M9P2Q7U5l4V5W9O45lO70N41D2G5K3)
-    call CreateTimerDialogBJ(udg_M9P2Q7U5l4V5W9O45lO7041D2IG5K3[1], "憎恨之王降临倒计时")
+    call CreateTimerDialogBJ(udg_M9P2Q7U5l4V5W9O45lO7041D2IG5K3[1], "Next Boss Countdown")
     set udg_M9P2Q7U5l4V5W9O45lO7041D2GO5K3[1] = GetLastCreatedTimerDialogBJ()
     set udg_M9P2Q7U5l4V5W97O45lO7041D2G5K3 = 2
     call DestroyTrigger(GetTriggeringTrigger())
@@ -3429,7 +3513,7 @@ function Trig_BossC_Actions takes nothing returns nothing
         set udg_M9P2Q7U5l4V5W9O45lO7041D2G5MK3[999] = GetLastCreatedUnit()
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[201])
         call StartTimerBJ(udg_M9P2Q7U5l4V5W9O45lO7041D2IG5K3[1], false, udg_M9P2Q7U5l4V5W9O45lO70N41D2G5K3)
-        call TimerDialogSetTitle(udg_M9P2Q7U5l4V5W9O45lO7041D2GO5K3[1], "痛苦之王降临倒计时")
+        call TimerDialogSetTitle(udg_M9P2Q7U5l4V5W9O45lO7041D2GO5K3[1], "Next Boss Countdown")
         set udg_M9P2Q7U5l4V5W97O45lO7041D2G5K3 = (udg_M9P2Q7U5l4V5W97O45lO7041D2G5K3 + 1)
         call DisableTrigger(gg_trg_XH2)
         return
@@ -3446,7 +3530,7 @@ function Trig_BossC_Actions takes nothing returns nothing
         set udg_M9P2Q7U5l4V5W9O45lO7041D2G5MK3[999] = GetLastCreatedUnit()
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[201])
         call StartTimerBJ(udg_M9P2Q7U5l4V5W9O45lO7041D2IG5K3[1], false, udg_M9P2Q7U5l4V5W9O45lO70N41D2G5K3)
-        call TimerDialogSetTitle(udg_M9P2Q7U5l4V5W9O45lO7041D2GO5K3[1], "折磨女王降临倒计时")
+        call TimerDialogSetTitle(udg_M9P2Q7U5l4V5W9O45lO7041D2GO5K3[1], "Next Boss Countdown")
         set udg_M9P2Q7U5l4V5W97O45lO7041D2G5K3 = (udg_M9P2Q7U5l4V5W97O45lO7041D2G5K3 + 1)
         return
     else
@@ -3465,7 +3549,7 @@ function Trig_BossC_Actions takes nothing returns nothing
         call UnitAddAbilityBJ('Amrf', GetLastCreatedUnit())
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[201])
         call StartTimerBJ(udg_M9P2Q7U5l4V5W9O45lO7041D2IG5K3[1], false, udg_M9P2Q7U5l4V5W9O45lO70N41D2G5K3)
-        call TimerDialogSetTitle(udg_M9P2Q7U5l4V5W9O45lO7041D2GO5K3[1], "破坏之王降临倒计时")
+        call TimerDialogSetTitle(udg_M9P2Q7U5l4V5W9O45lO7041D2GO5K3[1], "Last Boss")
         set udg_M9P2Q7U5l4V5W97O45lO7041D2G5K3 = (udg_M9P2Q7U5l4V5W97O45lO7041D2G5K3 + 1)
         return
     else
@@ -3482,7 +3566,7 @@ function Trig_BossC_Actions takes nothing returns nothing
         set udg_M9P2Q7U5l4V5W9O45lO7041D2G5MK3[999] = GetLastCreatedUnit()
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[201])
         call StartTimerBJ(udg_M9P2Q7U5l4V5W9O45lO7041D2IG5K3[1], false, udg_M9P2Q7U5l4V5W9O45lO70N41D2G5K3)
-        call TimerDialogSetTitle(udg_M9P2Q7U5l4V5W9O45lO7041D2GO5K3[1], "第二幕任务倒计")
+        call TimerDialogSetTitle(udg_M9P2Q7U5l4V5W9O45lO7041D2GO5K3[1], "Act II Countdown")
         set udg_M9P2Q7U5l4V5W97O45lO7041D2G5K3 = (udg_M9P2Q7U5l4V5W97O45lO7041D2G5K3 + 1)
         return
     else
@@ -3648,7 +3732,7 @@ function Trig_XH_Func002Func001Func002Func003001 takes nothing returns boolean
     return(GetHeroStatBJ(bj_HEROSTAT_INT, udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()], false) > 40)
 endfunction
 function Trig_XH_Func002Func001Func002C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()]), 1, 5) == "[力]"))then
+    if(not(SubStringBJ(GetUnitName(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()]), 1, 5) == "[Guardian]"))then
         return false
     endif
     return true
@@ -3663,7 +3747,7 @@ function Trig_XH_Func002Func001Func003Func003001 takes nothing returns boolean
     return(GetHeroStatBJ(bj_HEROSTAT_INT, udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()], false) > 60)
 endfunction
 function Trig_XH_Func002Func001Func003C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()]), 1, 5) == "[敏]"))then
+    if(not(SubStringBJ(GetUnitName(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()]), 1, 5) == "[Warrior]"))then
         return false
     endif
     return true
@@ -3678,7 +3762,7 @@ function Trig_XH_Func002Func001Func004Func003001 takes nothing returns boolean
     return(GetHeroStatBJ(bj_HEROSTAT_INT, udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()], false) > 65)
 endfunction
 function Trig_XH_Func002Func001Func004C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()]), 1, 5) == "[弓]"))then
+    if(not(SubStringBJ(GetUnitName(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()]), 1, 5) == "[Archer]"))then
         return false
     endif
     return true
@@ -3693,7 +3777,7 @@ function Trig_XH_Func002Func001Func005Func003001 takes nothing returns boolean
     return(GetHeroStatBJ(bj_HEROSTAT_INT, udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()], false) > 225)
 endfunction
 function Trig_XH_Func002Func001Func005C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()]), 1, 5) == "[魔]"))then
+    if(not(SubStringBJ(GetUnitName(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()]), 1, 5) == "[Mage]"))then
         return false
     endif
     return true
@@ -4053,12 +4137,12 @@ function Trig_PetA2_Func004Func001Func001C takes nothing returns boolean
 endfunction
 function Trig_PetA2_Actions takes nothing returns nothing
     if(Trig_PetA2_Func001C())then
-        call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_ALWAYSHINT, "|cffFF0000该单位不能捕捉！")
+        call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_ALWAYSHINT, "|cffFF0000This unit cannot be captured!")
         return
     else
     endif
     if(Trig_PetA2_Func002C())then
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_ALWAYSHINT, ("|cffFFFF00" + (GetPlayerName(GetTriggerPlayer()) + ("使用辅助技能-诱捕，幸运的捕捉到了战兽 " + (GetUnitName(GetSpellTargetUnit()) + "|r")))))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_ALWAYSHINT, ("|cffFFFF00" + (GetPlayerName(GetTriggerPlayer()) + (" successfully captured the war beast " + (GetUnitName(GetSpellTargetUnit()) + "!|r")))))
         set bj_forLoopAIndex = 1
         set bj_forLoopAIndexEnd = 61
         loop
@@ -4074,7 +4158,7 @@ function Trig_PetA2_Actions takes nothing returns nothing
             set bj_forLoopAIndex = bj_forLoopAIndex + 1
         endloop
     else
-        call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_ALWAYSHINT, ("|cffFF00FF捕捉失败，技能等级越高捕捉成功率越高，当前捕捉率：" + (I2S(GetUnitAbilityLevelSwapped(GetSpellAbilityId(), GetTriggerUnit())) + "/10")))
+        call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_ALWAYSHINT, ("|cffFF00FFCapture failed! Higher skill levels increase capture success rate. Current capture rate: " + (I2S(GetUnitAbilityLevelSwapped(GetSpellAbilityId(), GetTriggerUnit())) + "/10")))
     endif
     call TriggerSleepAction(5.)
     set bj_forLoopAIndex = 1
@@ -4944,7 +5028,7 @@ function Trig_PetI_Actions takes nothing returns nothing
     call UnitAddAbilityBJ('Aloc', GetLastCreatedUnit())
     call SetUnitScalePercent(GetLastCreatedUnit(), 70., 100, 100)
     call PauseUnitBJ(true, GetLastCreatedUnit())
-    call CreateTextTagLocBJ("偶素小乖，主人叫偶来拿东西！", udg_M9P2Q7U5l4V5W9O45lO7041D2G5K3h[((GetConvertedPlayerId(GetTriggerPlayer()) * 10) + 8)], 150., 9., 100, 100., 100., .0)
+    call CreateTextTagLocBJ("I'm a beast spirit! My master sent me to fetch items!", udg_M9P2Q7U5l4V5W9O45lO7041D2G5K3h[((GetConvertedPlayerId(GetTriggerPlayer()) * 10) + 8)], 150., 9., 100, 100., 100., .0)
     call SetTextTagPermanent(GetLastCreatedTextTag(), false)
     call SetTextTagLifespan(GetLastCreatedTextTag(), 4.)
     call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2G5K3h[((GetConvertedPlayerId(GetTriggerPlayer()) * 10) + 8)])
@@ -4952,7 +5036,7 @@ function Trig_PetI_Actions takes nothing returns nothing
     set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K3h[((GetConvertedPlayerId(GetTriggerPlayer()) * 10) + 9)] = PolarProjectionBJ(GetUnitLoc(GetTriggerUnit()), 100., 0)
     if(Trig_PetI_Func014C())then
         call RemoveUnit(udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 20) + 1)])
-        call CreateTextTagLocBJ("主人，东西给别人抢去了！", udg_M9P2Q7U5l4V5W9O45lO7041D2G5K3h[((GetConvertedPlayerId(GetTriggerPlayer()) * 10) + 9)], 150., 9., 100, 100., 100., .0)
+        call CreateTextTagLocBJ("I'm sorry, the item was taken by others!", udg_M9P2Q7U5l4V5W9O45lO7041D2G5K3h[((GetConvertedPlayerId(GetTriggerPlayer()) * 10) + 9)], 150., 9., 100, 100., 100., .0)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 3.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2G5K3h[((GetConvertedPlayerId(GetTriggerPlayer()) * 10) + 9)])
@@ -4962,7 +5046,7 @@ function Trig_PetI_Actions takes nothing returns nothing
     set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K3h[((GetConvertedPlayerId(GetTriggerPlayer()) * 10) + 9)] = PolarProjectionBJ(GetUnitLoc(GetTriggerUnit()), 100., 0)
     call SetUnitPositionLoc(udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 20) + 1)], udg_M9P2Q7U5l4V5W9O45lO7041D2G5K3h[((GetConvertedPlayerId(GetTriggerPlayer()) * 10) + 9)])
     call SetItemPositionLoc(udg_M9P2Q7USUl4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 20) + 1)], udg_M9P2Q7U5l4V5W9O45lO7041D2G5K3h[((GetConvertedPlayerId(GetTriggerPlayer()) * 10) + 9)])
-    call CreateTextTagLocBJ("主人，东西拿回来了！", udg_M9P2Q7U5l4V5W9O45lO7041D2G5K3h[((GetConvertedPlayerId(GetTriggerPlayer()) * 10) + 9)], 150., 9., 100, 100., 100., .0)
+    call CreateTextTagLocBJ("My master, I've brought the item back!", udg_M9P2Q7U5l4V5W9O45lO7041D2G5K3h[((GetConvertedPlayerId(GetTriggerPlayer()) * 10) + 9)], 150., 9., 100, 100., 100., .0)
     call SetTextTagPermanent(GetLastCreatedTextTag(), false)
     call SetTextTagLifespan(GetLastCreatedTextTag(), 3.)
     call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2G5K3h[((GetConvertedPlayerId(GetTriggerPlayer()) * 10) + 9)])
@@ -6299,7 +6383,7 @@ function Trig_Hero_show_Actions takes nothing returns nothing
         call CreateNUnitsAtLoc(1, udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[GetForLoopIndexA()], Player(PLAYER_NEUTRAL_PASSIVE), OffsetLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], ( - 800. + I2R((GetForLoopIndexA() * 200))), 400.), bj_UNIT_FACING)
         call UnitAddItemByIdSwapped('I00V', GetLastCreatedUnit())
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[199] = GetUnitLoc(GetLastCreatedUnit())
-        call CreateTextTagLocBJ("坚盾", OffsetLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[199], .0, - 100.), 0, 10, 50., 100, 80., 20.)
+        call CreateTextTagLocBJ("Guardian", OffsetLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[199], .0, - 100.), 0, 10, 50., 100, 80., 20.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[199])
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
     endloop
@@ -6310,7 +6394,7 @@ function Trig_Hero_show_Actions takes nothing returns nothing
         call CreateNUnitsAtLoc(1, udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[(GetForLoopIndexA() + 10)], Player(PLAYER_NEUTRAL_PASSIVE), OffsetLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], ( - 800. + I2R((GetForLoopIndexA() * 200))), 150.), bj_UNIT_FACING)
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[199] = GetUnitLoc(GetLastCreatedUnit())
         call UnitAddItemByIdSwapped('I00W', GetLastCreatedUnit())
-        call CreateTextTagLocBJ("利刃", OffsetLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[199], .0, - 100.), 0, 10, 50., 100, 80., 20.)
+        call CreateTextTagLocBJ("Warrior", OffsetLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[199], .0, - 100.), 0, 10, 50., 100, 80., 20.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[199])
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
     endloop
@@ -6321,7 +6405,7 @@ function Trig_Hero_show_Actions takes nothing returns nothing
         call CreateNUnitsAtLoc(1, udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[(GetForLoopIndexA() + 20)], Player(PLAYER_NEUTRAL_PASSIVE), OffsetLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], ( - 800. + I2R((GetForLoopIndexA() * 200))), - 100.), bj_UNIT_FACING)
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[199] = GetUnitLoc(GetLastCreatedUnit())
         call UnitAddItemByIdSwapped('I00Y', GetLastCreatedUnit())
-        call CreateTextTagLocBJ("毒刺", OffsetLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[199], .0, - 100.), 0, 10, 50., 100, 80., 20.)
+        call CreateTextTagLocBJ("Archer", OffsetLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[199], .0, - 100.), 0, 10, 50., 100, 80., 20.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[199])
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
     endloop
@@ -6332,7 +6416,7 @@ function Trig_Hero_show_Actions takes nothing returns nothing
         call CreateNUnitsAtLoc(1, udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[(GetForLoopIndexA() + 30)], Player(PLAYER_NEUTRAL_PASSIVE), OffsetLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], ( - 800. + I2R((GetForLoopIndexA() * 200))), - 350.), bj_UNIT_FACING)
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[199] = GetUnitLoc(GetLastCreatedUnit())
         call UnitAddItemByIdSwapped('I00X', GetLastCreatedUnit())
-        call CreateTextTagLocBJ("魔法", OffsetLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[199], .0, - 100.), 0, 10, 50., 100, 80., 20.)
+        call CreateTextTagLocBJ("Mage", OffsetLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[199], .0, - 100.), 0, 10, 50., 100, 80., 20.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[199])
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
     endloop
@@ -6445,16 +6529,16 @@ endfunction
 function Trig_Dialog_Actions takes nothing returns nothing
     call TriggerSleepAction(2.)
     call DialogClear(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1])
-    call DialogSetMessage(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "选择游戏难度")
-    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "菜鸟入门(熟悉地图)")
+    call DialogSetMessage(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "Game Difficulty   ")
+    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "Novice(Familiarize yourself with the map)")
     set udg_M9P2QS7U5l4V5W9O45lO7041D2G5K3[1] = GetLastCreatedButtonBJ()
-    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "普通难度(更高挑战)")
+    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "Normal(Higher Challenge)")
     set udg_M9P2QS7U5l4V5W9O45lO7041D2G5K3[2] = GetLastCreatedButtonBJ()
-    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "中级难度(路人局的极限)")
+    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "Intermediate(Limit of the random game)")
     set udg_M9P2QS7U5l4V5W9O45lO7041D2G5K3[3] = GetLastCreatedButtonBJ()
-    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "高级难度(专业战队适用)")
+    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "Advanced(Professional team)")
     set udg_M9P2QS7U5l4V5W9O45lO7041D2G5K3[4] = GetLastCreatedButtonBJ()
-    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "地狱难度(YY语音适用)")
+    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "Hell(Impossible!)")
     set udg_M9P2QS7U5l4V5W9O45lO7041D2G5K3[5] = GetLastCreatedButtonBJ()
     set bj_forLoopAIndex = 1
     set bj_forLoopAIndexEnd = 10
@@ -6518,15 +6602,15 @@ function Trig_Dialog_select_Func003Func001C takes nothing returns boolean
 endfunction
 function Trig_Dialog_select_Actions takes nothing returns nothing
     if(Trig_Dialog_select_Func001C())then
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_ALWAYSHINT, (GetPlayerName(GetTriggerPlayer()) + "选择了[ 入门难度 ]"))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_ALWAYSHINT, (GetPlayerName(GetTriggerPlayer()) + " chosed Novice Difficulty"))
         set udg_M9P2Q7U5l4V5W9O45lO70N41D2G5K3 = 700.
         call EnableTrigger(gg_trg_GongZi)
         call StartTimerBJ(udg_M9P2Q7U5l4V5W9O45lO7041D2IG5K3[1], false, 1200.)
-        call CreateTimerDialogBJ(udg_M9P2Q7U5l4V5W9O45lO7041D2IG5K3[1], "菜鸟难度优惠时间")
+        call CreateTimerDialogBJ(udg_M9P2Q7U5l4V5W9O45lO7041D2IG5K3[1], " Novice Grace Period")
         set udg_M9P2Q7U5l4V5W9O45lO7041D2GO5K3[1] = GetLastCreatedTimerDialogBJ()
     else
         if(Trig_Dialog_select_Func001Func001C())then
-            call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_ALWAYSHINT, (GetPlayerName(GetTriggerPlayer()) + "选择了[ 普通难度 ]"))
+            call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_ALWAYSHINT, (GetPlayerName(GetTriggerPlayer()) + " chosed Normal Difficulty"))
             set udg_M9P2Q7U5l4V5W9O45lO70N41D2G5K3 = 650.
             call EnableTrigger(gg_trg_GongZi2)
             call EnableTrigger(gg_trg_BossA)
@@ -6545,7 +6629,7 @@ function Trig_Dialog_select_Actions takes nothing returns nothing
             call SetUnitAbilityLevelSwapped('A0CC', gg_unit_u00D_0309, 2)
         else
             if(Trig_Dialog_select_Func001Func001Func001C())then
-                call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_ALWAYSHINT, (GetPlayerName(GetTriggerPlayer()) + "选择了[ 中级难度 ]"))
+                call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_ALWAYSHINT, (GetPlayerName(GetTriggerPlayer()) + " chosed Intermediate Difficulty"))
                 set udg_M9P2Q7U5l4V5W9O45lO70N41D2G5K3 = 600.
                 call EnableTrigger(gg_trg_GongZi3)
                 call EnableTrigger(gg_trg_BossA)
@@ -6566,7 +6650,7 @@ function Trig_Dialog_select_Actions takes nothing returns nothing
                 call SetUnitAbilityLevelSwapped('A0CC', gg_unit_u00D_0309, 3)
             else
                 if(Trig_Dialog_select_Func001Func001Func001Func001C())then
-                    call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_ALWAYSHINT, (GetPlayerName(GetTriggerPlayer()) + "选择了[ 高级难度 ]"))
+                    call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_ALWAYSHINT, (GetPlayerName(GetTriggerPlayer()) + " chosed Advanced Difficulty"))
                     set udg_M9P2Q7U5l4V5W9O45lO70N41D2G5K3 = 550.
                     call EnableTrigger(gg_trg_BossA)
                     set udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[14] = 3
@@ -6586,7 +6670,7 @@ function Trig_Dialog_select_Actions takes nothing returns nothing
                     call SetUnitAbilityLevelSwapped('A0CC', gg_unit_u00D_0309, 4)
                 else
                     if(Trig_Dialog_select_Func001Func001Func001Func001Func001C())then
-                        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_ALWAYSHINT, (GetPlayerName(GetTriggerPlayer()) + "选择了[ 地狱难度 ]"))
+                        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_ALWAYSHINT, (GetPlayerName(GetTriggerPlayer()) + " chosed Hell Difficulty"))
                         set udg_M9P2Q7U5l4V5W9O45lO70N41D2G5K3 = 500.
                         call EnableTrigger(gg_trg_BossA)
                         set udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[14] = 4
@@ -6627,7 +6711,7 @@ function Trig_Dialog_select_Actions takes nothing returns nothing
     // call FogMaskEnableOff()
     set udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[20] = 4
     call SetUnitAbilityLevelSwapped('A00F', gg_unit_u00B_0268, 21)
-    call MultiboardSetTitleText(GetLastCreatedMultiboard(), ("排行榜(" + (("版本 " + "3.9J") + (" 难度 " + (I2S((udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[14] + 1)) + ")")))))
+    call MultiboardSetTitleText(GetLastCreatedMultiboard(), ("Scoreboard(" + (("Version " + "0.0.1") + (" Difficulty " + (I2S((udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[14] + 1)) + ")")))))
     call PlaySoundBJ(gg_snd_Sound06)
     call ConditionalTriggerExecute(gg_trg_Hero_show)
     call EnableTrigger(gg_trg_Skill_del)
@@ -6654,7 +6738,7 @@ function Trig_Hero_close_Actions takes nothing returns nothing
     call RemoveUnit(gg_unit_n007_0003)
     call TriggerSleepAction(2.)
     call DestroyTrigger(gg_trg_Hero_choice)
-    call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_MISSIONFAILED, "|cffFF0066游戏已经开始20分钟，关闭选择英雄功能！")
+    call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_MISSIONFAILED, "|cffFF0066The game has started for 20 minutes, and the selection of heroes is closed!")
     call DestroyTrigger(GetTriggeringTrigger())
 endfunction
 function InitTrig_Hero_close takes nothing returns nothing
@@ -6671,7 +6755,7 @@ endfunction
 function Trig_Open_Boss_Actions takes nothing returns nothing
     call TriggerExecute(gg_trg_BossA)
     call PlaySoundBJ(gg_snd_Sound07)
-    call DisplayTimedTextToForce(GetPlayersAll(), 30., "|cffFF0066游戏已经开始四十分钟，魔族BOSS已经等得极不耐烦，现在开始强行出场！")
+    call DisplayTimedTextToForce(GetPlayersAll(), 30., "|cffFF0066The game has started for 40 minutes, and the Evil Boss is extremely impatient, now he will forcefully come out!")
     call DestroyTrigger(GetTriggeringTrigger())
 endfunction
 function InitTrig_Open_Boss takes nothing returns nothing
@@ -6886,7 +6970,7 @@ function Trig_Skill_buy1_Actions takes nothing returns nothing
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         if(Trig_Skill_buy1_Func006Func001C())then
-            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_WARNING, ("神圣方尖碑回应了你的祈求，赋予你技能：<" + (GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">，可惜你已经学过了该项光环技能")))
+            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_WARNING, ("The Sacred Obelisk has answered your prayer, granting you the skill: <" + (GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">, but unfortunately you have already learned this aura ability")))
             call AdjustPlayerStateBJ(1000, GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD)
             return
         else
@@ -6903,12 +6987,12 @@ function Trig_Skill_buy1_Actions takes nothing returns nothing
             call UnitMakeAbilityPermanent(GetTriggerUnit(), true, udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)])
             call UnitMakeAbilityPermanent(GetTriggerUnit(), true, udg_M9P2Q7U5l4V5W9O45lOS7041D2G5K3[udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) * 18)]])
             call SetPlayerAbilityAvailableBJ(false, udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)], GetOwningPlayer(GetTriggerUnit()))
-            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, ("神圣方尖碑回应了你的祈求，赋予你技能：<" + (GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">")))
-            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, "|cff00FFFF技能提示：升级技能按方向键↓   删除技能按方向键→|r")
+            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, ("The Sacred Obelisk has answered your prayer, granting you the skill: <" + (GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">")))
+            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, "|cff00FFFF Skill Tip: Press ↓ to upgrade skills   Press → to delete skills |r")
             return
         else
             if(Trig_Skill_buy1_Func008Func001Func001C())then
-                call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_WARNING, "你的祈求得不到回应，因为你的魔法书已经满了！")
+                call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_WARNING, "Your prayer is not answered, because your magic book is full!")
                 return
             else
             endif
@@ -6930,25 +7014,25 @@ function Trig_Skill_buy2_Conditions takes nothing returns boolean
     return true
 endfunction
 function Trig_Skill_buy2_Func002Func001Func001Func001C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[魔]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[Mage]"))then
         return false
     endif
     return true
 endfunction
 function Trig_Skill_buy2_Func002Func001Func001C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[弓]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[Archer]"))then
         return false
     endif
     return true
 endfunction
 function Trig_Skill_buy2_Func002Func001C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[敏]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[Warrior]"))then
         return false
     endif
     return true
 endfunction
 function Trig_Skill_buy2_Func002C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[力]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[Guardian]"))then
         return false
     endif
     return true
@@ -6994,7 +7078,7 @@ function Trig_Skill_buy2_Actions takes nothing returns nothing
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         if(Trig_Skill_buy2_Func004Func001C())then
-            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_WARNING, ("神圣方尖碑回应了你的祈求，赋予你技能：<" + (GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">，可惜你已经学过了该项医疗技能")))
+            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_WARNING, ("The Sacred Obelisk has answered your prayer, granting you the skill: <" + (GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">, but unfortunately you have already learned this healing ability")))
             call AdjustPlayerStateBJ(200, GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD)
             return
         else
@@ -7009,12 +7093,12 @@ function Trig_Skill_buy2_Actions takes nothing returns nothing
             set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]
             call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)], GetTriggerUnit())
             call UnitMakeAbilityPermanent(GetTriggerUnit(), true, udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)])
-            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, ("神圣方尖碑回应了你的祈求，赋予你技能：<" + (GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">")))
-            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, "|cff00FFFF技能提示：升级技能按方向键↑   删除技能按方向键←  (请注意3.9H以后版本只有法师能学到医疗波)|r")
+            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, ("The Sacred Obelisk has answered your prayer, granting you the skill: <" + (GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">")))
+            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, "|cff00FFFF Skill Tip: Press ↓ to upgrade skills   Press → to delete skills |r")
             return
         else
             if(Trig_Skill_buy2_Func006Func001Func001C())then
-                call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_WARNING, "你的祈求得不到回应，因为你的技能面板已经满了！")
+                call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_WARNING, "Your prayer is not answered, because your magic book is full!")
                 call AdjustPlayerStateBJ(200, GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD)
                 return
             else
@@ -7037,25 +7121,25 @@ function Trig_Skill_buy3_Conditions takes nothing returns boolean
     return true
 endfunction
 function Trig_Skill_buy3_Func003Func001Func001Func001C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[魔]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[Mage]"))then
         return false
     endif
     return true
 endfunction
 function Trig_Skill_buy3_Func003Func001Func001C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[弓]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[Archer]"))then
         return false
     endif
     return true
 endfunction
 function Trig_Skill_buy3_Func003Func001C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[敏]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[Warrior]"))then
         return false
     endif
     return true
 endfunction
 function Trig_Skill_buy3_Func003C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[力]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[Guardian]"))then
         return false
     endif
     return true
@@ -7101,7 +7185,7 @@ function Trig_Skill_buy3_Actions takes nothing returns nothing
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         if(Trig_Skill_buy3_Func005Func001C())then
-            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_WARNING, ("神圣方尖碑回应了你的祈求，赋予你技能：<" + (GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">，可惜你已经学过了该项攻击技能")))
+            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_WARNING, ("The Sacred Obelisk has answered your prayer, granting you the skill: <" + (GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">, but unfortunately you have already learned this attack ability")))
             call AdjustPlayerStateBJ(200, GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD)
             return
         else
@@ -7116,12 +7200,12 @@ function Trig_Skill_buy3_Actions takes nothing returns nothing
             set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]
             call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)], GetTriggerUnit())
             call UnitMakeAbilityPermanent(GetTriggerUnit(), true, udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)])
-            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, ("神圣方尖碑回应了你的祈求，赋予你技能：<" + (GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">")))
-            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, "|cff00FFFF技能提示：升级技能按方向键↑   删除技能按方向键←|r")
+            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, ("The Sacred Obelisk has answered your prayer, granting you the skill: <" + (GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">")))
+            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, "|cff00FFFF Skill Tip: Press ↓ to upgrade skills   Press → to delete skills |r")
             return
         else
             if(Trig_Skill_buy3_Func007Func001Func001C())then
-                call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_WARNING, "你的祈求得不到回应，因为你的技能面板已经满了！")
+                call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_WARNING, "Your prayer is not answered, because your magic book is full!")
                 call AdjustPlayerStateBJ(200, GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD)
                 return
             else
@@ -7144,25 +7228,25 @@ function Trig_Skill_buy4_Conditions takes nothing returns boolean
     return true
 endfunction
 function Trig_Skill_buy4_Func003Func001Func002Func002C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[魔]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[Mage]"))then
         return false
     endif
     return true
 endfunction
 function Trig_Skill_buy4_Func003Func001Func002C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[弓]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[Archer]"))then
         return false
     endif
     return true
 endfunction
 function Trig_Skill_buy4_Func003Func001C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[敏]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[Warrior]"))then
         return false
     endif
     return true
 endfunction
 function Trig_Skill_buy4_Func003C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[力]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[Guardian]"))then
         return false
     endif
     return true
@@ -7208,7 +7292,7 @@ function Trig_Skill_buy4_Actions takes nothing returns nothing
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         if(Trig_Skill_buy4_Func005Func001C())then
-            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_WARNING, ("神圣方尖碑回应了你的祈求，赋予你技能：<" + (GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">，可惜你已经学过了该项辅助技能")))
+            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_WARNING, ("The Sacred Obelisk has answered your prayer, granting you the skill: <" + (GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">, but unfortunately you have already learned this support ability")))
             call AdjustPlayerStateBJ(200, GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD)
             return
         else
@@ -7223,12 +7307,12 @@ function Trig_Skill_buy4_Actions takes nothing returns nothing
             set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]
             call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)], GetTriggerUnit())
             call UnitMakeAbilityPermanent(GetTriggerUnit(), true, udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)])
-            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, ("神圣方尖碑回应了你的祈求，赋予你技能：<" + (GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">")))
-            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, "|cff00FFFF技能提示：升级技能按方向键↑   删除技能按方向键←|r")
+            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, ("The Sacred Obelisk has answered your prayer, granting you the skill: <" + (GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">")))
+            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, "|cff00FFFF Skill Tip: Press ↓ to upgrade skills   Press → to delete skills |r")
             return
         else
             if(Trig_Skill_buy4_Func007Func001Func001C())then
-                call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_WARNING, "你的祈求得不到回应，因为你的技能面板已经满了！")
+                call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_WARNING, "Your prayer is not answered, because your magic book is full!")
                 call AdjustPlayerStateBJ(200, GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD)
                 return
             else
@@ -7251,25 +7335,25 @@ function Trig_Skill_buy5_Conditions takes nothing returns boolean
     return true
 endfunction
 function Trig_Skill_buy5_Func003Func001Func004Func004C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[魔]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[Mage]"))then
         return false
     endif
     return true
 endfunction
 function Trig_Skill_buy5_Func003Func001Func004C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[弓]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[Archer]"))then
         return false
     endif
     return true
 endfunction
 function Trig_Skill_buy5_Func003Func001C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[敏]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[Warrior]"))then
         return false
     endif
     return true
 endfunction
 function Trig_Skill_buy5_Func003C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[力]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[Guardian]"))then
         return false
     endif
     return true
@@ -7298,17 +7382,17 @@ function Trig_Skill_buy5_Actions takes nothing returns nothing
         set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lO70S41D2G5K3[GetRandomInt(1, 6)]
     else
         if(Trig_Skill_buy5_Func003Func001C())then
-            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_WARNING, "只有力量型英雄才能学到防御性技能！")
+            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_WARNING, "Only Guardian champions can learn defensive skills!")
             call AdjustPlayerStateBJ(200, GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD)
             return
         else
             if(Trig_Skill_buy5_Func003Func001Func004C())then
-                call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_WARNING, "只有力量型英雄才能学到防御性技能！")
+                call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_WARNING, "Only Guardian champions can learn defensive skills!")
                 call AdjustPlayerStateBJ(200, GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD)
                 return
             else
                 if(Trig_Skill_buy5_Func003Func001Func004Func004C())then
-                    call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_WARNING, "只有力量型英雄才能学到防御性技能！")
+                    call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_WARNING, "Only Guardian champions can learn defensive skills!")
                     call AdjustPlayerStateBJ(200, GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD)
                     return
                 else
@@ -7321,7 +7405,7 @@ function Trig_Skill_buy5_Actions takes nothing returns nothing
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         if(Trig_Skill_buy5_Func005Func001C())then
-            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_WARNING, ("神圣方尖碑回应了你的祈求，赋予你技能：<" + (GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">，可惜你已经学过了该项防御技能")))
+            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_WARNING, ("The Sacred Obelisk has answered your prayer, granting you the skill: <" + (GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">, but unfortunately you have already learned this defensive skill")))
             call AdjustPlayerStateBJ(200, GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD)
             return
         else
@@ -7336,12 +7420,12 @@ function Trig_Skill_buy5_Actions takes nothing returns nothing
             set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]
             call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)], GetTriggerUnit())
             call UnitMakeAbilityPermanent(GetTriggerUnit(), true, udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)])
-            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, ("神圣方尖碑回应了你的祈求，赋予你技能：<" + (GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">")))
-            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, "|cff00FFFF技能提示：升级技能按方向键↑   删除技能按方向键←|r")
+            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, ("The Sacred Obelisk has answered your prayer, granting you the skill: <" + (GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">")))
+            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, "|cff00FFFF Skill Tip: Press ↓ to upgrade skills   Press → to delete skills |r")
             return
         else
             if(Trig_Skill_buy5_Func007Func001Func001C())then
-                call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_WARNING, "你的祈求得不到回应，因为你的技能面板已经满了！")
+                call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_WARNING, "Your prayer is not answered, because your magic book is full!")
                 call AdjustPlayerStateBJ(200, GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD)
                 return
             else
@@ -7373,14 +7457,14 @@ function Trig_Skill_del_Actions takes nothing returns nothing
     call ForceUIKeyBJ(GetTriggerPlayer(), "M")
     if(Trig_Skill_del_Func002C())then
         call DialogClear(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)])
-        call DialogSetMessage(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], "系统提示")
-        call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], "死亡状态不能操作")
+        call DialogSetMessage(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], "System Tip:")
+        call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], "You cannot perform this operation in the death state")
         call DialogDisplayBJ(true, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], GetTriggerPlayer())
         return
     else
     endif
     call DialogClear(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)])
-    call DialogSetMessage(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], "删除技能面板中的技能")
+    call DialogSetMessage(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], "Delete skills in the skill panel")
     set bj_forLoopAIndex = 1
     set bj_forLoopAIndexEnd = 5
     loop
@@ -7392,7 +7476,7 @@ function Trig_Skill_del_Actions takes nothing returns nothing
         endif
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
     endloop
-    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], "取消删除")
+    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], "Cancel deletion")
     call DialogDisplayBJ(true, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], GetTriggerPlayer())
 endfunction
 function InitTrig_Skill_del takes nothing returns nothing
@@ -7436,7 +7520,7 @@ function Trig_Skill_delsave_Func002Func001C takes nothing returns boolean
 endfunction
 function Trig_Skill_delsave_Actions takes nothing returns nothing
     if(Trig_Skill_delsave_Func001C())then
-        call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_WARNING, "死亡状态下不能执行本操作！")
+        call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_WARNING, "You cannot perform this operation in the death state!")
         return
     else
     endif
@@ -7447,7 +7531,7 @@ function Trig_Skill_delsave_Actions takes nothing returns nothing
         if(Trig_Skill_delsave_Func002Func001C())then
             if(Trig_Skill_delsave_Func002Func001Func002C())then
                 if(Trig_Skill_delsave_Func002Func001Func002Func001C())then
-                    call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_WARNING, "天神下凡状态下不能删除天神下凡！")
+                    call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_WARNING, "You cannot delete this skill under the state of it!")
                     return
                 else
                 endif
@@ -7489,14 +7573,14 @@ function Trig_Skill_del2_Actions takes nothing returns nothing
     call ForceUIKeyBJ(GetTriggerPlayer(), "M")
     if(Trig_Skill_del2_Func002C())then
         call DialogClear(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)])
-        call DialogSetMessage(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], "系统提示")
-        call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], "死亡状态不能操作")
+        call DialogSetMessage(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], "System Tip:")
+        call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], "You cannot perform this operation in the death state")
         call DialogDisplayBJ(true, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], GetTriggerPlayer())
         return
     else
     endif
     call DialogClear(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 20)])
-    call DialogSetMessage(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 20)], "删除魔法书中的技能")
+    call DialogSetMessage(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 20)], "Delete skills in the magic book")
     set bj_forLoopAIndex = 7
     set bj_forLoopAIndexEnd = 16
     loop
@@ -7508,7 +7592,7 @@ function Trig_Skill_del2_Actions takes nothing returns nothing
         endif
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
     endloop
-    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 20)], "取消删除")
+    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 20)], "Cancel deletion")
     call DialogDisplayBJ(true, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 20)], GetTriggerPlayer())
 endfunction
 function InitTrig_Skill_del2 takes nothing returns nothing
@@ -7540,7 +7624,7 @@ function Trig_Skill_delsave2_Func002Func001C takes nothing returns boolean
 endfunction
 function Trig_Skill_delsave2_Actions takes nothing returns nothing
     if(Trig_Skill_delsave2_Func001C())then
-        call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_WARNING, "死亡状态下不能执行本操作！")
+        call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_WARNING, "You cannot perform this operation in the death state!")
         return
     else
     endif
@@ -7588,28 +7672,28 @@ function Trig_Skill_up_Actions takes nothing returns nothing
     call ForceUIKeyBJ(GetTriggerPlayer(), "M")
     if(Trig_Skill_up_Func002C())then
         call DialogClear(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)])
-        call DialogSetMessage(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], "系统提示")
-        call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], "死亡状态不能操作")
+        call DialogSetMessage(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], "System Tip:")
+        call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], "You cannot perform this operation in the death state")
         call DialogDisplayBJ(true, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], GetTriggerPlayer())
         return
     else
     endif
     set udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] = 0
     call DialogClear(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 30)])
-    call DialogSetMessage(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 30)], "升级技能面板中的技能")
+    call DialogSetMessage(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 30)], "Upgrade skills in the skill panel")
     set bj_forLoopAIndex = 1
     set bj_forLoopAIndexEnd = 5
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         if(Trig_Skill_up_Func008Func001C())then
             set udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] = GetUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())], udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])
-            call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 30)], ((((((("需" + I2S(((udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[14]) * 100))) + "金") + I2S(((udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[15]) * 10))) + "经验 ") + GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())])) + "") + I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])))
+            call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 30)], ((((((("Cost: " + I2S(((udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[14]) * 100))) + "Gold") + I2S(((udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[15]) * 10))) + "XP ") + GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())])) + "") + I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])))
             set udg_M9P2Q7U5l4VS5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = GetLastCreatedButtonBJ()
         else
         endif
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
     endloop
-    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 30)], "取消升级")
+    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 30)], "Cancel upgrade")
     call DialogDisplayBJ(true, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 30)], GetTriggerPlayer())
 endfunction
 function InitTrig_Skill_up takes nothing returns nothing
@@ -7653,7 +7737,7 @@ function Trig_Skill_upsave_Func003Func001C takes nothing returns boolean
 endfunction
 function Trig_Skill_upsave_Actions takes nothing returns nothing
     if(Trig_Skill_upsave_Func001C())then
-        call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_WARNING, "死亡状态下不能执行本操作！")
+        call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_WARNING, "You cannot perform this operation in the death state!")
         return
     else
     endif
@@ -7665,11 +7749,11 @@ function Trig_Skill_upsave_Actions takes nothing returns nothing
         if(Trig_Skill_upsave_Func003Func001C())then
             set udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] = GetUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())], udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])
             if(Trig_Skill_upsave_Func003Func001Func006C())then
-                call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_WARNING, "|cffcc6699你的金币不足以支付升级所需！")
+                call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_WARNING, "|cffcc6699 Your gold is not enough to pay for the upgrade!")
                 return
             else
                 if(Trig_Skill_upsave_Func003Func001Func006Func001C())then
-                    call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_WARNING, "|cffcc6699你的经验不足以支付升级所需！经验数量请查看屏幕右上排行榜。")
+                    call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_WARNING, "|cffcc6699 Your XP is not enough to pay for the upgrade! Please check the scoreboard for the experience amount.")
                     return
                 else
                 endif
@@ -7726,15 +7810,15 @@ function Trig_Skill_up2_Actions takes nothing returns nothing
     call ForceUIKeyBJ(GetTriggerPlayer(), "M")
     if(Trig_Skill_up2_Func002C())then
         call DialogClear(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)])
-        call DialogSetMessage(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], "系统提示")
-        call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], "死亡状态不能操作")
+        call DialogSetMessage(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], "System Tip:")
+        call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], "You cannot perform this operation in the death state")
         call DialogDisplayBJ(true, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], GetTriggerPlayer())
         return
     else
     endif
     set udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] = 0
     call DialogClear(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 40)])
-    call DialogSetMessage(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 40)], "升级技能面板中的技能")
+    call DialogSetMessage(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 40)], "Upgrade skills in the skill panel")
     set bj_forLoopAIndex = 7
     set bj_forLoopAIndexEnd = 16
     loop
@@ -7748,7 +7832,7 @@ function Trig_Skill_up2_Actions takes nothing returns nothing
                 if(Trig_Skill_up2_Func008Func002Func002Func001C())then
                     set udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] = GetUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lOS7041D2G5K3[GetForLoopIndexB()], udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])
                     set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lOS7041D2G5K3[GetForLoopIndexB()]
-                    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 40)], ((((((("需" + I2S(((udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[14]) * 500))) + "金") + I2S(((udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[15]) * 50))) + "经验 ") + GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)])) + "") + I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])))
+                    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 40)], ((((((("Cost: " + I2S(((udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[14]) * 500))) + "Gold") + I2S(((udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[15]) * 50))) + "XP ") + GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)])) + "") + I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])))
                     set udg_M9P2Q7U5l4VS5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = GetLastCreatedButtonBJ()
                     set udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] = 9999
                 else
@@ -7759,7 +7843,7 @@ function Trig_Skill_up2_Actions takes nothing returns nothing
         endif
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
     endloop
-    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 40)], "取消升级")
+    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 40)], "Cancel upgrade")
     call DialogDisplayBJ(true, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 40)], GetTriggerPlayer())
 endfunction
 function InitTrig_Skill_up2 takes nothing returns nothing
@@ -7809,7 +7893,7 @@ function Trig_Skill_upsave2_Func012Func001C takes nothing returns boolean
 endfunction
 function Trig_Skill_upsave2_Actions takes nothing returns nothing
     if(Trig_Skill_upsave2_Func001C())then
-        call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_WARNING, "死亡状态下不能执行本操作！")
+        call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_WARNING, "You cannot perform this operation in the death state!")
         return
     else
     endif
@@ -7831,11 +7915,11 @@ function Trig_Skill_upsave2_Actions takes nothing returns nothing
                 set bj_forLoopBIndex = bj_forLoopBIndex + 1
             endloop
             if(Trig_Skill_upsave2_Func012Func001Func006C())then
-                call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_WARNING, "|cffcc6699你的金币不足以支付升级所需！")
+                call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_WARNING, "|cffcc6699 Your gold is not enough to pay for the upgrade!")
                 return
             else
                 if(Trig_Skill_upsave2_Func012Func001Func006Func001C())then
-                    call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_WARNING, "|cffcc6699你的经验不足以支付升级所需！经验数量请查看屏幕右上排行榜。")
+                    call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_WARNING, "|cffcc6699 Your XP is not enough to pay for the upgrade! Please check the scoreboard for the experience amount.")
                     return
                 else
                 endif
@@ -7896,28 +7980,28 @@ function Trig_Hero_move_Actions takes nothing returns nothing
     call ForceUIKeyBJ(GetOwningPlayer(GetTriggerUnit()), "S")
     if(Trig_Hero_move_Func002C())then
         call DialogClear(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 10)])
-        call DialogSetMessage(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 10)], "系统提示")
-        call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 10)], "死亡状态不能操作")
+        call DialogSetMessage(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 10)], "System Tip:")
+        call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 10)], "You cannot perform this operation in the death state")
         call DialogDisplayBJ(true, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 10)], GetTriggerPlayer())
         return
     else
     endif
     call DialogClear(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 50)])
-    call DialogSetMessage(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 50)], "请选择传送地点")
+    call DialogSetMessage(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 50)], "Please select the teleport location")
     if(Trig_Hero_move_Func006C())then
-        call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 50)], "取消操作")
+        call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 50)], "Cancel operation")
         set udg_M9P2Q7U5l4VS5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 0)] = GetLastCreatedButtonBJ()
     else
     endif
-    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 50)], "左上的方尖碑")
+    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 50)], "The obelisk at the top left")
     set udg_M9P2Q7U5l4VS5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 1)] = GetLastCreatedButtonBJ()
-    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 50)], "左下的方尖碑")
+    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 50)], "The obelisk at the bottom left")
     set udg_M9P2Q7U5l4VS5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 2)] = GetLastCreatedButtonBJ()
-    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 50)], "右边的方尖碑")
+    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 50)], "The obelisk at the right")
     set udg_M9P2Q7U5l4VS5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 3)] = GetLastCreatedButtonBJ()
-    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 50)], "雪地的方尖碑")
+    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 50)], "The obelisk at the snowland")
     set udg_M9P2Q7U5l4VS5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 4)] = GetLastCreatedButtonBJ()
-    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 50)], "进入避难所")
+    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 50)], "Enter the vault")
     set udg_M9P2Q7U5l4VS5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 5)] = GetLastCreatedButtonBJ()
     call DialogDisplayBJ(true, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 50)], GetOwningPlayer(GetTriggerUnit()))
 endfunction
@@ -7948,7 +8032,7 @@ function Trig_Hero_move2_Func004Func001C takes nothing returns boolean
 endfunction
 function Trig_Hero_move2_Actions takes nothing returns nothing
     if(Trig_Hero_move2_Func001C())then
-        call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_WARNING, "死亡状态下不能执行本操作！")
+        call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_WARNING, "You cannot perform this operation in the death state!")
         return
     else
     endif
@@ -8295,14 +8379,14 @@ function Trig_Itemfrist_Actions takes nothing returns nothing
                     set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = 'A06C'
                     call UnitAddAbilityBJ('A06C', GetTriggerUnit())
                     call UnitMakeAbilityPermanent(GetTriggerUnit(), true, 'A06C')
-                    call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, "经过一番深入研究，你终于学会了火系高级魔法-召唤火炎精灵。")
+                    call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, "After a thorough study, you finally learned the advanced fire magic - summoning the fire spirit.")
                     return
                 else
                 endif
                 set bj_forLoopAIndex = bj_forLoopAIndex + 1
             endloop
         else
-            call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_WARNING, "不满足高级魔法合成条件！")
+            call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_WARNING, "You do not meet the conditions for advanced magic synthesis!")
             return
         endif
     else
@@ -9003,7 +9087,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
     endif
     if(Trig_ItemUp_Func005C())then
         call UnitRemoveItemSwapped(GetManipulatedItem(), GetTriggerUnit())
-        call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_WARNING, "你的英雄类型不适合使用这类武器！")
+        call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_WARNING, "Your hero type is not suitable for using this weapon!")
         return
     else
     endif
@@ -9045,7 +9129,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
         call UnitAddItemByIdSwapped('I03E', GetTriggerUnit())
         call SetItemUserData(GetLastCreatedItem(), 1)
         set udg_M9P2Q7U5l4O5WD9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))] = GetLastCreatedItem()
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("获得了装备：" + GetItemName(GetLastCreatedItem()))))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("You have obtained the item:  " + GetItemName(GetLastCreatedItem()))))
     else
     endif
     if(Trig_ItemUp_Func012C())then
@@ -9054,7 +9138,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
         call UnitAddItemByIdSwapped('I02O', GetTriggerUnit())
         call SetItemUserData(GetLastCreatedItem(), 11)
         set udg_M9P2Q7U5l4O5WD9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))] = GetLastCreatedItem()
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("获得了装备：" + GetItemName(GetLastCreatedItem()))))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("You have obtained the item:  " + GetItemName(GetLastCreatedItem()))))
     else
     endif
     if(Trig_ItemUp_Func013C())then
@@ -9064,7 +9148,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
         call UnitAddItemByIdSwapped('I03D', GetTriggerUnit())
         call SetItemUserData(GetLastCreatedItem(), 11)
         set udg_M9P2Q7U5l4O5WD9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))] = GetLastCreatedItem()
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("获得了装备：" + GetItemName(GetLastCreatedItem()))))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("You have obtained the item:  " + GetItemName(GetLastCreatedItem()))))
     else
     endif
     if(Trig_ItemUp_Func014C())then
@@ -9073,7 +9157,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
         call UnitAddItemByIdSwapped('I04I', GetTriggerUnit())
         call SetItemUserData(GetLastCreatedItem(), 11)
         set udg_M9P2Q7U5l4O5WD9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))] = GetLastCreatedItem()
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("获得了装备：" + GetItemName(GetLastCreatedItem()))))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("You have obtained the item: " + GetItemName(GetLastCreatedItem()))))
     else
     endif
     if(Trig_ItemUp_Func015C())then
@@ -9082,7 +9166,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
         call UnitAddItemByIdSwapped('I04J', GetTriggerUnit())
         call SetItemUserData(GetLastCreatedItem(), 11)
         set udg_M9P2Q7U5l4O5WD9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))] = GetLastCreatedItem()
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("获得了装备：" + GetItemName(GetLastCreatedItem()))))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("You have obtained the item: " + GetItemName(GetLastCreatedItem()))))
     else
     endif
     if(Trig_ItemUp_Func016C())then
@@ -9091,7 +9175,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
         call UnitAddItemByIdSwapped('I04K', GetTriggerUnit())
         call SetItemUserData(GetLastCreatedItem(), 11)
         set udg_M9P2Q7U5l4O5WD9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))] = GetLastCreatedItem()
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("获得了装备：" + GetItemName(GetLastCreatedItem()))))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("You have obtained the item: " + GetItemName(GetLastCreatedItem()))))
     else
     endif
     if(Trig_ItemUp_Func017C())then
@@ -9100,7 +9184,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
         call UnitAddItemByIdSwapped('I04H', GetTriggerUnit())
         call SetItemUserData(GetLastCreatedItem(), 11)
         set udg_M9P2Q7U5l4O5WD9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))] = GetLastCreatedItem()
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("获得了装备：" + GetItemName(GetLastCreatedItem()))))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("You have obtained the item: " + GetItemName(GetLastCreatedItem()))))
     else
     endif
     if(Trig_ItemUp_Func018C())then
@@ -9109,7 +9193,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
         call UnitAddItemByIdSwapped('I04X', GetTriggerUnit())
         call SetItemUserData(GetLastCreatedItem(), 11)
         set udg_M9P2Q7U5l4O5WD9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))] = GetLastCreatedItem()
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("获得了装备：" + GetItemName(GetLastCreatedItem()))))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("You have obtained the item: " + GetItemName(GetLastCreatedItem()))))
     else
     endif
     if(Trig_ItemUp_Func019C())then
@@ -9118,7 +9202,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
         call UnitAddItemByIdSwapped('I04W', GetTriggerUnit())
         call SetItemUserData(GetLastCreatedItem(), 11)
         set udg_M9P2Q7U5l4O5WD9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))] = GetLastCreatedItem()
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("获得了装备：" + GetItemName(GetLastCreatedItem()))))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("You have obtained the item: " + GetItemName(GetLastCreatedItem()))))
     else
     endif
     if(Trig_ItemUp_Func021C())then
@@ -9156,7 +9240,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
         call UnitAddItemByIdSwapped('I04S', GetTriggerUnit())
         call SetItemUserData(GetLastCreatedItem(), 21)
         set udg_M9P2Q7U5l4O5WD9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))] = GetLastCreatedItem()
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("得到了装备：" + GetItemName(GetLastCreatedItem()))))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("You have obtained the item: " + GetItemName(GetLastCreatedItem()))))
     else
     endif
     if(Trig_ItemUp_Func025C())then
@@ -9166,7 +9250,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
         call RemoveItem(GetItemOfTypeFromUnitBJ(GetTriggerUnit(), 'I00J'))
         call UnitAddItemByIdSwapped('I00I', GetTriggerUnit())
         set udg_M9P2Q7U5l4O5WD9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))] = GetLastCreatedItem()
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("合成了装备：" + GetItemName(GetLastCreatedItem()))))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("You have obtained the item: " + GetItemName(GetLastCreatedItem()))))
     else
     endif
     if(Trig_ItemUp_Func026C())then
@@ -9175,7 +9259,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
         call RemoveItem(GetItemOfTypeFromUnitBJ(GetTriggerUnit(), 'I02M'))
         call UnitAddItemByIdSwapped('I02N', GetTriggerUnit())
         set udg_M9P2Q7U5l4O5WD9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))] = GetLastCreatedItem()
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("合成了装备：" + GetItemName(GetLastCreatedItem()))))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("You have obtained the item: " + GetItemName(GetLastCreatedItem()))))
     else
     endif
     if(Trig_ItemUp_Func028C())then
@@ -9184,7 +9268,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
         call RemoveItem(GetItemOfTypeFromUnitBJ(GetTriggerUnit(), 'I02P'))
         call UnitAddItemByIdSwapped('I03A', GetTriggerUnit())
         set udg_M9P2Q7U5l4O5WD9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))] = GetLastCreatedItem()
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("合成了装备：" + GetItemName(GetLastCreatedItem()))))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("You have obtained the item: " + GetItemName(GetLastCreatedItem()))))
     else
     endif
     if(Trig_ItemUp_Func029C())then
@@ -9193,7 +9277,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
         call RemoveItem(GetItemOfTypeFromUnitBJ(GetTriggerUnit(), 'I02S'))
         call UnitAddItemByIdSwapped('I03B', GetTriggerUnit())
         set udg_M9P2Q7U5l4O5WD9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))] = GetLastCreatedItem()
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("合成了装备：" + GetItemName(GetLastCreatedItem()))))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("You have obtained the item: " + GetItemName(GetLastCreatedItem()))))
     else
     endif
     if(Trig_ItemUp_Func030C())then
@@ -9202,7 +9286,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
         call RemoveItem(GetItemOfTypeFromUnitBJ(GetTriggerUnit(), 'I02V'))
         call UnitAddItemByIdSwapped('I03C', GetTriggerUnit())
         set udg_M9P2Q7U5l4O5WD9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))] = GetLastCreatedItem()
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("合成了装备：" + GetItemName(GetLastCreatedItem()))))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("You have obtained the item: " + GetItemName(GetLastCreatedItem()))))
     else
     endif
     if(Trig_ItemUp_Func031C())then
@@ -9211,7 +9295,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
         call RemoveItem(GetItemOfTypeFromUnitBJ(GetTriggerUnit(), 'I030'))
         call UnitAddItemByIdSwapped('I038', GetTriggerUnit())
         set udg_M9P2Q7U5l4O5WD9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))] = GetLastCreatedItem()
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("合成了装备：" + GetItemName(GetLastCreatedItem()))))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("You have obtained the item: " + GetItemName(GetLastCreatedItem()))))
     else
     endif
     if(Trig_ItemUp_Func032C())then
@@ -9220,7 +9304,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
         call RemoveItem(GetItemOfTypeFromUnitBJ(GetTriggerUnit(), 'I031'))
         call UnitAddItemByIdSwapped('I039', GetTriggerUnit())
         set udg_M9P2Q7U5l4O5WD9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))] = GetLastCreatedItem()
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("合成了装备：" + GetItemName(GetLastCreatedItem()))))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("You have obtained the item: " + GetItemName(GetLastCreatedItem()))))
     else
     endif
     if(Trig_ItemUp_Func033C())then
@@ -9229,7 +9313,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
         call RemoveItem(GetItemOfTypeFromUnitBJ(GetTriggerUnit(), 'I034'))
         call UnitAddItemByIdSwapped('I037', GetTriggerUnit())
         set udg_M9P2Q7U5l4O5WD9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))] = GetLastCreatedItem()
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("合成了装备：" + GetItemName(GetLastCreatedItem()))))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("You have obtained the item: " + GetItemName(GetLastCreatedItem()))))
     else
     endif
     if(Trig_ItemUp_Func035C())then
@@ -9238,7 +9322,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
         call RemoveItem(GetItemOfTypeFromUnitBJ(GetTriggerUnit(), 'I00A'))
         call UnitAddItemByIdSwapped('I00D', GetTriggerUnit())
         set udg_M9P2Q7U5l4O5WD9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))] = GetLastCreatedItem()
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("合成了装备：" + GetItemName(GetLastCreatedItem()))))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("You have obtained the item: " + GetItemName(GetLastCreatedItem()))))
     else
     endif
     if(Trig_ItemUp_Func036C())then
@@ -9247,7 +9331,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
         call RemoveItem(GetItemOfTypeFromUnitBJ(GetTriggerUnit(), 'I03N'))
         call UnitAddItemByIdSwapped('I03F', GetTriggerUnit())
         set udg_M9P2Q7U5l4O5WD9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))] = GetLastCreatedItem()
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("合成了装备：" + GetItemName(GetLastCreatedItem()))))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("You have obtained the item: " + GetItemName(GetLastCreatedItem()))))
     else
     endif
     if(Trig_ItemUp_Func038C())then
@@ -9256,7 +9340,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
         call RemoveItem(GetItemOfTypeFromUnitBJ(GetTriggerUnit(), 'I03O'))
         call UnitAddItemByIdSwapped('I04F', GetTriggerUnit())
         set udg_M9P2Q7U5l4O5WD9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))] = GetLastCreatedItem()
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("合成了装备：" + GetItemName(GetLastCreatedItem()))))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("You have obtained the item: " + GetItemName(GetLastCreatedItem()))))
     else
     endif
     if(Trig_ItemUp_Func039C())then
@@ -9265,7 +9349,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
         call RemoveItem(GetItemOfTypeFromUnitBJ(GetTriggerUnit(), 'I03R'))
         call UnitAddItemByIdSwapped('I04G', GetTriggerUnit())
         set udg_M9P2Q7U5l4O5WD9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))] = GetLastCreatedItem()
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("合成了装备：" + GetItemName(GetLastCreatedItem()))))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("You have obtained the item: " + GetItemName(GetLastCreatedItem()))))
     else
     endif
     if(Trig_ItemUp_Func041C())then
@@ -9274,7 +9358,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
         call RemoveItem(GetItemOfTypeFromUnitBJ(GetTriggerUnit(), 'I03T'))
         call UnitAddItemByIdSwapped('I03H', GetTriggerUnit())
         set udg_M9P2Q7U5l4O5WD9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))] = GetLastCreatedItem()
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("合成了装备：" + GetItemName(GetLastCreatedItem()))))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("You have obtained the item: " + GetItemName(GetLastCreatedItem()))))
     else
     endif
     if(Trig_ItemUp_Func042C())then
@@ -9283,7 +9367,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
         call RemoveItem(GetItemOfTypeFromUnitBJ(GetTriggerUnit(), 'I03U'))
         call UnitAddItemByIdSwapped('I03I', GetTriggerUnit())
         set udg_M9P2Q7U5l4O5WD9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))] = GetLastCreatedItem()
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("合成了装备：" + GetItemName(GetLastCreatedItem()))))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("You have obtained the item: " + GetItemName(GetLastCreatedItem()))))
     else
     endif
     if(Trig_ItemUp_Func044C())then
@@ -9292,7 +9376,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
         call RemoveItem(GetItemOfTypeFromUnitBJ(GetTriggerUnit(), 'I03X'))
         call UnitAddItemByIdSwapped('I00P', GetTriggerUnit())
         set udg_M9P2Q7U5l4O5WD9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))] = GetLastCreatedItem()
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("合成了装备：" + GetItemName(GetLastCreatedItem()))))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("You have obtained the item: " + GetItemName(GetLastCreatedItem()))))
     else
     endif
     if(Trig_ItemUp_Func045C())then
@@ -9301,7 +9385,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
         call RemoveItem(GetItemOfTypeFromUnitBJ(GetTriggerUnit(), 'I040'))
         call UnitAddItemByIdSwapped('I00O', GetTriggerUnit())
         set udg_M9P2Q7U5l4O5WD9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))] = GetLastCreatedItem()
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("合成了装备：" + GetItemName(GetLastCreatedItem()))))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("You have obtained the item: " + GetItemName(GetLastCreatedItem()))))
     else
     endif
     if(Trig_ItemUp_Func047C())then
@@ -9310,7 +9394,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
         call RemoveItem(GetItemOfTypeFromUnitBJ(GetTriggerUnit(), 'I053'))
         call UnitAddItemByIdSwapped('I052', GetTriggerUnit())
         set udg_M9P2Q7U5l4O5WD9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))] = GetLastCreatedItem()
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("合成了装备：" + GetItemName(GetLastCreatedItem()))))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("You have obtained the item: " + GetItemName(GetLastCreatedItem()))))
     else
     endif
     if(Trig_ItemUp_Func048C())then
@@ -9319,7 +9403,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
         call RemoveItem(GetItemOfTypeFromUnitBJ(GetTriggerUnit(), 'I057'))
         call UnitAddItemByIdSwapped('I056', GetTriggerUnit())
         set udg_M9P2Q7U5l4O5WD9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))] = GetLastCreatedItem()
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("合成了装备：" + GetItemName(GetLastCreatedItem()))))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("You have obtained the item: " + GetItemName(GetLastCreatedItem()))))
     else
     endif
     if(Trig_ItemUp_Func050C())then
@@ -9328,7 +9412,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
         call RemoveItem(GetItemOfTypeFromUnitBJ(GetTriggerUnit(), 'I05B'))
         call UnitAddItemByIdSwapped('I05A', GetTriggerUnit())
         set udg_M9P2Q7U5l4O5WD9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))] = GetLastCreatedItem()
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("合成了装备：" + GetItemName(GetLastCreatedItem()))))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("You have obtained the item: " + GetItemName(GetLastCreatedItem()))))
     else
     endif
     if(Trig_ItemUp_Func051C())then
@@ -9337,7 +9421,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
         call RemoveItem(GetItemOfTypeFromUnitBJ(GetTriggerUnit(), 'I05F'))
         call UnitAddItemByIdSwapped('I05E', GetTriggerUnit())
         set udg_M9P2Q7U5l4O5WD9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))] = GetLastCreatedItem()
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("合成了装备：" + GetItemName(GetLastCreatedItem()))))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("You have obtained the item: " + GetItemName(GetLastCreatedItem()))))
     else
     endif
     if(Trig_ItemUp_Func053C())then
@@ -9346,7 +9430,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
         call UnitAddItemByIdSwapped('I05H', GetTriggerUnit())
         call SetItemUserData(GetLastCreatedItem(), 1)
         set udg_M9P2Q7U5l4O5WD9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))] = GetLastCreatedItem()
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("合成了装备：" + GetItemName(GetLastCreatedItem()))))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("You have obtained the item: " + GetItemName(GetLastCreatedItem()))))
     else
     endif
     if(Trig_ItemUp_Func054C())then
@@ -9355,7 +9439,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
         call RemoveItem(GetItemOfTypeFromUnitBJ(GetTriggerUnit(), 'I00B'))
         call UnitAddItemByIdSwapped('I05I', GetTriggerUnit())
         set udg_M9P2Q7U5l4O5WD9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))] = GetLastCreatedItem()
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("合成了装备：" + GetItemName(GetLastCreatedItem()))))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("You have obtained the item: " + GetItemName(GetLastCreatedItem()))))
     else
     endif
     if(Trig_ItemUp_Func055C())then
@@ -9364,7 +9448,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
         call RemoveItem(GetItemOfTypeFromUnitBJ(GetTriggerUnit(), 'I00C'))
         call UnitAddItemByIdSwapped('I05J', GetTriggerUnit())
         set udg_M9P2Q7U5l4O5WD9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))] = GetLastCreatedItem()
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("合成了装备：" + GetItemName(GetLastCreatedItem()))))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("You have obtained the item: " + GetItemName(GetLastCreatedItem()))))
     else
     endif
     if(Trig_ItemUp_Func056C())then
@@ -9373,7 +9457,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
         call UnitAddItemByIdSwapped('I05K', GetTriggerUnit())
         call SetItemUserData(GetLastCreatedItem(), 11)
         set udg_M9P2Q7U5l4O5WD9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))] = GetLastCreatedItem()
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("获得了装备：" + GetItemName(GetLastCreatedItem()))))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("You have obtained the item: " + GetItemName(GetLastCreatedItem()))))
     else
     endif
     if(Trig_ItemUp_Func058C())then
@@ -9388,7 +9472,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
             set udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 3)] = (udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 3)] + 1)
             if(Trig_ItemUp_Func061Func001Func003C())then
                 call UnitRemoveItemSwapped(UnitItemInSlotBJ(GetTriggerUnit(), udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 2)]), GetTriggerUnit())
-                call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_WARNING, "专署武器每样只能拿一件！")
+                call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_WARNING, "You can only take one of each special weapon!")
             else
             endif
         else
@@ -9403,7 +9487,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
             set udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 3)] = (udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 3)] + 1)
             if(Trig_ItemUp_Func064Func001Func003C())then
                 call UnitRemoveItemSwapped(UnitItemInSlotBJ(GetTriggerUnit(), udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 2)]), GetTriggerUnit())
-                call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_WARNING, "神铠每样只能拿一件！")
+                call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_WARNING, "You can only take one of each special armor!")
             else
             endif
         else
@@ -9418,7 +9502,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
             set udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 3)] = (udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 3)] + 1)
             if(Trig_ItemUp_Func067Func001Func003C())then
                 call UnitRemoveItemSwapped(UnitItemInSlotBJ(GetTriggerUnit(), udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 2)]), GetTriggerUnit())
-                call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_WARNING, "翅膀或天使手镯每样只能拿一件！")
+                call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_WARNING, "You can only take one of each wings or angel bracelets!")
             else
             endif
         else
@@ -9655,7 +9739,7 @@ function Trig_SQ_Actions takes nothing returns nothing
         call UnitApplyTimedLifeBJ(10., 'BTLF', GetLastCreatedUnit())
         call ShowUnitHide(GetLastCreatedUnit())
         call IssueImmediateOrder(GetLastCreatedUnit(), "tranquility")
-        call CreateTextTagLocBJ(("等级" + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  天降甘霖")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100., .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  天降甘霖")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100., .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 3.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -9671,7 +9755,7 @@ function Trig_SQ_Actions takes nothing returns nothing
         call UnitApplyTimedLifeBJ(1., 'BTLF', GetLastCreatedUnit())
         call ShowUnitHide(GetLastCreatedUnit())
         call IssuePointOrderLoc(GetLastCreatedUnit(), "carrionswarm", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)])
-        call CreateTextTagLocBJ(("等级" + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  龙卷风暴")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  龙卷风暴")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 3.)
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 1)] = GetUnitLoc(GetTriggerUnit())
@@ -9709,7 +9793,7 @@ function Trig_SQ_Actions takes nothing returns nothing
             call IssuePointOrderLoc(GetLastCreatedUnit(), "clusterrockets", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)])
             set bj_forLoopAIndex = bj_forLoopAIndex + 1
         endloop
-        call CreateTextTagLocBJ(("等级" + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  炎之炼狱")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)], 150., 8., 100, 100., .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  炎之炼狱")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)], 150., 8., 100, 100., .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 3.)
         call RemoveRect(udg_M9P2Q7U5l4V5W9O45lO7041D2G5K37[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -9737,7 +9821,7 @@ function Trig_SQ_Actions takes nothing returns nothing
         endloop
         call EnableTrigger(gg_trg_ItemSQ_time)
         call RemoveRect(udg_M9P2Q7U5l4V5W9O45lO7041D2G5K37[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
-        call CreateTextTagLocBJ(("等级" + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  裂地之牙")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  裂地之牙")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 3.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -9748,7 +9832,7 @@ function Trig_SQ_Actions takes nothing returns nothing
         call UnitAddAbilityBJ('A04F', GetAttacker())
         call UnitAddAbilityBJ('A09E', GetAttacker())
         call IssueImmediateOrder(GetAttacker(), "locustswarm")
-        call CreateTextTagLocBJ(("等级" + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  天魔噬魂")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100., .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  天魔噬魂")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100., .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 3.)
         call TriggerSleepAction(14.)
@@ -9775,7 +9859,7 @@ function Trig_SQ_Actions takes nothing returns nothing
             set bj_forLoopAIndex = bj_forLoopAIndex + 1
         endloop
         call RemoveRect(udg_M9P2Q7U5l4V5W9O45lO7041D2G5K37[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
-        call CreateTextTagLocBJ(("等级" + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  雷蛇乱舞")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  雷蛇乱舞")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -9804,7 +9888,7 @@ function Trig_SQ_Actions takes nothing returns nothing
         call GroupClear(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[0])
         call DestroyGroup(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[0])
         call RemoveRect(udg_M9P2Q7U5l4V5W9O45lO7041D2G5K37[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
-        call CreateTextTagLocBJ(("等级" + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  血腥阿修罗")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  血腥阿修罗")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -9817,7 +9901,7 @@ function Trig_SQ_Actions takes nothing returns nothing
         call CreateNUnitsAtLoc(1, udg_M9P2Q7U5l4V5W9O45lO7041D2PG5K3[GetRandomInt(1, 3)], GetOwningPlayer(GetAttacker()), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)], bj_UNIT_FACING)
         call SetUnitUserData(GetLastCreatedUnit(), 4)
         call UnitApplyTimedLifeBJ(10., 'BTLF', GetLastCreatedUnit())
-        call CreateTextTagLocBJ(("等级" + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  自然的惩罚·梦幻之花")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100., .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  自然的惩罚·梦幻之花")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100., .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 3.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -10080,7 +10164,7 @@ function Trig_Arm0_Actions takes nothing returns nothing
             call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttackedUnitBJ())) * 18) + 12)])
             set bj_forLoopAIndex = bj_forLoopAIndex + 1
         endloop
-        call CreateTextTagLocBJ(("等级" + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttackedUnitBJ())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttackedUnitBJ())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttackedUnitBJ())) * 18) + 11)]) + " Weapon Ability")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttackedUnitBJ())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
     else
@@ -10233,7 +10317,7 @@ function Trig_Arm1_Actions takes nothing returns nothing
         endloop
         call RemoveRect(udg_M9P2Q7U5l4V5W9O45lO7041D2G5K37[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
-        call CreateTextTagLocBJ(("等级" + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  红莲业火")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Lewel " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  红莲业火")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -10262,7 +10346,7 @@ function Trig_Arm1_Actions takes nothing returns nothing
         endloop
         call RemoveRect(udg_M9P2Q7U5l4V5W9O45lO7041D2G5K37[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)])
-        call CreateTextTagLocBJ(("等级" + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  诺姆之怒")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  诺姆之怒")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -10280,7 +10364,7 @@ function Trig_Arm1_Actions takes nothing returns nothing
         call UnitApplyTimedLifeBJ(6., 'BTLF', GetLastCreatedUnit())
         call ShowUnitHide(GetLastCreatedUnit())
         call IssuePointOrderLoc(GetLastCreatedUnit(), "stampede", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)])
-        call CreateTextTagLocBJ(("等级" + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  鬼哭神嚎")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  鬼哭神嚎")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 3.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -10298,7 +10382,7 @@ function Trig_Arm1_Actions takes nothing returns nothing
         call UnitApplyTimedLifeBJ(1., 'BTLF', GetLastCreatedUnit())
         call ShowUnitHide(GetLastCreatedUnit())
         call IssuePointOrderLoc(GetLastCreatedUnit(), "flamestrike", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)])
-        call CreateTextTagLocBJ(("等级" + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -10316,7 +10400,7 @@ function Trig_Arm1_Actions takes nothing returns nothing
         call UnitApplyTimedLifeBJ(6., 'BTLF', GetLastCreatedUnit())
         call ShowUnitHide(GetLastCreatedUnit())
         call IssuePointOrderLoc(GetLastCreatedUnit(), "stampede", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)])
-        call CreateTextTagLocBJ(("等级" + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -10334,7 +10418,7 @@ function Trig_Arm1_Actions takes nothing returns nothing
         call UnitApplyTimedLifeBJ(6., 'BTLF', GetLastCreatedUnit())
         call ShowUnitHide(GetLastCreatedUnit())
         call IssuePointOrderLoc(GetLastCreatedUnit(), "impale", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)])
-        call CreateTextTagLocBJ(("等级" + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -10352,7 +10436,7 @@ function Trig_Arm1_Actions takes nothing returns nothing
         call UnitApplyTimedLifeBJ(6., 'BTLF', GetLastCreatedUnit())
         call ShowUnitHide(GetLastCreatedUnit())
         call IssuePointOrderLoc(GetLastCreatedUnit(), "impale", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)])
-        call CreateTextTagLocBJ(("等级" + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -10370,7 +10454,7 @@ function Trig_Arm1_Actions takes nothing returns nothing
         call UnitApplyTimedLifeBJ(6., 'BTLF', GetLastCreatedUnit())
         call ShowUnitHide(GetLastCreatedUnit())
         call IssuePointOrderLoc(GetLastCreatedUnit(), "stampede", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)])
-        call CreateTextTagLocBJ(("等级" + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -10388,7 +10472,7 @@ function Trig_Arm1_Actions takes nothing returns nothing
         call UnitApplyTimedLifeBJ(6., 'BTLF', GetLastCreatedUnit())
         call ShowUnitHide(GetLastCreatedUnit())
         call IssueTargetOrder(GetLastCreatedUnit(), "chainlightning", GetAttackedUnitBJ())
-        call CreateTextTagLocBJ(("等级" + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -10527,7 +10611,7 @@ function Trig_Arm3_Actions takes nothing returns nothing
                 set bj_forLoopAIndex = bj_forLoopAIndex + 1
             endloop
             call RemoveRect(udg_M9P2Q7U5l4V5W9O45lO7041D2G5K37[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
-            call CreateTextTagLocBJ(("等级" + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  罡风闪暴")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+            call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  罡风闪暴")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         else
             call CreateNUnitsAtLoc(1, 'h000', GetOwningPlayer(GetAttacker()), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)], bj_UNIT_FACING)
             call UnitAddAbilityBJ('A0B8', GetLastCreatedUnit())
@@ -10535,7 +10619,7 @@ function Trig_Arm3_Actions takes nothing returns nothing
             call UnitApplyTimedLifeBJ(4., 'BTLF', GetLastCreatedUnit())
             call ShowUnitHide(GetLastCreatedUnit())
             call IssuePointOrderLoc(GetLastCreatedUnit(), "stampede", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)])
-            call CreateTextTagLocBJ(("等级" + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  风暴强袭")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+            call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  风暴强袭")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         endif
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
@@ -10565,7 +10649,7 @@ function Trig_Arm3_Actions takes nothing returns nothing
             set bj_forLoopAIndex = bj_forLoopAIndex + 1
         endloop
         call RemoveRect(udg_M9P2Q7U5l4V5W9O45lO7041D2G5K37[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
-        call CreateTextTagLocBJ(("等级" + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  雷之领域")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  雷之领域")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -10583,7 +10667,7 @@ function Trig_Arm3_Actions takes nothing returns nothing
         call UnitApplyTimedLifeBJ(6., 'BTLF', GetLastCreatedUnit())
         call ShowUnitHide(GetLastCreatedUnit())
         call IssuePointOrderLoc(GetLastCreatedUnit(), "stampede", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)])
-        call CreateTextTagLocBJ(("等级" + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -10601,7 +10685,7 @@ function Trig_Arm3_Actions takes nothing returns nothing
         call UnitApplyTimedLifeBJ(1., 'BTLF', GetLastCreatedUnit())
         call ShowUnitHide(GetLastCreatedUnit())
         call IssueTargetOrder(GetLastCreatedUnit(), "frostnova", GetAttackedUnitBJ())
-        call CreateTextTagLocBJ(("等级" + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -10619,7 +10703,7 @@ function Trig_Arm3_Actions takes nothing returns nothing
         call UnitApplyTimedLifeBJ(6., 'BTLF', GetLastCreatedUnit())
         call ShowUnitHide(GetLastCreatedUnit())
         call IssuePointOrderLoc(GetLastCreatedUnit(), "stampede", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)])
-        call CreateTextTagLocBJ(("等级" + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -10637,7 +10721,7 @@ function Trig_Arm3_Actions takes nothing returns nothing
         call UnitApplyTimedLifeBJ(6., 'BTLF', GetLastCreatedUnit())
         call ShowUnitHide(GetLastCreatedUnit())
         call IssuePointOrderLoc(GetLastCreatedUnit(), "stampede", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)])
-        call CreateTextTagLocBJ(("等级" + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -10655,7 +10739,7 @@ function Trig_Arm3_Actions takes nothing returns nothing
         call UnitApplyTimedLifeBJ(6., 'BTLF', GetLastCreatedUnit())
         call ShowUnitHide(GetLastCreatedUnit())
         call IssuePointOrderLoc(GetLastCreatedUnit(), "rainoffire", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)])
-        call CreateTextTagLocBJ(("等级" + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -10673,7 +10757,7 @@ function Trig_Arm3_Actions takes nothing returns nothing
         call UnitApplyTimedLifeBJ(6., 'BTLF', GetLastCreatedUnit())
         call ShowUnitHide(GetLastCreatedUnit())
         call IssuePointOrderLoc(GetLastCreatedUnit(), "stampede", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)])
-        call CreateTextTagLocBJ(("等级" + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -10867,7 +10951,7 @@ function Trig_Arm4_Actions takes nothing returns nothing
         call IssuePointOrderLoc(GetLastCreatedUnit(), "rainoffire", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)])
         call CreateNUnitsAtLoc(1, 'h011', GetOwningPlayer(GetAttacker()), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)], bj_UNIT_FACING)
         call UnitApplyTimedLifeBJ(8., 'BTLF', GetLastCreatedUnit())
-        call CreateTextTagLocBJ(("等级" + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  电闪雷鸣")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  电闪雷鸣")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -10899,7 +10983,7 @@ function Trig_Arm4_Actions takes nothing returns nothing
             set bj_forLoopAIndex = bj_forLoopAIndex + 1
         endloop
         call RemoveRect(udg_M9P2Q7U5l4V5W9O45lO7041D2G5K37[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
-        call CreateTextTagLocBJ(("等级" + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  地狱死魂炮")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  地狱死魂炮")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -10927,7 +11011,7 @@ function Trig_Arm4_Actions takes nothing returns nothing
             set bj_forLoopAIndex = bj_forLoopAIndex + 1
         endloop
         call RemoveRect(udg_M9P2Q7U5l4V5W9O45lO7041D2G5K37[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
-        call CreateTextTagLocBJ(("等级" + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  落叶飞花")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  落叶飞花")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -10945,7 +11029,7 @@ function Trig_Arm4_Actions takes nothing returns nothing
         call UnitApplyTimedLifeBJ(2., 'BTLF', GetLastCreatedUnit())
         call ShowUnitHide(GetLastCreatedUnit())
         call IssuePointOrderLoc(GetLastCreatedUnit(), "clusterrockets", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)])
-        call CreateTextTagLocBJ(("等级" + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -10963,7 +11047,7 @@ function Trig_Arm4_Actions takes nothing returns nothing
         call UnitApplyTimedLifeBJ(6., 'BTLF', GetLastCreatedUnit())
         call ShowUnitHide(GetLastCreatedUnit())
         call IssuePointOrderLoc(GetLastCreatedUnit(), "blizzard", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)])
-        call CreateTextTagLocBJ(("等级" + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -10981,7 +11065,7 @@ function Trig_Arm4_Actions takes nothing returns nothing
         call UnitApplyTimedLifeBJ(6., 'BTLF', GetLastCreatedUnit())
         call ShowUnitHide(GetLastCreatedUnit())
         call IssuePointOrderLoc(GetLastCreatedUnit(), "monsoon", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)])
-        call CreateTextTagLocBJ(("等级" + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -10999,7 +11083,7 @@ function Trig_Arm4_Actions takes nothing returns nothing
         call UnitApplyTimedLifeBJ(3., 'BTLF', GetLastCreatedUnit())
         call ShowUnitHide(GetLastCreatedUnit())
         call IssuePointOrderLoc(GetLastCreatedUnit(), "clusterrockets", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)])
-        call CreateTextTagLocBJ(("等级" + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -11016,7 +11100,7 @@ function Trig_Arm4_Actions takes nothing returns nothing
         call GroupClear(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[0])
         call DestroyGroup(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[0])
         call RemoveRect(udg_M9P2Q7U5l4V5W9O45lO7041D2G5K37[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
-        call CreateTextTagLocBJ(("等级" + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -11033,7 +11117,7 @@ function Trig_Arm4_Actions takes nothing returns nothing
         call GroupClear(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[0])
         call DestroyGroup(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[0])
         call RemoveRect(udg_M9P2Q7U5l4V5W9O45lO7041D2G5K37[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
-        call CreateTextTagLocBJ(("等级" + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -11105,7 +11189,7 @@ function Trig_Arm5_Actions takes nothing returns nothing
         call UnitApplyTimedLifeBJ(3., 'BTLF', GetLastCreatedUnit())
         call ShowUnitHide(GetLastCreatedUnit())
         call IssueImmediateOrder(GetLastCreatedUnit(), "channel")
-        call CreateTextTagLocBJ(("等级" + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  狂战八方")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  狂战八方")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 3.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -11536,7 +11620,7 @@ function Trig_SQ3_Actions takes nothing returns nothing
     call UnitAddAbilityBJ('A0BD', GetTriggerUnit())
     call SetUnitAbilityLevelSwapped('A0BD', GetTriggerUnit(), udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 11)])
     call IssuePointOrderLoc(GetTriggerUnit(), "breathoffrost", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 12)])
-    call CreateTextTagLocBJ(("等级" + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 11)]) + "  冲锋陷阵")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 11)], 150., 8., 100, 100., .0, 50.)
+    call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 11)]) + "  冲锋陷阵")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 11)], 150., 8., 100, 100., .0, 50.)
     call SetTextTagPermanent(GetLastCreatedTextTag(), false)
     call SetTextTagLifespan(GetLastCreatedTextTag(), 3.)
     call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 11)])
@@ -11827,8 +11911,8 @@ function Trig_Sec_Start_Func011A takes nothing returns nothing
 endfunction
 function Trig_Sec_Start_Actions takes nothing returns nothing
     call PlaySoundBJ(gg_snd_Sound06)
-    call DisplayTimedTextToForce(GetPlayersAll(), 60., "|cffffff00怪物越来越多，国王派出了大贤者与大将军前来调查灾情！")
-    call DisplayTimedTextToForce(GetPlayersAll(), 60., "|cffffff00任务二：保护好大贤者与大将军，任一死亡，游戏将会失败！")
+    call DisplayTimedTextToForce(GetPlayersAll(), 60., "|cffffff00 The monsters are multiplying! The King has sent the Grand Sage and Great General to investigate this calamity!")
+    call DisplayTimedTextToForce(GetPlayersAll(), 60., "|cffffff00 Act 2: Protect the Grand Sage and Great General, failure to do so will result in game over!")
     call PingMinimapLocForForce(GetPlayersAll(), udg_M9PA2Q7U5l4V5W9O45lO7041D2G5K3[0], 60.)
     call TriggerSleepAction(.1)
     call PingMinimapLocForForceEx(GetPlayersAll(), udg_M9PA2Q7U5l4V5W9O45lO7041D2G5K3[0], 60., bj_MINIMAPPINGSTYLE_FLASHY, .0, .0, 100.)
@@ -11885,7 +11969,7 @@ function Trig_Sec_Start_Actions takes nothing returns nothing
     call CreateNUnitsAtLoc(1, 'h01H', Player(10), udg_M9PA2Q7U5l4V5W9O45lO7041D2G5K3[11], 270.)
     call SetUnitUserData(GetLastCreatedUnit(), 2011)
     call StartTimerBJ(udg_M9P2Q7U5l4V5W9O45lO7041D2IG5K3[2], false, 60.)
-    call CreateTimerDialogBJ(udg_M9P2Q7U5l4V5W9O45lO7041D2IG5K3[2], "敌军进攻倒计时")
+    call CreateTimerDialogBJ(udg_M9P2Q7U5l4V5W9O45lO7041D2IG5K3[2], "Enemy Assault Countdown")
     set udg_M9P2Q7U5l4V5W9O45lO7041D2GO5K3[2] = GetLastCreatedTimerDialogBJ()
     set udg_M9P2Q7U5l4V5W97O45lO7041D2G5K3 = 1
     call SetPlayerTechResearchedSwap('R002', 1, Player(9))
@@ -11929,7 +12013,7 @@ function Trig_Sec_Ami1_Func007C takes nothing returns boolean
     return true
 endfunction
 function Trig_Sec_Ami1_Func009Func001Func012002 takes nothing returns nothing
-    call CustomDefeatBJ(GetEnumPlayer(), "失败!")
+    call CustomDefeatBJ(GetEnumPlayer(), "Failed!")
 endfunction
 function Trig_Sec_Ami1_Func009Func001Func064Func001C takes nothing returns boolean
     if(not(IsUnitType(GetEnumUnit(), UNIT_TYPE_STRUCTURE) != true))then
@@ -12008,7 +12092,7 @@ function Trig_Sec_Ami1_Actions takes nothing returns nothing
             call StartTimerBJ(udg_M9P2Q7U5l4V5W9O45lO7041D2IG5K3[2], false, 150.)
         else
         endif
-        call TimerDialogSetTitle(udg_M9P2Q7U5l4V5W9O45lO7041D2GO5K3[2], ("当次波次" + (I2S(udg_M9P2Q7U5l4V5W97O45lO7041D2G5K3) + "/15")))
+        call TimerDialogSetTitle(udg_M9P2Q7U5l4V5W9O45lO7041D2GO5K3[2], ("Current Wave " + (I2S(udg_M9P2Q7U5l4V5W97O45lO7041D2G5K3) + "/15")))
         set bj_forLoopAIndex = 21
         set bj_forLoopAIndexEnd = 23
         loop
@@ -12052,8 +12136,8 @@ function Trig_Sec_Ami1_Actions takes nothing returns nothing
     if(Trig_Sec_Ami1_Func007C())then
         call PlaySoundBJ(gg_snd_Sound06)
         call SetPlayerAllianceStateBJ(Player(10), Player(11), bj_ALLIANCE_UNALLIED_VISION)
-        call DisplayTimedTextToForce(GetPlayersAll(), 60., "|cffffff00探子来报，在森林左下边发现一个巨石传送阵，怀疑怪物是通过这个巨石传送阵传送过来的！")
-        call DisplayTimedTextToForce(GetPlayersAll(), 60., "|cffffff00任务三：大贤者决定亲自到巨石传送阵调查，沿途保护好大贤者，同时也要留下人手保护基地的大将军，任一死亡，游戏将会失败。同时，如果不能在15波怪前保护大贤者到达巨石传送阵，游戏也会失败！")
+        call DisplayTimedTextToForce(GetPlayersAll(), 60., "|cffffff00 SCOUT REPORT: A Giant Stone Portal has been discovered in the lower left forest! We suspect the monsters are teleporting through this mysterious gateway!")
+        call DisplayTimedTextToForce(GetPlayersAll(), 60., "|cffffff00 NEW MISSION: The Grand Sage has decided to investigate the Giant Stone Portal personally! You must escort the Sage safely while keeping enough forces to protect the General at the base. If either the Sage or the General falls, the mission fails! You must reach the portal before the 15th monster wave arrives or face certain defeat!")
         call PingMinimapLocForForce(GetPlayersAll(), udg_M9PA2Q7U5l4V5W9O45lO7041D2G5K3[0], 30.)
         call PingMinimapLocForForceEx(GetPlayersAll(), udg_M9PA2Q7U5l4V5W9O45lO7041D2G5K3[0], 30., bj_MINIMAPPINGSTYLE_FLASHY, .0, 50., 50.)
         call SetUnitUserData(udg_M9P2Q7U5l4V5W9O4D5lO7041D2G5K3[1], 0)
@@ -12067,9 +12151,9 @@ function Trig_Sec_Ami1_Actions takes nothing returns nothing
             call RemoveUnit(udg_M9P2Q7U5l4V5W9O4D5lO7041D2G5K3[1])
             call RemoveUnit(udg_M9P2Q7U5l4V5W9O4D5lO7041D2G5K3[2])
             call DestroyTimerDialog(udg_M9P2Q7U5l4V5W9O45lO7041D2GO5K3[2])
-            call DisplayTimedTextToForce(GetPlayersAll(), 120., "|cffffff00经过大贤者的研究，通过巨石传送阵可以打开通往魔界的通道！")
-            call DisplayTimedTextToForce(GetPlayersAll(), 120., "|cffffff00任务五：勇士们，前往魔界，摧毁魔族的城堡，让人间重返和平吧！")
-            call DisplayTimedTextToForce(GetPlayersAll(), 120., "|cffffff00注意保护好前线要塞，要塞被摧毁则游戏失败！")
+            call DisplayTimedTextToForce(GetPlayersAll(), 120., "|cffffff00 BREAKTHROUGH: After intense study, the Grand Sage has discovered the Giant Stone Portal can open a gateway to the Demon Realm!")
+            call DisplayTimedTextToForce(GetPlayersAll(), 120., "|cffffff00 ACT 3: Warriors, go to the Demon Realm and destroy the Demon Castle to restore peace to the world!")
+            call DisplayTimedTextToForce(GetPlayersAll(), 120., "|cffffff00 NOTE: Protect the front line fortresses, if the fortresses are destroyed, the game fails!")
             set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[201] = Location( - 587., - 12987.)
             call PingMinimapLocForForce(GetPlayersAll(), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[201], 120.)
             call PingMinimapLocForForceEx(GetPlayersAll(), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[201], 120., bj_MINIMAPPINGSTYLE_SIMPLE, .0, 100, .0)
@@ -12201,9 +12285,9 @@ function Trig_Sec_Ami1_Actions takes nothing returns nothing
             call DestroyTrigger(GetTriggeringTrigger())
         else
             call PlaySoundBJ(gg_snd_Sound05)
-            call DisplayTimedTextToForce(GetPlayersAll(), 60., "|cff00FFFF大贤者不能在15波前到达巨石传送阵，游戏失败！60秒后自动退出游戏！|r")
-            call DisplayTimedTextToForce(GetPlayersAll(), 60., "|cff00FFFF大贤者不能在15波前到达巨石传送阵，游戏失败！60秒后自动退出游戏！|r")
-            call DisplayTimedTextToForce(GetPlayersAll(), 60., "|cffCCFF33喜欢本图的朋友，登陆sunness.com可以得到玩家QQ群列表以及本图的最新动态！")
+            call DisplayTimedTextToForce(GetPlayersAll(), 60., "|cff00FFFF The Grand Sage cannot reach the Giant Stone Portal before the 15th wave, the game fails! 60 seconds will automatically exit the game!|r")
+            call DisplayTimedTextToForce(GetPlayersAll(), 60., "|cff00FFFF The Grand Sage cannot reach the Giant Stone Portal before the 15th wave, the game fails! 60 seconds will automatically exit the game!|r")
+            call DisplayTimedTextToForce(GetPlayersAll(), 60., "|cffCCFF33 If you like it, please visit owensanzas.com for more information or join our discord server!")
             call TriggerSleepAction(60.)
             call PauseGameOn()
             call TriggerSleepAction(1.)
@@ -12387,8 +12471,8 @@ function Trig_SEC_heroIN_Conditions takes nothing returns boolean
 endfunction
 function Trig_SEC_heroIN_Actions takes nothing returns nothing
     call PlaySoundBJ(gg_snd_Sound06)
-    call DisplayTimedTextToForce(GetPlayersAll(), 60., "|cffffff00大贤者已经安全抵达巨石传送阵，开始进行研究！")
-    call DisplayTimedTextToForce(GetPlayersAll(), 60., "|cffffff00任务四：保护好大贤者以及基地的大将军，任一死亡，游戏将会失败！")
+    call DisplayTimedTextToForce(GetPlayersAll(), 60., "|cffffff00 The Grand Sage has safely reached the Giant Stone Portal and is beginning research!")
+    call DisplayTimedTextToForce(GetPlayersAll(), 60., "|cffffff00 NEW MISSION: Protect the Grand Sage and the General at the base. If either falls, the mission fails!")
     call PingMinimapLocForForce(GetPlayersAll(), udg_M9PA2Q7U5l4V5W9O45lO7041D2G5K3[27], 60.)
     call PingMinimapLocForForceEx(GetPlayersAll(), udg_M9PA2Q7U5l4V5W9O45lO7041D2G5K3[27], 60., bj_MINIMAPPINGSTYLE_FLASHY, .0, 50., 50.)
     call SetUnitMoveSpeed(udg_M9P2Q7U5l4V5W9O4D5lO7041D2G5K3[1], .0)
@@ -12416,7 +12500,7 @@ function Trig_Sec_Die_Func001Func001C takes nothing returns boolean
     return false
 endfunction
 function Trig_Sec_Die_Func001Func009002 takes nothing returns nothing
-    call CustomDefeatBJ(GetEnumPlayer(), "失败!")
+    call CustomDefeatBJ(GetEnumPlayer(), "Game Over!")
 endfunction
 function Trig_Sec_Die_Func001C takes nothing returns boolean
     if(not Trig_Sec_Die_Func001Func001C())then
@@ -12430,9 +12514,9 @@ endfunction
 function Trig_Sec_Die_Actions takes nothing returns nothing
     if(Trig_Sec_Die_Func001C())then
         call PlaySoundBJ(gg_snd_Sound05)
-        call DisplayTimedTextToForce(GetPlayersAll(), 60., "|cff00FFFF大将军或大贤者阵亡，游戏失败！60秒后自动退出游戏！|r")
-        call DisplayTimedTextToForce(GetPlayersAll(), 60., "|cff00FFFF大将军或大贤者阵亡，游戏失败！60秒后自动退出游戏！|r")
-        call DisplayTimedTextToForce(GetPlayersAll(), 60., "|cffCCFF33喜欢本图的朋友，登陆sunness.com可以得到玩家QQ群列表以及本图的最新动态！")
+        call DisplayTimedTextToForce(GetPlayersAll(), 60., "|cff00FFFF The General or the Grand Sage has fallen, the game fails! 60 seconds will automatically exit the game!|r")
+        call DisplayTimedTextToForce(GetPlayersAll(), 60., "|cff00FFFF The General or the Grand Sage has fallen, the game fails! 60 seconds will automatically exit the game!|r")
+        call DisplayTimedTextToForce(GetPlayersAll(), 60., "|cffCCFF33 If you like it, please visit www.owensanzas.com for more information or join our discord server!")
         call TriggerSleepAction(60.)
         call PauseGameOn()
         call TriggerSleepAction(1.)
@@ -12469,7 +12553,7 @@ function Trig_Sec_AI_Actions takes nothing returns nothing
     if(Trig_Sec_AI_Func002C())then
         call KillUnit(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetAttacker()))])
         call SetPlayerStateBJ(GetOwningPlayer(GetAttacker()), PLAYER_STATE_RESOURCE_GOLD, 0)
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_WARNING, ("|cffFF0066玩家 " + (GetPlayerName(GetOwningPlayer(GetAttacker())) + " 阴谋造反，攻击盟军，已被处屎！")))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_WARNING, ("|cffFF0066 TRAITOR ALERT: Player " + (GetPlayerName(GetOwningPlayer(GetAttacker())) + " has betrayed the alliance by attacking allies and has been dealt with accordingly!")))
     else
     endif
 endfunction
@@ -12682,7 +12766,7 @@ function Trig_Thr_Ami_Func008Func004A takes nothing returns nothing
 endfunction
 function Trig_Thr_Ami_Actions takes nothing returns nothing
     if(Trig_Thr_Ami_Func001C())then
-        call DisplayTimedTextToForce(GetPlayersAll(), 60., "|cff00FFFF变量锁定失败，请捉屏转达本图作者！")
+        call DisplayTimedTextToForce(GetPlayersAll(), 60., "|cff00FFFF Variable lock failed, please screenshot and send it to the author!")
     else
     endif
     set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1] = GetUnitsOfPlayerAll(Player(11))
@@ -13038,7 +13122,7 @@ function Trig_Thr_ArmUP_Func009C takes nothing returns boolean
 endfunction
 function Trig_Thr_ArmUP_Actions takes nothing returns nothing
     if(Trig_Thr_ArmUP_Func001C())then
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetOwningPlayer(GetBuyingUnit())) + "|cff00AAFF升级盟军士兵武器到第二级！|r"))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetOwningPlayer(GetBuyingUnit())) + "|cff00AAFF Upgraded Allied Soldier Weapons to Level 2!|r"))
         call RemoveItemFromStockBJ('I02D', gg_unit_n02E_0037)
         call AddItemToStockBJ('I04D', gg_unit_n02E_0037, 1, 0)
         set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[101] = 'A0BT'
@@ -13049,7 +13133,7 @@ function Trig_Thr_ArmUP_Actions takes nothing returns nothing
     else
     endif
     if(Trig_Thr_ArmUP_Func002C())then
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetOwningPlayer(GetBuyingUnit())) + "|cff00AAFF升级盟军士兵武器到第三级！|r"))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetOwningPlayer(GetBuyingUnit())) + "|cff00AAFF Upgraded Allied Soldier Weapons to Level 3!|r"))
         call RemoveItemFromStockBJ('I04D', gg_unit_n02E_0037)
         call AddItemToStockBJ('I04L', gg_unit_n02E_0037, 1, 0)
         set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[101] = 'A0BV'
@@ -13060,7 +13144,7 @@ function Trig_Thr_ArmUP_Actions takes nothing returns nothing
     else
     endif
     if(Trig_Thr_ArmUP_Func003C())then
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetOwningPlayer(GetBuyingUnit())) + "|cff00AAFF升级盟军士兵武器到第四级！|r"))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetOwningPlayer(GetBuyingUnit())) + "|cff00AAFF Upgraded Allied Soldier Weapons to Level 4!|r"))
         call RemoveItemFromStockBJ('I04L', gg_unit_n02E_0037)
         call AddItemToStockBJ('I04M', gg_unit_n02E_0037, 1, 0)
         set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[101] = 'A0C7'
@@ -13071,7 +13155,7 @@ function Trig_Thr_ArmUP_Actions takes nothing returns nothing
     else
     endif
     if(Trig_Thr_ArmUP_Func004C())then
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetOwningPlayer(GetBuyingUnit())) + "|cff00AAFF升级盟军士兵武器到第五级！|r"))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetOwningPlayer(GetBuyingUnit())) + "|cff00AAFF Upgraded Allied Soldier Weapons to Level 5!|r"))
         call RemoveItemFromStockBJ('I04M', gg_unit_n02E_0037)
         set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[101] = 'A0C8'
         set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[22] = GetUnitsOfPlayerAndTypeId(Player(10), 'h00G')
@@ -13081,7 +13165,7 @@ function Trig_Thr_ArmUP_Actions takes nothing returns nothing
     else
     endif
     if(Trig_Thr_ArmUP_Func006C())then
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetOwningPlayer(GetBuyingUnit())) + "|cff00AAFF升级盟军士兵装甲到第二级！|r"))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetOwningPlayer(GetBuyingUnit())) + "|cff00AAFF Upgraded Allied Soldier Armor to Level 2!|r"))
         call RemoveItemFromStockBJ('I045', gg_unit_n02E_0037)
         call AddItemToStockBJ('I042', gg_unit_n02E_0037, 1, 1)
         set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[102] = 'A0BW'
@@ -13092,7 +13176,7 @@ function Trig_Thr_ArmUP_Actions takes nothing returns nothing
     else
     endif
     if(Trig_Thr_ArmUP_Func007C())then
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetOwningPlayer(GetBuyingUnit())) + "|cff00AAFF升级盟军士兵装甲到第三级！|r"))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetOwningPlayer(GetBuyingUnit())) + "|cff00AAFF Upgraded Allied Soldier Armor to Level 3!|r"))
         call RemoveItemFromStockBJ('I042', gg_unit_n02E_0037)
         call AddItemToStockBJ('I043', gg_unit_n02E_0037, 1, 1)
         set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[102] = 'A0BX'
@@ -13103,7 +13187,7 @@ function Trig_Thr_ArmUP_Actions takes nothing returns nothing
     else
     endif
     if(Trig_Thr_ArmUP_Func008C())then
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetOwningPlayer(GetBuyingUnit())) + "|cff00AAFF升级盟军士兵装甲到第四级！|r"))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetOwningPlayer(GetBuyingUnit())) + "|cff00AAFF Upgraded Allied Soldier Armor to Level 4!|r"))
         call RemoveItemFromStockBJ('I043', gg_unit_n02E_0037)
         call AddItemToStockBJ('I049', gg_unit_n02E_0037, 1, 1)
         set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[102] = 'A0BY'
@@ -13114,7 +13198,7 @@ function Trig_Thr_ArmUP_Actions takes nothing returns nothing
     else
     endif
     if(Trig_Thr_ArmUP_Func009C())then
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetOwningPlayer(GetBuyingUnit())) + "|cff00AAFF升级盟军士兵装甲到第五级！|r"))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetOwningPlayer(GetBuyingUnit())) + "|cff00AAFF Upgraded Allied Soldier Armor to Level 5!|r"))
         call RemoveItemFromStockBJ('I049', gg_unit_n02E_0037)
         set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[102] = 'A0BZ'
         set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[22] = GetUnitsOfPlayerAndTypeId(Player(10), 'h00G')
@@ -13294,7 +13378,7 @@ function Trig_Thr_AmiUP_Actions takes nothing returns nothing
     if(Trig_Thr_AmiUP_Func001C())then
         set udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[16] = 0
         if(Trig_Thr_AmiUP_Func001Func002C())then
-            call DisplayTextToForce(GetPlayersAll(), "|cffFF0000魔族军团升级了武器装甲到第二级！|r")
+            call DisplayTextToForce(GetPlayersAll(), "|cffFF0000 The Demon Legion has upgraded their weapons and armor to level 2!|r")
             set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[103] = 'A0BS'
             set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[104] = 'A0BW'
             set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[105] = 'A0C3'
@@ -13307,7 +13391,7 @@ function Trig_Thr_AmiUP_Actions takes nothing returns nothing
         else
         endif
         if(Trig_Thr_AmiUP_Func001Func003C())then
-            call DisplayTextToForce(GetPlayersAll(), "|cffFF0000魔族军团升级了武器装甲到第三级！|r")
+            call DisplayTextToForce(GetPlayersAll(), "|cffFF0000 The Demon Legion has upgraded their weapons and armor to level 3!|r")
             set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[103] = 'A0BT'
             set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[104] = 'A0BX'
             set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[105] = 'A0C4'
@@ -13320,7 +13404,7 @@ function Trig_Thr_AmiUP_Actions takes nothing returns nothing
         else
         endif
         if(Trig_Thr_AmiUP_Func001Func004C())then
-            call DisplayTextToForce(GetPlayersAll(), "|cffFF0000魔族军团升级了武器装甲到第四级！|r")
+            call DisplayTextToForce(GetPlayersAll(), "|cffFF0000 The Demon Legion has upgraded their weapons and armor to level 4!|r")
             set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[103] = 'A0BU'
             set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[104] = 'A0BY'
             set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[105] = 'A0C5'
@@ -13333,7 +13417,7 @@ function Trig_Thr_AmiUP_Actions takes nothing returns nothing
         else
         endif
         if(Trig_Thr_AmiUP_Func001Func005C())then
-            call DisplayTextToForce(GetPlayersAll(), "|cffFF0000魔族军团升级了武器装甲到第五级！|r")
+            call DisplayTextToForce(GetPlayersAll(), "|cffFF0000 The Demon Legion has upgraded their weapons and armor to level 5!|r")
             set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[103] = 'A0BV'
             set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[104] = 'A0BZ'
             set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[105] = 'A0C6'
@@ -13349,15 +13433,15 @@ function Trig_Thr_AmiUP_Actions takes nothing returns nothing
     endif
     if(Trig_Thr_AmiUP_Func003C())then
         call PlaySoundBJ(gg_snd_Sound03)
-        call DisplayTimedTextToForce(GetPlayersAll(), 60., ("|cff00FFFF祝贺你获得难度：" + (I2S((udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[14] + 1)) + " 胜利！60秒后自动退出游戏！|r")))
-        call DisplayTimedTextToForce(GetPlayersAll(), 60., ("|cff00FFFF祝贺你获得难度：" + (I2S((udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[14] + 1)) + " 胜利！60秒后自动退出游戏！|r")))
-        call DisplayTimedTextToForce(GetPlayersAll(), 60., "|cffCCFF33喜欢本图的朋友，登陆sunness.com可以得到玩家QQ群列表以及本图的最新动态！")
+        call DisplayTimedTextToForce(GetPlayersAll(), 60., ("|cff00FFFF Congratulations on achieving difficulty:" + (I2S((udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[14] + 1)) + "  Victory! 120 seconds will automatically exit the game!|r")))
+        call DisplayTimedTextToForce(GetPlayersAll(), 60., ("|cff00FFFF Congratulations on achieving difficulty:" + (I2S((udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[14] + 1)) + "  Victory! 120 seconds will automatically exit the game!|r")))
+        call DisplayTimedTextToForce(GetPlayersAll(), 60., "|cffCCFF33 Like this map? Visit www.owensanzas.com or join our Discord!")
         if(Trig_Thr_AmiUP_Func003Func005C())then
-            call DisplayTimedTextToForce(GetPlayersAll(), 60., "|cff00FFFF变量锁定失败，请捉屏转达本图作者！")
+            call DisplayTimedTextToForce(GetPlayersAll(), 60., "|cff00FFFF Variable lock failed, please screenshot and send to the map author!")
         else
         endif
         call UnitAddAbilityBJ('Avul', gg_unit_h00S_0271)
-        call TriggerSleepAction(60.)
+        call TriggerSleepAction(120.)
         call PauseGameOn()
         call TriggerSleepAction(1.)
         call ForForce(GetPlayersAll(), function Trig_Thr_AmiUP_Func003Func010002)
@@ -13366,11 +13450,11 @@ function Trig_Thr_AmiUP_Actions takes nothing returns nothing
     endif
     if(Trig_Thr_AmiUP_Func004C())then
         call PlaySoundBJ(gg_snd_Sound05)
-        call DisplayTimedTextToForce(GetPlayersAll(), 60., "|cff00FFFF你失去了前线要塞，游戏失败！60秒后自动退出游戏！|r")
-        call DisplayTimedTextToForce(GetPlayersAll(), 60., "|cff00FFFF你失去了前线要塞，游戏失败！60秒后自动退出游戏！|r")
-        call DisplayTimedTextToForce(GetPlayersAll(), 60., "|cffCCFF33喜欢本图的朋友，登陆sunness.com可以得到玩家QQ群列表以及本图的最新动态！")
+        call DisplayTimedTextToForce(GetPlayersAll(), 60., "|cff00FFFF You lost the front line fort, game over! 120 seconds will automatically exit the game!|r")
+        call DisplayTimedTextToForce(GetPlayersAll(), 60., "|cff00FFFF You lost the front line fort, game over! 120 seconds will automatically exit the game!|r")
+        call DisplayTimedTextToForce(GetPlayersAll(), 60., "|cffCCFF33 Like this map? Visit www.owensanzas.com or join our Discord!")
         call UnitAddAbilityBJ('Avul', gg_unit_u00B_0268)
-        call TriggerSleepAction(60.)
+        call TriggerSleepAction(120.)
         call PauseGameOn()
         call TriggerSleepAction(1.)
         call ForForce(GetPlayersAll(), function Trig_Thr_AmiUP_Func004Func009002)
@@ -13383,13 +13467,13 @@ function Trig_Thr_AmiUP_Actions takes nothing returns nothing
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[999] = GetUnitLoc(GetTriggerUnit())
         call PingMinimapLocForForceEx(GetPlayersAll(), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[999], 5., bj_MINIMAPPINGSTYLE_SIMPLE, 100., .0, 100)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[999])
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_WARNING, "一个敌方英雄复活！")
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_WARNING, "A Demon Legion champion has been revived!")
     else
     endif
     if(Trig_Thr_AmiUP_Func008C())then
         call SetPlayerTechResearchedSwap('Robs', (GetPlayerTechCountSimple('Robs', Player(11)) + 1), Player(11))
         call DecUnitAbilityLevelSwapped('A00F', gg_unit_u00B_0268)
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_ALWAYSHINT, "敌人被摧毁一个防御塔，黑色城堡的防御降级了！")
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_ALWAYSHINT, "The enemy has destroyed a defensive tower, the Black Castle's defenses have been downgraded!")
     else
     endif
     if(Trig_Thr_AmiUP_Func009C())then
@@ -13538,7 +13622,7 @@ function Trig_Thr_AmiAi3_Actions takes nothing returns nothing
     if(Trig_Thr_AmiAi3_Func001C())then
         call KillUnit(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetAttacker()))])
         call SetPlayerStateBJ(GetOwningPlayer(GetAttacker()), PLAYER_STATE_RESOURCE_GOLD, 0)
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_WARNING, ("|cffFF0066玩家 " + (GetPlayerName(GetOwningPlayer(GetAttacker())) + " 阴谋造反，攻击盟军要塞，已被处屎！")))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_WARNING, ("|cffFF0066 TREACHERY DETECTED: Player " + (GetPlayerName(GetOwningPlayer(GetAttacker())) + " has committed treason by attacking the Allied Fortress and has been severely punished!")))
     else
     endif
     if(Trig_Thr_AmiAi3_Func003C())then
@@ -18704,8 +18788,8 @@ endfunction
 
 
 function config takes nothing returns nothing
-    call SetMapName("|cffffff00★★伏魔战记★★(3.9J版)")
-    call SetMapDescription("|cffffffcc2009年伏魔战记，魔兽RPG地图历史上首个完美实现任意野兽成为座骑功能的地图！\n作者：Sunness\n网站：Sunness.com\n邮箱：Sunness@21cn.com|r")
+    call SetMapName("|cffffff00★★Evil Hunter★★ (v.0.0.1)")
+    call SetMapDescription("|cffffffcc Ready to protect the world from the demon legion? \n Author: Sunness & OwenSanzas")
     call SetPlayers(9)
     call SetTeams(9)
     call SetGamePlacement(MAP_PLACEMENT_TEAMS_TOGETHER)
