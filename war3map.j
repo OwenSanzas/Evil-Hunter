@@ -856,6 +856,7 @@ endfunction
 // 设置游戏难度、速度、锁定游戏速度
 function Trig________________u_Actions takes nothing returns nothing
     call MeleeStartingVisibility()
+    call BlzChangeMinimapTerrainTex("war3minimap.blp")
 
     // TODO: 是否需要关闭迷雾
     // call FogEnableOff()
