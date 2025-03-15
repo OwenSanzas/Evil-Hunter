@@ -614,6 +614,24 @@ function InitSounds takes nothing returns nothing
     call SetSoundDuration(gg_snd_Sound05, 7361)
 endfunction
 
+// 自定义函数必须放在这里：
+
+// /*-----------------------DISPLAY TEXT START-----------------------*/
+// function DisplayBackgroundInfo takes nothing returns nothing
+//     call DisplayTimedTextToForce(GetPlayersAll(), 15., "|cffffff00In the great Liat Forest of the Empire's southern lands, a horde of creatures never before seen in this world has suddenly emerged. The surrounding cities have already suffered varying degrees of devastation at their hands. Warriors, take up your arms and stand your ground—defend this land of peace from the invading menace!|r")
+// endfunction
+
+// function DisplayAct1Info takes nothing returns nothing
+//     call DisplayTimedTextToForce(GetPlayersAll(), 20., "|cffffff00Act I: Into the Heart of the Calamity|r")
+//     call DisplayTimedTextToForce(GetPlayersAll(), 20., "|cffffff00The once-tranquil Liat Forest now teems with monstrous beings not of this world.|r")
+//     call DisplayTimedTextToForce(GetPlayersAll(), 20., "|cffffff00Towns and villages on its outskirts lie in ruins, their streets littered with the scars of battle.|r")
+//     call DisplayTimedTextToForce(GetPlayersAll(), 20., "|cffffff00The Empire's southern frontier stands on the brink of collapse.|r")
+//     call DisplayTimedTextToForce(GetPlayersAll(), 20., "|cffffff00Brave warriors, heed the call! Venture into the depths of the forest, uncover the source of this disaster, and reclaim the land from the clutches of chaos.|r")
+//     call DisplayTimedTextToForce(GetPlayersAll(), 20., "|cffffff00The fate of the realm rests in your hands!|r")
+// endfunction
+// /*-----------------------DISPLAY TEXT END-----------------------*/
+
+
 // 创建玩家10建筑 -> 玩家10是AI中立
 function CreateBuildingsForPlayer10 takes nothing returns nothing
     local player p = Player(10)
@@ -846,7 +864,11 @@ function Trig________________u_Actions takes nothing returns nothing
     call SetGameSpeed(MAP_SPEED_NORMAL)
     call LockGameSpeedBJ()
     call ForForce(GetPlayersAll(), function Trig________________u_Func008002)
-    call EnableWorldFogBoundary(true)
+
+    // TODO: 是否需要开启世界迷雾边界
+    call EnableWorldFogBoundary(false)
+
+    // 对于中立野怪，移除警戒位置 -> 中立野怪没有警戒位置， 不会
     call RemoveAllGuardPositions(Player(PLAYER_NEUTRAL_AGGRESSIVE))
     call ForForce(GetPlayersAll(), function Trig________________u_Func012002)
     call ForForce(GetPlayersAll(), function Trig________________u_Func013002)
@@ -859,14 +881,18 @@ function Trig________________u_Actions takes nothing returns nothing
     call SetPlayerFlagBJ(PLAYER_STATE_GIVES_BOUNTY, true, Player(11))
     call SetPlayerFlagBJ(PLAYER_STATE_GIVES_BOUNTY, true, Player(PLAYER_NEUTRAL_AGGRESSIVE))
     call SetPlayerFlagBJ(PLAYER_STATE_GIVES_BOUNTY, false, Player(9))
-    call DisplayTimedTextToForce(GetPlayersAll(), 30., "|cffffff00In the great Liat Forest of the Empire’s southern lands, a horde of creatures never before seen in this world has suddenly emerged. The surrounding cities have already suffered varying degrees of devastation at their hands. Warriors, take up your arms and stand your ground—defend this land of peace from the invading menace!|r")
-    call DisplayTimedTextToForce(GetPlayersAll(), 30., "|cffffff00Act I: Into the Heart of the Calamity\n
-    The once - tranquil Liat Forest now teems with monstrous beings not of this world.\n
-    Towns and villages on its outskirts lie in ruins, their streets littered with the scars of battle.\n
-    The Empire's southern frontier stands on the brink of collapse.\n\n
-    Brave warriors, heed the call! Venture into the depths of the forest, \n
-    uncover the source of this disaster, and reclaim the land from the clutches of chaos.\n
-    The fate of the realm rests in your hands!|r")
+
+    // 首先显示背景信息
+    call DisplayTimedTextToForce(GetPlayersAll(), 15., "|cffffff00In the great Liat Forest of the Empire's southern lands, a horde of creatures never before seen in this world has suddenly emerged. The surrounding cities have already suffered varying degrees of devastation at their hands. Warriors, take up your arms and stand your ground—defend this land of peace from the invading menace!|r")
+    
+    // TODO: 第一幕信息移动至开始游戏1分钟后
+    // call DisplayTimedTextToForce(GetPlayersAll(), 20., "|cffffff00Act I: Into the Heart of the Calamity|r")
+    // call DisplayTimedTextToForce(GetPlayersAll(), 20., "|cffffff00The once-tranquil Liat Forest now teems with monstrous beings not of this world.|r")
+    // call DisplayTimedTextToForce(GetPlayersAll(), 20., "|cffffff00Towns and villages on its outskirts lie in ruins, their streets littered with the scars of battle.|r")
+    // call DisplayTimedTextToForce(GetPlayersAll(), 20., "|cffffff00The Empire's southern frontier stands on the brink of collapse.|r")
+    // call DisplayTimedTextToForce(GetPlayersAll(), 20., "|cffffff00Brave warriors, heed the call! Venture into the depths of the forest, uncover the source of this disaster, and reclaim the land from the clutches of chaos.|r")
+    // call DisplayTimedTextToForce(GetPlayersAll(), 20., "|cffffff00The fate of the realm rests in your hands!|r")
+
     set udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[0] = gg_rct_______Map
     set udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[1] = gg_rct_______Baowu01
     set udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[2] = gg_rct_______Baowu02
