@@ -856,7 +856,7 @@ endfunction
 // 设置游戏难度、速度、锁定游戏速度
 function Trig________________u_Actions takes nothing returns nothing
     call MeleeStartingVisibility()
-
+    call BlzChangeMinimapTerrainTex("war3minimap.blp")
     // TODO: 是否需要关闭迷雾
     // call FogEnableOff()
     // call FogMaskEnableOff()
@@ -929,6 +929,28 @@ function Trig________________u_Actions takes nothing returns nothing
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200])
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
     endloop
+    
+    loop
+        exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
+        set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(gg_rct_______Baowu01)
+        call CreateNUnitsAtLoc(1, 'n01Y', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
+        call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200])
+        set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(gg_rct_______Baowu02)
+        call CreateNUnitsAtLoc(1, 'n01Y', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
+        call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200])
+        set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(gg_rct_______Baowu04)
+        call CreateNUnitsAtLoc(1, 'n01Y', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
+        call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200])
+        set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(gg_rct_______Baowu03)
+        call CreateNUnitsAtLoc(1, 'n01Y', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
+        call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200])
+        set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(gg_rct_______Baowu05)
+        call CreateNUnitsAtLoc(1, 'n01Y', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
+        call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200])
+        set bj_forLoopAIndex = bj_forLoopAIndex + 1
+    endloop
+
+
     call CreateNUnitsAtLoc(1, 'n01X', Player(PLAYER_NEUTRAL_AGGRESSIVE), Location(6367., - 11762.), bj_UNIT_FACING)
     call CreateNUnitsAtLoc(1, 'n01X', Player(PLAYER_NEUTRAL_AGGRESSIVE), Location(10495., - 3201.), bj_UNIT_FACING)
     call CreateNUnitsAtLoc(1, 'n01X', Player(PLAYER_NEUTRAL_AGGRESSIVE), Location( - 1701., - 13928.), bj_UNIT_FACING)
@@ -1042,17 +1064,17 @@ function Trig_multiboard2_Func026Func002Func011C takes nothing returns boolean
     return true
 endfunction
 function Trig_multiboard2_Actions takes nothing returns nothing
-    call CreateMultiboardBJ(10, 11, "游戏玩家排行榜")
-    set udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[1] = "|cffffff00玩家|r"
-    set udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[2] = "|cffffff00功勋|r"
-    set udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[3] = "|cffffff00战绩|r"
-    set udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[4] = "|cffffff00武器|r"
-    set udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[5] = "|cffffff00铠甲|r"
-    set udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[6] = "|cffffff00战兽|r"
-    set udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[7] = "|cffffff00成长|r"
-    set udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[8] = "|cffffff00战死|r"
-    set udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[9] = "|cffffff00杀敌|r"
-    set udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[10] = "|cffffff00经验|r"
+    call CreateMultiboardBJ(10, 11, "Player Rank")
+    set udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[1] = "|cffffff00Player|r"      // Player -> Plyr
+    set udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[2] = "|cffffff00Merit|r"     // 功勋 -> Merit
+    set udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[3] = "|cffffff00Rec|r"       // 战绩 -> Record (缩短为 Rec)
+    set udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[4] = "|cffffff00Weap|r"      // 武器 -> Weapon (缩短为 Weap)
+    set udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[5] = "|cffffff00Arm|r"       // 铠甲 -> Armor (缩短为 Arm)
+    set udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[6] = "|cffffff00Mnt|r"       // 战兽 -> Mount (缩短为 Mnt)
+    set udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[7] = "|cffffff00Gth|r"       // 成长 -> Growth (缩短为 Gth)
+    set udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[8] = "|cffffff00Dth|r"       // 战死 -> Deaths (缩短为 Dth)
+    set udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[9] = "|cffffff00Kill|r"      // 杀敌 -> Kill (原本就短)
+    set udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[10] = "|cffffff00XP|r"       // 经验 -> XP (欧美标准缩写)
     set bj_forLoopAIndex = 1
     set bj_forLoopAIndexEnd = 10
     loop
@@ -1091,7 +1113,7 @@ function Trig_multiboard2_Actions takes nothing returns nothing
             else
             endif
             if(Trig_multiboard2_Func026Func002Func007C())then
-                call MultiboardSetItemValueBJ(GetLastCreatedMultiboard(), GetForLoopIndexB(), (GetForLoopIndexA() + 1), (udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[GetForLoopIndexA()] + "冒险者"))
+                call MultiboardSetItemValueBJ(GetLastCreatedMultiboard(), GetForLoopIndexB(), (GetForLoopIndexA() + 1), (udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[GetForLoopIndexA()] + "Adventurer"))
             else
             endif
             if(Trig_multiboard2_Func026Func002Func008C())then
@@ -1099,15 +1121,15 @@ function Trig_multiboard2_Actions takes nothing returns nothing
             else
             endif
             if(Trig_multiboard2_Func026Func002Func009C())then
-                call MultiboardSetItemValueBJ(GetLastCreatedMultiboard(), GetForLoopIndexB(), (GetForLoopIndexA() + 1), (udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[GetForLoopIndexA()] + "赤手"))
+                call MultiboardSetItemValueBJ(GetLastCreatedMultiboard(), GetForLoopIndexB(), (GetForLoopIndexA() + 1), (udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[GetForLoopIndexA()] + "None"))
             else
             endif
             if(Trig_multiboard2_Func026Func002Func010C())then
-                call MultiboardSetItemValueBJ(GetLastCreatedMultiboard(), GetForLoopIndexB(), (GetForLoopIndexA() + 1), (udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[GetForLoopIndexA()] + "布衣"))
+                call MultiboardSetItemValueBJ(GetLastCreatedMultiboard(), GetForLoopIndexB(), (GetForLoopIndexA() + 1), (udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[GetForLoopIndexA()] + "None"))
             else
             endif
             if(Trig_multiboard2_Func026Func002Func011C())then
-                call MultiboardSetItemValueBJ(GetLastCreatedMultiboard(), GetForLoopIndexB(), (GetForLoopIndexA() + 1), (udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[GetForLoopIndexA()] + "未捕捉"))
+                call MultiboardSetItemValueBJ(GetLastCreatedMultiboard(), GetForLoopIndexB(), (GetForLoopIndexA() + 1), (udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[GetForLoopIndexA()] + "None"))
             else
             endif
             set bj_forLoopBIndex = bj_forLoopBIndex + 1
@@ -1193,15 +1215,14 @@ function InitTrig_BeiBao2B takes nothing returns nothing
 endfunction
 function Trig_help_Actions takes nothing returns nothing
     call FlashQuestDialogButton()
-    call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "清除作弊", "TRIGSTR_1", "ReplaceableTextures\\CommandButtons\\BTNOrbOfVenom.blp")
-    call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "踢人指令", "红色主机输入-fuck[空隔][玩家索引]可以把不受欢迎的玩家踢出游戏\n-fuck 1踢出红色玩家\n-fuck 2踢出蓝色玩家\n-fuck 3踢出青色玩家\n-fuck 4踢出紫色玩家\n-fuck 5踢出黄色玩家\n-fuck 6踢出橙色玩家\n-fuck 7踢出绿色玩家", "ReplaceableTextures\\CommandButtons\\BTNOrbOfVenom.blp")
-    call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "版权声明", "本地图为共享软体，由sunness.com制作，有建议或发现BUG请加入QQ群58954706提交。未经书面允许，任何单位及个人不得私自修改本地图，sunness.com保留追究任何侵犯著作权行为的权利。本地图目前还处于调试测试阶段，在平衡好攻防后将逐步增加内容！", "ReplaceableTextures\\CommandButtons\\BTNOrbOfFire.blp")
-    call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "难度选择", "第二难度起英雄每次死亡都会丢失一半的金钱，多保重啊\n第一难度BOSS降临时间间隔为700秒\n第二难度BOSS降临时间间隔为600秒 技能升级费用翻倍\n第三难度BOSS降临时间间隔为500秒 技能升级费用翻倍\n第四难度BOSS降临时间间隔为400秒 技能升级费用翻倍", "ReplaceableTextures\\CommandButtons\\BTNOrbOfFire.blp")
-    call CreateQuestBJ(bj_QUESTTYPE_OPT_DISCOVERED, "功能提示", "1.按键盘方向键[←]选择删除技能面板的主动技能\n2.按键盘方向键[→]选择删除魔法书里的被动技能\n3.按键盘方向键[ ↑ ]选择升级技能面板的主动技能\n4.按键盘方向键[ ↓ ]选择升级魔法书里的被动技能\n*.按键盘Q键切换背包，一共三个背包\n*.输入-kill自杀，当英雄重生被地形卡住时使用\n*.输入-kill自杀还原，如果火神套装引起变身后技能丢失\n*.在联盟窗口送金币给盟友时，按Ctrl点击每次为100金币", "ReplaceableTextures\\CommandButtons\\BTNOrbOfLightning.blp")
-    call CreateQuestBJ(bj_QUESTTYPE_OPT_DISCOVERED, "新手攻略", "本图为生存类地图，初期不要与敌人纠缠，尽快探路寻找宝箱合成高级装备，因为敌人会越来越密集，错过时间将很难发展。\n1.出生后马上到最近的方尖碑购买医疗/攻击技能各一个\n2.玩家初始可沿着铺着石头的道路推进寻找宝箱合成装备\n3.箱子最容易掉齐的套装为|cffCC33FF天使手镯|r跟|cffCC33FF魔源结晶|r二种\n4.得到天使手镯或魔源结晶后可以尝试进入中间的沼泽地刷怪物，会掉落较多的绿色装备\n5.尝试按A键攻击中立怪，容易掉落高级武器的合成组件\n6.总攻击力超150后及配有天使手镯可以尝试进入雪山/火山/死谷地区刷装备，会掉落蓝色的物品供合成最终套装。", "ReplaceableTextures\\CommandButtons\\BTNOrbOfFire.blp")
-    call CreateQuestBJ(bj_QUESTTYPE_OPT_DISCOVERED, "物品收集", "敏捷型建议收集：火神套装(专署)、战神套装、死神套装\n力量型建议收集：土神套装(专署)、战神套装、死神套装\n弓箭型建议收集：风神套装(专署)、雷神套装\n法师型建议收集：水神套装(专署)、冥王套装、精灵王套装", "ReplaceableTextures\\CommandButtons\\BTNOrbOfLightning.blp")
-    call CreateQuestBJ(bj_QUESTTYPE_OPT_DISCOVERED, "刷宝位置", "*.火山盆地的怪物有较高的机率掉落：\n  火神、土神套装组件物品\n*.冰雪山脉的怪物有较高的机率掉落：\n  风神、水神、雷神、冥皇套装组件物品\n*.亡灵山谷的怪物有较高的机率掉落：\n  死神与战神套装组件物品", "ReplaceableTextures\\CommandButtons\\BTNOrbOfLightning.blp")
-    call CreateQuestBJ(bj_QUESTTYPE_OPT_DISCOVERED, "物品大全", "TRIGSTR_2", "ReplaceableTextures\\CommandButtons\\BTNOrbOfLightning.blp")
+    call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "Kick Command", "Red host can kick unwanted players by typing:\n-fuck [index]\n-fuck 1 kicks Red\n-fuck 2 kicks Blue\n-fuck 3 kicks Teal\n-fuck 4 kicks Purple\n-fuck 5 kicks Yellow\n-fuck 6 kicks Orange\n-fuck 7 kicks Green.", "ReplaceableTextures\\CommandButtons\\BTNOrbOfVenom.blp")
+    call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "Copyright Notice", "This map is freeware by sunness.com.\nBug reports & suggestions: QQ 58954706.\nUnauthorized modifications are prohibited.\nsunness.com reserves the right to pursue copyright violations.\nThe map is in testing phase and will be expanded after balance adjustments.", "ReplaceableTextures\\CommandButtons\\BTNOrbOfFire.blp")
+    call CreateQuestBJ(bj_QUESTTYPE_REQ_DISCOVERED, "Difficulty Levels", "From Hard mode, heroes lose half their gold on death.\nEasy: Boss every 700s.\nNormal: Boss every 600s, skill cost x2.\nHard: Boss every 500s, skill cost x2.\nHell: Boss every 400s, skill cost x2.", "ReplaceableTextures\\CommandButtons\\BTNOrbOfFire.blp")
+    call CreateQuestBJ(bj_QUESTTYPE_OPT_DISCOVERED, "Game Tips", "[←] Remove active skills.\n[→] Remove passive skills.\n[↑] Upgrade active skills.\n[↓] Upgrade passive skills.\n[Q] Switch backpacks (3 total).\nType -kill to suicide if stuck.\nType -kill to reset skills after Fire God set.\nCtrl+Click when sending gold to allies to transfer 100 gold.", "ReplaceableTextures\\CommandButtons\\BTNOrbOfLightning.blp")
+    call CreateQuestBJ(bj_QUESTTYPE_OPT_DISCOVERED, "Beginner Guide", "Survival map. Avoid early fights, scout for chests to craft gear.\nBuy heal & attack skills at the Obelisk.\nFollow stone roads to find chests.\nEasiest sets: |cffCC33FFAngel Bracelet|r & |cffCC33FFMana Crystal|r.\nWith these, farm the swamp for green items.\nPress A to attack neutral monsters for weapon materials.\nWith 150+ attack & Angel Bracelet, farm Snow Mountain/Volcano/Dead Valley for blue gear.", "ReplaceableTextures\\CommandButtons\\BTNOrbOfFire.blp")
+    call CreateQuestBJ(bj_QUESTTYPE_OPT_DISCOVERED, "Item Collection", "Agility: Fire God (Exclusive), War God, Death God.\nStrength: Earth God (Exclusive), War God, Death God.\nArcher: Wind God (Exclusive), Thunder God.\nMage: Water God (Exclusive), Underworld King, Elf King.", "ReplaceableTextures\\CommandButtons\\BTNOrbOfLightning.blp")
+    call CreateQuestBJ(bj_QUESTTYPE_OPT_DISCOVERED, "Best Farm Spots", "Volcano Basin: Fire God, Earth God set pieces.\nSnow Mountains: Wind God, Water God, Thunder God, Underworld King.\nUndead Valley: Death God, War God set pieces.", "ReplaceableTextures\\CommandButtons\\BTNOrbOfLightning.blp")
+    call CreateQuestBJ(bj_QUESTTYPE_OPT_DISCOVERED, "Item Encyclopedia", "TRIGSTR_2", "ReplaceableTextures\\CommandButtons\\BTNOrbOfLightning.blp")
     call DestroyTrigger(GetTriggeringTrigger())
 endfunction
 function InitTrig_help takes nothing returns nothing
@@ -1328,10 +1349,35 @@ function Trig_PlayerInput_Func003Func001C takes nothing returns boolean
     endif
     return true
 endfunction
+//------------------- 自定义玩家输入函数 START -------------------
+function Trig_PlayerInput_Func004C takes nothing returns boolean
+    return GetEventPlayerChatString() == "-give"
+endfunction
+
+function Trig_PlayerInput_Func004Actions takes nothing returns nothing
+    local integer playerId = GetConvertedPlayerId(GetTriggerPlayer())
+    local unit hero = udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[playerId]
+    local item newItem
+    
+    if hero == null then
+        call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "|cffff0000Error: Player has no hero.|r")
+        return
+    endif
+    
+    set newItem = CreateItem('I005', GetUnitX(hero), GetUnitY(hero))
+    call UnitAddItem(hero, newItem)
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "|cff00ff00Item is given！|r")
+endfunction
+
+//------------------- 自定义玩家输入函数 END -------------------
+
 function Trig_PlayerInput_Actions takes nothing returns nothing
     if(Trig_PlayerInput_Func001C())then
         call KillUnit(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])
     else
+    endif
+    if Trig_PlayerInput_Func004C() then
+        call Trig_PlayerInput_Func004Actions()
     endif
     if(Trig_PlayerInput_Func002C())then
         call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_HINT, "|cffFF8040合成公式：|r|cff00FFFF(风)飘逸之戒+(土)锁链流星锤+(水)水之心=雅露的微笑")
@@ -1400,8 +1446,8 @@ function Trig_PlayerKill_Func006C takes nothing returns boolean
     return true
 endfunction
 function Trig_PlayerKill_Actions takes nothing returns nothing
-    call CustomDefeatBJ(ConvertedPlayer(S2I(SubStringBJ(GetEventPlayerChatString(), 7, 7))), "失败!")
-    call DisplayTimedTextToForce(GetPlayersAll(), 30, (("|cff00FFFF玩家：" + GetPlayerName(ConvertedPlayer(S2I(SubStringBJ(GetEventPlayerChatString(), 7, 7))))) + "被主机踢出了游戏！"))
+    call CustomDefeatBJ(ConvertedPlayer(S2I(SubStringBJ(GetEventPlayerChatString(), 7, 7))), "Failed!")
+    call DisplayTimedTextToForce(GetPlayersAll(), 30, (("|cff00FFFFPlayer: " + GetPlayerName(ConvertedPlayer(S2I(SubStringBJ(GetEventPlayerChatString(), 7, 7))))) + " is kicked out of the game!"))
     set bj_forLoopAIndex = 911
     set bj_forLoopAIndexEnd = 915
     loop
@@ -1494,7 +1540,7 @@ function Trig_PlayerLeave_Actions takes nothing returns nothing
     call UnitApplyTimedLifeBJ(.1, 'BTLF', udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])
     call ShowUnitHide(udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])
     set udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] = null
-    call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_MISSIONFAILED, ("|cffFF0066玩家：" + (GetPlayerName(GetTriggerPlayer()) + " 离开了游戏！")))
+    call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_MISSIONFAILED, ("|cffFF0066Player: " + (GetPlayerName(GetTriggerPlayer()) + " Left the game!")))
     call MultiboardSetItemValueBJ(GetLastCreatedMultiboard(), 1, (GetConvertedPlayerId(GetTriggerPlayer()) + 1), ("|cffE1E1E1" + GetPlayerName(GetTriggerPlayer())))
     set bj_forLoopAIndex = 911
     set bj_forLoopAIndexEnd = 915
@@ -3084,12 +3130,12 @@ function Trig_OgreDie_Actions takes nothing returns nothing
         if(Trig_OgreDie_Func022Func022C())then
             return
         else
-            call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_MISSIONFAILED, "|cff00FFFF任务失败：\n1.全部英雄死亡\n2.最后死亡玩家金币数小于250！")
+            call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_MISSIONFAILED, "|cff00FFFFMission Failed:\n1.All Champions dead\n2.Last dead player gold less than 250!")
             set bj_forLoopAIndex = 1
             set bj_forLoopAIndexEnd = 9
             loop
                 exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-                call CustomDefeatBJ(ConvertedPlayer(GetForLoopIndexA()), "失败!")
+                call CustomDefeatBJ(ConvertedPlayer(GetForLoopIndexA()), "Failed!")
                 set bj_forLoopAIndex = bj_forLoopAIndex + 1
             endloop
         endif
@@ -3127,7 +3173,7 @@ function Trig_HeroUP_Actions takes nothing returns nothing
     if(Trig_HeroUP_Func003C())then
         set udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[11] = GetHeroLevel(GetTriggerUnit())
         if(Trig_HeroUP_Func003Func002001())then
-            call DisplayTextToForce(GetPlayersAll(), "|cffff0000英雄等级到6级将有BOSS降临，如果没天使手镯，将可能抵挡不住BOSS的攻击！|r\n|cff00FFFF注意小地图上紫色的圆圈信号，那代表BOSS的移动方位！|r")
+            call DisplayTextToForce(GetPlayersAll(), "|cffff0000WARNING: When a Champion reaches level 6, a BOSS will appear! Without the Angel's Bracelet, you may not survive its devastating attacks!|r\n|cff00FFFFKeep an eye on the purple pings on the minimap - they indicate the BOSS's movement and position!|r")
         else
             call DoNothing()
         endif
@@ -3136,7 +3182,7 @@ function Trig_HeroUP_Actions takes nothing returns nothing
     if(Trig_HeroUP_Func005C())then
         call SetUnitAbilityLevelSwapped('A0CE', udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))], GetUnitLevel(GetTriggerUnit()))
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 11)] = GetUnitLoc(GetTriggerUnit())
-        call CreateTextTagLocBJ("战兽升级", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 11)], 150., 15., .0, 100., 100., 50.)
+        call CreateTextTagLocBJ("War Beast Upgrade", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 11)], 150., 15., .0, 100., 100., 50.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 11)])
         call SetTextTagVelocityBJ(GetLastCreatedTextTag(), 64, 90)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
@@ -3281,7 +3327,7 @@ function Trig_HeroRelive_Actions takes nothing returns nothing
     call PanCameraToTimedLocForPlayer(GetTriggerPlayer(), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 100) + 1)], 0)
     call SelectUnitForPlayerSingle(GetTriggerUnit(), GetTriggerPlayer())
     call UnitApplyTimedLifeBJ(.1, 'BTLF', udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 1)])
-    call DisplayTextToPlayer(GetOwningPlayer(GetTriggerUnit()), 0, 0, "*.输入-kill自杀，当英雄重生被地形卡住时使用")
+    call DisplayTextToPlayer(GetOwningPlayer(GetTriggerUnit()), 0, 0, "*.Input -kill to commit suicide, use when your champion is stuck in the terrain")
     call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 100) + 1)])
 endfunction
 function InitTrig_HeroRelive takes nothing returns nothing
@@ -3325,7 +3371,7 @@ endfunction
 function Trig_ZhongLi_Actions takes nothing returns nothing
     if(Trig_ZhongLi_Func001C())then
         call SetUnitOwner(GetTriggerUnit(), Player(PLAYER_NEUTRAL_AGGRESSIVE), false)
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_ALWAYSHINT, ("|cffff0000" + (GetPlayerName(GetOwningPlayer(GetAttacker())) + ("攻击了" + (GetUnitName(GetTriggerUnit()) + "，  愤怒的中立生物决定对入侵者展开疯狂的报复！|r")))))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_ALWAYSHINT, ("|cffff0000" + (GetPlayerName(GetOwningPlayer(GetAttacker())) + (" attacked " + (GetUnitName(GetTriggerUnit()) + "! The enraged neutral creatures have decided to unleash furious vengeance upon the invader!|r")))))
         call SetUnitMoveSpeed(GetTriggerUnit(), 300.)
         call SetUnitAcquireRange(GetTriggerUnit(), 20000.)
         call IssueTargetOrder(GetTriggerUnit(), "attack", GetAttacker())
@@ -3372,7 +3418,7 @@ function Trig_BossB_Actions takes nothing returns nothing
     set udg_M9P2Q7U5l4V5W9O45lO7041D2G5MK3[999] = GetLastCreatedUnit()
     call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[201])
     call StartTimerBJ(udg_M9P2Q7U5l4V5W9O45lO7041D2IG5K3[1], false, udg_M9P2Q7U5l4V5W9O45lO70N41D2G5K3)
-    call CreateTimerDialogBJ(udg_M9P2Q7U5l4V5W9O45lO7041D2IG5K3[1], "憎恨之王降临倒计时")
+    call CreateTimerDialogBJ(udg_M9P2Q7U5l4V5W9O45lO7041D2IG5K3[1], "Next Boss Countdown")
     set udg_M9P2Q7U5l4V5W9O45lO7041D2GO5K3[1] = GetLastCreatedTimerDialogBJ()
     set udg_M9P2Q7U5l4V5W97O45lO7041D2G5K3 = 2
     call DestroyTrigger(GetTriggeringTrigger())
@@ -3429,7 +3475,7 @@ function Trig_BossC_Actions takes nothing returns nothing
         set udg_M9P2Q7U5l4V5W9O45lO7041D2G5MK3[999] = GetLastCreatedUnit()
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[201])
         call StartTimerBJ(udg_M9P2Q7U5l4V5W9O45lO7041D2IG5K3[1], false, udg_M9P2Q7U5l4V5W9O45lO70N41D2G5K3)
-        call TimerDialogSetTitle(udg_M9P2Q7U5l4V5W9O45lO7041D2GO5K3[1], "痛苦之王降临倒计时")
+        call TimerDialogSetTitle(udg_M9P2Q7U5l4V5W9O45lO7041D2GO5K3[1], "Next Boss Countdown")
         set udg_M9P2Q7U5l4V5W97O45lO7041D2G5K3 = (udg_M9P2Q7U5l4V5W97O45lO7041D2G5K3 + 1)
         call DisableTrigger(gg_trg_XH2)
         return
@@ -3446,7 +3492,7 @@ function Trig_BossC_Actions takes nothing returns nothing
         set udg_M9P2Q7U5l4V5W9O45lO7041D2G5MK3[999] = GetLastCreatedUnit()
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[201])
         call StartTimerBJ(udg_M9P2Q7U5l4V5W9O45lO7041D2IG5K3[1], false, udg_M9P2Q7U5l4V5W9O45lO70N41D2G5K3)
-        call TimerDialogSetTitle(udg_M9P2Q7U5l4V5W9O45lO7041D2GO5K3[1], "折磨女王降临倒计时")
+        call TimerDialogSetTitle(udg_M9P2Q7U5l4V5W9O45lO7041D2GO5K3[1], "Next Boss Countdown")
         set udg_M9P2Q7U5l4V5W97O45lO7041D2G5K3 = (udg_M9P2Q7U5l4V5W97O45lO7041D2G5K3 + 1)
         return
     else
@@ -3465,7 +3511,7 @@ function Trig_BossC_Actions takes nothing returns nothing
         call UnitAddAbilityBJ('Amrf', GetLastCreatedUnit())
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[201])
         call StartTimerBJ(udg_M9P2Q7U5l4V5W9O45lO7041D2IG5K3[1], false, udg_M9P2Q7U5l4V5W9O45lO70N41D2G5K3)
-        call TimerDialogSetTitle(udg_M9P2Q7U5l4V5W9O45lO7041D2GO5K3[1], "破坏之王降临倒计时")
+        call TimerDialogSetTitle(udg_M9P2Q7U5l4V5W9O45lO7041D2GO5K3[1], "Last Boss")
         set udg_M9P2Q7U5l4V5W97O45lO7041D2G5K3 = (udg_M9P2Q7U5l4V5W97O45lO7041D2G5K3 + 1)
         return
     else
@@ -3482,7 +3528,7 @@ function Trig_BossC_Actions takes nothing returns nothing
         set udg_M9P2Q7U5l4V5W9O45lO7041D2G5MK3[999] = GetLastCreatedUnit()
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[201])
         call StartTimerBJ(udg_M9P2Q7U5l4V5W9O45lO7041D2IG5K3[1], false, udg_M9P2Q7U5l4V5W9O45lO70N41D2G5K3)
-        call TimerDialogSetTitle(udg_M9P2Q7U5l4V5W9O45lO7041D2GO5K3[1], "第二幕任务倒计")
+        call TimerDialogSetTitle(udg_M9P2Q7U5l4V5W9O45lO7041D2GO5K3[1], "Act II Countdown")
         set udg_M9P2Q7U5l4V5W97O45lO7041D2G5K3 = (udg_M9P2Q7U5l4V5W97O45lO7041D2G5K3 + 1)
         return
     else
@@ -6445,16 +6491,16 @@ endfunction
 function Trig_Dialog_Actions takes nothing returns nothing
     call TriggerSleepAction(2.)
     call DialogClear(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1])
-    call DialogSetMessage(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "选择游戏难度")
-    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "菜鸟入门(熟悉地图)")
+    call DialogSetMessage(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "Game Difficulty")
+    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "Novice (Familiarize yourself with the map)")
     set udg_M9P2QS7U5l4V5W9O45lO7041D2G5K3[1] = GetLastCreatedButtonBJ()
-    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "普通难度(更高挑战)")
+    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "Normal (Higher Challenge)")
     set udg_M9P2QS7U5l4V5W9O45lO7041D2G5K3[2] = GetLastCreatedButtonBJ()
-    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "中级难度(路人局的极限)")
+    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "Intermediate (Limit of the random game)")
     set udg_M9P2QS7U5l4V5W9O45lO7041D2G5K3[3] = GetLastCreatedButtonBJ()
-    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "高级难度(专业战队适用)")
+    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "Advanced (Professional team)")
     set udg_M9P2QS7U5l4V5W9O45lO7041D2G5K3[4] = GetLastCreatedButtonBJ()
-    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "地狱难度(YY语音适用)")
+    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "Hell (Impossible!)")
     set udg_M9P2QS7U5l4V5W9O45lO7041D2G5K3[5] = GetLastCreatedButtonBJ()
     set bj_forLoopAIndex = 1
     set bj_forLoopAIndexEnd = 10
