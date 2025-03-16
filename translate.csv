@@ -1,0 +1,395 @@
+Label,Chinese Category,English Category,Chinese Description,English Description
+AIa1,防,Defense,智力+5,Intelligence +5
+AIa3,防,Defense,力量+50智力+50,Strength +50 Intelligence +50
+AIa4,防,Defense,敏捷+10,Agility +10
+AIa6,防,Defense,力量+20敏捷+20,Strength +20 Agility +20
+AIx5,防,Defense,属性 未使用,Attribute Unused
+AIx1,防,Defense,力量+50,Strength +50
+AIx2,防,Defense,力量+50敏捷+100,Strength +50 Agility +100
+AIs1,防,Defense,力量+5,Strength +5
+AIs3,防,Defense,力量+50智力+100,Strength +50 Intelligence +100
+AIs4,防,Defense,智力+50,Intelligence +50
+AIs6,防,Defense,力量+20,Strength +20
+AIi1,防,Defense,敏捷+5,Agility +5
+AIi3,防,Defense,力量+50敏捷+50智力+50,Strength +50 Agility +50 Intelligence +50
+AIi4,防,Defense,属性 未使用,Attribute Unused
+AIi6,防,Defense,力量+20智力+20,Strength +20 Intelligence +20
+AIat,攻,Attack,攻击力+200暗,Attack Power +200 Dark
+AIt6,攻,Attack,攻击力+300风,Attack Power +300 Wind
+AIt9,攻,Attack,攻击力+500战,Attack Power +500 War
+AItc,攻,Attack,攻击力+200土,Attack Power +200 Earth
+AItf,攻,Attack,攻击力+200水,Attack Power +200 Water
+AItg,攻,Attack,攻击力+300光,Attack Power +300 Light
+AIth,攻,Attack,攻击力+200火,Attack Power +200 Fire
+AIti,攻,Attack,攻击力+200光,Attack Power +200 Light
+AItj,攻,Attack,攻击力+300火,Attack Power +300 Fire
+AItk,攻,Attack,攻击力+300土,Attack Power +300 Earth
+AItl,攻,Attack,攻击力+300暗,Attack Power +300 Dark
+AItn,攻,Attack,攻击力+300水,Attack Power +300 Water
+AIva,辅,Support,吸血+10%,Lifesteal +10%
+AId1,防,Defense,护甲+5,Armor +5
+AId2,防,Defense,护甲+50(神铠),Armor +50 (Divine Armor)
+AId3,防,Defense,护甲+100(土神战神),Armor +100 (Earth God Wargod)
+AId4,防,Defense,护甲+30,Armor +30
+AIe2,测试,Test,经验值提升8W,Experience Points Increase 80,000
+AIlf,防,Defense,生命值+3000(近战神铠),Health +3000 (Melee Divine Armor)
+AIl1,防,Defense,生命值+1000,Health +1000
+AIl2,防,Defense,生命值+2000(远程神铠),Health +2000 (Ranged Divine Armor)
+AIms,辅,Support,移动速度+30,Movement Speed +30
+AIcb,辅,Support,腐蚀效果  未使用,Corrosion Effect Unused
+AIfb,辅,Support,火焰效果  未使用,Flame Effect Unused
+AIzb,辅,Support,冰冻效果 未使用,Freeze Effect Unused
+AIob,辅,Support,霜冻效果  未使用,Frost Effect Unused
+AIlb,辅,Support,闪电效果  未使用,Lightning Effect Unused
+AIpb,辅,Support,毒药效果  未使用,Poison Effect Unused
+Arel,辅,Support,恢复生命+100,Restore Health +100
+Arll,辅,Support,恢复生命+200,Restore Health +200
+AIcf,辅,Support,献祭+200,Sacrifice +200
+AIrm,辅,Support,恢复魔法+25%,Restore Mana +25%
+AIrn,辅,Support,恢复魔法+200%,Restore Mana +200%
+AIad,辅,Support,光环-减防-50,Aura - Reduce Defense -50
+AIcd,辅,Support,光环-战鼓 未使用,Aura - War Drums Unused
+AIba,辅,Support,光环-辉煌 未使用,Aura - Brilliance Unused
+AIav,辅,Support,光环-吸血 未使用,Aura - Lifesteal Unused
+AIar,辅,Support,光环-强击20%远程,Aura - Strong Strike 20% Ranged
+AIae,辅,Support,光环-耐力 未使用,Aura - Endurance Unused
+AIau,辅,Support,光环-邪恶 未使用,Aura - Evil Unused
+AIev,辅,Support,闪避15%,Evasion 15%
+AImb,防,Defense,魔法值+100,Mana +100
+AIbm,防,Defense,魔法值+200,Mana +200
+AIsx,辅,Support,攻击速度+40%,Attack Speed +40%
+AIs2,辅,Support,攻击速度+15%,Attack Speed +15%
+AIsr,辅,Support,魔法伤害减少20%,Magic Damage Reduction 20%
+ANss,辅,Support,魔法护盾10秒,Magic Shield 10 seconds
+AImt,辅,Support,传送权杖,Teleportation Staff
+AIdv,辅,Support,神圣护甲(摆脱怪),Holy Armor (Escape Monster)
+AId0,防,Defense,护甲+10,Armor +10
+AIpx,属,S,能永久增加生命值的物品+1000,Item that Permanently Increases Health +1000
+AIlz,防,Defense,生命值+5000(战神死神),Health +5000 (Wargod Deathgod)
+AIaz,防,Defense,力量提升150点(土神),Strength Increase 150 Points (Earth God)
+AIbx,辅,Support,重击 未使用,Heavy Strike Unused
+AItx,攻,Attack,攻击力+200风,Attack Power +200 Wind
+AIgx,辅,Support,恢复生命+1% 作废回得太快,Restore Health +1% Discarded, Recovers Too Fast
+AIsz,辅,Support,慢性毒药 减攻减移 未使用,Chronic Poison Reduce Attack Reduce Movement Unused
+AIcs,辅,Support,致命一击20%3倍,Critical Strike 20% 3x
+AIx3,防,Defense,智力+10,Intelligence +10
+AIx4,防,Defense,力量+10,Strength +10
+A00L,初始,Initial,空白魔法书,Blank Spellbook
+A01X,攻击-刀剑,Attack,雷霆一击,Thunder Strike
+A02L,初始,Initial,切换背包,Switch Backpack
+A018,辅助-魔法,Support,减速,Slow
+A01A,辅助-魔法,Support,心灵之火,Inner Fire
+A02O,光环,Aura,专注光环,Focus Aura
+A02P,召唤,Summon,召唤水元素,Summon Water Elemental
+A02Q,坚盾,Shield,天神下凡,God Descends
+A02R,攻击-魔法,Attack,暴风雪,Blizzard
+A02S,召唤,Summon,火凤凰,Fire Phoenix
+A02T,攻击-魔法,Attack,烈焰风暴,Flame Storm
+A02U,医疗,Healing,神圣之光,Holy Light
+A02W,召唤,Summon,群体传送,Mass Teleport
+A02X,光环,Aura,辉煌光环,Brilliance Aura
+A02Y,限制,Restriction,重击,Heavy Strike
+A02Z,辅助-魔法,Support,驱散,Dispel
+A031,辅助-魔法,Support,魔法吸吮,Mana Siphon
+A034,辅助-刀剑,Support,作废嗜血术,Discarded Bloodlust
+A035,光环,Aura,热血光环,Bloodlust Aura
+A036,医疗,Healing,圣光守卫,Holy Light Guard
+A037,攻击-弓箭,Attack,化学毒箭,Chemical Poison Arrow
+A038,坚盾,Shield,灵魂锁链,Soul Chain
+A039,攻击-弓箭,Attack,火油之箭,Fire Oil Arrow
+A03A,辅助-刀剑,Support,疯狂,Madness
+A03B,攻击-刀剑,Attack,粉碎,Crush
+A03C,限制,Restriction,诱捕,Ensnare
+A03D,辅助-魔法,Support,闪电刺盾,Lightning Shield
+A03G,医疗,Healing,医疗波,Healing Wave
+A03I,限制,Restriction,妖术,Hex
+A03L,攻击-刀剑,Attack,战争践踏,War Stomp
+A03M,召唤,Summon,毒蛇守卫,Serpent Ward
+A03O,光环,Aura,耐久光环,Endurance Aura
+A03P,攻击-刀剑,Attack,致命一击,Critical Strike
+A03Q,坚盾,Shield,重生,Rebirth
+A03R,召唤,Summon,野兽幽魂,Beast Spirit
+A03S,辅助-刀剑,Support,镜像,Mirror Image
+A03T,攻击-魔法,Attack,闪电链,Chain Lightning
+A03U,攻击-刀剑,Attack,震荡波,Shockwave
+A03V,其它,Other,占据-改附身，死后英雄出现,Possession - Changed to Possession, Hero Appears After Death
+A03W,辅助-魔法,Support,反魔法外壳,Anti-Magic Shell
+A03X,召唤,Summon,复活死尸,Raise Dead
+A03Y,辅助-刀剑,Support,残废,Cripple
+A041,其它,Other,荒芜光环,Desolation Aura
+A043,限制,Restriction,诅咒,Curse
+A046,光环,Aura,吸血光环,Vampiric Aura
+A047,召唤,Summon,地狱火,Infernal
+A048,坚盾,Shield,尖刺外壳,Spiked Carapace
+A04C,辅助-魔法,Support,睡眠,Sleep
+A04E,攻击-刀剑,Attack,腐臭蜂群,Carrion Swarm
+A04F,神器秘技,Divine,死神-天魔噬魂-配件1,Death God - Heavenly Demon Soul Devour - Part 1
+A04G,光环,Aura,邪恶光环,Unholy Aura
+A04H,辅助-魔法,Support,霜冻护甲,Frost Armor
+A04I,攻击-魔法,Attack,霜冻新星,Frost Nova
+A04L,辅助-刀剑,Support,怒吼,Roar
+A04M,辅助-刀剑,Support,嘲讽,Taunt
+A04N,召唤,Summon,复仇之魂,Vengeful Spirit
+A04P,攻击-弓箭,Attack,神经毒箭,Neurotoxin Arrow
+A04T,医疗,Healing,生命恢复,Life Recovery
+A04U,坚盾,Shield,硬化皮肤,Hardened Skin
+A04W,辅助-魔法,Support,瓦解之火,Fire of Disintegration
+A04Y,辅助-魔法,Support,飓风,Hurricane
+A051,攻击-刀剑,Attack,刀阵旋风,Blade Storm
+A052,神器秘技,Divine,火神-火神合体,Fire God - Fire God Fusion
+A053,召唤,Summon,复仇之魂,Vengeful Spirit
+A054,神器秘技,Divine,水神-天降甘霖,Water God - Heavenly Rain
+A055,光环,Aura,强击光环,Command Aura
+A056,攻击-刀剑,Attack,暗影突袭,Shadow Assault
+A059,辅助-刀剑,Support,献祭,Sacrifice
+A05A,限制,Restriction,纠缠根须,Entangling Roots
+A05B,攻击-魔法,Attack,流星雨,Meteor Shower
+A05C,召唤,Summon,自然之力,Force of Nature
+A05D,光环,Aura,荆棘光环,Thorns Aura
+A05F,坚盾,Shield,闪避,Evasion
+A05G,召唤,Summon,产卵触角,Spawn Tentacle
+A05J,攻击-刀剑,Attack,分裂攻击,Split Attack
+A05M,召唤,Summon,召唤海元素,Summon Sea Elemental
+A05O,攻击-魔法,Attack,雷暴-仙器在用,Thunderstorm - Artifact in Use
+A05P,神器秘技,Divine,冥王-血腥之舞-配件,Hades - Bloody Dance - Part
+A05Q,其它,Other,工厂改成树，会产生小精灵，地雷,Factory Changed to Tree, Produces Sprites, Landmines
+A05R,辅助-刀剑,Support,恐怖嚎叫,Terrifying Howl
+A05S,BOSS,Boss,投石,Stone Throw
+A05T,攻击-魔法-合成,Attack-Craft,死亡之指,Finger of Death
+A05U,辅助-魔法,Support,沉默魔法,Silence
+A05Z,辅助-魔法,Support,生命汲取,Life Drain
+A061,其它,Other,符咒,Charm
+A062,限制,Restriction,霜冻闪电,Frost Lightning
+A063,攻击-魔法,Attack,霜冻喷射,Frost Jet
+A066,辅助-魔法,Support,魔法护盾,Magic Shield
+A067,攻击-弓箭,Attack,黑暗之箭,Dark Arrow
+A068,攻击-弓箭,Attack,冰冻箭,Frost Arrow
+A06A,医疗,Healing,医疗气雾,Healing Mist
+A06B,攻击-魔法,Attack,叉状闪电,Forked Lightning
+A06C,召唤,Summon,召唤火炎精灵,Summon Fire Elemental
+A06D,仙器秘技,Legendary,碎星之弓,Starbreaker Bow
+A06F,攻击-魔法,Attack,火山爆发 太卡作废,Volcanic Eruption Too Laggy Discarded
+A06G,攻击-刀剑,Attack,火焰呼吸,Fire Breath
+A06H,攻击-魔法,Attack,飓风群,Hurricane Swarm
+A06I,攻击-魔法,Attack,灵魂燃烧,Soul Burn
+A06J,攻击-弓箭,Attack,尸爆,Corpse Explosion
+A06K,攻击-刀剑,Attack,酸性炸弹,Acid Bomb
+A06L,攻击-刀剑,Attack,醉酒云雾,Drunken Haze
+A06M,其它,Other,魔鬼缠身,Possessed by Devil
+A06N,召唤,Summon,黑暗之门,Dark Portal
+A06O,其它,Other,黑暗转换,Dark Conversion
+A01F,攻击-魔法,Attack,火焰雨,Rain of Fire
+A01Q,攻击-弓箭,Attack,箭雨,Arrow Rain
+A02A,BOSS,Boss,邪恶触须,Evil Tentacles
+A02C,光环,Aura,专注光环-书,Focus Aura - Book
+A02D,光环,Aura,吸血光环-书,Vampiric Aura - Book
+A02E,光环,Aura,强击光环-书,Command Aura - Book
+A02F,光环,Aura,热血光环-书,Bloodlust Aura - Book
+A02H,光环,Aura,耐久光环-书,Endurance Aura - Book
+A02I,光环,Aura,荆棘光环-书,Thorns Aura - Book
+A04B,光环,Aura,辉煌光环-书,Brilliance Aura - Book
+A04Z,光环,Aura,邪恶光环-书,Unholy Aura - Book
+A05H,攻击-弓箭,Attack,一弓多箭,Multiple Arrows with One Bow
+A05L,攻击-弓箭,Attack,连射,Rapid Fire
+A05N,攻击-弓箭,Attack,连射-配件,Rapid Fire - Part
+A060,攻击-魔法,Attack,穿刺,Impale
+A06Q,辅,Support,分裂箭-水系(5),Split Arrow - Water (5)
+A06R,辅,Support,吸血+30%风,Lifesteal +30% Wind
+A070,辅,Support,分裂箭-风系(6),Split Arrow - Wind (6)
+A074,辅,Support,分裂箭-火系,Split Arrow - Fire
+A077,辅,Support,视野提高500,Vision Increase 500
+A07M,辅,Support,分裂箭-土系(5),Split Arrow - Earth (5)
+A07R,神器秘技,Divine,风神-龙卷风暴-主,Wind God - Tornado Storm - Main
+A07S,神器秘技,Divine,风神-龙卷风暴-副,Wind God - Tornado Storm - Sub
+A082,辅,Support,吸血+30%水,Lifesteal +30% Water
+A088,仙器秘技,Legendary,凤凰之弓,Phoenix Bow
+A07Q,仙器秘技,Legendary,焚天之弓,Heaven Burning Bow
+A07T,仙器秘技,Legendary,碧波之剑,Azure Wave Sword
+A04D,仙器秘技,Legendary,裁决之剑,Judgment Sword
+A081,仙器秘技,Legendary,破军之剑,Army Breaking Sword
+A08I,仙器秘技,Legendary,亡灵天灾,Undead Scourge
+A08J,仙器秘技,Legendary,鬼哭神嚎,Ghostly Wail
+A08K,仙器秘技,Legendary,灼热光线,Scorching Ray
+A08O,辅,Support,恢复魔法+500%,Restore Mana +500%
+A08T,仙器秘技,Legendary,圣光降临,Holy Light Descends
+A08W,仙器秘技,Legendary,邪恶气息,Evil Aura
+A09E,神器秘技,Divine,死神-天魔噬魂-配件2,Death God - Heavenly Demon Soul Devour - Part 2
+A09F,神器秘技,Divine,死神-天魔噬魂,Death God - Heavenly Demon Soul Devour
+A06T,仙器秘技,Legendary,天雷乱舞,Heavenly Thunder Dance
+A09P,防,Defense,生命值+200,Health +200
+A09Q,攻,Attack,攻击力+10,Attack Power +10
+A09V,攻,Attack,攻击力+100,Attack Power +100
+A09Z,辅,Support,致命一击+20%八倍(战神),Critical Strike +20% Eightfold (Wargod)
+A0A2,辅,Support,魔法护盾5秒,Magic Shield 5 seconds
+A0A7,辅,Support,恢复生命+50,Restore Health +50
+A0A9,攻,Attack,攻击力+40,Attack Power +40
+A0AF,辅,Support,分裂15%,Split 15%
+A0AG,攻,Attack,攻击力+5,Attack Power +5
+A0AL,中立,Neutral,火山爆发,Volcanic Eruption
+A0AM,中立,Neutral,燃灰(箭矢),Burning Ash (Arrow)
+A0AN,中立,Neutral,镜像3,Mirror Image 3
+A0AO,中立,Neutral,尖刺外壳100%反弹,Spiked Carapace 100% Reflect
+A0AP,中立,Neutral,重击20%,Heavy Strike 20%
+A0AQ,中立,Neutral,浸毒武器,Poisoned Weapon
+A0AR,中立,Neutral,慢性毒药,Chronic Poison
+A0AS,医疗,Healing,治疗守卫-回血光环,Healing Ward - Health Recovery Aura
+A0AT,BOSS,Boss,分裂箭(1),Split Arrow (1)
+A0AU,BOSS,Boss,坐骑,Mount
+A0AX,BOSS,Boss,叉状闪电,Forked Lightning
+A0AY,BOSS,Boss,分裂箭(2),Split Arrow (2)
+A0B3,神器秘技,Divine,土神-诺姆之怒,Earth God - Gnome's Wrath
+A0B4,神器秘技,Divine,土神-裂地之牙,Earth God - Earth Splitter Fang
+A0B5,神器秘技,Divine,水神-冰霜喷雾,Water God - Frost Breathe
+A0B7,神器秘技,Divine,土神-裂地之牙-配件,Earth God - Earth Splitter Fang - Part
+A0B6,神器秘技,Divine,火神-火神合体-配件,Fire God - Fire God Fusion - Part
+A0B2,辅,Support,吸血+30%,Lifesteal +30%
+A0B8,神器秘技,Divine,风神-强袭风暴,Wind God - Assault Storm
+A0B9,神器秘技,Divine,风神-红色罡风雷暴,Wind God - Red Gale Thunderstorm
+A0BD,战神技,Wargod,冲锋陷阵,Charge into Battle
+A0BE,战神技,Wargod,狂战八方,Berserk in All Directions
+A0BF,战神技,Wargod,战神暴击-装饰,Wargod Critical
+A0BG,战神技,Wargod,战神暴击-暴击,Wargod Critical - Critical
+A0BH,BOSS,Boss,诱捕,Ensnare
+A0BI,战神技,Wargod,战神暴击-雷霆一击,Wargod Critical - Thunder Strike
+A0BJ,战神技,Wargod,战神暴击第二,Wargod Critical Second
+A0BK,魔器,Demonic relic,能量增幅100%,Energy Amplification 100%
+A0BP,魔器,Demonic relic,戳魂魔槊,Soul Piercing Spear
+A0BO,魔器,Demonic relic,镜盾-幻象物品,Mirror Shield - Illusion Item
+A0BQ,BOSS,Boss,分裂箭(3),Split Arrow (3)
+A0BR,初始,Initial,能获取经验值的物品(1),Item that Can Gain Experience (1)
+A0BS,U,U,增加攻击力的物品50,Item that Increases Attack Power 50
+A0BT,U,U,增加攻击力的物品100,Item that Increases Attack Power 100
+A0BU,U,U,增加攻击力的物品150,Item that Increases Attack Power 150
+A0BV,U,U,增加攻击力的物品200,Item that Increases Attack Power 200
+A0BW,U,U,能提高护甲的物品30,Item that Increases Armor 30
+A0BX,U,U,能提高护甲的物品60,Item that Increases Armor 60
+A0BY,U,U,能提高护甲的物品90,Item that Increases Armor 90
+A0BZ,U,U,能提高护甲的物品120,Item that Increases Armor 120
+A0C1,U,U,增加攻击力的物品10,Item that Increases Attack Power 10
+A0C2,U,U,能提高护甲的物品5,Item that Increases Armor 5
+A0C3,U,U,能提高进攻速度的物品05,Item that Increases Attack Speed 05
+A0C4,U,U,能提高进攻速度的物品10,Item that Increases Attack Speed 10
+A0C5,U,U,能提高进攻速度的物品15,Item that Increases Attack Speed 15
+A0C6,U,U,能提高进攻速度的物品20,Item that Increases Attack Speed 20
+A0C0,BOSS,Boss,叉状闪电(城堡),Forked Lightning (Castle)
+A0C7,U,U,增加攻击力的物品300,Item that Increases Attack Power 300
+A0C8,U,U,增加攻击力的物品500,Item that Increases Attack Power 500
+A0C9,攻击-刀剑,Attack,刀轮阵,Blade Wheel Formation
+A0CA,BOSS,Boss,减防光环100(城堡),Defense Reduction Aura 100 (Castle)
+A0CC,BOSS,Boss,医疗波(地穴),Healing Wave (Cave)
+A0CB,BOSS,Boss,闪电攻击,Lightning Attack
+A0CD,战兽,War Beast,战兽卸载,War Beast Unload
+A0CF,战兽,War Beast,战兽卸载-书,War Beast Unload - Book
+A0CE,战兽,War Beast,永久增加攻击力的物品,Item that Permanently Increases Attack Power
+A0CH,BOSS,Boss,分裂攻击,Split Attack
+A0CG,BOSS,Boss,治疗守卫(城堡),Healing Ward (Castle)
+A0CI,BOSS,Boss,霜冻新星,Frost Nova
+A0CJ,BOSS,Boss,混乱之雨,Chaos Rain
+A0CK,BOSS,Boss,混乱之雨-地狱火,Chaos Rain - Infernal
+A0CL,BOSS,Boss,复活死尸,Raise Dead
+A020,U,U,生命值+5000,Health +5000
+A0CM,BOSS,Boss,凤凰火焰,Phoenix Flame
+A0B1,BOSS,Boss,嗜血术,Bloodlust
+A0AZ,中立,Neutral,建筑回复光环,Building Recovery Aura
+A0CN,医疗,Healing,治疗守卫-回魔光环,Healing Ward - Mana Recovery Aura
+A0CO,BOSS,Boss,恐怖嚎叫,Terrifying Howl
+A0CR,BOSS,Boss,罪恶之王-发粪涂墙,King of Sin - Throwing Dung on the Wall
+A0CT,防,Defense,生命值+2000(天使翅膀),Health +2000 (Angel Wings)
+A0CV,辅,Support,移动速度+150,Movement Speed +150
+A0CW,仙器秘技,Legendary,冰雪之弓,Ice and Snow Bow
+A0CX,战兽,War Beast,耐久光环,Endurance Aura
+A0CY,战兽,War Beast,战兽信使,War Beast Courier
+A0CZ,战兽,War Beast,战兽信使-书,War Beast Courier - Book
+A0D0,神器秘技,Divine,水神-电闪雷鸣,Water God - Thunder and Lightning
+A0D1,神器秘技,Divine,火神-红莲业火,Fire God - Red Lotus Hellfire
+A0D2,BOSS,Boss,城堡-献祭,Castle - Sacrifice
+A0D3,BOSS,Boss,飞空战舰(建筑),Airship (Building)
+A0D4,BOSS,Boss,飞空战舰(单位),Airship (Unit)
+A0D5,初始,Initial,魔法吸吮,Mana Siphon
+A0D9,BOSS,Boss,闪烁,Blink
+A01E,初始,Initial,变身,Transform
+A01U,初始,Initial,变身[力]剑手,Transform [Strength] Swordsman
+A01V,初始,Initial,变身[力]圣骑士,Transform [Strength] Paladin
+A01Y,初始,Initial,变身[力]牛头人,Transform [Strength] Tauren
+A01Z,初始,Initial,变身[力]矮人王,Transform [Strength] Dwarf King
+A021,初始,Initial,变身[力]野蛮人,Transform [Strength] Barbarian
+A022,初始,Initial,变身[弓]暗影猎手,Transform [Bow] Shadow Hunter
+A023,初始,Initial,变身[弓]精灵,Transform [Bow] Elf
+A024,初始,Initial,变身[弓]魔战士,Transform [Bow] Magic Warrior
+A025,初始,Initial,变身[弓]黑精灵,Transform [Bow] Dark Elf
+A026,初始,Initial,变身[敏]光明骑士,Transform [Agility] Light Knight
+A027,初始,Initial,变身[敏]守望者,Transform [Agility] Watcher
+A028,初始,Initial,变身[敏]恶魔猎手,Transform [Agility] Demon Hunter
+A029,初始,Initial,变身[敏]狂战士A,Transform [Agility] Berserker A
+A02B,初始,Initial,变身[敏]狂战士B,Transform [Agility] Berserker B
+A0DB,初始,Initial,变身[敏]狂战士C,Transform [Agility] Berserker C
+A0DC,初始,Initial,变身[魔]光系魔法师,Transform [Magic] Light Mage
+A0DD,初始,Initial,变身[魔]土系魔法师,Transform [Magic] Earth Mage
+A0DE,初始,Initial,变身[魔]暗系魔法师,Transform [Magic] Dark Mage
+A0DF,初始,Initial,变身[魔]水系魔法师,Transform [Magic] Water Mage
+A0DG,初始,Initial,变身[魔]火系魔法师,Transform [Magic] Fire Mage
+A0DH,初始,Initial,变身[魔]风系魔法师,Transform [Magic] Wind Mage
+A000,魔器,Demonic relic,能量增幅器,Energy Amplifier
+A001,防,Defense,生命值+2000(恶魔翅膀),Health +2000 (Demon Wings)
+A002,BOSS,Boss,传送权杖,Teleportation Staff
+A004,辅,Support,光环-减防-150(不分敌我),Aura - Reduce Defense -150 (Affects All)
+A005,辅,Support,恢复生命-100(损血),Restore Health -100 (Blood Loss)
+A006,防,Defense,生命值+3000(堕落天使翅膀),Health +3000 (Fallen Angel Wings)
+A007,辅,Support,恢复生命+300(堕天使之翼),Restore Health +300 (Fallen Angel Wings)
+A008,魔器,Demonic relic,堕落天使之翼-书,Fallen Angel Wings - Book
+A009,神器秘技,Divine,火神-炎之炼狱,Fire God - Inferno
+A00B,魔器,Demonic relic,灵魂之瓶-操纵死尸,Soul Bottle - Control Corpse
+A00C,U,U,一击必杀,One Hit Kill
+A00D,初始,Initial,能永久增加生命值的物品,Item that Permanently Increases Health
+A00F,BOSS,Boss,城堡防御,Castle Defense
+A00G,SEC,SEC,敌军生命值,Enemy Health
+A00H,SEC,SEC,难度加强攻击力,Increased Difficulty Attack Power
+A00I,SEC,SEC,敌军护甲,Enemy Armor
+A00J,SEC,SEC,敌军攻击速度,Enemy Attack Speed
+A00K,SEC,SEC,敌军将军生命值,Enemy General Health
+A00M,SEC,SEC,敌军将军攻击力,Enemy General Attack Power
+A00N,SEC,SEC,敌军攻击力,Enemy Attack Power
+A00O,SEC,SEC,难度加强生命值,Increased Difficulty Health
+A00Q,辅,Support,移动速度-200负数无效作废,Movement Speed -200 Negative Value Invalid Discarded
+A00R,坚盾,Shield,重生-测试专用无限重生,Rebirth - Test Use Infinite Rebirth
+A00S,神器秘技,Divine,雷帝-雷之领域,Thunder Emperor - Thunder Domain
+A00V,神器秘技,Divine,雷帝-雷蛇乱舞,Thunder Emperor - Thunder Serpent Dance
+A00T,神器秘技,Divine,冥王-血腥之舞,Hades - Bloody Dance
+A00W,神器秘技,Divine,冥王-地狱死魂炮,Hades - Hell Soul Cannon
+A00U,辅,Support,吸血+30%冥,Lifesteal +30% Dark
+A00Y,辅,Support,吸血+30%雷,Lifesteal +30% Thunder
+A00Z,辅,Support,分裂箭-雷系(6),Split Arrow - Thunder (6)
+A010,攻击-魔法,Attack,圣光弹,Holy Light Bullet
+A012,魔器,Demonic relic,灵魂之瓶-灵力护盾,Soul Bottle - Spiritual Shield
+A013,辅,Support,分裂30%,Split 30%
+A014,辅,Support,吸血+35%(土神战神),Lifesteal +35% (Earth God Wargod)
+A015,辅,Support,吸血+25%,Lifesteal +25%
+A00A,防,Defense,生命值+1500,Health +1500
+A016,防,Defense,生命值+400,Health +400
+A003,辅,Support,魔法伤害减少30%,Magic Damage Reduction 30%
+A00E,攻击-魔法,Attack,连珠火球,Chain Fireball
+A00P,辅,Support,恢复生命+2(少许),Restore Health +2 (Slight)
+A011,神器秘技,Divine,雷帝-减速光环,Thunder Emperor - Slow Aura
+A017,辅,Support,攻击速度+1000%脑残模式专用,Attack Speed +1000% For Idiot Mode
+A019,神器秘技,Divine,雷帝-叉状闪电,Thunder Emperor - Forked Lightning
+A00X,神器秘技,Divine,土神-魔法防御,Earth God - Magic Defense
+A01B,神器秘技,Divine,土神-大地恩情,Earth God - Earth Blessing
+A01C,神器秘技,Divine,土神-战铠-书,Earth God - Battle Armor - Book
+A01D,高级,Advanced,火系-召唤火炎精灵,Fire - Summon Fire Elemental
+A01G,衣,Clothing,召唤火炎精灵,Summon Fire Elemental
+A01H,衣,Clothing,木精灵守护者,Wood Elf Guardian
+A01I,神器秘技,Divine,精灵王-分裂攻击,Elf King - Split Attack
+A01K,高级,Advanced,木系-召唤木精灵守护者,Wood - Summon Wood Elf Guardian
+A01J,神器秘技,Divine,精灵王-生命回复光环(建筑盟军),Elf King - Life Recovery Aura (Building Allies)
+A01L,神器秘技,Divine,精灵王-落叶飞花,Elf King - Falling Leaves
+A01M,神器秘技,Divine,精灵王-凤凰火焰,Elf King - Phoenix Flame
+A01N,神器秘技,Divine,精灵王-生命汲取,Elf King - Life Drain
+A01O,神器秘技,Divine,精灵王-雷霆一击,Elf King - Thunder Strike
+A01P,衣,Clothing,魅惑之花,Enchanted Flower
+A01R,神器秘技,Divine,土神-大地恩情-书,Earth God - Earth Blessing - Book
+A01S,神器秘技,Divine,精灵王-权杖-书,Elf King - Scepter - Book
+A01T,辅,Support,吸血+20%绿,Lifesteal +20% Green
+A01W,辅,Support,蝗虫,Locust
+A02G,辅,Support,乌鸦形态,Raven Form
+A02J,神器秘技,Divine,精灵王-致命一击,Elf King - Critical Strike
+A02K,召唤,Summon,召唤火炎精灵-凤凰火焰,Summon Fire Elemental - Phoenix Flame 

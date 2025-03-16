@@ -7033,7 +7033,7 @@ function Trig_Skill_buy2_Func002Func001C takes nothing returns boolean
     return true
 endfunction
 function Trig_Skill_buy2_Func002C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 11) == "[Guardian]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 10) == "[Guardian]"))then
         return false
     endif
     return true
@@ -7140,7 +7140,7 @@ function Trig_Skill_buy3_Func003Func001C takes nothing returns boolean
     return true
 endfunction
 function Trig_Skill_buy3_Func003C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 11) == "[Guardian]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 10) == "[Guardian]"))then
         return false
     endif
     return true
@@ -7247,7 +7247,7 @@ function Trig_Skill_buy4_Func003Func001C takes nothing returns boolean
     return true
 endfunction
 function Trig_Skill_buy4_Func003C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 11) == "[Guardian]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 10) == "[Guardian]"))then
         return false
     endif
     return true
