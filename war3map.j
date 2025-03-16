@@ -6468,7 +6468,7 @@ function Trig_Hero_choice_Actions takes nothing returns nothing
     if(Trig_Hero_choice_Func001C())then
         call SetUnitOwner(GetTriggerUnit(), GetTriggerPlayer(), true)
         set udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] = GetTriggerUnit()
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_ALWAYSHINT, (GetPlayerName(GetTriggerPlayer()) + ("选择了" + (GetUnitName(GetTriggerUnit()) + "！"))))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_ALWAYSHINT, (GetPlayerName(GetTriggerPlayer()) + ("Chosed" + (GetUnitName(GetTriggerUnit()) + "!"))))
         call UnitAddAbilityBJ('A02L', GetTriggerUnit())
         call UnitMakeAbilityPermanent(GetTriggerUnit(), true, 'A02L')
         call UnitAddAbilityBJ('A00L', GetTriggerUnit())
@@ -18789,7 +18789,7 @@ endfunction
 
 
 function config takes nothing returns nothing
-    call SetMapName("|cffffff00★★Evil Hunter★★ (v.0.0.1)")
+    call SetMapName("|cffffff00★★Evil Hunter★★ (v.0.0.2)")
     call SetMapDescription("|cffffffcc Ready to protect the world from the demon legion? \n Author: Sunness & OwenSanzas")
     call SetPlayers(9)
     call SetTeams(9)

@@ -1,0 +1,185 @@
+﻿ID,Original Name,Translate
+I000,#NAME?,Fire Attack Skill
+I001,#NAME?,Water Attack Skill
+I002,#NAME?,Fire Arrow Attack Skill
+I003,#NAME?,Earth Attack Skill
+I007,黑龙筋,Black Dragon Sinew
+I004,水晶箭,Crystal Arrow
+I009,天霜之弓,Frostfall Bow
+I00Q,攻击技能,Attack Skill
+I00R,辅助技能,Support Skill
+I00S,医疗技能,Healing Skill
+I00T,光环技能,Aura Skill
+I00U,防御技能,Defense Skill
+I00V,奖励物资1,Resource Reward 1
+I00W,奖励物资1,Resource Reward 1
+I00X,奖励物资4,Resource Reward 4
+I00Y,奖励物资3,Resource Reward 3
+I005,爆炎之剑,Inferno Edge
+I014,火雨之弓,Ember Rain Bow
+I015,风神战弓,Tempest God's Warbow
+I016,冰雪之弓,Glacial Hunter
+I017,碎星之弓,Starshatter Bow
+I018,魔法弓,Arcane Longbow
+I019,焚天之弓,Skyfire Bow
+I01A,凤凰之弓,Phoenix Wing Bow
+I00Z,魔法剑,Runic Blade
+I006,赤龙牙,Crimson Dragon Fang
+I010,阵法宝石,Formation Crystal
+I011,符纹宝石,Runic Gem
+I012,精灵树枝,Elven Branch
+I013,魔法杖,Sorcerer's Staff
+I01B,水神权杖,Tidal Sovereign's Scepter
+I01C,大地神锤,Terra Lord's Hammer
+I01D,火神战刃,Flamelord's Warblades
+I01E,碧波之剑,Azure Tide Blade
+I01F,灼热之剑,Blazing Edge
+I01H,裁决之剑,Arbiter's Sword
+I01I,圣光法杖,Radiant Focus
+I01J,暴雪法杖,Winterfrost Staff
+I01L,闪电法杖,Lightning Rod
+I021,龙骨法杖,Dragon Bone Staff
+I024,灵木法杖,Spiritwood Staff
+I025,天火法杖,Molten Medium
+I026,邪恶法杖,Malevolent Staff
+I028,诅咒法杖,Hex Bringer Staff
+I029,破军之剑,Broadsword
+I02A,雷暴法杖,Bolt Medium
+I008,死神战剑,Reaper's Warblade
+I02E,地狱之剑,Hellfire Sword
+I02F,活力之戒,Vitality Ring
+I02G,生命之戒,Life Ring
+I02H,幸运之戒,Fortune Ring
+I02I,天使手镯,Angel Bracelet 
+I00G,魔力护符,Arcane Charm
+I00H,魔法挂坠,Arcane Pendant
+I00L,魔力球,Arcane Orb
+I02J,魔源结晶,Arcane Source Crystal
+I00I,诅咒铠甲,Hexwoven Armor
+I00J,黑魔剑,Shadow Magic Blade
+I00K,骷髅冠,Crown of Skulls
+I00M,亡灵盾,Specter Shield
+I00N,骨质胸甲,Osseous Breastplate
+I02K,亡灵护身符,Wraith Amulet
+I02L,吸血鬼披风,Bloodthirst Cloak
+I02M,死神靴,Deathlord's Greaves
+I02N,鬼王斗篷,Phantom King's Shroud
+I02O,死神战铠,Death God's Battleplate
+I02P,真实头环,Verity Circlet
+I02Q,真实面具,Verity Mask
+I02R,真实头冠,Verity Crown
+I02S,威严护肩,Sovereign Pauldrons
+I02T,威严塔盾,Sovereign Tower Shield
+I02U,威严胸甲,Sovereign Breastplate
+I02V,卓越战靴,Paragon Greaves
+I02W,卓越护腿,Paragon Leggings
+I02X,卓越腰带,Paragon Belt
+I02Y,银光巨战斧,Mithril Greataxe
+I02Z,银光短战棍,Mithril Mace
+I030,银光连指手套,Mithril Gauntlets
+I031,光明护身符,Luminous Talisman
+I032,光明纹章,Luminous Crest
+I033,光明之眼,Luminous Eye
+I034,勇气匕首,Valiant Dagger
+I035,勇气臂盾,Valiant Buckler
+I036,勇气指环,Valiant Ring
+I037,荣耀拳爪,Glory Talons
+I038,混沌双刃斧,Chaos Cleaver
+I039,圣光手镯,Hallowed Bracelet
+I03A,神圣头盔,Divine Helm
+I03B,华丽战甲,Magnificent Battleplate
+I03C,秘银披风,Mithril Cloak
+I03D,战神圣铠,Wargod's Hallowed Plate
+I03E,战神圣斧,Wargod's Sacred Axe
+I00A,珊瑚头饰,Coral Circlet
+I00B,水之心,Aqua Crystal
+I00D,温蒂的祝福,Aquaria's Blessing
+I00E,炎之结晶,Blaze Crystal
+I00F,火龙臂盾,Firedrake Buckler
+I00O,诺姆的图腾,Gnome's Totem
+I00P,诺姆的守护,Gnome's Protection
+I03F,温蒂的庇护,Aquaria's Protection
+I03G,沧浪项链,Tidal Necklace
+I03H,沙拉曼德的精神,Salamander's Essence
+I03I,沙拉曼德的灵魂,Salamander's Soul
+I03J,地狱火炬,Infernal Torch
+I03K,风之纹章,Zephyr Crest
+I03L,风之号角,Gale Horn
+I00C,海妖壳甲,Siren Shell
+I03M,鱼鳞镶嵌甲,Scale Armor
+I03N,鲨皮腰带,Sharkskin Belt
+I03O,飘逸之戒,Windswept Ring
+I03P,飞鹰锁环甲,Eagle Chainmail
+I03Q,疾风之靴,Swift Gale Boots
+I03R,闪电手套,Lightning Gloves
+I03S,火炎护身符,Flame Amulet
+I03T,流光刺刀,Blazing Rapier
+I03U,暮光指环,Twilight Ring
+I03V,坚韧的胸甲,Stalwart Breastplate
+I03W,锁链流星锤,Chain Meteor Hammer
+I03X,洞穴巨魔腰带,Cavern Troll Belt
+I03Y,裂地战盾,Earthbreaker Shield
+I03Z,刻着神秘符纹的石锤,Runic Stone Hammer
+I040,黄宝石手环,Amber Bracelet
+I041,憎恨之王的镜盾(魔器),Abyss Mirror Shield (Demonic Relic)
+I044,钢制盾牌,Steel Buckler
+I047,破坏之王的戳魂魔槊(魔器),Soul-Piercing Lance (Demonic Relic)
+I04E,罪恶之王的护心镜(魔器),Heart-Warding Mirror (Demonic Relic)
+I04F,西弗儿的印记,Sylph's Sigil
+I04G,西弗儿的关爱,Sylph's Blessing
+I04H,土神战铠,Terralord's Battle Armor
+I04I,水神战铠,Tidalord's Battle Armor
+I04J,风神战铠,Stormlord's Battle Armor
+I04K,火神战铠,Flamelord's Battle Armor
+I01O,折磨女王的能量增幅器(魔器),Energy Amplifier (Demonic Relic)
+I020,痛苦之王的灵魂之瓶(魔器),Soul Vessel (Demonic Relic)
+I02D,升级盟军士兵武器1,Ally Weapon Upgrade I
+I042,升级盟军士兵装甲2,Ally Armor Upgrade II
+I043,升级盟军士兵装甲3,Ally Armor Upgrade III
+I045,升级盟军士兵装甲1,Ally Armor Upgrade I
+I049,升级盟军士兵装甲4,Ally Armor Upgrade IV
+I04D,升级盟军士兵武器2,Ally Weapon Upgrade II
+I04L,升级盟军士兵武器3,Ally Weapon Upgrade III
+I04M,升级盟军士兵武器4,Ally Weapon Upgrade IV
+I04N,封印战兽的蛋,Sealed War Beast Egg
+I04O,重生十字章,Ankh of Rebirth
+I04P,天使之翼,Angel Wings
+I04Q,恶魔之翼,Demonic Wings
+I01S,恶魔法袍,Infernal Robes
+I04R,黑暗之心,Heart of Darkness
+I04S,堕落天使之翼,Fallen Angel Wings
+I04T,经验值提升8W,XP + 8W
+I04U,传送,Teleport
+I04V,要求盟军返回驻地,Recall Allies to Base
+I04W,雷神战铠,Thunderlord's Battle Armor
+I04X,冥皇战铠,Netherworld Sovereign Plate
+I04Y,雷神之刺,Thunderlord's Spike
+I04Z,冥皇权杖,Netherworld Sovereign Rod
+I050,雷龙之角,Thunder Drake Horn
+I051,能量之瓶,Energy Flask
+I052,雷克斯的力量,Rex's Might
+I053,迅猛之爪,Swift Strike Claw
+I054,雷电之芯,Lightning Core
+I055,闪电之球,Thunder Orb
+I056,雷克斯的权威,Rex's Authority
+I057,迅雷腰带,Charge Waistband
+I058,镇魂法决,Soul Binding Decree
+I059,灵魂之石,Spirit Stone
+I05A,哈迪斯的血腥,Hades' Bloodthirst
+I05B,安魂之笛,Soul-Calming Flute
+I05C,养魂之法,Soul Nurturing Method
+I05D,炼魂符纹,Soul Forging Rune
+I05E,哈迪斯的残忍,Hades' Cruelty
+I05F,亡魂之气,Wraith Essence
+I05G,正直勋章,Medal of Integrity
+I01G,高级火系魔法指南,Advanced Pyromancy Guide
+I01Z,灵木之心,Treant Heart
+I05H,精灵王权杖,Elven Sovereign Scepter
+I05I,雅露的微笑,Alura's Smile
+I05J,雅露的温馨,Alura's Warmth
+I05K,精灵王战铠,Elven Sovereign Armor
+Anei,选择使用者,Choose User
+,奖励物资1,Reward Chest 1
+,奖励物资2,Reward Chest 2
+,奖励物资3,Reward Chest 3
+,奖励物资4,Reward Chest 4

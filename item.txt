@@ -1,0 +1,202 @@
+<a href="#I000">I000</a> -火系攻击技能<br>
+<a href="#I001">I001</a> -水系攻击技能<br>
+<a href="#I002">I002</a> -火系攻击技能-箭<br>
+<a href="#I003">I003</a> -地系攻击技能<br>
+<a href="#I007">I007</a> <font color="#CC99FF">黑龙筋</font><br>
+<a href="#I004">I004</a> <font color="#CC99FF">水晶箭</font><br>
+<a href="#I009">I009</a> <font color="#00FFFF">天<font color="#00D5FF">霜<font color="#00AAFF">之<font color="#0080FF">弓</font></font></font></font><br>
+<a href="#I00Q">I00Q</a> 攻击技能<br>
+<a href="#I00R">I00R</a> 辅助技能<br>
+<a href="#I00S">I00S</a> 医疗技能<br>
+<a href="#I00T">I00T</a> 光环技能<br>
+<a href="#I00U">I00U</a> 防御技能<br>
+<a href="#I00V">I00V</a> <font color="#00FFFF">奖励物资1</font><br>
+<a href="#I00W">I00W</a> <font color="#00FFFF">奖励物资1</font><br>
+<a href="#I00X">I00X</a> <font color="#00FFFF">奖励物资4</font><br>
+<a href="#I00Y">I00Y</a> <font color="#00FFFF">奖励物资3</font><br>
+<a href="#I005">I005</a> <font color="#FFFF80">爆<font color="#FFAA55">炎<font color="#FF552B">之<font color="#FF0000">剑</font></font></font></font><br>
+<a href="#I014">I014</a> <font color="#FFFF00">火<font color="#FFAA00">雨<font color="#FF5500">之<font color="#FF0000">弓</font></font></font></font><br>
+<a href="#I015">I015</a> <font color="#FFFF00">风<font color="#E6FF33">神<font color="#CCFF66">战<font color="#B3FF99">弓</font></font></font></font><br>
+<a href="#I016">I016</a> <font color="#00FFFF">冰<font color="#00D5FF">雪<font color="#00AAFF">之<font color="#0080FF">弓</font></font></font></font><br>
+<a href="#I017">I017</a> <font color="#00FFFF">碎<font color="#00FFBF">星<font color="#00FF80">之<font color="#00FF40">弓</font></font></font></font><br>
+<a href="#I018">I018</a> <font color="#CC99FF">魔法弓</font><br>
+<a href="#I019">I019</a> <font color="#FFFF00">焚<font color="#FFAA00">天<font color="#FF5500">之<font color="#FF0000">弓</font></font></font></font><br>
+<a href="#I01A">I01A</a> <font color="#FFFF00">凤<font color="#FFAA00">凰<font color="#FF5500">之<font color="#FF0000">弓</font></font></font></font><br>
+<a href="#I00Z">I00Z</a> <font color="#CCFF33">魔法剑</font><br>
+<a href="#I006">I006</a> <font color="#CCFF33">赤龙牙</font><br>
+<a href="#I010">I010</a> <font color="#CCFF33">阵法宝石</font><br>
+<a href="#I011">I011</a> <font color="#93C9FF">符纹宝石</font><br>
+<a href="#I012">I012</a> <font color="#93C9FF">精灵树枝</font><br>
+<a href="#I013">I013</a> <font color="#93C9FF">魔法杖</font><br>
+<a href="#I01B">I01B</a> <font color="#00FFFF">水<font color="#00D5FF">神<font color="#00AAFF">权<font color="#0080FF">杖</font></font></font></font><br>
+<a href="#I01C">I01C</a> <font color="#00FFFF">大<font color="#00FFBF">地<font color="#00FF80">神<font color="#00FF40">锤</font></font></font></font><br>
+<a href="#I01D">I01D</a> <font color="#FFFF80">火<font color="#FFAA55">神<font color="#FF552B">战<font color="#FF0000">刃</font></font></font></font><br>
+<a href="#I01E">I01E</a> <font color="#00FFFF">碧<font color="#00D5FF">波<font color="#00AAFF">之<font color="#0080FF">剑</font></font></font></font><br>
+<a href="#I01F">I01F</a> <font color="#FFFF80">灼<font color="#FFAA55">热<font color="#FF552B">之<font color="#FF0000">剑</font></font></font></font><br>
+<a href="#I01H">I01H</a> <font color="#FFFF00">裁<font color="#FFAA55">决<font color="#FF55AA">之<font color="#FF00FF">剑</font></font></font></font><br>
+<a href="#I01I">I01I</a> <font color="#FFFF00">圣<font color="#FFAA55">光<font color="#FF55AA">法<font color="#FF00FF">杖</font></font></font></font><br>
+<a href="#I01J">I01J</a> <font color="#00FFFF">暴<font color="#00D5FF">雪<font color="#00AAFF">法<font color="#0080FF">杖</font></font></font></font><br>
+<a href="#I01K">I01K</a> 之剑<br>
+<a href="#I01L">I01L</a> 闪电法杖<br>
+<a href="#I01M">I01M</a> 之剑<br>
+<a href="#I01N">I01N</a> 之剑<br>
+<a href="#I01P">I01P</a> 之剑<br>
+<a href="#I01Q">I01Q</a> 之剑<br>
+<a href="#I01R">I01R</a> 之剑<br>
+<a href="#I01T">I01T</a> 之剑<br>
+<a href="#I01U">I01U</a> 之剑<br>
+<a href="#I01V">I01V</a> 之剑<br>
+<a href="#I01W">I01W</a> 之剑<br>
+<a href="#I01X">I01X</a> 之剑<br>
+<a href="#I01Y">I01Y</a> 之剑<br>
+<a href="#I021">I021</a> 龙骨法杖<br>
+<a href="#I022">I022</a> 法杖<br>
+<a href="#I023">I023</a> 法杖<br>
+<a href="#I024">I024</a> <font color="#00FFFF">灵<font color="#00FFBF">木<font color="#00FF80">法<font color="#00FF40">杖</font></font></font></font><br>
+<a href="#I025">I025</a> 天火法杖<br>
+<a href="#I026">I026</a> <font color="#3E3E3E">邪<font color="#696969">恶<font color="#959595">法<font color="#C0C0C0">杖</font></font></font></font><br>
+<a href="#I027">I027</a> 法杖<br>
+<a href="#I028">I028</a> <font color="#3E3E3E">诅<font color="#696969">咒<font color="#959595">法<font color="#C0C0C0">杖</font></font></font></font><br>
+<a href="#I029">I029</a> <font color="#FFFF00">破<font color="#FFAA55">军<font color="#FF55AA">之<font color="#FF00FF">剑</font></font></font></font><br>
+<a href="#I02A">I02A</a> <font color="#FFFF00">雷<font color="#E6FF33">暴<font color="#CCFF66">法<font color="#B3FF99">杖</font></font></font></font><br>
+<a href="#I02B">I02B</a> 之剑<br>
+<a href="#I02C">I02C</a> 法杖<br>
+<a href="#I008">I008</a> <font color="#3E3E3E">死<font color="#696969">神<font color="#959595">战<font color="#C0C0C0">剑</font></font></font></font><br>
+<a href="#I02E">I02E</a> <font color="#3E3E3E">地<font color="#696969">狱<font color="#959595">之<font color="#C0C0C0">剑</font></font></font></font><br>
+<a href="#I02F">I02F</a> (天)活力之戒<br>
+<a href="#I02G">I02G</a> (天)生命之戒<br>
+<a href="#I02H">I02H</a> (天)幸运之戒<br>
+<a href="#I02I">I02I</a> <font color="#CC33FF">天使手镯</font><br>
+<a href="#I00G">I00G</a> [天]魔力护符<br>
+<a href="#I00H">I00H</a> [天]魔法挂坠<br>
+<a href="#I00L">I00L</a> [天]魔力球<br>
+<a href="#I02J">I02J</a> <font color="#CC33FF">魔源结晶</font><br>
+<a href="#I00I">I00I</a> [死]<font color="#CC33FF">诅咒铠甲</font><br>
+<a href="#I00J">I00J</a> [死]<font color="#00ff00">黑魔剑</font><br>
+<a href="#I00K">I00K</a> [死]<font color="#00ff00">骷髅冠</font><br>
+<a href="#I00M">I00M</a> [死]亡灵盾<br>
+<a href="#I00N">I00N</a> [死]<font color="#00FFFF">骨质胸甲</font><br>
+<a href="#I02K">I02K</a> (死)亡灵护身符<br>
+<a href="#I02L">I02L</a> (死)<font color="#00FFFF">吸血鬼披风</font><br>
+<a href="#I02M">I02M</a> (死)<font color="#00ff00">死神靴</font><br>
+<a href="#I02N">I02N</a> (死)<font color="#CC33FF">鬼王斗篷</font><br>
+<a href="#I02O">I02O</a> <font color="#3E3E3E">死<font color="#696969">神<font color="#959595">战<font color="#C0C0C0">铠</font></font></font></font><br>
+<a href="#I02P">I02P</a> (战1)真实头环<br>
+<a href="#I02Q">I02Q</a> (战1)<font color="#00ff00">真实面具</font><br>
+<a href="#I02R">I02R</a> (战1)<font color="#00FFFF">真实头冠</font><br>
+<a href="#I02S">I02S</a> (战2)威严护肩<br>
+<a href="#I02T">I02T</a> (战2)<font color="#00ff00">威严塔盾</font><br>
+<a href="#I02U">I02U</a> (战2)<font color="#00FFFF">威严胸甲</font><br>
+<a href="#I02V">I02V</a> (战3)卓越战靴<br>
+<a href="#I02W">I02W</a> (战3)<font color="#00ff00">卓越护腿</font><br>
+<a href="#I02X">I02X</a> (战3)<font color="#00FFFF">卓越腰带</font><br>
+<a href="#I02Y">I02Y</a> (战4)<font color="#00FFFF">银光巨战斧</font><br>
+<a href="#I02Z">I02Z</a> (战4)<font color="#00ff00">银光短战棍</font><br>
+<a href="#I030">I030</a> (战4)银光连指手套<br>
+<a href="#I031">I031</a> (战5)光明护身符<br>
+<a href="#I032">I032</a> (战5)<font color="#00ff00">光明纹章</font><br>
+<a href="#I033">I033</a> (战5)<font color="#00FFFF">光明之眼</font><br>
+<a href="#I034">I034</a> (战6)勇气匕首<br>
+<a href="#I035">I035</a> (战6)<font color="#00ff00">勇气臂盾</font><br>
+<a href="#I036">I036</a> (战6)<font color="#00FFFF">勇气指环</font><br>
+<a href="#I037">I037</a> (战)<font color="#CC33FF">荣耀拳爪</font><br>
+<a href="#I038">I038</a> (战)<font color="#CC33FF">混沌双刃斧</font><br>
+<a href="#I039">I039</a> (战)<font color="#CC33FF">圣光手镯</font><br>
+<a href="#I03A">I03A</a> (战)<font color="#CC33FF">神圣头盔</font><br>
+<a href="#I03B">I03B</a> (战)<font color="#CC33FF">华丽战甲</font><br>
+<a href="#I03C">I03C</a> (战)<font color="#CC33FF">秘银披风</font><br>
+<a href="#I03D">I03D</a> <font color="#8000FF">战<font color="#8055FF">神<font color="#80AAFF">圣<font color="#80FFFF">铠</font></font></font></font><br>
+<a href="#I03E">I03E</a> <font color="#8000FF">战<font color="#8055FF">神<font color="#80AAFF">圣<font color="#80FFFF">斧</font></font></font></font><br>
+<a href="#I00A">I00A</a> (水)珊瑚头饰<br>
+<a href="#I00B">I00B</a> (水)<font color="#00FFFF">水之心</font><br>
+<a href="#I00D">I00D</a> (水)<font color="#CC33FF">温蒂的祝福</font><br>
+<a href="#I00E">I00E</a> (火)<font color="#00FFFF">炎之结晶</font><br>
+<a href="#I00F">I00F</a> [火]<font color="#00ff00">火龙臂盾</font><br>
+<a href="#I00O">I00O</a> [土]<font color="#CC33FF">诺姆的图腾</font><br>
+<a href="#I00P">I00P</a> (土)<font color="#CC33FF">诺姆的守护</font><br>
+<a href="#I03F">I03F</a> [水]<font color="#CC33FF">温蒂的庇护</font><br>
+<a href="#I03G">I03G</a> (水)<font color="#00ff00">沧浪项链</font><br>
+<a href="#I03H">I03H</a> (火)<font color="#CC33FF">沙拉曼德的精神</font><br>
+<a href="#I03I">I03I</a> [火]<font color="#CC33FF">沙拉曼德的灵魂</font><br>
+<a href="#I03J">I03J</a> [火]<font color="#00FFFF">地狱火炬</font><br>
+<a href="#I03K">I03K</a> (风)<font color="#00ff00">风之纹章</font><br>
+<a href="#I03L">I03L</a> (风)<font color="#00FFFF">风之号角</font><br>
+<a href="#I00C">I00C</a> [水]<font color="#00FFFF">海妖壳甲</font><br>
+<a href="#I03M">I03M</a> [水]<font color="#00ff00">鱼鳞镶嵌甲</font><br>
+<a href="#I03N">I03N</a> [水]鲨皮腰带<br>
+<a href="#I03O">I03O</a> (风)飘逸之戒<br>
+<a href="#I03P">I03P</a> [风]<font color="#00FFFF">飞鹰锁环甲</font><br>
+<a href="#I03Q">I03Q</a> [风]<font color="#00ff00">疾风之靴</font><br>
+<a href="#I03R">I03R</a> [风]闪电手套<br>
+<a href="#I03S">I03S</a> (火)<font color="#00ff00">火炎护身符</font><br>
+<a href="#I03T">I03T</a> (火)流光刺刀<br>
+<a href="#I03U">I03U</a> [火]暮光指环<br>
+<a href="#I03V">I03V</a> (土)<font color="#00FFFF">坚韧的胸甲</font><br>
+<a href="#I03W">I03W</a> (土)<font color="#00ff00">锁链流星锤</font><br>
+<a href="#I03X">I03X</a> (土)洞穴巨魔腰带<br>
+<a href="#I03Y">I03Y</a> [土]<font color="#00FFFF">裂地战盾</font><br>
+<a href="#I03Z">I03Z</a> [土]<font color="#00ff00">刻着神秘符纹的石锤</font><br>
+<a href="#I040">I040</a> [土]黄宝石手环<br>
+<a href="#I041">I041</a> <font color="#CC33FF">憎恨之王的镜盾(魔器)</font><br>
+<a href="#I044">I044</a> 钢制盾牌<br>
+<a href="#I046">I046</a> 备份的<br>
+<a href="#I047">I047</a> <font color="#CC33FF">破坏之王的戳魂魔槊(魔器)</font><br>
+<a href="#I048">I048</a> 备份的<br>
+<a href="#I04A">I04A</a> 备份的<br>
+<a href="#I04B">I04B</a> 备份的<br>
+<a href="#I04C">I04C</a> 备份的<br>
+<a href="#I04E">I04E</a> <font color="#CC33FF">罪恶之王的护心镜(魔器)</font><br>
+<a href="#I04F">I04F</a> (风)<font color="#CC33FF">西弗儿的印记</font><br>
+<a href="#I04G">I04G</a> [风]<font color="#CC33FF">西弗儿的关爱</font><br>
+<a href="#I04H">I04H</a> <font color="#00FFFF">土<font color="#00FFBF">神<font color="#00FF80">战<font color="#00FF40">铠</font></font></font></font><br>
+<a href="#I04I">I04I</a> <font color="#00FFFF">水<font color="#00D5FF">神<font color="#00AAFF">战<font color="#0080FF">铠</font></font></font></font><br>
+<a href="#I04J">I04J</a> <font color="#FFFF00">风<font color="#E6FF33">神<font color="#CCFF66">战<font color="#B3FF99">铠</font></font></font></font><br>
+<a href="#I04K">I04K</a> <font color="#FFFF80">火<font color="#FFAA55">神<font color="#FF552B">战<font color="#FF0000">铠</font></font></font></font><br>
+<a href="#I01O">I01O</a> <font color="#CC33FF">折磨女王的能量增幅器(魔器)</font><br>
+<a href="#I020">I020</a> <font color="#CC33FF">痛苦之王的灵魂之瓶(魔器)</font><br>
+<a href="#I02D">I02D</a> 升级盟军士兵武器1<br>
+<a href="#I042">I042</a> 升级盟军士兵装甲2<br>
+<a href="#I043">I043</a> 升级盟军士兵装甲3<br>
+<a href="#I045">I045</a> 升级盟军士兵装甲1<br>
+<a href="#I049">I049</a> 升级盟军士兵装甲4<br>
+<a href="#I04D">I04D</a> 升级盟军士兵武器2<br>
+<a href="#I04L">I04L</a> 升级盟军士兵武器3<br>
+<a href="#I04M">I04M</a> 升级盟军士兵武器4<br>
+<a href="#I04N">I04N</a> <font color="#FFFF00">封印战兽的蛋</font><br>
+<a href="#I04O">I04O</a> 重生十字章<br>
+<a href="#I04P">I04P</a> <font color="#FFFF00">天<font color="#FFAA55">使<font color="#FF55AA">之<font color="#FF00FF">翼</font></font></font></font><br>
+<a href="#I04Q">I04Q</a> <font color="#3E3E3E">恶<font color="#696969">魔<font color="#959595">之<font color="#C0C0C0">翼</font></font></font></font><br>
+<a href="#I01S">I01S</a> <font color="#3E3E3E">恶<font color="#696969">魔<font color="#959595">法<font color="#C0C0C0">袍</font></font></font></font><br>
+<a href="#I04R">I04R</a> <font color="#CC33FF">黑暗之心</font><br>
+<a href="#I04S">I04S</a> <font color="#CC33FF">堕落天使之翼</font><br>
+<a href="#I04T">I04T</a> [测试]经验值提升8W<br>
+<a href="#I04U">I04U</a> 传送<br>
+<a href="#I04V">I04V</a> 要求盟军返回驻地<br>
+<a href="#I04W">I04W</a> <font color="#00FF00">雷<font color="#55FF00">神<font color="#AAFF00">战<font color="#FFFF00">铠</font></font></font></font><br>
+<a href="#I04X">I04X</a> <font color="#FF0000">冥<font color="#AA5500">皇<font color="#55AA00">战<font color="#00FF00">铠</font></font></font></font><br>
+<a href="#I04Y">I04Y</a> <font color="#00FF00">雷<font color="#55FF00">神<font color="#AAFF00">之<font color="#FFFF00">刺</font></font></font></font><br>
+<a href="#I04Z">I04Z</a> <font color="#FF0000">冥<font color="#AA5500">皇<font color="#55AA00">权<font color="#00FF00">杖</font></font></font></font><br>
+<a href="#I050">I050</a> (雷)<font color="#00FFFF">雷龙之角</font><br>
+<a href="#I051">I051</a> (雷)<font color="#00ff00">能量之瓶</font><br>
+<a href="#I052">I052</a> (雷)<font color="#CC33FF">雷克斯的力量</font><br>
+<a href="#I053">I053</a> (雷)迅猛之爪<br>
+<a href="#I054">I054</a> [雷]<font color="#00FFFF">雷电之芯</font><br>
+<a href="#I055">I055</a> [雷]<font color="#00ff00">闪电之球</font><br>
+<a href="#I056">I056</a> [雷]<font color="#CC33FF">雷克斯的权威</font><br>
+<a href="#I057">I057</a> [雷]迅雷腰带<br>
+<a href="#I058">I058</a> (冥)<font color="#00FFFF">镇魂法决</font><br>
+<a href="#I059">I059</a> (冥)<font color="#00ff00">灵魂之石</font><br>
+<a href="#I05A">I05A</a> (冥)<font color="#CC33FF">哈迪斯的血腥</font><br>
+<a href="#I05B">I05B</a> (冥)安魂之笛<br>
+<a href="#I05C">I05C</a> [冥]<font color="#00FFFF">养魂之法</font><br>
+<a href="#I05D">I05D</a> [冥]<font color="#00ff00">炼魂符纹</font><br>
+<a href="#I05E">I05E</a> [冥]<font color="#CC33FF">哈迪斯的残忍</font><br>
+<a href="#I05F">I05F</a> [冥]亡魂之气<br>
+<a href="#I05G">I05G</a> <font color="#CC33FF">正直勋章</font><br>
+<a href="#I01G">I01G</a> <font color="#FFFF00">高级火系魔法指南</font><br>
+<a href="#I01Z">I01Z</a> <font color="#FFFF00">灵木之心</font><br>
+<a href="#I05H">I05H</a> <font color="#00FFFF">精<font color="#00FFBF">灵王<font color="#00FF80">权<font color="#00FF40">杖</font></font></font></font><br>
+<a href="#I05I">I05I</a> (木)<font color="#CC33FF">雅露的微笑</font><br>
+<a href="#I05J">I05J</a> [木]<font color="#CC33FF">雅露的温馨</font><br>
+<a href="#I05K">I05K</a> <font color="#00FFFF">精<font color="#00FFBF">灵王<font color="#00FF80">战<font color="#00FF40">铠</font></font></font></font><br>
+<a href="#Anei">Anei</a> 选择使用者<br>

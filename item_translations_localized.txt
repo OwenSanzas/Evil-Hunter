@@ -1,0 +1,203 @@
+﻿ID	Original Name	Translate
+I000	-火系攻击技能	Fire Attack Skill
+I001	-水系攻击技能	Water Attack Skill
+I002	-火系攻击技能-箭	Fire Arrow Attack Skill
+I003	-地系攻击技能	Earth Attack Skill
+I007	黑龙筋	Black Dragon Sinew
+I004	水晶箭	Crystal Arrow
+I009	天霜之弓	Frostfall Bow
+I00Q	攻击技能	 Attack Skill
+I00R	辅助技能	Support Skill
+I00S	医疗技能	Healing Skill
+I00T	光环技能	Aura Skill
+I00U	防御技能	Defense Skill
+I00V	奖励物资1	Resource Reward 1
+I00W	奖励物资1	Resource Reward 1
+I00X	奖励物资4	Resource Reward 4
+I00Y	奖励物资3	Resource Reward 3
+I005	爆炎之剑	Inferno Edge
+I014	火雨之弓	Ember Rain Bow
+I015	风神战弓	Tempest God's Warbow
+I016	冰雪之弓	Glacial Hunter
+I017	碎星之弓	Starshatter Bow
+I018	魔法弓	Arcane Longbow
+I019	焚天之弓	Skyfire Bow
+I01A	凤凰之弓	Phoenix Wing Bow
+I00Z	魔法剑	Runic Blade
+I006	赤龙牙	Crimson Dragon Fang
+I010	阵法宝石	Formation Crystal
+I011	符纹宝石	Runic Gem
+I012	精灵树枝	Elven Branch
+I013	魔法杖	Sorcerer's Staff
+I01B	水神权杖	Tidal Sovereign's Scepter
+I01C	大地神锤	Terra Lord's Hammer
+I01D	火神战刃	Flamelord's Warblades
+I01E	碧波之剑	Azure Tide Blade
+I01F	灼热之剑	Blazing Edge
+I01H	裁决之剑	Arbiter's Sword
+I01I	圣光法杖	Radiant Focus
+I01J	暴雪法杖	Winterfrost Staff
+I01K	之剑	Mystery Sword
+I01L	闪电法杖	Wand
+I01M	之剑	Mystery Sword
+I01N	之剑	Mystery Sword
+I01P	之剑	Mystery Sword
+I01Q	之剑	Mystery Sword
+I01R	之剑	Mystery Sword
+I01T	之剑	Mystery Sword
+I01U	之剑	Mystery Sword
+I01V	之剑	Mystery Sword
+I01W	之剑	Mystery Sword
+I01X	之剑	Mystery Sword
+I01Y	之剑	Mystery Sword
+I021	龙骨法杖	Medium
+I022	法杖	Arcane Staff
+I023	法杖	Arcane Staff
+I024	灵木法杖	Spiritwood Staff
+I025	天火法杖	Molten Medium
+I026	邪恶法杖	Malevolent Staff
+I027	法杖	Arcane Staff
+I028	诅咒法杖	Hex Bringer Staff
+I029	破军之剑	Broadsword
+I02A	雷暴法杖	Bolt Medium
+I02B	之剑	Mystery Sword
+I02C	法杖	Arcane Staff
+I008	死神战剑	Reaper's Warblade
+I02E	地狱之剑	Hellfire Sword
+I02F	活力之戒	Circlet
+I02G	生命之戒	Band
+I02H	幸运之戒	Circlet
+I02I	天使手镯	Sacred
+I00G	魔力护符	Abyss Totem
+I00H	魔法挂坠	Twilight Arcane Artifact
+I00L	魔力球	Dusk
+I02J	魔源结晶	Arcane Source Crystal
+I00I	诅咒铠甲	Hexwoven Armor
+I00J	黑魔剑	Shadow Magic Blade
+I00K	骷髅冠	Crown of Skulls
+I00M	亡灵盾	Specter Shield
+I00N	骨质胸甲	Osseous Breastplate
+I02K	亡灵护身符	Wraith Amulet
+I02L	吸血鬼披风	Bloodthirst Cloak
+I02M	死神靴	Deathlord's Greaves
+I02N	鬼王斗篷	Phantom King's Shroud
+I02O	死神战铠	Death God's Battleplate
+I02P	真实头环	Diadem
+I02Q	真实面具	
+I02R	真实头冠	Hood
+I02S	威严护肩	
+I02T	威严塔盾	Rampart
+I02U	威严胸甲	Bulwark
+I02V	卓越战靴	Triumph Greaves
+I02W	卓越护腿	
+I02X	卓越腰带	Cinch
+I02Y	银光巨战斧	Luminous Greataxe
+I02Z	银光短战棍	Gleaming
+I030	银光连指手套	Astral Handlers
+I031	光明护身符	Solar
+I032	光明纹章	Luminous
+I033	光明之眼	Brilliant
+I034	勇气匕首	
+I035	勇气臂盾	Ward
+I036	勇气指环	
+I037	荣耀拳爪	
+I038	混沌双刃斧	Tomahawk
+I039	圣光手镯	Radiant
+I03A	神圣头盔	Divine Helm
+I03B	华丽战甲	Valor Mail
+I03C	秘银披风	Squall Covering
+I03D	战神圣铠	Wargod's Hallowed Plate
+I03E	战神圣斧	Wargod's Sacred Axe
+I00A	珊瑚头饰	Cowl
+I00B	水之心	Tidal
+I00D	温蒂的祝福	
+I00E	炎之结晶	Crystal
+I00F	火龙臂盾	Ember Safeguard
+I00O	诺姆的图腾	
+I00P	诺姆的守护	
+I03F	温蒂的庇护	
+I03G	沧浪项链	Torc
+I03H	沙拉曼德的精神	Divine
+I03I	沙拉曼德的灵魂	
+I03J	地狱火炬	Burning
+I03K	风之纹章	Hurricane
+I03L	风之号角	Tempest
+I00C	海妖壳甲	Bulwark
+I03M	鱼鳞镶嵌甲	Guard
+I03N	鲨皮腰带	Binder
+I03O	飘逸之戒	Ring
+I03P	飞鹰锁环甲	Bastion
+I03Q	疾风之靴	Storm Striders
+I03R	闪电手套	Handlers
+I03S	火炎护身符	Volcanic
+I03T	流光刺刀	Gleaming Dirk
+I03U	暮光指环	Celestial
+I03V	坚韧的胸甲	Bulwark
+I03W	锁链流星锤	Crusher
+I03X	洞穴巨魔腰带	Sinister Cincture
+I03Y	裂地战盾	Mountain Defender
+I03Z	刻着神秘符纹的石锤	Divine Cudgel
+I040	黄宝石手环	Gem
+I041	憎恨之王的镜盾(魔器)	Abyss Shield
+I044	钢制盾牌	Buckler
+I046	备份的	
+I047	破坏之王的戳魂魔槊(魔器)	Umbral
+I048	备份的	
+I04A	备份的	
+I04B	备份的	
+I04C	备份的	
+I04E	罪恶之王的护心镜(魔器)	Twilight
+I04F	西弗儿的印记	
+I04G	西弗儿的关爱	
+I04H	土神战铠	Earthlord's Battle Armor
+I04I	水神战铠	Tidelord's Battle Armor
+I04J	风神战铠	Stormcaller's Battleplate
+I04K	火神战铠	Firelord's Battle Armor
+I01O	折磨女王的能量增幅器(魔器)	Murk
+I020	痛苦之王的灵魂之瓶(魔器)	Dusk
+I02D	升级盟军士兵武器1	
+I042	升级盟军士兵装甲2	Bastion
+I043	升级盟军士兵装甲3	Guard
+I045	升级盟军士兵装甲1	Cuirass
+I049	升级盟军士兵装甲4	Aegis
+I04D	升级盟军士兵武器2	
+I04L	升级盟军士兵武器3	
+I04M	升级盟军士兵武器4	
+I04N	封印战兽的蛋	Valor
+I04O	重生十字章	
+I04P	天使之翼	Seraphim Wings
+I04Q	恶魔之翼	Demonic Wings
+I01S	恶魔法袍	Infernal Robes
+I04R	黑暗之心	Heart of Darkness
+I04S	堕落天使之翼	Fallen Angel Wings
+I04T	经验值提升8W	
+I04U	传送	
+I04V	要求盟军返回驻地	Mineral
+I04W	雷神战铠	Thunderlord's Battle Armor
+I04X	冥皇战铠	Netherworld Sovereign Plate
+I04Y	雷神之刺	Thunderlord's Spike
+I04Z	冥皇权杖	Netherworld Sovereign Rod
+I050	雷龙之角	Bolt
+I051	能量之瓶	
+I052	雷克斯的力量	Charge
+I053	迅猛之爪	
+I054	雷电之芯	Electric
+I055	闪电之球	
+I056	雷克斯的权威	Thunder
+I057	迅雷腰带	Charge Waistband
+I058	镇魂法决	
+I059	灵魂之石	
+I05A	哈迪斯的血腥	
+I05B	安魂之笛	
+I05C	养魂之法	
+I05D	炼魂符纹	Rune
+I05E	哈迪斯的残忍	
+I05F	亡魂之气	
+I05G	正直勋章	
+I01G	高级火系魔法指南	Scorching Arcane Artifact
+I01Z	灵木之心	
+I05H	精灵王权杖	Spirit King's Scepter
+I05I	雅露的微笑	
+I05J	雅露的温馨	
+I05K	精灵王战铠	Spirit King's Battle Armor
+Anei	选择使用者	

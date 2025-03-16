@@ -5,6 +5,7 @@ This is a Modified version of a famous War3 map "伏魔战记"
 # Change Log (3/15/2025):
 - New Feature:
     - Added new command in game: -give -> will give you a fire blade
+    - Added new preview image for the map
 
 - Modification: Display Background Text
 
