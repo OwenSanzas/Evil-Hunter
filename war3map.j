@@ -910,7 +910,7 @@ function Trig________________u_Actions takes nothing returns nothing
     call CreateNUnitsAtLoc(1, 'hpea', Player(PLAYER_NEUTRAL_PASSIVE), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[91], bj_UNIT_FACING)
     set udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[0] = GetLastCreatedUnit()
     set bj_forLoopAIndex = 1
-    set bj_forLoopAIndexEnd = 4
+    set bj_forLoopAIndexEnd = 8
 
     // TODO: 生成2波木箱
     loop
@@ -930,27 +930,20 @@ function Trig________________u_Actions takes nothing returns nothing
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(gg_rct_______Baowu05)
         call CreateNUnitsAtLoc(1, 'n01Y', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200])
-        set bj_forLoopAIndex = bj_forLoopAIndex + 1
-    endloop
-
-    loop
-        exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
+        
+        // also create 2 n01X
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(gg_rct_______Baowu01)
-        call CreateNUnitsAtLoc(1, 'n01Y', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
-        call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200])
-        set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(gg_rct_______Baowu02)
-        call CreateNUnitsAtLoc(1, 'n01Y', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
-        call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200])
-        set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(gg_rct_______Baowu04)
-        call CreateNUnitsAtLoc(1, 'n01Y', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
+        call CreateNUnitsAtLoc(1, 'n01X', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200])
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(gg_rct_______Baowu03)
-        call CreateNUnitsAtLoc(1, 'n01Y', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
+        call CreateNUnitsAtLoc(1, 'n01X', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200])
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(gg_rct_______Baowu05)
-        call CreateNUnitsAtLoc(1, 'n01Y', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
+        call CreateNUnitsAtLoc(1, 'n01X', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200])
+
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
+
     endloop
 
     call CreateNUnitsAtLoc(1, 'n01X', Player(PLAYER_NEUTRAL_AGGRESSIVE), Location(6367., - 11762.), bj_UNIT_FACING)
@@ -1262,7 +1255,7 @@ function Trig_GongZi_Actions takes nothing returns nothing
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         if(Trig_GongZi_Func001Func001C())then
-            call AdjustPlayerStateBJ(75, ConvertedPlayer(GetForLoopIndexA()), PLAYER_STATE_RESOURCE_GOLD)
+            call AdjustPlayerStateBJ(20, ConvertedPlayer(GetForLoopIndexA()), PLAYER_STATE_RESOURCE_GOLD)
         else
         endif
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
@@ -1295,7 +1288,7 @@ function Trig_GongZi2_Actions takes nothing returns nothing
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         if(Trig_GongZi2_Func001Func001C())then
-            call AdjustPlayerStateBJ(50, ConvertedPlayer(GetForLoopIndexA()), PLAYER_STATE_RESOURCE_GOLD)
+            call AdjustPlayerStateBJ(15, ConvertedPlayer(GetForLoopIndexA()), PLAYER_STATE_RESOURCE_GOLD)
         else
         endif
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
@@ -1328,7 +1321,7 @@ function Trig_GongZi3_Actions takes nothing returns nothing
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         if(Trig_GongZi3_Func001Func001C())then
-            call AdjustPlayerStateBJ(35, ConvertedPlayer(GetForLoopIndexA()), PLAYER_STATE_RESOURCE_GOLD)
+            call AdjustPlayerStateBJ(10, ConvertedPlayer(GetForLoopIndexA()), PLAYER_STATE_RESOURCE_GOLD)
         else
         endif
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
@@ -1390,6 +1383,10 @@ function Trig_PlayerInput_Func004C takes nothing returns boolean
     return GetEventPlayerChatString() == "-give"
 endfunction
 
+function Trig_PlayerInput_Func005C takes nothing returns boolean
+    return GetEventPlayerChatString() == "-i"
+endfunction
+
 function Trig_PlayerInput_Func004Actions takes nothing returns nothing
     local integer playerId = GetConvertedPlayerId(GetTriggerPlayer())
     local unit hero = udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[playerId]
@@ -1400,10 +1397,89 @@ function Trig_PlayerInput_Func004Actions takes nothing returns nothing
         return
     endif
     
-    set newItem = CreateItem('I005', GetUnitX(hero), GetUnitY(hero))
+    set newItem = CreateItem('I03D', GetUnitX(hero), GetUnitY(hero))
     call UnitAddItem(hero, newItem)
+
+    set newItem = CreateItem('I03E', GetUnitX(hero), GetUnitY(hero))
+    call UnitAddItem(hero, newItem)
+
+    set newItem = CreateItem('I04I', GetUnitX(hero), GetUnitY(hero))
+    call UnitAddItem(hero, newItem)
+
+    set newItem = CreateItem('I01B', GetUnitX(hero), GetUnitY(hero))
+    call UnitAddItem(hero, newItem)
+
+    set newItem = CreateItem('I05H', GetUnitX(hero), GetUnitY(hero))
+    call UnitAddItem(hero, newItem)
+    
+    set newItem = CreateItem('I05K', GetUnitX(hero), GetUnitY(hero))
+    call UnitAddItem(hero, newItem)
+    
+
     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "|cff00ff00Item is given！|r")
 endfunction
+
+function Trig_PlayerInput_Func005Actions takes nothing returns nothing
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "Quick Start:")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "0. Find Wooden Chests all over the map for better items. Then Iron/Bronze Chests (dmg > 50/100)")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "1. Buy Skill at Holy Obelisk, use arrow keys to upgrade/delete.")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "2. At Least one healing skill is recommended for every player.")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "3. Don't attack neutral units too soon, instead, try to capture neutral beasts by ensnaring them.")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "4. Don't raise your lvl too fast, enemies will become stronger according to the highest level of players.")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "5. Always share useful items with your team!")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "6. (Angel) items => Angel Wings should be the first goal for every player!")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "Items to Craft:")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "1. Mage: Items with [water],[nether],[elven king] prefix. Random Weapon: ELven Branch + Rune Gem + Sorcerer's Staff")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "2. Warrior/Guardian: Items with (fire),(earth),(death),(war) prefix. Random Weapon: Crimson Dragon Fang + Formation Crystal + Runic Blade")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "3. Archer: Items with [wind]/[thunder] prefix. Random Weapon: Black Dragon Sinew + Crystal Arrow + Arcane Longbow")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "Best Skills:")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "1. Mage: Healing Wave, Holy Light, Flame Storm, Inner Fire")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "2. Warrior: Critical Attack, Holy Light, Blade Wheel Formation, ")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "3. Guardian: Holy Light, Defensive Skills")
+
+    // if(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 6) == "[Mage]")then
+    //     // show info of Mage
+    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "How to play Mage:")
+    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "In General, a mage is a powerful class that excels at both damage dealing and healing.")
+    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "Important Tips:")
+    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "1. Be sure to learn Healing Wave, as this is a powerful healing ability exclusive to mages")
+    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "2. Look for items with the [water] prefix to craft Tidalord's Battle Armor")
+    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "3. Collect Elven Branch + Runic Gem + Sorcerer's Staff to randomly craft Legendary/Divine Weapons")
+    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "Best Equipment Sets:")
+    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "- Tidalord's Battle Armor + Tidal Sovereign's Scepter")
+    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "- Netherworld Sovereign Plate + Netherworld Sovereign Rod")
+    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "- Elven Sovereign Scepter + Elven Sovereign Armor")
+    // endif
+    // if(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 9) == "[Warrior]")then
+    //     // show info of Warrior
+    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "How to play Warrior:")
+    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "In General, a warrior is a class that excels at both damage dealing and defense.")
+    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "Important Tips:")
+    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "1. Aim for War God Set (control), Death God Set (building destruction) and Fire God Set (highest damage)")
+    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "2. Look for items with (fire)/[fire] and (earth)/[earth] prefixes for your main equipment crafting")
+    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "3. You can start hunting treasure chests after obtaining your first Legendary/Divine weapon")
+    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "4. Mirror Image is a must-learn skill; Holy Light and Blade Wheel Formation are also excellent choices")
+    // endif
+    // if(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 10) == "[Guardian]")then
+    //     // show info of Guardian
+    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "How to play Guardian:")
+    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "In General, a guardian is one of the most important roles in your team.")
+    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "Important Tips:")
+    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "1. The only class that can learn defensive skills, making it essential for team survival")
+    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "2. With proper skills, you'll have incredible durability in combat")
+    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "3. Equipment progression is slower in early game, so you'll need help from teammates")
+    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "4. Look for items with (earth) and [earth] prefixes for your equipment crafting")
+    // endif
+    // if(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 8) == "[Archer]")then
+    //     // show info of Archer
+    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "How to play Archer:")
+    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "In General, an archer is a high damage but fragile class.")
+    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "Important Tips:")
+    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "1. Not recommended in the current version - while Archers have the highest damage sets (Thunder God and Wind God), they are very fragile")
+    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "2. Look for items with [wind] and (wind) prefixes to craft your equipment")
+    // endif
+endfunction
+
 
 //------------------- 自定义玩家输入函数 END -------------------
 function Trig_PlayerInput_Actions takes nothing returns nothing
@@ -1416,11 +1492,15 @@ function Trig_PlayerInput_Actions takes nothing returns nothing
         call Trig_PlayerInput_Func004Actions()
     endif
 
+    if Trig_PlayerInput_Func005C() then
+        call Trig_PlayerInput_Func005Actions()
+    endif
+
     if(Trig_PlayerInput_Func002C())then
-        call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_HINT, "|cffFF8040合成公式：|r|cff00FFFF(风)飘逸之戒+(土)锁链流星锤+(水)水之心=雅露的微笑")
-        call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_HINT, "|cffFF8040合成公式：|r|cff00FFFF[风]闪电手套+[土]刻着神秘符纹的石锤+[水]海妖壳甲=雅露的温馨")
-        call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_HINT, "|cffFF8040合成公式：|r|cff00FFFF雅露的微笑+雅露的温馨=精灵王战铠(神器)")
-        call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_HINT, "请注意：你必须身上同时装备精灵王权杖才能进行以上合成")
+        call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_HINT, "|cffFF8040Craft Recipe:|r|cff00FFFF(Wind)Windswept Ring + (Earth)Chain Meteor Hammer + (Water)Aqua Crystal = Alura's Smile")
+        call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_HINT, "|cffFF8040Craft Recipe:|r|cff00FFFF[Wind]Lightning Gloves + [Earth]Runic Stone Hammer + [Water]Siren Shell = Alura's Warmth")
+        call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_HINT, "|cffFF8040Craft Recipe:|r|cff00FFFFAlura's Smile + Alura's Warmth = Elven Sovereign Armor(Divine Item)")
+        call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_HINT, "|cffFF8040Note:|r|cff00FFFFYou must have the Elven Sovereign Staff equipped to perform the above crafts")
     else
     endif
     set bj_forLoopBIndex = 1
@@ -2673,7 +2753,7 @@ function Trig_OgreDie_Func005C takes nothing returns boolean
     return true
 endfunction
 function Trig_OgreDie_Func007Func004C takes nothing returns boolean
-    if(not(GetRandomInt(1, 20) > 18))then
+    if(not(GetRandomInt(1, 20) > 16))then
         return false
     endif
     return true
@@ -2966,9 +3046,9 @@ function Trig_OgreDie_Actions takes nothing returns nothing
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)] = GetUnitLoc(GetDyingUnit())
         call CreateNUnitsAtLoc(1, 'n01Y', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 15)], bj_UNIT_FACING)
         if(Trig_OgreDie_Func007Func004C())then
-            call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(9, 14)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
+            call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(14, 21)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
         else
-            call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(9, 14)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
+            call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(1, 21)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
         endif
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 15)])
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
@@ -6530,16 +6610,16 @@ endfunction
 function Trig_Dialog_Actions takes nothing returns nothing
     call TriggerSleepAction(2.)
     call DialogClear(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1])
-    call DialogSetMessage(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "Game Difficulty   ")
-    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "Novice(Familiarize yourself with the map)")
+    call DialogSetMessage(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "Game Difficulty")
+    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "Novice (Familiarize yourself with the map)")
     set udg_M9P2QS7U5l4V5W9O45lO7041D2G5K3[1] = GetLastCreatedButtonBJ()
-    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "Normal(Higher Challenge)")
+    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "Normal (Higher Challenge)")
     set udg_M9P2QS7U5l4V5W9O45lO7041D2G5K3[2] = GetLastCreatedButtonBJ()
-    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "Intermediate(Limit of the random game)")
+    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "Intermediate (Limit of the random game)")
     set udg_M9P2QS7U5l4V5W9O45lO7041D2G5K3[3] = GetLastCreatedButtonBJ()
-    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "Advanced(Professional team)")
+    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "Advanced (Professional team)")
     set udg_M9P2QS7U5l4V5W9O45lO7041D2G5K3[4] = GetLastCreatedButtonBJ()
-    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "Hell(Impossible!)")
+    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "Hell (Impossible!)")
     set udg_M9P2QS7U5l4V5W9O45lO7041D2G5K3[5] = GetLastCreatedButtonBJ()
     set bj_forLoopAIndex = 1
     set bj_forLoopAIndexEnd = 10
@@ -6989,7 +7069,7 @@ function Trig_Skill_buy1_Actions takes nothing returns nothing
             call UnitMakeAbilityPermanent(GetTriggerUnit(), true, udg_M9P2Q7U5l4V5W9O45lOS7041D2G5K3[udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) * 18)]])
             call SetPlayerAbilityAvailableBJ(false, udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)], GetOwningPlayer(GetTriggerUnit()))
             call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, ("The Sacred Obelisk has answered your prayer, granting you the skill: <" + (GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">")))
-            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, "|cff00FFFF Skill Tip: Press ↓ to upgrade skills   Press → to delete skills |r")
+            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, "|cff00FFFF Skill Tip: Press [↓] (Down Arrow) to upgrade skills. Press [→] (Right Arrow) to delete skills. |r")
             return
         else
             if(Trig_Skill_buy1_Func008Func001Func001C())then
@@ -7095,7 +7175,7 @@ function Trig_Skill_buy2_Actions takes nothing returns nothing
             call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)], GetTriggerUnit())
             call UnitMakeAbilityPermanent(GetTriggerUnit(), true, udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)])
             call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, ("The Sacred Obelisk has answered your prayer, granting you the skill: <" + (GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">")))
-            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, "|cff00FFFF Skill Tip: Press ↓ to upgrade skills   Press → to delete skills |r")
+            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, "|cff00FFFF Skill Tip: Press [↓] (Down Arrow) to upgrade skills. Press [→] (Right Arrow) to delete skills. |r")
             return
         else
             if(Trig_Skill_buy2_Func006Func001Func001C())then
@@ -7202,7 +7282,7 @@ function Trig_Skill_buy3_Actions takes nothing returns nothing
             call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)], GetTriggerUnit())
             call UnitMakeAbilityPermanent(GetTriggerUnit(), true, udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)])
             call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, ("The Sacred Obelisk has answered your prayer, granting you the skill: <" + (GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">")))
-            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, "|cff00FFFF Skill Tip: Press ↓ to upgrade skills   Press → to delete skills |r")
+            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, "|cff00FFFF Skill Tip: Press [↓] (Down Arrow) to upgrade skills. Press [→] (Right Arrow) to delete skills. |r")
             return
         else
             if(Trig_Skill_buy3_Func007Func001Func001C())then
@@ -7309,7 +7389,7 @@ function Trig_Skill_buy4_Actions takes nothing returns nothing
             call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)], GetTriggerUnit())
             call UnitMakeAbilityPermanent(GetTriggerUnit(), true, udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)])
             call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, ("The Sacred Obelisk has answered your prayer, granting you the skill: <" + (GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">")))
-            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, "|cff00FFFF Skill Tip: Press ↓ to upgrade skills   Press → to delete skills |r")
+            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, "|cff00FFFF Skill Tip: Press [↓] (Down Arrow) to upgrade skills. Press [→] (Right Arrow) to delete skills. |r")
             return
         else
             if(Trig_Skill_buy4_Func007Func001Func001C())then
@@ -7422,7 +7502,7 @@ function Trig_Skill_buy5_Actions takes nothing returns nothing
             call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)], GetTriggerUnit())
             call UnitMakeAbilityPermanent(GetTriggerUnit(), true, udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)])
             call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, ("The Sacred Obelisk has answered your prayer, granting you the skill: <" + (GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">")))
-            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, "|cff00FFFF Skill Tip: Press ↓ to upgrade skills   Press → to delete skills |r")
+            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, "|cff00FFFF Skill Tip: Press [↓] (Down Arrow) to upgrade skills. Press [→] (Right Arrow) to delete skills. |r")
             return
         else
             if(Trig_Skill_buy5_Func007Func001Func001C())then
@@ -8414,6 +8494,12 @@ function Trig_Itemtype_Actions takes nothing returns nothing
     set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[13] = 'I00L'
     set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[14] = 'I00H'
     set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[15] = 'I04O'
+    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[16] = 'I02F'
+    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[17] = 'I02G'
+    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[18] = 'I02H'
+    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[19] = 'I00G'
+    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[20] = 'I00L'
+    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[21] = 'I00H'
     set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[81] = 'I05B'
     set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[82] = 'I05F'
     set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[83] = 'I053'
@@ -10383,7 +10469,7 @@ function Trig_Arm1_Actions takes nothing returns nothing
         call UnitApplyTimedLifeBJ(1., 'BTLF', GetLastCreatedUnit())
         call ShowUnitHide(GetLastCreatedUnit())
         call IssuePointOrderLoc(GetLastCreatedUnit(), "flamestrike", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)])
-        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  Weapon Ability")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -10401,7 +10487,7 @@ function Trig_Arm1_Actions takes nothing returns nothing
         call UnitApplyTimedLifeBJ(6., 'BTLF', GetLastCreatedUnit())
         call ShowUnitHide(GetLastCreatedUnit())
         call IssuePointOrderLoc(GetLastCreatedUnit(), "stampede", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)])
-        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  Weapon Ability")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -10419,7 +10505,7 @@ function Trig_Arm1_Actions takes nothing returns nothing
         call UnitApplyTimedLifeBJ(6., 'BTLF', GetLastCreatedUnit())
         call ShowUnitHide(GetLastCreatedUnit())
         call IssuePointOrderLoc(GetLastCreatedUnit(), "impale", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)])
-        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  Weapon Ability")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -10437,7 +10523,7 @@ function Trig_Arm1_Actions takes nothing returns nothing
         call UnitApplyTimedLifeBJ(6., 'BTLF', GetLastCreatedUnit())
         call ShowUnitHide(GetLastCreatedUnit())
         call IssuePointOrderLoc(GetLastCreatedUnit(), "impale", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)])
-        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  Weapon Ability")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -10455,7 +10541,7 @@ function Trig_Arm1_Actions takes nothing returns nothing
         call UnitApplyTimedLifeBJ(6., 'BTLF', GetLastCreatedUnit())
         call ShowUnitHide(GetLastCreatedUnit())
         call IssuePointOrderLoc(GetLastCreatedUnit(), "stampede", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)])
-        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  Weapon Ability")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -10473,7 +10559,7 @@ function Trig_Arm1_Actions takes nothing returns nothing
         call UnitApplyTimedLifeBJ(6., 'BTLF', GetLastCreatedUnit())
         call ShowUnitHide(GetLastCreatedUnit())
         call IssueTargetOrder(GetLastCreatedUnit(), "chainlightning", GetAttackedUnitBJ())
-        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  Weapon Ability")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -10668,7 +10754,7 @@ function Trig_Arm3_Actions takes nothing returns nothing
         call UnitApplyTimedLifeBJ(6., 'BTLF', GetLastCreatedUnit())
         call ShowUnitHide(GetLastCreatedUnit())
         call IssuePointOrderLoc(GetLastCreatedUnit(), "stampede", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)])
-        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  Weapon Ability")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -10686,7 +10772,7 @@ function Trig_Arm3_Actions takes nothing returns nothing
         call UnitApplyTimedLifeBJ(1., 'BTLF', GetLastCreatedUnit())
         call ShowUnitHide(GetLastCreatedUnit())
         call IssueTargetOrder(GetLastCreatedUnit(), "frostnova", GetAttackedUnitBJ())
-        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  Weapon Ability")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -10704,7 +10790,7 @@ function Trig_Arm3_Actions takes nothing returns nothing
         call UnitApplyTimedLifeBJ(6., 'BTLF', GetLastCreatedUnit())
         call ShowUnitHide(GetLastCreatedUnit())
         call IssuePointOrderLoc(GetLastCreatedUnit(), "stampede", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)])
-        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  Weapon Ability")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -10722,7 +10808,7 @@ function Trig_Arm3_Actions takes nothing returns nothing
         call UnitApplyTimedLifeBJ(6., 'BTLF', GetLastCreatedUnit())
         call ShowUnitHide(GetLastCreatedUnit())
         call IssuePointOrderLoc(GetLastCreatedUnit(), "stampede", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)])
-        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  Weapon Ability")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -10740,7 +10826,7 @@ function Trig_Arm3_Actions takes nothing returns nothing
         call UnitApplyTimedLifeBJ(6., 'BTLF', GetLastCreatedUnit())
         call ShowUnitHide(GetLastCreatedUnit())
         call IssuePointOrderLoc(GetLastCreatedUnit(), "rainoffire", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)])
-        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  Weapon Ability")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -10758,7 +10844,7 @@ function Trig_Arm3_Actions takes nothing returns nothing
         call UnitApplyTimedLifeBJ(6., 'BTLF', GetLastCreatedUnit())
         call ShowUnitHide(GetLastCreatedUnit())
         call IssuePointOrderLoc(GetLastCreatedUnit(), "stampede", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)])
-        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  Weapon Ability")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -11030,7 +11116,7 @@ function Trig_Arm4_Actions takes nothing returns nothing
         call UnitApplyTimedLifeBJ(2., 'BTLF', GetLastCreatedUnit())
         call ShowUnitHide(GetLastCreatedUnit())
         call IssuePointOrderLoc(GetLastCreatedUnit(), "clusterrockets", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)])
-        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  Weapon Ability")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -11048,7 +11134,7 @@ function Trig_Arm4_Actions takes nothing returns nothing
         call UnitApplyTimedLifeBJ(6., 'BTLF', GetLastCreatedUnit())
         call ShowUnitHide(GetLastCreatedUnit())
         call IssuePointOrderLoc(GetLastCreatedUnit(), "blizzard", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)])
-        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  Weapon Ability")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -11066,7 +11152,7 @@ function Trig_Arm4_Actions takes nothing returns nothing
         call UnitApplyTimedLifeBJ(6., 'BTLF', GetLastCreatedUnit())
         call ShowUnitHide(GetLastCreatedUnit())
         call IssuePointOrderLoc(GetLastCreatedUnit(), "monsoon", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)])
-        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  Weapon Ability")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -11084,7 +11170,7 @@ function Trig_Arm4_Actions takes nothing returns nothing
         call UnitApplyTimedLifeBJ(3., 'BTLF', GetLastCreatedUnit())
         call ShowUnitHide(GetLastCreatedUnit())
         call IssuePointOrderLoc(GetLastCreatedUnit(), "clusterrockets", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)])
-        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  Weapon Ability")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -11101,7 +11187,7 @@ function Trig_Arm4_Actions takes nothing returns nothing
         call GroupClear(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[0])
         call DestroyGroup(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[0])
         call RemoveRect(udg_M9P2Q7U5l4V5W9O45lO7041D2G5K37[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
-        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  Weapon Ability")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -11118,7 +11204,7 @@ function Trig_Arm4_Actions takes nothing returns nothing
         call GroupClear(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[0])
         call DestroyGroup(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[0])
         call RemoveRect(udg_M9P2Q7U5l4V5W9O45lO7041D2G5K37[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
-        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  武器技能")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  Weapon Ability")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
