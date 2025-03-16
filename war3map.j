@@ -3733,7 +3733,7 @@ function Trig_XH_Func002Func001Func002Func003001 takes nothing returns boolean
     return(GetHeroStatBJ(bj_HEROSTAT_INT, udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()], false) > 40)
 endfunction
 function Trig_XH_Func002Func001Func002C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()]), 1, 5) == "[Guardian]"))then
+    if(not(SubStringBJ(GetUnitName(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()]), 1, 5) == "[力]"))then
         return false
     endif
     return true
@@ -3748,7 +3748,7 @@ function Trig_XH_Func002Func001Func003Func003001 takes nothing returns boolean
     return(GetHeroStatBJ(bj_HEROSTAT_INT, udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()], false) > 60)
 endfunction
 function Trig_XH_Func002Func001Func003C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()]), 1, 5) == "[Warrior]"))then
+    if(not(SubStringBJ(GetUnitName(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()]), 1, 5) == "[敏]"))then
         return false
     endif
     return true
@@ -3763,7 +3763,7 @@ function Trig_XH_Func002Func001Func004Func003001 takes nothing returns boolean
     return(GetHeroStatBJ(bj_HEROSTAT_INT, udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()], false) > 65)
 endfunction
 function Trig_XH_Func002Func001Func004C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()]), 1, 5) == "[Archer]"))then
+    if(not(SubStringBJ(GetUnitName(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()]), 1, 5) == "[弓]"))then
         return false
     endif
     return true
@@ -3778,7 +3778,7 @@ function Trig_XH_Func002Func001Func005Func003001 takes nothing returns boolean
     return(GetHeroStatBJ(bj_HEROSTAT_INT, udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()], false) > 225)
 endfunction
 function Trig_XH_Func002Func001Func005C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()]), 1, 5) == "[Mage]"))then
+    if(not(SubStringBJ(GetUnitName(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()]), 1, 5) == "[魔]"))then
         return false
     endif
     return true
@@ -7015,25 +7015,25 @@ function Trig_Skill_buy2_Conditions takes nothing returns boolean
     return true
 endfunction
 function Trig_Skill_buy2_Func002Func001Func001Func001C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[Mage]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[魔]"))then
         return false
     endif
     return true
 endfunction
 function Trig_Skill_buy2_Func002Func001Func001C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[Archer]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[弓]"))then
         return false
     endif
     return true
 endfunction
 function Trig_Skill_buy2_Func002Func001C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[Warrior]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[敏]"))then
         return false
     endif
     return true
 endfunction
 function Trig_Skill_buy2_Func002C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[Guardian]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[力]"))then
         return false
     endif
     return true
@@ -7122,25 +7122,25 @@ function Trig_Skill_buy3_Conditions takes nothing returns boolean
     return true
 endfunction
 function Trig_Skill_buy3_Func003Func001Func001Func001C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[Mage]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[魔]"))then
         return false
     endif
     return true
 endfunction
 function Trig_Skill_buy3_Func003Func001Func001C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[Archer]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[弓]"))then
         return false
     endif
     return true
 endfunction
 function Trig_Skill_buy3_Func003Func001C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[Warrior]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[敏]"))then
         return false
     endif
     return true
 endfunction
 function Trig_Skill_buy3_Func003C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[Guardian]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[力]"))then
         return false
     endif
     return true
@@ -7229,25 +7229,25 @@ function Trig_Skill_buy4_Conditions takes nothing returns boolean
     return true
 endfunction
 function Trig_Skill_buy4_Func003Func001Func002Func002C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[Mage]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[魔]"))then
         return false
     endif
     return true
 endfunction
 function Trig_Skill_buy4_Func003Func001Func002C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[Archer]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[弓]"))then
         return false
     endif
     return true
 endfunction
 function Trig_Skill_buy4_Func003Func001C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[Warrior]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[敏]"))then
         return false
     endif
     return true
 endfunction
 function Trig_Skill_buy4_Func003C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[Guardian]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[力]"))then
         return false
     endif
     return true
@@ -7336,25 +7336,25 @@ function Trig_Skill_buy5_Conditions takes nothing returns boolean
     return true
 endfunction
 function Trig_Skill_buy5_Func003Func001Func004Func004C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[Mage]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[魔]"))then
         return false
     endif
     return true
 endfunction
 function Trig_Skill_buy5_Func003Func001Func004C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[Archer]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[弓]"))then
         return false
     endif
     return true
 endfunction
 function Trig_Skill_buy5_Func003Func001C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[Warrior]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[敏]"))then
         return false
     endif
     return true
 endfunction
 function Trig_Skill_buy5_Func003C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[Guardian]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[力]"))then
         return false
     endif
     return true
@@ -18789,8 +18789,8 @@ endfunction
 
 
 function config takes nothing returns nothing
-    call SetMapName("|cffffff00★★Evil Hunter★★ (v.0.0.2)")
-    call SetMapDescription("|cffffffcc Ready to protect the world from the demon legion? \n Author: Sunness & OwenSanzas")
+    call SetMapName("|cffffff00★★伏魔战记★★(3.9J版)")
+    call SetMapDescription("|cffffffcc2009年伏魔战记，魔兽RPG地图历史上首个完美实现任意野兽成为座骑功能的地图！\n作者：Sunness\n网站：Sunness.com\n邮箱：Sunness@21cn.com|r")
     call SetPlayers(9)
     call SetTeams(9)
     call SetGamePlacement(MAP_PLACEMENT_TEAMS_TOGETHER)
