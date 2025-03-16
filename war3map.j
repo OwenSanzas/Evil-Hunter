@@ -7015,25 +7015,25 @@ function Trig_Skill_buy2_Conditions takes nothing returns boolean
     return true
 endfunction
 function Trig_Skill_buy2_Func002Func001Func001Func001C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[魔]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 6) == "[Mage]"))then
         return false
     endif
     return true
 endfunction
 function Trig_Skill_buy2_Func002Func001Func001C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[弓]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 8) == "[Archer]"))then
         return false
     endif
     return true
 endfunction
 function Trig_Skill_buy2_Func002Func001C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[敏]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 9) == "[Warrior]"))then
         return false
     endif
     return true
 endfunction
 function Trig_Skill_buy2_Func002C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[力]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 11) == "[Guardian]"))then
         return false
     endif
     return true
@@ -7122,25 +7122,25 @@ function Trig_Skill_buy3_Conditions takes nothing returns boolean
     return true
 endfunction
 function Trig_Skill_buy3_Func003Func001Func001Func001C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[魔]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 6) == "[Mage]"))then
         return false
     endif
     return true
 endfunction
 function Trig_Skill_buy3_Func003Func001Func001C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[弓]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 8) == "[Archer]"))then
         return false
     endif
     return true
 endfunction
 function Trig_Skill_buy3_Func003Func001C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[敏]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 9) == "[Warrior]"))then
         return false
     endif
     return true
 endfunction
 function Trig_Skill_buy3_Func003C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[力]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 11) == "[Guardian]"))then
         return false
     endif
     return true
@@ -7229,25 +7229,25 @@ function Trig_Skill_buy4_Conditions takes nothing returns boolean
     return true
 endfunction
 function Trig_Skill_buy4_Func003Func001Func002Func002C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[魔]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 6) == "[Mage]"))then
         return false
     endif
     return true
 endfunction
 function Trig_Skill_buy4_Func003Func001Func002C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[弓]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 8) == "[Archer]"))then
         return false
     endif
     return true
 endfunction
 function Trig_Skill_buy4_Func003Func001C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[敏]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 9) == "[Warrior]"))then
         return false
     endif
     return true
 endfunction
 function Trig_Skill_buy4_Func003C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[力]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 11) == "[Guardian]"))then
         return false
     endif
     return true
@@ -7336,25 +7336,25 @@ function Trig_Skill_buy5_Conditions takes nothing returns boolean
     return true
 endfunction
 function Trig_Skill_buy5_Func003Func001Func004Func004C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[魔]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 6) == "[Mage]"))then
         return false
     endif
     return true
 endfunction
 function Trig_Skill_buy5_Func003Func001Func004C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[弓]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 8) == "[Archer]"))then
         return false
     endif
     return true
 endfunction
 function Trig_Skill_buy5_Func003Func001C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[敏]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 9) == "[Warrior]"))then
         return false
     endif
     return true
 endfunction
 function Trig_Skill_buy5_Func003C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 5) == "[力]"))then
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 10) == "[Guardian]"))then
         return false
     endif
     return true
@@ -9213,8 +9213,8 @@ function Trig_ItemUp_Actions takes nothing returns nothing
         call UnitAddItemByIdSwapped('I02I', GetTriggerUnit())
         call SetItemUserData(GetLastCreatedItem(), 21)
         set udg_M9P2Q7U5l4O5WD9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))] = GetLastCreatedItem()
-        call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_ITEMACQUIRED, "|cff00FFFF你拥有了天使手镯，你现在可以A中立怪了，中立怪机率掉落合成专署武器的组件。")
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("集齐(天)幸运之戒+(天)活力之戒+(天)生命之戒合成了装备：" + GetItemName(GetLastCreatedItem()))))
+call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_ITEMACQUIRED, "|cff00FFFF You now possess the Angel Bracelet. You can now attack neutral monsters. Neutral monsters have a chance to drop components for crafting special weapons.")
+call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + (" has combined (Heavenly) Fortune Ring + (Heavenly) Vitality Ring + (Heavenly) Life Ring to craft the equipment: " + GetItemName(GetLastCreatedItem()))))
     else
     endif
     if(Trig_ItemUp_Func022C())then
