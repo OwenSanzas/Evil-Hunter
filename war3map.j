@@ -1237,25 +1237,25 @@ function InitTrig_help takes nothing returns nothing
 endfunction
 
 // ----------------------------- Role Checker START ------------------------------------
-function IsMage_Func takes nothing returns boolean
+function IsCurrentUnitMage takes nothing returns boolean
     if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 6) == "[Mage]"))then
         return false
     endif
     return true
 endfunction
-function IsArcher_Func takes nothing returns boolean
+function IsCurrentUnitArcher takes nothing returns boolean
     if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 8) == "[Archer]"))then
         return false
     endif
     return true
 endfunction
-function IsWarrior_Func takes nothing returns boolean
+function IsCurrentUnitWarrior takes nothing returns boolean
     if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 9) == "[Warrior]"))then
         return false
     endif
     return true
 endfunction
-function IsGuardian_Func takes nothing returns boolean
+function IsCurrentUnitGuardian takes nothing returns boolean
     if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 10) == "[Guardian]"))then
         return false
     endif
@@ -1263,7 +1263,8 @@ function IsGuardian_Func takes nothing returns boolean
 endfunction
 // ----------------------------- Role Checker END ------------------------------------
 
-// ----------------------------- 工资相关函数 START--------------------------------
+
+// ----------------------------- 工资相关函数 START------------------------------------
 // TODO: 设置工资
 function Trig_GongZi_Func001Func001C takes nothing returns boolean
     if(not(GetPlayerSlotState(ConvertedPlayer(GetForLoopIndexA())) == PLAYER_SLOT_STATE_PLAYING))then
@@ -4040,7 +4041,7 @@ function InitTrig_XH2 takes nothing returns nothing
     call TriggerAddAction(gg_trg_XH2, function Trig_XH2_Actions)
 endfunction
 function Trig_PetA1_Actions takes nothing returns nothing
-    // 储存58个坐骑的ID
+    // ------------------------------- Store Mount ID START --------------------------------
     set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[1] = 'nplg'
     set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[2] = 'nsll'
     set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[3] = 'nslv'
@@ -4080,6 +4081,8 @@ function Trig_PetA1_Actions takes nothing returns nothing
     set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[55] = 'n02P'
     set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[56] = 'h01D'
     set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[58] = 'u00K'
+    // ------------------------------- Store Mount ID END --------------------------------
+
     set udg_M9P2Q7U5l4V5W9O45lO70h41D2G5K3[1] = 140.
     set udg_M9P2Q7U5l4V5W9O45lO70h41D2G5K3[2] = 120.
     set udg_M9P2Q7U5l4V5W9O45lO70h41D2G5K3[3] = 120.
@@ -6877,11 +6880,7 @@ function InitTrig_Open_Boss takes nothing returns nothing
     call TriggerAddAction(gg_trg_Open_Boss, function Trig_Open_Boss_Actions)
 endfunction
 function Trig_Skill1_Actions takes nothing returns nothing
-    // 储存技能ID
-
     // ---------------- 8 Aura Skills START ------------------
-
-    // SPELLBOOK SKILLS - aura skills directly goes to player's spellbook
     set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[1] = 'A02C'
     set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[2] = 'A02D'
     set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[3] = 'A02E'
@@ -6890,8 +6889,6 @@ function Trig_Skill1_Actions takes nothing returns nothing
     set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[6] = 'A04Z'
     set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[7] = 'A02I'
     set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[8] = 'A04B'
-
-    // REAL SKILLS
     set udg_M9P2Q7U5l4V5W9O45lOS7041D2G5K3[1] = 'A02O'
     set udg_M9P2Q7U5l4V5W9O45lOS7041D2G5K3[2] = 'A046'
     set udg_M9P2Q7U5l4V5W9O45lOS7041D2G5K3[3] = 'A055'
@@ -6901,8 +6898,6 @@ function Trig_Skill1_Actions takes nothing returns nothing
     set udg_M9P2Q7U5l4V5W9O45lOS7041D2G5K3[7] = 'A05D'
     set udg_M9P2Q7U5l4V5W9O45lOS7041D2G5K3[8] = 'A02X'
     // ---------------- 8 Aura Skills END ------------------
-
-    // Other Skills
     set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[21] = 'A03G'
     set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[22] = 'A03G'
     set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[23] = 'A060'
@@ -6943,20 +6938,11 @@ function InitTrig_Skill1 takes nothing returns nothing
     call TriggerAddAction(gg_trg_Skill1, function Trig_Skill1_Actions)
 endfunction
 function Trig_Skill2_Actions takes nothing returns nothing
-    // ----------------- Healing Skills START -----------------
-    /*
-    A02U: Holy Light
-    A04T: 生命恢复
-    A036: 圣光守卫
-    A06A: 医疗气雾
-    A03G: [Mage ONLY] 医疗波
-    */
     set udg_M9P2Q7U5l4V5W9O45lO7D041D2G5K3[1] = 'A02U'
     set udg_M9P2Q7U5l4V5W9O45lO7D041D2G5K3[2] = 'A04T'
     set udg_M9P2Q7U5l4V5W9O45lO7D041D2G5K3[3] = 'A036'
     set udg_M9P2Q7U5l4V5W9O45lO7D041D2G5K3[4] = 'A06A'
     set udg_M9P2Q7U5l4V5W9O45lO7D041D2G5K3[5] = 'A03G'
-    // ----------------- Healing Skills END -----------------
     call DestroyTrigger(GetTriggeringTrigger())
 endfunction
 function InitTrig_Skill2 takes nothing returns nothing
@@ -7164,17 +7150,16 @@ function Trig_Skill_buy2_Func006Func001C takes nothing returns boolean
 endfunction
 function Trig_Skill_buy2_Actions takes nothing returns nothing
     call RemoveItem(GetManipulatedItem())
-    if(IsGuardian_Func())then
+    if(IsCurrentUnitGuardian())then
         set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lO7D041D2G5K3[GetRandomInt(1, 4)]
     else
-        if(IsWarrior_Func())then
+        if(IsCurrentUnitWarrior())then
             set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lO7D041D2G5K3[GetRandomInt(1, 4)]
         else
-            if(IsArcher_Func())then
+            if(IsCurrentUnitArcher())then
                 set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lO7D041D2G5K3[GetRandomInt(1, 4)]
             else
-                if(IsMage_Func())then
-                    // ONLY mage can lean healing waves
+                if(IsCurrentUnitMage())then
                     set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lO7D041D2G5K3[GetRandomInt(1, 5)]
                 else
                 endif
@@ -7248,16 +7233,16 @@ function Trig_Skill_buy3_Func007Func001C takes nothing returns boolean
 endfunction
 function Trig_Skill_buy3_Actions takes nothing returns nothing
     call RemoveItem(GetManipulatedItem())
-    if(IsGuardian_Func())then
+    if(IsCurrentUnitGuardian())then
         set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lO7041DD2G5K3[GetRandomInt(1, 13)]
     else
-        if(IsWarrior_Func())then
+        if(IsCurrentUnitWarrior())then
             set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lO7041DD2G5K3[GetRandomInt(1, 13)]
         else
-            if(IsArcher_Func())then
+            if(IsCurrentUnitArcher())then
                 set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7UD5l4V5W9O45lO704DD2G5K3[GetRandomInt(1, 9)]
             else
-                if(IsMage_Func())then
+                if(IsCurrentUnitMage())then
                     set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lO7041D2DG5K3[GetRandomInt(1, 11)]
                 else
                 endif
@@ -7331,16 +7316,16 @@ function Trig_Skill_buy4_Func007Func001C takes nothing returns boolean
 endfunction
 function Trig_Skill_buy4_Actions takes nothing returns nothing
     call RemoveItem(GetManipulatedItem())
-    if(IsGuardian_Func())then
+    if(IsCurrentUnitGuardian())then
         set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lOD7041D2G5K3[GetRandomInt(1, 9)]
     else
-        if(IsWarrior_Func())then
+        if(IsCurrentUnitWarrior())then
             set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lOD7041D2G5K3[GetRandomInt(1, 9)]
         else
-            if(IsArcher_Func())then
+            if(IsCurrentUnitArcher())then
                 set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lOD7041D2G5K3[GetRandomInt(2, 7)]
             else
-                if(IsMage_Func())then
+                if(IsCurrentUnitMage())then
                     set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lDO7041D2G5K3[GetRandomInt(1, 15)]
                 else
                 endif
@@ -7394,30 +7379,6 @@ function Trig_Skill_buy5_Conditions takes nothing returns boolean
     endif
     return true
 endfunction
-function Trig_Skill_buy5_Func003Func001Func004Func004C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 6) == "[Mage]"))then
-        return false
-    endif
-    return true
-endfunction
-function Trig_Skill_buy5_Func003Func001Func004C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 8) == "[Archer]"))then
-        return false
-    endif
-    return true
-endfunction
-function Trig_Skill_buy5_Func003Func001C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 9) == "[Warrior]"))then
-        return false
-    endif
-    return true
-endfunction
-function Trig_Skill_buy5_Func003C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 10) == "[Guardian]"))then
-        return false
-    endif
-    return true
-endfunction
 function Trig_Skill_buy5_Func005Func001C takes nothing returns boolean
     if(not(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] == udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]))then
         return false
@@ -7438,20 +7399,20 @@ function Trig_Skill_buy5_Func007Func001C takes nothing returns boolean
 endfunction
 function Trig_Skill_buy5_Actions takes nothing returns nothing
     call RemoveItem(GetManipulatedItem())
-    if(Trig_Skill_buy5_Func003C())then
+    if(IsCurrentUnitGuardian())then
         set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lO70S41D2G5K3[GetRandomInt(1, 6)]
     else
-        if(Trig_Skill_buy5_Func003Func001C())then
+        if(IsCurrentUnitWarrior())then
             call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_WARNING, "Only Guardian champions can learn defensive skills!")
             call AdjustPlayerStateBJ(200, GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD)
             return
         else
-            if(Trig_Skill_buy5_Func003Func001Func004C())then
+            if(IsCurrentUnitArcher())then
                 call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_WARNING, "Only Guardian champions can learn defensive skills!")
                 call AdjustPlayerStateBJ(200, GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD)
                 return
             else
-                if(Trig_Skill_buy5_Func003Func001Func004Func004C())then
+                if(IsCurrentUnitMage())then
                     call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_WARNING, "Only Guardian champions can learn defensive skills!")
                     call AdjustPlayerStateBJ(200, GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD)
                     return
