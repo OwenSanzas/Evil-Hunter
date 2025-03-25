@@ -4,14 +4,14 @@ globals
     integer array udg_ChampSelection
     integer array udg_Act3Units
     button array udg_Difficulty
-    unit array udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3
-    integer array udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3
+    unit array udg_AllPlayerUnits
+    integer array udg_ItemPool
     integer array udg_M9P2Q7U5314V5W9O45lO7041D2G5K3
-    rect array udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3
-    integer array udg_M9P2Q7U5l4V5W9O45lO7041DE2G5K3
-    integer array udg_M9P22Q7U5l4V5W9O45lO7041D2G5K3
-    timer array udg_M9P2Q7U5l4V5W9O45lO7041D2IG5K3
-    timerdialog array udg_M9P2Q7U5l4V5W9O45lO7041D2GO5K3
+    rect array udg_MapAreas
+    integer array udg_NoUse1_ForFutureUse
+    integer array udg_NoUse2_ForFutureUse
+    timer array udg_Timers
+    timerdialog array udg_TimerDialog
     integer array udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3
     integer array udg_M9P2Q7U5l4V5W9O45lO7D041D2G5K3
     integer array udg_M9P2Q7U5l4V5W9O45lO70S41D2G5K3
@@ -330,19 +330,19 @@ function InitGlobals takes nothing returns nothing
     set i = 0
     loop
         exitwhen(i > 1)
-        set udg_M9P2Q7U5l4V5W9O45lO7041DE2G5K3[i] = 0
+        set udg_NoUse1_ForFutureUse[i] = 0
         set i = i + 1
     endloop
     set i = 0
     loop
         exitwhen(i > 200)
-        set udg_M9P22Q7U5l4V5W9O45lO7041D2G5K3[i] = 0
+        set udg_NoUse2_ForFutureUse[i] = 0
         set i = i + 1
     endloop
     set i = 0
     loop
         exitwhen(i > 200)
-        set udg_M9P2Q7U5l4V5W9O45lO7041D2IG5K3[i] = CreateTimer()
+        set udg_Timers[i] = CreateTimer()
         set i = i + 1
     endloop
     set i = 0
@@ -895,12 +895,12 @@ function Trig________________u_Actions takes nothing returns nothing
     // call DisplayTimedTextToForce(GetPlayersAll(), 20., "|cffffff00Brave warriors, heed the call! Venture into the depths of the forest, uncover the source of this disaster, and reclaim the land from the clutches of chaos.|r")
     // call DisplayTimedTextToForce(GetPlayersAll(), 20., "|cffffff00The fate of the realm rests in your hands!|r")
 
-    set udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[0] = gg_rct_______Map
-    set udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[1] = gg_rct_______Baowu01
-    set udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[2] = gg_rct_______Baowu02
-    set udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[3] = gg_rct_______Baowu03
-    set udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[4] = gg_rct_______Baowu04
-    set udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[5] = gg_rct_______Baowu05
+    set udg_MapAreas[0] = gg_rct_______Map
+    set udg_MapAreas[1] = gg_rct_______Baowu01
+    set udg_MapAreas[2] = gg_rct_______Baowu02
+    set udg_MapAreas[3] = gg_rct_______Baowu03
+    set udg_MapAreas[4] = gg_rct_______Baowu04
+    set udg_MapAreas[5] = gg_rct_______Baowu05
     set udg_M9P2Q7UZ5l4V5W9O45lO7041D2G5K3[1] = GetRectCenter(gg_rct_______Start1)
     set udg_M9P2Q7UZ5l4V5W9O45lO7041D2G5K3[2] = GetRectCenter(gg_rct_______Start2)
     set udg_M9P2Q7UZ5l4V5W9O45lO7041D2G5K3[3] = GetRectCenter(gg_rct_______Start3)
@@ -909,7 +909,7 @@ function Trig________________u_Actions takes nothing returns nothing
     set udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[91] = Location( - 1926., - 22404.)
     set udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[92] = Location(9903., - 22246.)
     call CreateNUnitsAtLoc(1, 'hpea', Player(PLAYER_NEUTRAL_PASSIVE), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[91], bj_UNIT_FACING)
-    set udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[0] = GetLastCreatedUnit()
+    set udg_AllPlayerUnits[0] = GetLastCreatedUnit()
     set bj_forLoopAIndex = 1
     set bj_forLoopAIndexEnd = 8
 
@@ -1387,7 +1387,7 @@ function Trig_PlayerInput_Func002C takes nothing returns boolean
     if(not Trig_PlayerInput_Func002Func005C())then
         return false
     endif
-    if(not(UnitHasItemOfTypeBJ(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())], 'I05H') == true))then
+    if(not(UnitHasItemOfTypeBJ(udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())], 'I05H') == true))then
         return false
     endif
     return true
@@ -1418,7 +1418,7 @@ endfunction
 
 function Trig_PlayerInput_Func004Actions takes nothing returns nothing
     local integer playerId = GetConvertedPlayerId(GetTriggerPlayer())
-    local unit hero = udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[playerId]
+    local unit hero = udg_AllPlayerUnits[playerId]
     local item newItem
     
     if hero == null then
@@ -1513,7 +1513,7 @@ endfunction
 //------------------- 自定义玩家输入函数 END -------------------
 function Trig_PlayerInput_Actions takes nothing returns nothing
     if(Trig_PlayerInput_Func001C())then
-        call KillUnit(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])
+        call KillUnit(udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())])
     else
     endif
 
@@ -1538,13 +1538,13 @@ function Trig_PlayerInput_Actions takes nothing returns nothing
         exitwhen bj_forLoopBIndex > bj_forLoopBIndexEnd
         if(Trig_PlayerInput_Func003Func001C())then
             call PolledWait(GetRandomReal(180., 550.))
-            call SetUnitPositionLoc(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())], udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[91])
-            call UnitAddAbilityBJ('AUls', udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])
-            call IssueImmediateOrder(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())], "locustswarm")
-            call SetUnitOwner(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())], Player(PLAYER_NEUTRAL_PASSIVE), true)
-            call SetUnitVertexColorBJ(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())], 100, 100, 100, 100.)
-            call SetUnitPositionLoc(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())], udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[91])
-            call PauseUnitBJ(true, udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])
+            call SetUnitPositionLoc(udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())], udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[91])
+            call UnitAddAbilityBJ('AUls', udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())])
+            call IssueImmediateOrder(udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())], "locustswarm")
+            call SetUnitOwner(udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())], Player(PLAYER_NEUTRAL_PASSIVE), true)
+            call SetUnitVertexColorBJ(udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())], 100, 100, 100, 100.)
+            call SetUnitPositionLoc(udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())], udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[91])
+            call PauseUnitBJ(true, udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())])
             call RemoveUnit(udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])
             set udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] = null
             call DestroyFogModifier(GetLastCreatedFogModifier())
@@ -1667,7 +1667,7 @@ function Trig_PlayerLeave_Actions takes nothing returns nothing
     set bj_forLoopAIndexEnd = 6
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-        call SetItemPositionLoc(UnitItemInSlotBJ(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())], GetForLoopIndexA()), GetRectCenter(gg_rct_______Road007))
+        call SetItemPositionLoc(UnitItemInSlotBJ(udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())], GetForLoopIndexA()), GetRectCenter(gg_rct_______Road007))
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
     endloop
     set bj_forLoopBIndex = 1
@@ -1683,8 +1683,8 @@ function Trig_PlayerLeave_Actions takes nothing returns nothing
         endloop
         set bj_forLoopBIndex = bj_forLoopBIndex + 1
     endloop
-    call RemoveUnit(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])
-    set udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] = null
+    call RemoveUnit(udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())])
+    set udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())] = null
     call UnitApplyTimedLifeBJ(.1, 'BTLF', udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])
     call ShowUnitHide(udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])
     set udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] = null
@@ -1737,7 +1737,7 @@ function InitTrig_PlayerLeave takes nothing returns nothing
     call TriggerAddAction(gg_trg_PlayerLeave, function Trig_PlayerLeave_Actions)
 endfunction
 function Trig_SBBB_Func009Func001C takes nothing returns boolean
-    if(not(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()] != null))then
+    if(not(udg_AllPlayerUnits[GetForLoopIndexA()] != null))then
         return false
     endif
     return true
@@ -1750,10 +1750,10 @@ function Trig_SBBB_Func011Func001C takes nothing returns boolean
 endfunction
 function Trig_SBBB_Func011A takes nothing returns nothing
     if(Trig_SBBB_Func011Func001C())then
-        call SetUnitOwner(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetEnumUnit()))], Player(PLAYER_NEUTRAL_PASSIVE), true)
-        call SetUnitVertexColorBJ(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetEnumUnit()))], 100, 100, 100, 100.)
-        call SetUnitPositionLoc(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetEnumUnit()))], udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[91])
-        call PauseUnitBJ(true, udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetEnumUnit()))])
+        call SetUnitOwner(udg_AllPlayerUnits[GetConvertedPlayerId(GetOwningPlayer(GetEnumUnit()))], Player(PLAYER_NEUTRAL_PASSIVE), true)
+        call SetUnitVertexColorBJ(udg_AllPlayerUnits[GetConvertedPlayerId(GetOwningPlayer(GetEnumUnit()))], 100, 100, 100, 100.)
+        call SetUnitPositionLoc(udg_AllPlayerUnits[GetConvertedPlayerId(GetOwningPlayer(GetEnumUnit()))], udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[91])
+        call PauseUnitBJ(true, udg_AllPlayerUnits[GetConvertedPlayerId(GetOwningPlayer(GetEnumUnit()))])
         call RemoveUnit(udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetEnumUnit()))])
         set udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetEnumUnit()))] = null
         call DestroyFogModifier(GetLastCreatedFogModifier())
@@ -2065,7 +2065,7 @@ function Trig_AI03_Func003Func001Func008Func002C takes nothing returns boolean
     if(not(R2I(DistanceBetweenPoints(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[1], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[2])) < udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[99]))then
         return false
     endif
-    if(not(IsUnitAliveBJ(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexB()]) == true))then
+    if(not(IsUnitAliveBJ(udg_AllPlayerUnits[GetForLoopIndexB()]) == true))then
         return false
     endif
     return true
@@ -2080,10 +2080,10 @@ function Trig_AI03_Func004Func001Func002001003 takes nothing returns boolean
     return(IsUnitAlly(GetEnumUnit(), Player(11)) == true)
 endfunction
 function Trig_AI03_Func004Func001Func002A takes nothing returns nothing
-    call IssueTargetOrder(GetEnumUnit(), "attack", udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()])
+    call IssueTargetOrder(GetEnumUnit(), "attack", udg_AllPlayerUnits[GetForLoopIndexA()])
 endfunction
 function Trig_AI03_Func004Func001C takes nothing returns boolean
-    if(not(IsUnitAliveBJ(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()]) == true))then
+    if(not(IsUnitAliveBJ(udg_AllPlayerUnits[GetForLoopIndexA()]) == true))then
         return false
     endif
     return true
@@ -2105,11 +2105,11 @@ function Trig_AI03_Actions takes nothing returns nothing
             set bj_forLoopBIndexEnd = 9
             loop
                 exitwhen bj_forLoopBIndex > bj_forLoopBIndexEnd
-                set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[2] = GetUnitLoc(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexB()])
+                set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[2] = GetUnitLoc(udg_AllPlayerUnits[GetForLoopIndexB()])
                 if(Trig_AI03_Func003Func001Func008Func002C())then
                     set udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[99] = R2I(DistanceBetweenPoints(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[1], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[2]))
                     call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[3])
-                    set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[3] = GetUnitLoc(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexB()])
+                    set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[3] = GetUnitLoc(udg_AllPlayerUnits[GetForLoopIndexB()])
                 else
                 endif
                 call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[2])
@@ -2127,7 +2127,7 @@ function Trig_AI03_Actions takes nothing returns nothing
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         if(Trig_AI03_Func004Func001C())then
-            set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[1] = GetUnitLoc(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()])
+            set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[1] = GetUnitLoc(udg_AllPlayerUnits[GetForLoopIndexA()])
             call ForGroupBJ(GetUnitsInRangeOfLocMatching(1000., udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[1], Condition(function Trig_AI03_Func004Func001Func002001003)), function Trig_AI03_Func004Func001Func002A)
         else
         endif
@@ -2175,12 +2175,12 @@ function Trig_AI04_Func001Func001Func002Func001C takes nothing returns boolean
 endfunction
 function Trig_AI04_Func001Func001Func002A takes nothing returns nothing
     if(Trig_AI04_Func001Func001Func002Func001C())then
-        call IssueTargetOrder(GetEnumUnit(), "attack", udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()])
+        call IssueTargetOrder(GetEnumUnit(), "attack", udg_AllPlayerUnits[GetForLoopIndexA()])
     else
     endif
 endfunction
 function Trig_AI04_Func001Func001C takes nothing returns boolean
-    if(not(IsUnitAliveBJ(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()]) == true))then
+    if(not(IsUnitAliveBJ(udg_AllPlayerUnits[GetForLoopIndexA()]) == true))then
         return false
     endif
     return true
@@ -2191,7 +2191,7 @@ function Trig_AI04_Actions takes nothing returns nothing
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         if(Trig_AI04_Func001Func001C())then
-            set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[5] = GetUnitLoc(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()])
+            set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[5] = GetUnitLoc(udg_AllPlayerUnits[GetForLoopIndexA()])
             call ForGroupBJ(GetUnitsInRangeOfLocAll(1000., udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[5]), function Trig_AI04_Func001Func001Func002A)
             call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[5])
             call DestroyGroup(GetLastCreatedGroup())
@@ -2282,7 +2282,7 @@ function Trig_OgreAdd_Actions takes nothing returns nothing
         set bj_forLoopAIndexEnd = 4
         loop
             exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-            set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[GetForLoopIndexA()])
+            set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(udg_MapAreas[GetForLoopIndexA()])
             call CreateNUnitsAtLoc(1, 'n004', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
             call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200])
             set bj_forLoopAIndex = bj_forLoopAIndex + 1
@@ -2296,7 +2296,7 @@ function Trig_OgreAdd_Actions takes nothing returns nothing
         set bj_forLoopAIndexEnd = 4
         loop
             exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-            set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[GetForLoopIndexA()])
+            set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(udg_MapAreas[GetForLoopIndexA()])
             call CreateNUnitsAtLoc(1, 'n001', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
             call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200])
             set bj_forLoopAIndex = bj_forLoopAIndex + 1
@@ -2310,7 +2310,7 @@ function Trig_OgreAdd_Actions takes nothing returns nothing
         set bj_forLoopAIndexEnd = 4
         loop
             exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-            set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[GetForLoopIndexA()])
+            set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(udg_MapAreas[GetForLoopIndexA()])
             call CreateNUnitsAtLoc(1, 'n001', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
             call CreateNUnitsAtLoc(1, 'n000', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
             call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200])
@@ -2325,7 +2325,7 @@ function Trig_OgreAdd_Actions takes nothing returns nothing
         set bj_forLoopAIndexEnd = 4
         loop
             exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-            set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[GetForLoopIndexA()])
+            set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(udg_MapAreas[GetForLoopIndexA()])
             call CreateNUnitsAtLoc(1, 'n001', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
             call CreateNUnitsAtLoc(1, 'n000', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
             call CreateNUnitsAtLoc(1, 'n00C', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
@@ -2341,7 +2341,7 @@ function Trig_OgreAdd_Actions takes nothing returns nothing
         set bj_forLoopAIndexEnd = 4
         loop
             exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-            set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[GetForLoopIndexA()])
+            set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(udg_MapAreas[GetForLoopIndexA()])
             call CreateNUnitsAtLoc(1, 'n00F', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
             call CreateNUnitsAtLoc(1, 'n01G', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
             call CreateNUnitsAtLoc(1, 'n00C', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
@@ -2357,7 +2357,7 @@ function Trig_OgreAdd_Actions takes nothing returns nothing
         set bj_forLoopAIndexEnd = 4
         loop
             exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-            set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[GetForLoopIndexA()])
+            set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(udg_MapAreas[GetForLoopIndexA()])
             call CreateNUnitsAtLoc(1, 'n01G', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
             call CreateNUnitsAtLoc(1, 'n00D', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
             call CreateNUnitsAtLoc(1, 'n02H', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
@@ -2374,7 +2374,7 @@ function Trig_OgreAdd_Actions takes nothing returns nothing
         set bj_forLoopAIndexEnd = 4
         loop
             exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-            set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[GetForLoopIndexA()])
+            set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(udg_MapAreas[GetForLoopIndexA()])
             call CreateNUnitsAtLoc(1, 'n02R', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
             call CreateNUnitsAtLoc(1, 'n02R', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
             call CreateNUnitsAtLoc(1, 'n02H', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
@@ -2536,10 +2536,10 @@ function Trig_OgreAdd2_Actions takes nothing returns nothing
         set bj_forLoopAIndexEnd = 4
         loop
             exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-            set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1] = GetUnitsInRectOfPlayer(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[GetForLoopIndexA()], Player(11))
+            set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1] = GetUnitsInRectOfPlayer(udg_MapAreas[GetForLoopIndexA()], Player(11))
             if(Trig_OgreAdd2_Func007Func002Func002C())then
                 set udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[13] = (udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[13] + 1)
-                set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[GetForLoopIndexA()])
+                set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(udg_MapAreas[GetForLoopIndexA()])
                 call CreateNUnitsAtLoc(1, 'n004', Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
                 call SetUnitAcquireRange(GetLastCreatedUnit(), 400.)
                 call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200])
@@ -2557,10 +2557,10 @@ function Trig_OgreAdd2_Actions takes nothing returns nothing
         set bj_forLoopAIndexEnd = 4
         loop
             exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-            set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1] = GetUnitsInRectOfPlayer(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[GetForLoopIndexA()], Player(11))
+            set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1] = GetUnitsInRectOfPlayer(udg_MapAreas[GetForLoopIndexA()], Player(11))
             if(Trig_OgreAdd2_Func009Func001Func002C())then
                 set udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[13] = (udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[13] + 1)
-                set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[GetForLoopIndexA()])
+                set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(udg_MapAreas[GetForLoopIndexA()])
                 call CreateNUnitsAtLoc(1, 'n001', Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
                 call SetUnitAcquireRange(GetLastCreatedUnit(), 500.)
                 call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200])
@@ -2578,10 +2578,10 @@ function Trig_OgreAdd2_Actions takes nothing returns nothing
         set bj_forLoopAIndexEnd = 4
         loop
             exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-            set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1] = GetUnitsInRectOfPlayer(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[GetForLoopIndexA()], Player(11))
+            set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1] = GetUnitsInRectOfPlayer(udg_MapAreas[GetForLoopIndexA()], Player(11))
             if(Trig_OgreAdd2_Func011Func001Func002C())then
                 set udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[13] = (udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[13] + 2)
-                set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[GetForLoopIndexA()])
+                set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(udg_MapAreas[GetForLoopIndexA()])
                 call CreateNUnitsAtLoc(1, 'n001', Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
                 call SetUnitAcquireRange(GetLastCreatedUnit(), 600.)
                 call CreateNUnitsAtLoc(1, 'n000', Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
@@ -2601,10 +2601,10 @@ function Trig_OgreAdd2_Actions takes nothing returns nothing
         set bj_forLoopAIndexEnd = 4
         loop
             exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-            set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1] = GetUnitsInRectOfPlayer(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[GetForLoopIndexA()], Player(11))
+            set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1] = GetUnitsInRectOfPlayer(udg_MapAreas[GetForLoopIndexA()], Player(11))
             if(Trig_OgreAdd2_Func013Func001Func002C())then
                 set udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[13] = (udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[13] + 3)
-                set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[GetForLoopIndexA()])
+                set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(udg_MapAreas[GetForLoopIndexA()])
                 call CreateNUnitsAtLoc(1, 'n001', Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
                 call SetUnitAcquireRange(GetLastCreatedUnit(), 700.)
                 call CreateNUnitsAtLoc(1, 'n000', Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
@@ -2626,10 +2626,10 @@ function Trig_OgreAdd2_Actions takes nothing returns nothing
         set bj_forLoopAIndexEnd = 4
         loop
             exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-            set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1] = GetUnitsInRectOfPlayer(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[GetForLoopIndexA()], Player(11))
+            set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1] = GetUnitsInRectOfPlayer(udg_MapAreas[GetForLoopIndexA()], Player(11))
             if(Trig_OgreAdd2_Func015Func001Func002C())then
                 set udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[13] = (udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[13] + 3)
-                set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[GetForLoopIndexA()])
+                set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(udg_MapAreas[GetForLoopIndexA()])
                 call CreateNUnitsAtLoc(1, 'n00F', Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
                 call SetUnitAcquireRange(GetLastCreatedUnit(), 800.)
                 call CreateNUnitsAtLoc(1, 'n01G', Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
@@ -2651,10 +2651,10 @@ function Trig_OgreAdd2_Actions takes nothing returns nothing
         set bj_forLoopAIndexEnd = 4
         loop
             exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-            set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1] = GetUnitsInRectOfPlayer(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[GetForLoopIndexA()], Player(11))
+            set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1] = GetUnitsInRectOfPlayer(udg_MapAreas[GetForLoopIndexA()], Player(11))
             if(Trig_OgreAdd2_Func017Func001Func002C())then
                 set udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[13] = (udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[13] + 3)
-                set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[GetForLoopIndexA()])
+                set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(udg_MapAreas[GetForLoopIndexA()])
                 call CreateNUnitsAtLoc(1, 'n01G', Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
                 call SetUnitAcquireRange(GetLastCreatedUnit(), 1500.)
                 call CreateNUnitsAtLoc(1, 'n00D', Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
@@ -2676,10 +2676,10 @@ function Trig_OgreAdd2_Actions takes nothing returns nothing
         set bj_forLoopAIndexEnd = 4
         loop
             exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-            set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1] = GetUnitsInRectOfPlayer(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[GetForLoopIndexA()], Player(11))
+            set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1] = GetUnitsInRectOfPlayer(udg_MapAreas[GetForLoopIndexA()], Player(11))
             if(Trig_OgreAdd2_Func019Func001Func002C())then
                 set udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[13] = (udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[13] + 4)
-                set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[GetForLoopIndexA()])
+                set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(udg_MapAreas[GetForLoopIndexA()])
                 call CreateNUnitsAtLoc(1, 'n02R', Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
                 call SetUnitAcquireRange(GetLastCreatedUnit(), 2000.)
                 call CreateNUnitsAtLoc(1, 'n00D', Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
@@ -2735,7 +2735,7 @@ function Trig_OgreAdd4_Actions takes nothing returns nothing
         set bj_forLoopAIndexEnd = 4
         loop
             exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-            set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[GetForLoopIndexA()])
+            set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(udg_MapAreas[GetForLoopIndexA()])
             call CreateNUnitsAtLoc(1, 'n01D', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
             call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200])
             set bj_forLoopAIndex = bj_forLoopAIndex + 1
@@ -3042,7 +3042,7 @@ function Trig_OgreDie_Func022Func017C takes nothing returns boolean
     return true
 endfunction
 function Trig_OgreDie_Func022Func021Func001C takes nothing returns boolean
-    if(not(IsUnitAliveBJ(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()]) == true))then
+    if(not(IsUnitAliveBJ(udg_AllPlayerUnits[GetForLoopIndexA()]) == true))then
         return false
     endif
     return true
@@ -3073,42 +3073,42 @@ function Trig_OgreDie_Actions takes nothing returns nothing
     else
     endif
     if(Trig_WoodenChestDie_Func())then
-        set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 15)] = GetRandomLocInRect(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[GetRandomInt(1, 4)])
+        set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 15)] = GetRandomLocInRect(udg_MapAreas[GetRandomInt(1, 4)])
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)] = GetUnitLoc(GetDyingUnit())
         call CreateNUnitsAtLoc(1, 'n01Y', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 15)], bj_UNIT_FACING)
         if(Trig_OgreDie_Func007Func004C())then
-            call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(14, 21)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
+            call CreateItemLoc(udg_ItemPool[GetRandomInt(14, 21)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
         else
-            call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(1, 21)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
+            call CreateItemLoc(udg_ItemPool[GetRandomInt(1, 21)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
         endif
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 15)])
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
     else
     endif
     if(Trig_IronChestDie_Func())then
-        set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 15)] = GetRandomLocInRect(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[GetRandomInt(1, 4)])
+        set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 15)] = GetRandomLocInRect(udg_MapAreas[GetRandomInt(1, 4)])
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)] = GetUnitLoc(GetDyingUnit())
         call CreateNUnitsAtLoc(1, 'n01X', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 15)], bj_UNIT_FACING)
         call SetUnitRescueRange(GetLastCreatedUnit(), 3000.)
         if(Trig_OgreDie_Func009Func005C())then
-            call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(61, 68)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
+            call CreateItemLoc(udg_ItemPool[GetRandomInt(61, 68)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
         else
-            call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(41, 48)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
+            call CreateItemLoc(udg_ItemPool[GetRandomInt(41, 48)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
         endif
         if(Trig_OgreDie_Func009Func007C())then
             if(Trig_OgreDie_Func009Func007Func001C())then
                 if(Trig_OgreDie_Func009Func007Func001Func001001())then
-                    call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(141, 143)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
+                    call CreateItemLoc(udg_ItemPool[GetRandomInt(141, 143)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
                 else
                     call DoNothing()
                 endif
                 if(Trig_OgreDie_Func009Func007Func001Func002001())then
-                    call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(144, 146)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
+                    call CreateItemLoc(udg_ItemPool[GetRandomInt(144, 146)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
                 else
                     call DoNothing()
                 endif
                 if(Trig_OgreDie_Func009Func007Func001Func003001())then
-                    call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(147, 149)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
+                    call CreateItemLoc(udg_ItemPool[GetRandomInt(147, 149)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
                 else
                     call DoNothing()
                 endif
@@ -3121,7 +3121,7 @@ function Trig_OgreDie_Actions takes nothing returns nothing
     else
     endif
     if(Trig_OgreDie_Func011C())then
-        set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 15)] = GetRandomLocInRect(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[GetRandomInt(1, 4)])
+        set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 15)] = GetRandomLocInRect(udg_MapAreas[GetRandomInt(1, 4)])
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)] = GetUnitLoc(GetDyingUnit())
         call CreateNUnitsAtLoc(1, 'n01Z', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 15)], bj_UNIT_FACING)
         set bronze_chest_unit = GetLastCreatedUnit()
@@ -3130,32 +3130,32 @@ function Trig_OgreDie_Actions takes nothing returns nothing
         if(Trig_OgreDie_Func011Func005C())then
             if(Trig_OgreDie_Func011Func005Func002C())then
                 if(Trig_OgreDie_Func011Func005Func002Func002001())then
-                    call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(141, 143)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
+                    call CreateItemLoc(udg_ItemPool[GetRandomInt(141, 143)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
                 else
                     call DoNothing()
                 endif
                 if(Trig_OgreDie_Func011Func005Func002Func003001())then
-                    call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(144, 146)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
+                    call CreateItemLoc(udg_ItemPool[GetRandomInt(144, 146)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
                 else
                     call DoNothing()
                 endif
                 if(Trig_OgreDie_Func011Func005Func002Func004001())then
-                    call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(147, 149)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
+                    call CreateItemLoc(udg_ItemPool[GetRandomInt(147, 149)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
                 else
                     call DoNothing()
                 endif
             else
-                call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(141, 149)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
+                call CreateItemLoc(udg_ItemPool[GetRandomInt(141, 149)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
             endif
         else
         endif
-        call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(61, 68)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
+        call CreateItemLoc(udg_ItemPool[GetRandomInt(61, 68)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 15)])
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
     else
     endif
     if(Trig_OgreDie_Func013C())then
-        set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 15)] = GetRandomLocInRect(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[0])
+        set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 15)] = GetRandomLocInRect(udg_MapAreas[0])
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)] = GetUnitLoc(GetDyingUnit())
         call CreateNUnitsAtLoc(1, 'n020', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 15)], bj_UNIT_FACING)
         set treasure_chest_unit = GetLastCreatedUnit()
@@ -3163,28 +3163,28 @@ function Trig_OgreDie_Actions takes nothing returns nothing
         call SetUnitRescueRange(GetLastCreatedUnit(), 3000.)
         if(Trig_OgreDie_Func013Func007C())then
             if(Trig_OgreDie_Func013Func007Func001C())then
-                call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[180], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
+                call CreateItemLoc(udg_ItemPool[180], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
             else
-                call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[179], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
+                call CreateItemLoc(udg_ItemPool[179], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
                 call SetItemUserData(GetLastCreatedItem(), 21)
             endif
         else
             if(Trig_OgreDie_Func013Func007Func003001())then
-                call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(141, 143)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
+                call CreateItemLoc(udg_ItemPool[GetRandomInt(141, 143)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
             else
                 call DoNothing()
             endif
             if(Trig_OgreDie_Func013Func007Func004001())then
-                call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(144, 146)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
+                call CreateItemLoc(udg_ItemPool[GetRandomInt(144, 146)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
             else
                 call DoNothing()
             endif
             if(Trig_OgreDie_Func013Func007Func005001())then
-                call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(147, 149)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
+                call CreateItemLoc(udg_ItemPool[GetRandomInt(147, 149)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
             else
                 call DoNothing()
             endif
-            call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(61, 68)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
+            call CreateItemLoc(udg_ItemPool[GetRandomInt(61, 68)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
         endif
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 15)])
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
@@ -3196,17 +3196,17 @@ function Trig_OgreDie_Actions takes nothing returns nothing
             if(Trig_OgreDie_Func015Func005Func001C())then
                 set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)] = GetUnitLoc(GetDyingUnit())
                 if(Trig_OgreDie_Func015Func005Func001Func002001())then
-                    call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(141, 143)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
+                    call CreateItemLoc(udg_ItemPool[GetRandomInt(141, 143)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
                 else
                     call DoNothing()
                 endif
                 if(Trig_OgreDie_Func015Func005Func001Func003001())then
-                    call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(144, 146)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
+                    call CreateItemLoc(udg_ItemPool[GetRandomInt(144, 146)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
                 else
                     call DoNothing()
                 endif
                 if(Trig_OgreDie_Func015Func005Func001Func004001())then
-                    call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(147, 149)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
+                    call CreateItemLoc(udg_ItemPool[GetRandomInt(147, 149)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
                 else
                     call DoNothing()
                 endif
@@ -3232,17 +3232,17 @@ function Trig_OgreDie_Actions takes nothing returns nothing
         if(Trig_OgreDie_Func020Func003C())then
             set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)] = GetUnitLoc(GetDyingUnit())
             if(Trig_OgreDie_Func020Func003Func002001())then
-                call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(141, 143)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+                call CreateItemLoc(udg_ItemPool[GetRandomInt(141, 143)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
             else
                 call DoNothing()
             endif
             if(Trig_OgreDie_Func020Func003Func003001())then
-                call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(144, 146)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+                call CreateItemLoc(udg_ItemPool[GetRandomInt(144, 146)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
             else
                 call DoNothing()
             endif
             if(Trig_OgreDie_Func020Func003Func004001())then
-                call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(147, 149)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+                call CreateItemLoc(udg_ItemPool[GetRandomInt(147, 149)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
             else
                 call DoNothing()
             endif
@@ -3253,7 +3253,7 @@ function Trig_OgreDie_Actions takes nothing returns nothing
     endif
     if(Trig_OgreDie_Func022C())then
         call PanCameraToTimedLocForPlayer(GetTriggerPlayer(), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[91], 0)
-        call SetUnitAnimation(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[0], "death")
+        call SetUnitAnimation(udg_AllPlayerUnits[0], "death")
         call TriggerSleepAction(.1)
         set udg_M9P2Q7U53l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] = 3
         set udg_M9P2Q7U5l4V5W39O45lO7041D2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 10) + 4)] = (udg_M9P2Q7U5l4V5W39O45lO7041D2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 10) + 4)] + 1.)
@@ -3266,7 +3266,7 @@ function Trig_OgreDie_Actions takes nothing returns nothing
             call SetPlayerStateBJ(GetOwningPlayer(GetTriggerUnit()), PLAYER_STATE_RESOURCE_GOLD, (GetPlayerState(GetOwningPlayer(GetTriggerUnit()), PLAYER_STATE_RESOURCE_GOLD) / 2))
         else
         endif
-        set udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 1)] = GetLastCreatedUnit()
+        set udg_AllPlayerUnits[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 1)] = GetLastCreatedUnit()
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 100) + 1)])
         set bj_forLoopAIndex = 1
         set bj_forLoopAIndexEnd = 9
@@ -3471,13 +3471,13 @@ function Trig_HeroRelive_Actions takes nothing returns nothing
     if(Trig_HeroRelive_Func001C())then
         set udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 100) + 1)] = GetRectCenter(gg_rct_______Road007)
     else
-        set udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 100) + 1)] = GetRandomLocInRect(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[GetRandomInt(1, 4)])
+        set udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 100) + 1)] = GetRandomLocInRect(udg_MapAreas[GetRandomInt(1, 4)])
     endif
     call SetUnitPositionLoc(GetTriggerUnit(), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 100) + 1)])
     call SetUnitManaPercentBJ(GetTriggerUnit(), 100)
     call PanCameraToTimedLocForPlayer(GetTriggerPlayer(), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 100) + 1)], 0)
     call SelectUnitForPlayerSingle(GetTriggerUnit(), GetTriggerPlayer())
-    call UnitApplyTimedLifeBJ(.1, 'BTLF', udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 1)])
+    call UnitApplyTimedLifeBJ(.1, 'BTLF', udg_AllPlayerUnits[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 1)])
     call DisplayTextToPlayer(GetOwningPlayer(GetTriggerUnit()), 0, 0, "*.Input -kill to commit suicide, use when your champion is stuck in the terrain")
     call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 100) + 1)])
 endfunction
@@ -3547,7 +3547,7 @@ function Trig_BossA_Conditions takes nothing returns boolean
     return true
 endfunction
 function Trig_BossA_Actions takes nothing returns nothing
-    call DestroyTimerDialog(udg_M9P2Q7U5l4V5W9O45lO7041D2GO5K3[1])
+    call DestroyTimerDialog(udg_TimerDialog[1])
     call EnableTrigger(gg_trg_BossNew)
     call TriggerExecute(gg_trg_BossB)
     call DestroyTrigger(GetTriggeringTrigger())
@@ -3568,9 +3568,9 @@ function Trig_BossB_Actions takes nothing returns nothing
     call UnitAddItemByIdSwapped('I04E', GetLastCreatedUnit())
     set udg_M9P2Q7U5l4V5W9O45lO7041D2G5MK3[999] = GetLastCreatedUnit()
     call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[201])
-    call StartTimerBJ(udg_M9P2Q7U5l4V5W9O45lO7041D2IG5K3[1], false, udg_M9P2Q7U5l4V5W9O45lO70N41D2G5K3)
-    call CreateTimerDialogBJ(udg_M9P2Q7U5l4V5W9O45lO7041D2IG5K3[1], "Next Boss Countdown")
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2GO5K3[1] = GetLastCreatedTimerDialogBJ()
+    call StartTimerBJ(udg_Timers[1], false, udg_M9P2Q7U5l4V5W9O45lO70N41D2G5K3)
+    call CreateTimerDialogBJ(udg_Timers[1], "Next Boss Countdown")
+    set udg_TimerDialog[1] = GetLastCreatedTimerDialogBJ()
     set udg_M9P2Q7U5l4V5W97O45lO7041D2G5K3 = 2
     call DestroyTrigger(GetTriggeringTrigger())
 endfunction
@@ -3625,8 +3625,8 @@ function Trig_BossC_Actions takes nothing returns nothing
         call SetItemUserData(GetLastCreatedItem(), 31)
         set udg_M9P2Q7U5l4V5W9O45lO7041D2G5MK3[999] = GetLastCreatedUnit()
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[201])
-        call StartTimerBJ(udg_M9P2Q7U5l4V5W9O45lO7041D2IG5K3[1], false, udg_M9P2Q7U5l4V5W9O45lO70N41D2G5K3)
-        call TimerDialogSetTitle(udg_M9P2Q7U5l4V5W9O45lO7041D2GO5K3[1], "Next Boss Countdown")
+        call StartTimerBJ(udg_Timers[1], false, udg_M9P2Q7U5l4V5W9O45lO70N41D2G5K3)
+        call TimerDialogSetTitle(udg_TimerDialog[1], "Next Boss Countdown")
         set udg_M9P2Q7U5l4V5W97O45lO7041D2G5K3 = (udg_M9P2Q7U5l4V5W97O45lO7041D2G5K3 + 1)
         call DisableTrigger(gg_trg_XH2)
         return
@@ -3642,8 +3642,8 @@ function Trig_BossC_Actions takes nothing returns nothing
         call SetItemUserData(GetLastCreatedItem(), 31)
         set udg_M9P2Q7U5l4V5W9O45lO7041D2G5MK3[999] = GetLastCreatedUnit()
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[201])
-        call StartTimerBJ(udg_M9P2Q7U5l4V5W9O45lO7041D2IG5K3[1], false, udg_M9P2Q7U5l4V5W9O45lO70N41D2G5K3)
-        call TimerDialogSetTitle(udg_M9P2Q7U5l4V5W9O45lO7041D2GO5K3[1], "Next Boss Countdown")
+        call StartTimerBJ(udg_Timers[1], false, udg_M9P2Q7U5l4V5W9O45lO70N41D2G5K3)
+        call TimerDialogSetTitle(udg_TimerDialog[1], "Next Boss Countdown")
         set udg_M9P2Q7U5l4V5W97O45lO7041D2G5K3 = (udg_M9P2Q7U5l4V5W97O45lO7041D2G5K3 + 1)
         return
     else
@@ -3661,8 +3661,8 @@ function Trig_BossC_Actions takes nothing returns nothing
         call UnitAddAbilityBJ('A0AU', GetLastCreatedUnit())
         call UnitAddAbilityBJ('Amrf', GetLastCreatedUnit())
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[201])
-        call StartTimerBJ(udg_M9P2Q7U5l4V5W9O45lO7041D2IG5K3[1], false, udg_M9P2Q7U5l4V5W9O45lO70N41D2G5K3)
-        call TimerDialogSetTitle(udg_M9P2Q7U5l4V5W9O45lO7041D2GO5K3[1], "Last Boss")
+        call StartTimerBJ(udg_Timers[1], false, udg_M9P2Q7U5l4V5W9O45lO70N41D2G5K3)
+        call TimerDialogSetTitle(udg_TimerDialog[1], "Last Boss")
         set udg_M9P2Q7U5l4V5W97O45lO7041D2G5K3 = (udg_M9P2Q7U5l4V5W97O45lO7041D2G5K3 + 1)
         return
     else
@@ -3678,14 +3678,14 @@ function Trig_BossC_Actions takes nothing returns nothing
         call SetItemUserData(GetLastCreatedItem(), 31)
         set udg_M9P2Q7U5l4V5W9O45lO7041D2G5MK3[999] = GetLastCreatedUnit()
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[201])
-        call StartTimerBJ(udg_M9P2Q7U5l4V5W9O45lO7041D2IG5K3[1], false, udg_M9P2Q7U5l4V5W9O45lO70N41D2G5K3)
-        call TimerDialogSetTitle(udg_M9P2Q7U5l4V5W9O45lO7041D2GO5K3[1], "Act II Countdown")
+        call StartTimerBJ(udg_Timers[1], false, udg_M9P2Q7U5l4V5W9O45lO70N41D2G5K3)
+        call TimerDialogSetTitle(udg_TimerDialog[1], "Act II Countdown")
         set udg_M9P2Q7U5l4V5W97O45lO7041D2G5K3 = (udg_M9P2Q7U5l4V5W97O45lO7041D2G5K3 + 1)
         return
     else
     endif
     if(Trig_BossC_Func005C())then
-        call DestroyTimerDialog(udg_M9P2Q7U5l4V5W9O45lO7041D2GO5K3[1])
+        call DestroyTimerDialog(udg_TimerDialog[1])
         call DisableTrigger(gg_trg_Ogre_Show)
         call DisableTrigger(gg_trg_Ogre_Show2)
         call DisableTrigger(gg_trg_Area_GoBack)
@@ -3694,7 +3694,7 @@ function Trig_BossC_Actions takes nothing returns nothing
         call ForGroupBJ(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1], function Trig_BossC_Func005Func007A)
         call GroupClear(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1])
         call DestroyGroup(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1])
-        set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1] = GetUnitsInRectOfPlayer(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[5], Player(11))
+        set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1] = GetUnitsInRectOfPlayer(udg_MapAreas[5], Player(11))
         call ForGroupBJ(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1], function Trig_BossC_Func005Func011A)
         call GroupClear(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1])
         call DestroyGroup(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1])
@@ -3713,7 +3713,7 @@ function Trig_BossC_Actions takes nothing returns nothing
 endfunction
 function InitTrig_BossC takes nothing returns nothing
     set gg_trg_BossC = CreateTrigger()
-    call TriggerRegisterTimerExpireEventBJ(gg_trg_BossC, udg_M9P2Q7U5l4V5W9O45lO7041D2IG5K3[1])
+    call TriggerRegisterTimerExpireEventBJ(gg_trg_BossC, udg_Timers[1])
     call TriggerAddAction(gg_trg_BossC, function Trig_BossC_Actions)
 endfunction
 function Trig_BossBaWu_Conditions takes nothing returns boolean
@@ -3836,61 +3836,61 @@ function InitTrig_BossNew takes nothing returns nothing
     call TriggerAddAction(gg_trg_BossNew, function Trig_BossNew_Actions)
 endfunction
 function Trig_XH_Func002Func001Func002Func001001 takes nothing returns boolean
-    return(GetHeroStatBJ(bj_HEROSTAT_STR, udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()], false) > 185)
+    return(GetHeroStatBJ(bj_HEROSTAT_STR, udg_AllPlayerUnits[GetForLoopIndexA()], false) > 185)
 endfunction
 function Trig_XH_Func002Func001Func002Func002001 takes nothing returns boolean
-    return(GetHeroStatBJ(bj_HEROSTAT_AGI, udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()], false) > 60)
+    return(GetHeroStatBJ(bj_HEROSTAT_AGI, udg_AllPlayerUnits[GetForLoopIndexA()], false) > 60)
 endfunction
 function Trig_XH_Func002Func001Func002Func003001 takes nothing returns boolean
-    return(GetHeroStatBJ(bj_HEROSTAT_INT, udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()], false) > 40)
+    return(GetHeroStatBJ(bj_HEROSTAT_INT, udg_AllPlayerUnits[GetForLoopIndexA()], false) > 40)
 endfunction
 function Trig_XH_Func002Func001Func002C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()]), 1, 10) == "[Guardian]"))then
+    if(not(SubStringBJ(GetUnitName(udg_AllPlayerUnits[GetForLoopIndexA()]), 1, 10) == "[Guardian]"))then
         return false
     endif
     return true
 endfunction
 function Trig_XH_Func002Func001Func003Func001001 takes nothing returns boolean
-    return(GetHeroStatBJ(bj_HEROSTAT_STR, udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()], false) > 100)
+    return(GetHeroStatBJ(bj_HEROSTAT_STR, udg_AllPlayerUnits[GetForLoopIndexA()], false) > 100)
 endfunction
 function Trig_XH_Func002Func001Func003Func002001 takes nothing returns boolean
-    return(GetHeroStatBJ(bj_HEROSTAT_AGI, udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()], false) > 108)
+    return(GetHeroStatBJ(bj_HEROSTAT_AGI, udg_AllPlayerUnits[GetForLoopIndexA()], false) > 108)
 endfunction
 function Trig_XH_Func002Func001Func003Func003001 takes nothing returns boolean
-    return(GetHeroStatBJ(bj_HEROSTAT_INT, udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()], false) > 60)
+    return(GetHeroStatBJ(bj_HEROSTAT_INT, udg_AllPlayerUnits[GetForLoopIndexA()], false) > 60)
 endfunction
 function Trig_XH_Func002Func001Func003C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()]), 1, 9) == "[Warrior]"))then
+    if(not(SubStringBJ(GetUnitName(udg_AllPlayerUnits[GetForLoopIndexA()]), 1, 9) == "[Warrior]"))then
         return false
     endif
     return true
 endfunction
 function Trig_XH_Func002Func001Func004Func001001 takes nothing returns boolean
-    return(GetHeroStatBJ(bj_HEROSTAT_STR, udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()], false) > 100)
+    return(GetHeroStatBJ(bj_HEROSTAT_STR, udg_AllPlayerUnits[GetForLoopIndexA()], false) > 100)
 endfunction
 function Trig_XH_Func002Func001Func004Func002001 takes nothing returns boolean
-    return(GetHeroStatBJ(bj_HEROSTAT_AGI, udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()], false) > 105)
+    return(GetHeroStatBJ(bj_HEROSTAT_AGI, udg_AllPlayerUnits[GetForLoopIndexA()], false) > 105)
 endfunction
 function Trig_XH_Func002Func001Func004Func003001 takes nothing returns boolean
-    return(GetHeroStatBJ(bj_HEROSTAT_INT, udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()], false) > 65)
+    return(GetHeroStatBJ(bj_HEROSTAT_INT, udg_AllPlayerUnits[GetForLoopIndexA()], false) > 65)
 endfunction
 function Trig_XH_Func002Func001Func004C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()]), 1, 8) == "[Archer]"))then
+    if(not(SubStringBJ(GetUnitName(udg_AllPlayerUnits[GetForLoopIndexA()]), 1, 8) == "[Archer]"))then
         return false
     endif
     return true
 endfunction
 function Trig_XH_Func002Func001Func005Func001001 takes nothing returns boolean
-    return(GetHeroStatBJ(bj_HEROSTAT_STR, udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()], false) > 60)
+    return(GetHeroStatBJ(bj_HEROSTAT_STR, udg_AllPlayerUnits[GetForLoopIndexA()], false) > 60)
 endfunction
 function Trig_XH_Func002Func001Func005Func002001 takes nothing returns boolean
-    return(GetHeroStatBJ(bj_HEROSTAT_AGI, udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()], false) > 60)
+    return(GetHeroStatBJ(bj_HEROSTAT_AGI, udg_AllPlayerUnits[GetForLoopIndexA()], false) > 60)
 endfunction
 function Trig_XH_Func002Func001Func005Func003001 takes nothing returns boolean
-    return(GetHeroStatBJ(bj_HEROSTAT_INT, udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()], false) > 225)
+    return(GetHeroStatBJ(bj_HEROSTAT_INT, udg_AllPlayerUnits[GetForLoopIndexA()], false) > 225)
 endfunction
 function Trig_XH_Func002Func001Func005C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()]), 1, 6) == "[Mage]"))then
+    if(not(SubStringBJ(GetUnitName(udg_AllPlayerUnits[GetForLoopIndexA()]), 1, 6) == "[Mage]"))then
         return false
     endif
     return true
@@ -3899,7 +3899,7 @@ function Trig_XH_Func002Func001Func006Func001C takes nothing returns boolean
     if((udg_M9P2Q7U5l4CV5W9O45lO7041D2G5K3[GetForLoopIndexA()] == 1))then
         return true
     endif
-    if((GetUnitStateSwap(UNIT_STATE_MAX_LIFE, udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()]) >= 20000.))then
+    if((GetUnitStateSwap(UNIT_STATE_MAX_LIFE, udg_AllPlayerUnits[GetForLoopIndexA()]) >= 20000.))then
         return true
     endif
     return false
@@ -3911,7 +3911,7 @@ function Trig_XH_Func002Func001Func006C takes nothing returns boolean
     return true
 endfunction
 function Trig_XH_Func002Func001C takes nothing returns boolean
-    if(not(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()] != null))then
+    if(not(udg_AllPlayerUnits[GetForLoopIndexA()] != null))then
         return false
     endif
     return true
@@ -3995,10 +3995,10 @@ function Trig_XH_Actions takes nothing returns nothing
             else
             endif
             if(Trig_XH_Func002Func001Func006C())then
-                call SetUnitOwner(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()], Player(PLAYER_NEUTRAL_PASSIVE), true)
-                call SetUnitVertexColorBJ(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()], 100, 100, 100, 100.)
-                call SetUnitPositionLoc(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()], udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[91])
-                call PauseUnitBJ(true, udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()])
+                call SetUnitOwner(udg_AllPlayerUnits[GetForLoopIndexA()], Player(PLAYER_NEUTRAL_PASSIVE), true)
+                call SetUnitVertexColorBJ(udg_AllPlayerUnits[GetForLoopIndexA()], 100, 100, 100, 100.)
+                call SetUnitPositionLoc(udg_AllPlayerUnits[GetForLoopIndexA()], udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[91])
+                call PauseUnitBJ(true, udg_AllPlayerUnits[GetForLoopIndexA()])
                 call RemoveUnit(udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetForLoopIndexA()])
                 set udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetForLoopIndexA()] = null
                 call DestroyFogModifier(GetLastCreatedFogModifier())
@@ -4018,7 +4018,7 @@ function InitTrig_XH takes nothing returns nothing
     call TriggerAddAction(gg_trg_XH, function Trig_XH_Actions)
 endfunction
 function Trig_XH2_Func001Func001C takes nothing returns boolean
-    if(not(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()] != null))then
+    if(not(udg_AllPlayerUnits[GetForLoopIndexA()] != null))then
         return false
     endif
     return true
@@ -4029,8 +4029,8 @@ function Trig_XH2_Actions takes nothing returns nothing
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         if(Trig_XH2_Func001Func001C())then
-            call UnitAddAbilityBJ('Avul', udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()])
-            call UnitRemoveAbilityBJ('Avul', udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()])
+            call UnitAddAbilityBJ('Avul', udg_AllPlayerUnits[GetForLoopIndexA()])
+            call UnitRemoveAbilityBJ('Avul', udg_AllPlayerUnits[GetForLoopIndexA()])
         else
         endif
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
@@ -4465,7 +4465,7 @@ function Trig_PetC1_Func001Func001Func009C takes nothing returns boolean
     return true
 endfunction
 function Trig_PetC1_Func001Func001C takes nothing returns boolean
-    if(not(IsUnitAliveBJ(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()]) == true))then
+    if(not(IsUnitAliveBJ(udg_AllPlayerUnits[GetForLoopIndexA()]) == true))then
         return false
     endif
     if(not(udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetForLoopIndexA()] != null))then
@@ -4488,10 +4488,10 @@ function Trig_PetC1_Actions takes nothing returns nothing
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         if(Trig_PetC1_Func001Func001C())then
-            set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K3h[((GetForLoopIndexA() * 10) + 1)] = GetUnitLoc(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()])
+            set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K3h[((GetForLoopIndexA() * 10) + 1)] = GetUnitLoc(udg_AllPlayerUnits[GetForLoopIndexA()])
             call SetUnitX(udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetForLoopIndexA()], GetLocationX(udg_M9P2Q7U5l4V5W9O45lO7041D2G5K3h[((GetForLoopIndexA() * 10) + 1)]))
             call SetUnitY(udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetForLoopIndexA()], GetLocationY(udg_M9P2Q7U5l4V5W9O45lO7041D2G5K3h[((GetForLoopIndexA() * 10) + 1)]))
-            call SetUnitFacing(udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetForLoopIndexA()], GetUnitFacing(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()]))
+            call SetUnitFacing(udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetForLoopIndexA()], GetUnitFacing(udg_AllPlayerUnits[GetForLoopIndexA()]))
             if(Trig_PetC1_Func001Func001Func009C())then
                 call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2G5K3h[((GetForLoopIndexA() * 10) + 1)])
             else
@@ -4522,7 +4522,7 @@ function Trig_PetD1_Conditions takes nothing returns boolean
     if(not(udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] != null))then
         return false
     endif
-    if(not(GetTriggerUnit() == udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())]))then
+    if(not(GetTriggerUnit() == udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())]))then
         return false
     endif
     if(not Trig_PetD1_Func007C())then
@@ -4537,7 +4537,7 @@ function Trig_PetD1_Func001Func002Func001C takes nothing returns boolean
     return true
 endfunction
 function Trig_PetD1_Func001C takes nothing returns boolean
-    if(not(GetUnitFlyHeight(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())]) < 40.))then
+    if(not(GetUnitFlyHeight(udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())]) < 40.))then
         return false
     endif
     return true
@@ -4570,9 +4570,9 @@ function Trig_PetD1_Actions takes nothing returns nothing
         loop
             exitwhen bj_forLoopBIndex > bj_forLoopBIndexEnd
             if(Trig_PetD1_Func001Func002Func001C())then
-                call UnitAddAbilityBJ('Amrf', udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])
-                call UnitRemoveAbilityBJ('Amrf', udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])
-                call SetUnitFlyHeight(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())], udg_M9P2Q7U5l4V5W9O45lO70h41D2G5K3[(400 + GetForLoopIndexB())], .0)
+                call UnitAddAbilityBJ('Amrf', udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())])
+                call UnitRemoveAbilityBJ('Amrf', udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())])
+                call SetUnitFlyHeight(udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())], udg_M9P2Q7U5l4V5W9O45lO70h41D2G5K3[(400 + GetForLoopIndexB())], .0)
                 call UnitRemoveAbilityBJ('Aloc', udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])
                 call UnitAddAbilityBJ('Aloc', udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])
             else
@@ -4624,7 +4624,7 @@ function Trig_PetD2_Conditions takes nothing returns boolean
     if(not(udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] != null))then
         return false
     endif
-    if(not(GetTriggerUnit() == udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())]))then
+    if(not(GetTriggerUnit() == udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())]))then
         return false
     endif
     if(not Trig_PetD2_Func005C())then
@@ -4687,7 +4687,7 @@ function Trig_PetE1_Conditions takes nothing returns boolean
     if(not(udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetAttacker()))] != null))then
         return false
     endif
-    if(not(GetAttacker() == udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetAttacker()))]))then
+    if(not(GetAttacker() == udg_AllPlayerUnits[GetConvertedPlayerId(GetOwningPlayer(GetAttacker()))]))then
         return false
     endif
     if(not(udg_M9P2Q7U5l4V5W9O45l7O7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetAttacker()))] == null))then
@@ -4741,7 +4741,7 @@ function Trig_PetE1_Actions takes nothing returns nothing
             set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K3h[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 10) + 9)] = GetUnitLoc(GetAttacker())
             set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K3h[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 10) + 8)] = PolarProjectionBJ(udg_M9P2Q7U5l4V5W9O45lO7041D2G5K3h[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 10) + 9)], 200., GetRandomReal(0, 270.))
             call CreateNUnitsAtLoc(1, GetUnitTypeId(udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetAttacker()))]), GetOwningPlayer(GetAttacker()), udg_M9P2Q7U5l4V5W9O45lO7041D2G5K3h[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 10) + 8)], GetUnitFacing(GetAttacker()))
-            call SetUnitUserData(GetLastCreatedUnit(), GetUnitUserData(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetAttacker()))]))
+            call SetUnitUserData(GetLastCreatedUnit(), GetUnitUserData(udg_AllPlayerUnits[GetConvertedPlayerId(GetOwningPlayer(GetAttacker()))]))
             call UnitApplyTimedLifeBJ(20., 'BTLF', GetLastCreatedUnit())
             call SetUnitUserData(GetLastCreatedUnit(), 2000)
             call SetUnitScalePercent(GetLastCreatedUnit(), 80., 100, 100)
@@ -4787,7 +4787,7 @@ function Trig_PetF1_Func001Func001Func004C takes nothing returns boolean
     return true
 endfunction
 function Trig_PetF1_Func001Func001C takes nothing returns boolean
-    if(not(IsUnitAliveBJ(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()]) == true))then
+    if(not(IsUnitAliveBJ(udg_AllPlayerUnits[GetForLoopIndexA()]) == true))then
         return false
     endif
     if(not(udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetForLoopIndexA()] != null))then
@@ -4810,7 +4810,7 @@ function Trig_PetF1_Actions takes nothing returns nothing
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         if(Trig_PetF1_Func001Func001C())then
-            set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K3h[((GetForLoopIndexA() * 10) + 2)] = GetUnitLoc(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()])
+            set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K3h[((GetForLoopIndexA() * 10) + 2)] = GetUnitLoc(udg_AllPlayerUnits[GetForLoopIndexA()])
             set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K3h[((GetForLoopIndexA() * 10) + 3)] = GetUnitLoc(udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetForLoopIndexA()])
             if(Trig_PetF1_Func001Func001Func004C())then
                 if(Trig_PetF1_Func001Func001Func004Func001C())then
@@ -5088,7 +5088,7 @@ function Trig_PetH1_Func001Func002Func001C takes nothing returns boolean
     return true
 endfunction
 function Trig_PetH1_Func001C takes nothing returns boolean
-    if(not(GetUnitFlyHeight(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())]) < 40.))then
+    if(not(GetUnitFlyHeight(udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())]) < 40.))then
         return false
     endif
     return true
@@ -5100,9 +5100,9 @@ function Trig_PetH1_Actions takes nothing returns nothing
         loop
             exitwhen bj_forLoopBIndex > bj_forLoopBIndexEnd
             if(Trig_PetH1_Func001Func002Func001C())then
-                call UnitAddAbilityBJ('Amrf', udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])
-                call UnitRemoveAbilityBJ('Amrf', udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])
-                call SetUnitFlyHeight(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())], udg_M9P2Q7U5l4V5W9O45lO70h41D2G5K3[(400 + GetForLoopIndexB())], .0)
+                call UnitAddAbilityBJ('Amrf', udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())])
+                call UnitRemoveAbilityBJ('Amrf', udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())])
+                call SetUnitFlyHeight(udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())], udg_M9P2Q7U5l4V5W9O45lO70h41D2G5K3[(400 + GetForLoopIndexB())], .0)
                 call UnitRemoveAbilityBJ('Aloc', udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])
                 call UnitAddAbilityBJ('Aloc', udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])
             else
@@ -5112,7 +5112,7 @@ function Trig_PetH1_Actions takes nothing returns nothing
     else
     endif
     call IssueTargetOrderById(udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())], 851983, GetEventTargetUnit())
-    call IssueTargetOrderById(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())], 851983, GetEventTargetUnit())
+    call IssueTargetOrderById(udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())], 851983, GetEventTargetUnit())
 endfunction
 function InitTrig_PetH1 takes nothing returns nothing
     set gg_trg_PetH1 = CreateTrigger()
@@ -5690,7 +5690,7 @@ function Trig_Ogre_Relive_Func012Func006Func001Func002C takes nothing returns bo
     return true
 endfunction
 function Trig_Ogre_Relive_Func012Func006Func001C takes nothing returns boolean
-    if(not(GetItemTypeId(GetLastCreatedItem()) == udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetForLoopIndexA()]))then
+    if(not(GetItemTypeId(GetLastCreatedItem()) == udg_ItemPool[GetForLoopIndexA()]))then
         return false
     endif
     return true
@@ -5708,7 +5708,7 @@ function Trig_Ogre_Relive_Func012Func007Func001Func002C takes nothing returns bo
     return true
 endfunction
 function Trig_Ogre_Relive_Func012Func007Func001C takes nothing returns boolean
-    if(not(GetItemTypeId(GetLastCreatedItem()) == udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetForLoopIndexA()]))then
+    if(not(GetItemTypeId(GetLastCreatedItem()) == udg_ItemPool[GetForLoopIndexA()]))then
         return false
     endif
     return true
@@ -5726,7 +5726,7 @@ function Trig_Ogre_Relive_Func012Func008Func001Func002C takes nothing returns bo
     return true
 endfunction
 function Trig_Ogre_Relive_Func012Func008Func001C takes nothing returns boolean
-    if(not(GetItemTypeId(GetLastCreatedItem()) == udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetForLoopIndexA()]))then
+    if(not(GetItemTypeId(GetLastCreatedItem()) == udg_ItemPool[GetForLoopIndexA()]))then
         return false
     endif
     return true
@@ -5792,7 +5792,7 @@ function Trig_Ogre_Relive_Func016Func003Func004Func001Func002C takes nothing ret
     return true
 endfunction
 function Trig_Ogre_Relive_Func016Func003Func004Func001C takes nothing returns boolean
-    if(not(GetItemTypeId(GetLastCreatedItem()) == udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetForLoopIndexA()]))then
+    if(not(GetItemTypeId(GetLastCreatedItem()) == udg_ItemPool[GetForLoopIndexA()]))then
         return false
     endif
     return true
@@ -6008,14 +6008,14 @@ function Trig_Ogre_Relive_Actions takes nothing returns nothing
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)] = GetUnitLoc(GetDyingUnit())
         if(Trig_Ogre_Relive_Func006Func003C())then
             if(Trig_Ogre_Relive_Func006Func003Func003C())then
-                call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[180], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+                call CreateItemLoc(udg_ItemPool[180], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
             else
-                call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[179], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+                call CreateItemLoc(udg_ItemPool[179], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
                 call SetItemUserData(GetLastCreatedItem(), 21)
             endif
         else
-            call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(141, 143)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
-            call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(65, 68)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+            call CreateItemLoc(udg_ItemPool[GetRandomInt(141, 143)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+            call CreateItemLoc(udg_ItemPool[GetRandomInt(65, 68)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
         endif
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
         call PolledWait(180.)
@@ -6028,15 +6028,15 @@ function Trig_Ogre_Relive_Actions takes nothing returns nothing
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)] = GetUnitLoc(GetDyingUnit())
         if(Trig_Ogre_Relive_Func008Func003C())then
             if(Trig_Ogre_Relive_Func008Func003Func001C())then
-                call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(141, 143)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+                call CreateItemLoc(udg_ItemPool[GetRandomInt(141, 143)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
             else
                 if(Trig_Ogre_Relive_Func008Func003Func001Func001C())then
-                    call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(65, 68)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+                    call CreateItemLoc(udg_ItemPool[GetRandomInt(65, 68)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
                 else
                     if(Trig_Ogre_Relive_Func008Func003Func001Func001Func002C())then
-                        call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(45, 48)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+                        call CreateItemLoc(udg_ItemPool[GetRandomInt(45, 48)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
                     else
-                        call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(5, 8)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+                        call CreateItemLoc(udg_ItemPool[GetRandomInt(5, 8)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
                     endif
                 endif
             endif
@@ -6054,22 +6054,22 @@ function Trig_Ogre_Relive_Actions takes nothing returns nothing
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)] = GetUnitLoc(GetDyingUnit())
         if(Trig_Ogre_Relive_Func010Func003C())then
             if(Trig_Ogre_Relive_Func010Func003Func002C())then
-                call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[179], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+                call CreateItemLoc(udg_ItemPool[179], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
                 call SetItemUserData(GetLastCreatedItem(), 21)
             else
-                call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[180], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+                call CreateItemLoc(udg_ItemPool[180], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
             endif
         else
             if(Trig_Ogre_Relive_Func010Func003Func004C())then
-                call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(144, 146)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+                call CreateItemLoc(udg_ItemPool[GetRandomInt(144, 146)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
             else
                 if(Trig_Ogre_Relive_Func010Func003Func004Func001C())then
-                    call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(147, 149)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+                    call CreateItemLoc(udg_ItemPool[GetRandomInt(147, 149)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
                 else
-                    call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(144, 149)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+                    call CreateItemLoc(udg_ItemPool[GetRandomInt(144, 149)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
                 endif
             endif
-            call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(57, 64)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+            call CreateItemLoc(udg_ItemPool[GetRandomInt(57, 64)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
         endif
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
         call PolledWait(180.)
@@ -6083,21 +6083,21 @@ function Trig_Ogre_Relive_Actions takes nothing returns nothing
         if(Trig_Ogre_Relive_Func012Func003C())then
             if(Trig_Ogre_Relive_Func012Func003Func001C())then
                 if(Trig_Ogre_Relive_Func012Func003Func001Func003C())then
-                    call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(144, 146)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+                    call CreateItemLoc(udg_ItemPool[GetRandomInt(144, 146)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
                 else
-                    call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(147, 149)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+                    call CreateItemLoc(udg_ItemPool[GetRandomInt(147, 149)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
                 endif
             else
                 if(Trig_Ogre_Relive_Func012Func003Func001Func001C())then
-                    call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(57, 64)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+                    call CreateItemLoc(udg_ItemPool[GetRandomInt(57, 64)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
                 else
                     if(Trig_Ogre_Relive_Func012Func003Func001Func001Func002C())then
-                        call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(37, 44)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+                        call CreateItemLoc(udg_ItemPool[GetRandomInt(37, 44)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
                     else
                         if(Trig_Ogre_Relive_Func012Func003Func001Func001Func002Func002C())then
-                            call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(1, 4)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+                            call CreateItemLoc(udg_ItemPool[GetRandomInt(1, 4)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
                         else
-                            call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(81, 84)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+                            call CreateItemLoc(udg_ItemPool[GetRandomInt(81, 84)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
                         endif
                     endif
                 endif
@@ -6117,7 +6117,7 @@ function Trig_Ogre_Relive_Actions takes nothing returns nothing
                     loop
                         exitwhen bj_forLoopBIndex > bj_forLoopBIndexEnd
                         if(Trig_Ogre_Relive_Func012Func006Func001Func002Func001Func001C())then
-                            set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetForLoopIndexA()] = udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetForLoopIndexB()]
+                            set udg_ItemPool[GetForLoopIndexA()] = udg_ItemPool[GetForLoopIndexB()]
                         else
                         endif
                         set bj_forLoopBIndex = bj_forLoopBIndex + 1
@@ -6140,7 +6140,7 @@ function Trig_Ogre_Relive_Actions takes nothing returns nothing
                     loop
                         exitwhen bj_forLoopBIndex > bj_forLoopBIndexEnd
                         if(Trig_Ogre_Relive_Func012Func007Func001Func002Func001Func001C())then
-                            set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetForLoopIndexA()] = udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetForLoopIndexB()]
+                            set udg_ItemPool[GetForLoopIndexA()] = udg_ItemPool[GetForLoopIndexB()]
                         else
                         endif
                         set bj_forLoopBIndex = bj_forLoopBIndex + 1
@@ -6163,7 +6163,7 @@ function Trig_Ogre_Relive_Actions takes nothing returns nothing
                     loop
                         exitwhen bj_forLoopBIndex > bj_forLoopBIndexEnd
                         if(Trig_Ogre_Relive_Func012Func008Func001Func002Func001Func001C())then
-                            set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetForLoopIndexA()] = udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetForLoopIndexB()]
+                            set udg_ItemPool[GetForLoopIndexA()] = udg_ItemPool[GetForLoopIndexB()]
                         else
                         endif
                         set bj_forLoopBIndex = bj_forLoopBIndex + 1
@@ -6185,14 +6185,14 @@ function Trig_Ogre_Relive_Actions takes nothing returns nothing
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)] = GetUnitLoc(GetDyingUnit())
         if(Trig_Ogre_Relive_Func014Func003C())then
             if(Trig_Ogre_Relive_Func014Func003Func006C())then
-                call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[179], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+                call CreateItemLoc(udg_ItemPool[179], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
                 call SetItemUserData(GetLastCreatedItem(), 21)
             else
-                call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[180], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+                call CreateItemLoc(udg_ItemPool[180], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
             endif
         else
-            call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(141, 143)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
-            call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(121, 128)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+            call CreateItemLoc(udg_ItemPool[GetRandomInt(141, 143)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+            call CreateItemLoc(udg_ItemPool[GetRandomInt(121, 128)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
         endif
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
         call PolledWait(120.)
@@ -6209,12 +6209,12 @@ function Trig_Ogre_Relive_Actions takes nothing returns nothing
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)] = GetUnitLoc(GetDyingUnit())
         if(Trig_Ogre_Relive_Func016Func003C())then
             if(Trig_Ogre_Relive_Func016Func003Func001C())then
-                call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(141, 143)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+                call CreateItemLoc(udg_ItemPool[GetRandomInt(141, 143)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
             else
                 if(Trig_Ogre_Relive_Func016Func003Func001Func001C())then
-                    call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(121, 128)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+                    call CreateItemLoc(udg_ItemPool[GetRandomInt(121, 128)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
                 else
-                    call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(101, 117)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+                    call CreateItemLoc(udg_ItemPool[GetRandomInt(101, 117)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
                 endif
             endif
             call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
@@ -6230,7 +6230,7 @@ function Trig_Ogre_Relive_Actions takes nothing returns nothing
                         loop
                             exitwhen bj_forLoopBIndex > bj_forLoopBIndexEnd
                             if(Trig_Ogre_Relive_Func016Func003Func004Func001Func002Func001Func001C())then
-                                set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetForLoopIndexA()] = udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetForLoopIndexB()]
+                                set udg_ItemPool[GetForLoopIndexA()] = udg_ItemPool[GetForLoopIndexB()]
                             else
                             endif
                             set bj_forLoopBIndex = bj_forLoopBIndex + 1
@@ -6257,17 +6257,17 @@ function Trig_Ogre_Relive_Actions takes nothing returns nothing
     if(Trig_Ogre_Relive_Func018C())then
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)] = GetUnitLoc(GetDyingUnit())
         if(Trig_Ogre_Relive_Func018Func003C())then
-            call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(141, 149)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+            call CreateItemLoc(udg_ItemPool[GetRandomInt(141, 149)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
         else
             if(Trig_Ogre_Relive_Func018Func003Func001C())then
-                call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(61, 68)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+                call CreateItemLoc(udg_ItemPool[GetRandomInt(61, 68)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
             else
-                call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(41, 48)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+                call CreateItemLoc(udg_ItemPool[GetRandomInt(41, 48)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
             endif
         endif
         if(Trig_Ogre_Relive_Func018Func004C())then
             if(Trig_Ogre_Relive_Func018Func004Func001001())then
-                call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[142], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+                call CreateItemLoc(udg_ItemPool[142], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
             else
                 call DoNothing()
             endif
@@ -6288,9 +6288,9 @@ function Trig_Ogre_Relive_Actions takes nothing returns nothing
         if(Trig_Ogre_Relive_Func021Func001C())then
             set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)] = GetUnitLoc(GetDyingUnit())
             if(Trig_Ogre_Relive_Func021Func001Func002C())then
-                call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(41, 48)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+                call CreateItemLoc(udg_ItemPool[GetRandomInt(41, 48)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
             else
-                call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(1, 8)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+                call CreateItemLoc(udg_ItemPool[GetRandomInt(1, 8)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
             endif
             call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
             return
@@ -6337,12 +6337,12 @@ function Trig_Ogre_Relive_Actions takes nothing returns nothing
     if(Trig_Ogre_Relive_Func027C())then
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)] = GetUnitLoc(GetDyingUnit())
         if(Trig_Ogre_Relive_Func027Func002C())then
-            call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[148], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+            call CreateItemLoc(udg_ItemPool[148], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
         else
             if(Trig_Ogre_Relive_Func027Func002Func001C())then
-                call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(61, 68)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+                call CreateItemLoc(udg_ItemPool[GetRandomInt(61, 68)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
             else
-                call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(41, 48)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+                call CreateItemLoc(udg_ItemPool[GetRandomInt(41, 48)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
             endif
         endif
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
@@ -6364,12 +6364,12 @@ function Trig_Ogre_Relive_Actions takes nothing returns nothing
     if(Trig_Ogre_Relive_Func031C())then
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)] = GetUnitLoc(GetDyingUnit())
         if(Trig_Ogre_Relive_Func031Func002C())then
-            call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[146], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+            call CreateItemLoc(udg_ItemPool[146], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
         else
             if(Trig_Ogre_Relive_Func031Func002Func001C())then
-                call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(61, 68)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+                call CreateItemLoc(udg_ItemPool[GetRandomInt(61, 68)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
             else
-                call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(41, 48)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+                call CreateItemLoc(udg_ItemPool[GetRandomInt(41, 48)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
             endif
         endif
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
@@ -6390,23 +6390,23 @@ function Trig_Ogre_Relive_Actions takes nothing returns nothing
         if(Trig_Ogre_Relive_Func033Func003C())then
             if(Trig_Ogre_Relive_Func033Func003Func001C())then
                 if(Trig_Ogre_Relive_Func033Func003Func001Func001001())then
-                    call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(141, 143)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+                    call CreateItemLoc(udg_ItemPool[GetRandomInt(141, 143)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
                 else
                     call DoNothing()
                 endif
                 if(Trig_Ogre_Relive_Func033Func003Func001Func002001())then
-                    call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(144, 146)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+                    call CreateItemLoc(udg_ItemPool[GetRandomInt(144, 146)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
                 else
                     call DoNothing()
                 endif
                 if(Trig_Ogre_Relive_Func033Func003Func001Func003001())then
-                    call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(147, 149)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+                    call CreateItemLoc(udg_ItemPool[GetRandomInt(147, 149)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
                 else
                     call DoNothing()
                 endif
-                call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(61, 68)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+                call CreateItemLoc(udg_ItemPool[GetRandomInt(61, 68)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
             else
-                call CreateItemLoc(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(41, 48)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
+                call CreateItemLoc(udg_ItemPool[GetRandomInt(41, 48)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
             endif
         else
         endif
@@ -6550,7 +6550,7 @@ function Trig_Hero_choice_Conditions takes nothing returns boolean
     if(not(IsUnitType(GetTriggerUnit(), UNIT_TYPE_HERO) == true))then
         return false
     endif
-    if(not(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] == null))then
+    if(not(udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())] == null))then
         return false
     endif
     return true
@@ -6582,7 +6582,7 @@ endfunction
 function Trig_Hero_choice_Actions takes nothing returns nothing
     if(Trig_Hero_choice_Func001C())then
         call SetUnitOwner(GetTriggerUnit(), GetTriggerPlayer(), true)
-        set udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] = GetTriggerUnit()
+        set udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())] = GetTriggerUnit()
         call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_ALWAYSHINT, (GetPlayerName(GetTriggerPlayer()) + ("Chosed" + (GetUnitName(GetTriggerUnit()) + "!"))))
         call UnitAddAbilityBJ('A02L', GetTriggerUnit())
         call UnitMakeAbilityPermanent(GetTriggerUnit(), true, 'A02L')
@@ -6721,9 +6721,9 @@ function Trig_Dialog_select_Actions takes nothing returns nothing
         call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_ALWAYSHINT, (GetPlayerName(GetTriggerPlayer()) + " chosed Novice Difficulty"))
         set udg_M9P2Q7U5l4V5W9O45lO70N41D2G5K3 = 700.
         call EnableTrigger(gg_trg_GongZi)
-        call StartTimerBJ(udg_M9P2Q7U5l4V5W9O45lO7041D2IG5K3[1], false, 1200.)
-        call CreateTimerDialogBJ(udg_M9P2Q7U5l4V5W9O45lO7041D2IG5K3[1], " Novice Grace Period")
-        set udg_M9P2Q7U5l4V5W9O45lO7041D2GO5K3[1] = GetLastCreatedTimerDialogBJ()
+        call StartTimerBJ(udg_Timers[1], false, 1200.)
+        call CreateTimerDialogBJ(udg_Timers[1], " Novice Grace Period")
+        set udg_TimerDialog[1] = GetLastCreatedTimerDialogBJ()
     else
         if(Trig_Dialog_select_Func001Func001C())then
             call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_ALWAYSHINT, (GetPlayerName(GetTriggerPlayer()) + " chosed Normal Difficulty"))
@@ -7464,7 +7464,7 @@ function InitTrig_Skill_buy5 takes nothing returns nothing
     call TriggerAddAction(gg_trg_Skill_buy5, function Trig_Skill_buy5_Actions)
 endfunction
 function Trig_Skill_del_Func002C takes nothing returns boolean
-    if(not(IsUnitAliveBJ(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())]) != true))then
+    if(not(IsUnitAliveBJ(udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())]) != true))then
         return false
     endif
     return true
@@ -7517,13 +7517,13 @@ function InitTrig_Skill_del takes nothing returns nothing
     call TriggerAddAction(gg_trg_Skill_del, function Trig_Skill_del_Actions)
 endfunction
 function Trig_Skill_delsave_Func001C takes nothing returns boolean
-    if(not(IsUnitAliveBJ(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())]) != true))then
+    if(not(IsUnitAliveBJ(udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())]) != true))then
         return false
     endif
     return true
 endfunction
 function Trig_Skill_delsave_Func002Func001Func002Func001C takes nothing returns boolean
-    if(not(UnitHasBuffBJ(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())], 'BHav') == true))then
+    if(not(UnitHasBuffBJ(udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())], 'BHav') == true))then
         return false
     endif
     return true
@@ -7559,7 +7559,7 @@ function Trig_Skill_delsave_Actions takes nothing returns nothing
                 endif
             else
             endif
-            call UnitRemoveAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())], udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])
+            call UnitRemoveAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())], udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())])
             set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[17]
         else
         endif
@@ -7580,7 +7580,7 @@ function InitTrig_Skill_delsave takes nothing returns nothing
     call TriggerAddAction(gg_trg_Skill_delsave, function Trig_Skill_delsave_Actions)
 endfunction
 function Trig_Skill_del2_Func002C takes nothing returns boolean
-    if(not(IsUnitAliveBJ(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())]) != true))then
+    if(not(IsUnitAliveBJ(udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())]) != true))then
         return false
     endif
     return true
@@ -7633,7 +7633,7 @@ function InitTrig_Skill_del2 takes nothing returns nothing
     call TriggerAddAction(gg_trg_Skill_del2, function Trig_Skill_del2_Actions)
 endfunction
 function Trig_Skill_delsave2_Func001C takes nothing returns boolean
-    if(not(IsUnitAliveBJ(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())]) != true))then
+    if(not(IsUnitAliveBJ(udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())]) != true))then
         return false
     endif
     return true
@@ -7655,7 +7655,7 @@ function Trig_Skill_delsave2_Actions takes nothing returns nothing
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         if(Trig_Skill_delsave2_Func002Func001C())then
-            call UnitRemoveAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())], udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])
+            call UnitRemoveAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())], udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())])
             set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[17]
         else
         endif
@@ -7676,7 +7676,7 @@ function InitTrig_Skill_delsave2 takes nothing returns nothing
     call TriggerAddAction(gg_trg_Skill_delsave2, function Trig_Skill_delsave2_Actions)
 endfunction
 function Trig_Skill_up_Func002C takes nothing returns boolean
-    if(not(IsUnitAliveBJ(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())]) != true))then
+    if(not(IsUnitAliveBJ(udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())]) != true))then
         return false
     endif
     return true
@@ -7685,7 +7685,7 @@ function Trig_Skill_up_Func008Func001C takes nothing returns boolean
     if(not(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] != udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 17)]))then
         return false
     endif
-    if(not(GetUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())], udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())]) < 5))then
+    if(not(GetUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())], udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())]) < 5))then
         return false
     endif
     return true
@@ -7708,7 +7708,7 @@ function Trig_Skill_up_Actions takes nothing returns nothing
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         if(Trig_Skill_up_Func008Func001C())then
-            set udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] = GetUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())], udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])
+            set udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] = GetUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())], udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())])
             call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 30)], ((((((("Cost: " + I2S(((udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[14]) * 100))) + "Gold") + I2S(((udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[15]) * 10))) + "XP ") + GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())])) + "") + I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])))
             set udg_M9P2Q7U5l4VS5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = GetLastCreatedButtonBJ()
         else
@@ -7734,7 +7734,7 @@ function InitTrig_Skill_up takes nothing returns nothing
     call TriggerAddAction(gg_trg_Skill_up, function Trig_Skill_up_Actions)
 endfunction
 function Trig_Skill_upsave_Func001C takes nothing returns boolean
-    if(not(IsUnitAliveBJ(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())]) != true))then
+    if(not(IsUnitAliveBJ(udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())]) != true))then
         return false
     endif
     return true
@@ -7769,7 +7769,7 @@ function Trig_Skill_upsave_Actions takes nothing returns nothing
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         if(Trig_Skill_upsave_Func003Func001C())then
-            set udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] = GetUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())], udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])
+            set udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] = GetUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())], udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())])
             if(Trig_Skill_upsave_Func003Func001Func006C())then
                 call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_WARNING, "|cffcc6699 Your gold is not enough to pay for the upgrade!")
                 return
@@ -7780,7 +7780,7 @@ function Trig_Skill_upsave_Actions takes nothing returns nothing
                 else
                 endif
             endif
-            call SetUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())], udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())], (udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + 1))
+            call SetUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())], udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())], (udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + 1))
             set udg_M9P2Q7U5l4V5W9O45lO704N1D2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = (udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + 1)
             call AdjustPlayerStateBJ((((udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[14]) * 100) * - 1), GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD)
             set udg_M9P2Q7U5l4V5W39O45lO7041D2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 10) + 3)] = (udg_M9P2Q7U5l4V5W39O45lO7041D2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 10) + 3)] - I2R(((udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[15]) * 10)))
@@ -7805,7 +7805,7 @@ function InitTrig_Skill_upsave takes nothing returns nothing
     call TriggerAddAction(gg_trg_Skill_upsave, function Trig_Skill_upsave_Actions)
 endfunction
 function Trig_Skill_up2_Func002C takes nothing returns boolean
-    if(not(IsUnitAliveBJ(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())]) != true))then
+    if(not(IsUnitAliveBJ(udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())]) != true))then
         return false
     endif
     return true
@@ -7814,7 +7814,7 @@ function Trig_Skill_up2_Func008Func002Func002Func001C takes nothing returns bool
     if(not(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[GetForLoopIndexB()] == udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())]))then
         return false
     endif
-    if(not(GetUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lOS7041D2G5K3[GetForLoopIndexB()], udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())]) < 5))then
+    if(not(GetUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lOS7041D2G5K3[GetForLoopIndexB()], udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())]) < 5))then
         return false
     endif
     if(not(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] != 9999))then
@@ -7852,7 +7852,7 @@ function Trig_Skill_up2_Actions takes nothing returns nothing
             loop
                 exitwhen bj_forLoopBIndex > bj_forLoopBIndexEnd
                 if(Trig_Skill_up2_Func008Func002Func002Func001C())then
-                    set udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] = GetUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lOS7041D2G5K3[GetForLoopIndexB()], udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])
+                    set udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] = GetUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lOS7041D2G5K3[GetForLoopIndexB()], udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())])
                     set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lOS7041D2G5K3[GetForLoopIndexB()]
                     call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 40)], ((((((("Cost: " + I2S(((udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[14]) * 500))) + "Gold") + I2S(((udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[15]) * 50))) + "XP ") + GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)])) + "") + I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])))
                     set udg_M9P2Q7U5l4VS5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = GetLastCreatedButtonBJ()
@@ -7884,7 +7884,7 @@ function InitTrig_Skill_up2 takes nothing returns nothing
     call TriggerAddAction(gg_trg_Skill_up2, function Trig_Skill_up2_Actions)
 endfunction
 function Trig_Skill_upsave2_Func001C takes nothing returns boolean
-    if(not(IsUnitAliveBJ(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())]) != true))then
+    if(not(IsUnitAliveBJ(udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())]) != true))then
         return false
     endif
     return true
@@ -7930,7 +7930,7 @@ function Trig_Skill_upsave2_Actions takes nothing returns nothing
             loop
                 exitwhen bj_forLoopBIndex > bj_forLoopBIndexEnd
                 if(Trig_Skill_upsave2_Func012Func001Func004Func001C())then
-                    set udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] = GetUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lOS7041D2G5K3[GetForLoopIndexB()], udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])
+                    set udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] = GetUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lOS7041D2G5K3[GetForLoopIndexB()], udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())])
                     set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lOS7041D2G5K3[GetForLoopIndexB()]
                 else
                 endif
@@ -7946,8 +7946,8 @@ function Trig_Skill_upsave2_Actions takes nothing returns nothing
                 else
                 endif
             endif
-            call SetUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)], udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())], (udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + 1))
-            call SetUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())], udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())], (udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + 1))
+            call SetUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)], udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())], (udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + 1))
+            call SetUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())], udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())], (udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + 1))
             set udg_M9P2Q7U5l4V5W9O45lO704N1D2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = (udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + 1)
             call AdjustPlayerStateBJ((((udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[14]) * 500) * - 1), GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD)
             set udg_M9P2Q7U5l4V5W39O45lO7041D2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 10) + 3)] = (udg_M9P2Q7U5l4V5W39O45lO7041D2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 10) + 3)] - I2R(((udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[15]) * 50)))
@@ -7975,7 +7975,7 @@ function Trig_Hero_move_Func018C takes nothing returns boolean
     if((GetItemTypeId(GetManipulatedItem()) == 'I04U'))then
         return true
     endif
-    if((RectContainsUnit(gg_rct______________028, udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))]) == true))then
+    if((RectContainsUnit(gg_rct______________028, udg_AllPlayerUnits[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))]) == true))then
         return true
     endif
     return false
@@ -7987,13 +7987,13 @@ function Trig_Hero_move_Conditions takes nothing returns boolean
     return true
 endfunction
 function Trig_Hero_move_Func002C takes nothing returns boolean
-    if(not(IsUnitAliveBJ(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))]) != true))then
+    if(not(IsUnitAliveBJ(udg_AllPlayerUnits[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))]) != true))then
         return false
     endif
     return true
 endfunction
 function Trig_Hero_move_Func006C takes nothing returns boolean
-    if(not(RectContainsUnit(gg_rct______________028, udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))]) != true))then
+    if(not(RectContainsUnit(gg_rct______________028, udg_AllPlayerUnits[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))]) != true))then
         return false
     endif
     return true
@@ -8035,7 +8035,7 @@ function InitTrig_Hero_move takes nothing returns nothing
     call TriggerAddAction(gg_trg_Hero_move, function Trig_Hero_move_Actions)
 endfunction
 function Trig_Hero_move2_Func001C takes nothing returns boolean
-    if(not(IsUnitAliveBJ(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())]) != true))then
+    if(not(IsUnitAliveBJ(udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())]) != true))then
         return false
     endif
     return true
@@ -8070,7 +8070,7 @@ function Trig_Hero_move2_Actions takes nothing returns nothing
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         if(Trig_Hero_move2_Func004Func001C())then
             set udg_M9P2Q7U53l4V5W9O45lO7041D2G5K3[(20 + GetConvertedPlayerId(GetTriggerPlayer()))] = 1
-            call SetUnitPositionLoc(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())], udg_M9P2Q7UZ5l4V5W9O45lO7041D2G5K3[GetForLoopIndexA()])
+            call SetUnitPositionLoc(udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())], udg_M9P2Q7UZ5l4V5W9O45lO7041D2G5K3[GetForLoopIndexA()])
             call PanCameraToTimedLocForPlayer(GetTriggerPlayer(), udg_M9P2Q7UZ5l4V5W9O45lO7041D2G5K3[GetForLoopIndexA()], 0)
             return
         else
@@ -8165,8 +8165,8 @@ function Trig_Skill_MQ_Actions takes nothing returns nothing
     else
     endif
     if(Trig_Skill_MQ_Func009C())then
-        call UnitAddAbilityBJ('A01W', udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])
-        call UnitAddAbilityBJ('A02G', udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])
+        call UnitAddAbilityBJ('A01W', udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())])
+        call UnitAddAbilityBJ('A02G', udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())])
     else
     endif
 endfunction
@@ -8340,9 +8340,9 @@ function Trig_Itemfrist_Actions takes nothing returns nothing
         call RemoveItem(GetItemOfTypeFromUnitBJ(GetTriggerUnit(), 'I00Y'))
         call RemoveItem(GetItemOfTypeFromUnitBJ(GetTriggerUnit(), 'I00V'))
         if(Trig_Itemfrist_Func002Func005C())then
-            call UnitAddItemByIdSwapped(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(9, 14)], GetTriggerUnit())
+            call UnitAddItemByIdSwapped(udg_ItemPool[GetRandomInt(9, 14)], GetTriggerUnit())
         else
-            call UnitAddItemByIdSwapped(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[GetRandomInt(9, 14)], GetTriggerUnit())
+            call UnitAddItemByIdSwapped(udg_ItemPool[GetRandomInt(9, 14)], GetTriggerUnit())
         endif
         return
     else
@@ -8420,109 +8420,109 @@ function InitTrig_Itemfrist takes nothing returns nothing
     call TriggerAddAction(gg_trg_Itemfrist, function Trig_Itemfrist_Actions)
 endfunction
 function Trig_Itemtype_Actions takes nothing returns nothing
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[1] = 'I00A'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[2] = 'I03N'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[3] = 'I03O'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[4] = 'I03R'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[5] = 'I03T'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[6] = 'I03U'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[7] = 'I03X'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[8] = 'I040'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[9] = 'I02H'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[10] = 'I02F'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[11] = 'I02G'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[12] = 'I00G'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[13] = 'I00L'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[14] = 'I00H'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[15] = 'I04O'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[16] = 'I02F'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[17] = 'I02G'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[18] = 'I02H'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[19] = 'I00G'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[20] = 'I00L'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[21] = 'I00H'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[81] = 'I05B'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[82] = 'I05F'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[83] = 'I053'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[84] = 'I057'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[37] = 'I055'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[38] = 'I051'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[39] = 'I05D'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[40] = 'I059'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[41] = 'I03G'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[42] = 'I03M'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[43] = 'I03K'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[44] = 'I03Q'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[45] = 'I03S'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[46] = 'I00F'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[47] = 'I03W'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[48] = 'I03Z'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[57] = 'I054'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[58] = 'I050'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[59] = 'I05C'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[60] = 'I058'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[61] = 'I00B'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[62] = 'I00C'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[63] = 'I03L'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[64] = 'I03P'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[65] = 'I00E'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[66] = 'I03J'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[67] = 'I03V'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[68] = 'I03Y'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[101] = 'I02P'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[102] = 'I02S'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[103] = 'I02V'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[104] = 'I030'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[105] = 'I031'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[106] = 'I034'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[107] = 'I02K'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[108] = 'I00M'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[109] = 'I02Q'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[110] = 'I02T'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[111] = 'I02W'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[112] = 'I02Z'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[113] = 'I032'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[114] = 'I035'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[115] = 'I02M'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[116] = 'I00K'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[117] = 'I00J'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[121] = 'I02R'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[122] = 'I02U'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[123] = 'I02X'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[124] = 'I02Y'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[125] = 'I033'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[126] = 'I036'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[127] = 'I02L'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[128] = 'I00N'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[141] = 'I00Z'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[142] = 'I006'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[143] = 'I010'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[144] = 'I018'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[145] = 'I004'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[146] = 'I007'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[147] = 'I013'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[148] = 'I012'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[149] = 'I011'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[161] = 'I00D'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[162] = 'I03F'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[163] = 'I04F'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[164] = 'I04G'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[165] = 'I03H'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[166] = 'I03I'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[167] = 'I00P'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[168] = 'I00O'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[169] = 'I03A'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[170] = 'I03B'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[171] = 'I03C'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[172] = 'I038'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[173] = 'I039'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[174] = 'I037'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[175] = 'I02N'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[176] = 'I00I'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[177] = 'I02I'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[178] = 'I02J'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[179] = 'I04Q'
-    set udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[180] = 'I04R'
+    set udg_ItemPool[1] = 'I00A'
+    set udg_ItemPool[2] = 'I03N'
+    set udg_ItemPool[3] = 'I03O'
+    set udg_ItemPool[4] = 'I03R'
+    set udg_ItemPool[5] = 'I03T'
+    set udg_ItemPool[6] = 'I03U'
+    set udg_ItemPool[7] = 'I03X'
+    set udg_ItemPool[8] = 'I040'
+    set udg_ItemPool[9] = 'I02H'
+    set udg_ItemPool[10] = 'I02F'
+    set udg_ItemPool[11] = 'I02G'
+    set udg_ItemPool[12] = 'I00G'
+    set udg_ItemPool[13] = 'I00L'
+    set udg_ItemPool[14] = 'I00H'
+    set udg_ItemPool[15] = 'I04O'
+    set udg_ItemPool[16] = 'I02F'
+    set udg_ItemPool[17] = 'I02G'
+    set udg_ItemPool[18] = 'I02H'
+    set udg_ItemPool[19] = 'I00G'
+    set udg_ItemPool[20] = 'I00L'
+    set udg_ItemPool[21] = 'I00H'
+    set udg_ItemPool[81] = 'I05B'
+    set udg_ItemPool[82] = 'I05F'
+    set udg_ItemPool[83] = 'I053'
+    set udg_ItemPool[84] = 'I057'
+    set udg_ItemPool[37] = 'I055'
+    set udg_ItemPool[38] = 'I051'
+    set udg_ItemPool[39] = 'I05D'
+    set udg_ItemPool[40] = 'I059'
+    set udg_ItemPool[41] = 'I03G'
+    set udg_ItemPool[42] = 'I03M'
+    set udg_ItemPool[43] = 'I03K'
+    set udg_ItemPool[44] = 'I03Q'
+    set udg_ItemPool[45] = 'I03S'
+    set udg_ItemPool[46] = 'I00F'
+    set udg_ItemPool[47] = 'I03W'
+    set udg_ItemPool[48] = 'I03Z'
+    set udg_ItemPool[57] = 'I054'
+    set udg_ItemPool[58] = 'I050'
+    set udg_ItemPool[59] = 'I05C'
+    set udg_ItemPool[60] = 'I058'
+    set udg_ItemPool[61] = 'I00B'
+    set udg_ItemPool[62] = 'I00C'
+    set udg_ItemPool[63] = 'I03L'
+    set udg_ItemPool[64] = 'I03P'
+    set udg_ItemPool[65] = 'I00E'
+    set udg_ItemPool[66] = 'I03J'
+    set udg_ItemPool[67] = 'I03V'
+    set udg_ItemPool[68] = 'I03Y'
+    set udg_ItemPool[101] = 'I02P'
+    set udg_ItemPool[102] = 'I02S'
+    set udg_ItemPool[103] = 'I02V'
+    set udg_ItemPool[104] = 'I030'
+    set udg_ItemPool[105] = 'I031'
+    set udg_ItemPool[106] = 'I034'
+    set udg_ItemPool[107] = 'I02K'
+    set udg_ItemPool[108] = 'I00M'
+    set udg_ItemPool[109] = 'I02Q'
+    set udg_ItemPool[110] = 'I02T'
+    set udg_ItemPool[111] = 'I02W'
+    set udg_ItemPool[112] = 'I02Z'
+    set udg_ItemPool[113] = 'I032'
+    set udg_ItemPool[114] = 'I035'
+    set udg_ItemPool[115] = 'I02M'
+    set udg_ItemPool[116] = 'I00K'
+    set udg_ItemPool[117] = 'I00J'
+    set udg_ItemPool[121] = 'I02R'
+    set udg_ItemPool[122] = 'I02U'
+    set udg_ItemPool[123] = 'I02X'
+    set udg_ItemPool[124] = 'I02Y'
+    set udg_ItemPool[125] = 'I033'
+    set udg_ItemPool[126] = 'I036'
+    set udg_ItemPool[127] = 'I02L'
+    set udg_ItemPool[128] = 'I00N'
+    set udg_ItemPool[141] = 'I00Z'
+    set udg_ItemPool[142] = 'I006'
+    set udg_ItemPool[143] = 'I010'
+    set udg_ItemPool[144] = 'I018'
+    set udg_ItemPool[145] = 'I004'
+    set udg_ItemPool[146] = 'I007'
+    set udg_ItemPool[147] = 'I013'
+    set udg_ItemPool[148] = 'I012'
+    set udg_ItemPool[149] = 'I011'
+    set udg_ItemPool[161] = 'I00D'
+    set udg_ItemPool[162] = 'I03F'
+    set udg_ItemPool[163] = 'I04F'
+    set udg_ItemPool[164] = 'I04G'
+    set udg_ItemPool[165] = 'I03H'
+    set udg_ItemPool[166] = 'I03I'
+    set udg_ItemPool[167] = 'I00P'
+    set udg_ItemPool[168] = 'I00O'
+    set udg_ItemPool[169] = 'I03A'
+    set udg_ItemPool[170] = 'I03B'
+    set udg_ItemPool[171] = 'I03C'
+    set udg_ItemPool[172] = 'I038'
+    set udg_ItemPool[173] = 'I039'
+    set udg_ItemPool[174] = 'I037'
+    set udg_ItemPool[175] = 'I02N'
+    set udg_ItemPool[176] = 'I00I'
+    set udg_ItemPool[177] = 'I02I'
+    set udg_ItemPool[178] = 'I02J'
+    set udg_ItemPool[179] = 'I04Q'
+    set udg_ItemPool[180] = 'I04R'
 endfunction
 function InitTrig_Itemtype takes nothing returns nothing
     set gg_trg_Itemtype = CreateTrigger()
@@ -11694,7 +11694,7 @@ function Trig_G001_Func006C takes nothing returns boolean
     return true
 endfunction
 function Trig_G001_Func008Func001Func004Func001C takes nothing returns boolean
-    if(not(GetHeroLevel(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())]) >= (GetForLoopIndexA() * 5)))then
+    if(not(GetHeroLevel(udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())]) >= (GetForLoopIndexA() * 5)))then
         return false
     endif
     if(not(udg_M9P2Q7U53l4V5W9O45lO7041D2G5K3[(10 + GetConvertedPlayerId(GetTriggerPlayer()))] < 2))then
@@ -11873,14 +11873,14 @@ function Trig_Sec_Login_Actions takes nothing returns nothing
     set udg_M9PA2Q7U5l4V5W9O45lO7041D2G5K3[25] = GetRectCenter(gg_rct_SEC______05)
     set udg_M9PA2Q7U5l4V5W9O45lO7041D2G5K3[26] = GetRectCenter(gg_rct_SEC______06)
     set udg_M9PA2Q7U5l4V5W9O45lO7041D2G5K3[27] = GetRectCenter(gg_rct_______Second01)
-    set udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[100] = gg_rct_SEC______00B
-    set udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[110] = gg_rct_SEC______00A
-    set udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[111] = gg_rct_SEC______01
-    set udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[112] = gg_rct_SEC______02
-    set udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[113] = gg_rct_SEC______03
-    set udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[114] = gg_rct_SEC______04
-    set udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[115] = gg_rct_SEC______05
-    set udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[116] = gg_rct_SEC______06
+    set udg_MapAreas[100] = gg_rct_SEC______00B
+    set udg_MapAreas[110] = gg_rct_SEC______00A
+    set udg_MapAreas[111] = gg_rct_SEC______01
+    set udg_MapAreas[112] = gg_rct_SEC______02
+    set udg_MapAreas[113] = gg_rct_SEC______03
+    set udg_MapAreas[114] = gg_rct_SEC______04
+    set udg_MapAreas[115] = gg_rct_SEC______05
+    set udg_MapAreas[116] = gg_rct_SEC______06
     set udg_M9P2Q7US5l4V5W9O45lO7041D2G5K3[1] = 'ngno'
     set udg_M9P2Q7US5l4V5W9O45lO7041D2G5K3[2] = 'nrzt'
     set udg_M9P2Q7US5l4V5W9O45lO7041D2G5K3[3] = 'ndrf'
@@ -11946,9 +11946,9 @@ function Trig_Sec_Start_Actions takes nothing returns nothing
     call TriggerSleepAction(.1)
     call PingMinimapLocForForceEx(GetPlayersAll(), udg_M9PA2Q7U5l4V5W9O45lO7041D2G5K3[0], 60., bj_MINIMAPPINGSTYLE_FLASHY, .0, .0, 100.)
     call TriggerSleepAction(.1)
-    call EnumDestructablesInRectAll(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[110], function Trig_Sec_Start_Func008A)
+    call EnumDestructablesInRectAll(udg_MapAreas[110], function Trig_Sec_Start_Func008A)
     call TriggerSleepAction(.1)
-    set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1] = GetUnitsInRectAll(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[110])
+    set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1] = GetUnitsInRectAll(udg_MapAreas[110])
     call ForGroupBJ(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1], function Trig_Sec_Start_Func011A)
     call GroupClear(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1])
     call DestroyGroup(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1])
@@ -11997,9 +11997,9 @@ function Trig_Sec_Start_Actions takes nothing returns nothing
     call TriggerSleepAction(.1)
     call CreateNUnitsAtLoc(1, 'h01H', Player(10), udg_M9PA2Q7U5l4V5W9O45lO7041D2G5K3[11], 270.)
     call SetUnitUserData(GetLastCreatedUnit(), 2011)
-    call StartTimerBJ(udg_M9P2Q7U5l4V5W9O45lO7041D2IG5K3[2], false, 60.)
-    call CreateTimerDialogBJ(udg_M9P2Q7U5l4V5W9O45lO7041D2IG5K3[2], "Enemy Assault Countdown")
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2GO5K3[2] = GetLastCreatedTimerDialogBJ()
+    call StartTimerBJ(udg_Timers[2], false, 60.)
+    call CreateTimerDialogBJ(udg_Timers[2], "Enemy Assault Countdown")
+    set udg_TimerDialog[2] = GetLastCreatedTimerDialogBJ()
     set udg_M9P2Q7U5l4V5W97O45lO7041D2G5K3 = 1
     call SetPlayerTechResearchedSwap('R002', 1, Player(9))
     call SetPlayerTechResearchedSwap('R005', 1, Player(9))
@@ -12116,12 +12116,12 @@ function Trig_Sec_Ami1_Actions takes nothing returns nothing
         call SetPlayerTechResearchedSwap('R003', udg_M9P2Q7U5l4V5W97O45lO7041D2G5K3, Player(9))
         call SetPlayerTechResearchedSwap('R006', udg_M9P2Q7U5l4V5W97O45lO7041D2G5K3, Player(9))
         call SetPlayerTechResearchedSwap('R009', udg_M9P2Q7U5l4V5W97O45lO7041D2G5K3, Player(9))
-        call StartTimerBJ(udg_M9P2Q7U5l4V5W9O45lO7041D2IG5K3[2], false, 60.)
+        call StartTimerBJ(udg_Timers[2], false, 60.)
         if(Trig_Sec_Ami1_Func003Func005C())then
-            call StartTimerBJ(udg_M9P2Q7U5l4V5W9O45lO7041D2IG5K3[2], false, 150.)
+            call StartTimerBJ(udg_Timers[2], false, 150.)
         else
         endif
-        call TimerDialogSetTitle(udg_M9P2Q7U5l4V5W9O45lO7041D2GO5K3[2], ("Current Wave " + (I2S(udg_M9P2Q7U5l4V5W97O45lO7041D2G5K3) + "/15")))
+        call TimerDialogSetTitle(udg_TimerDialog[2], ("Current Wave " + (I2S(udg_M9P2Q7U5l4V5W97O45lO7041D2G5K3) + "/15")))
         set bj_forLoopAIndex = 21
         set bj_forLoopAIndexEnd = 23
         loop
@@ -12155,7 +12155,7 @@ function Trig_Sec_Ami1_Actions takes nothing returns nothing
             call IssuePointOrderLoc(GetLastCreatedUnit(), "attack", udg_M9PA2Q7U5l4V5W9O45lO7041D2G5K3[(3 + GetForLoopIndexA())])
             set bj_forLoopAIndex = bj_forLoopAIndex + 1
         endloop
-        set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1] = GetUnitsInRectOfPlayer(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[5], Player(11))
+        set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1] = GetUnitsInRectOfPlayer(udg_MapAreas[5], Player(11))
         call ForGroupBJ(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1], function Trig_Sec_Ami1_Func003Func014A)
         call GroupClear(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1])
         call DestroyGroup(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1])
@@ -12179,7 +12179,7 @@ function Trig_Sec_Ami1_Actions takes nothing returns nothing
             call PlaySoundBJ(gg_snd_Sound06)
             call RemoveUnit(udg_M9P2Q7U5l4V5W9O4D5lO7041D2G5K3[1])
             call RemoveUnit(udg_M9P2Q7U5l4V5W9O4D5lO7041D2G5K3[2])
-            call DestroyTimerDialog(udg_M9P2Q7U5l4V5W9O45lO7041D2GO5K3[2])
+            call DestroyTimerDialog(udg_TimerDialog[2])
             call DisplayTimedTextToForce(GetPlayersAll(), 120., "|cffffff00 BREAKTHROUGH: After intense study, the Grand Sage has discovered the Giant Stone Portal can open a gateway to the Demon Realm!")
             call DisplayTimedTextToForce(GetPlayersAll(), 120., "|cffffff00 ACT 3: Warriors, go to the Demon Realm and destroy the Demon Castle to restore peace to the world!")
             call DisplayTimedTextToForce(GetPlayersAll(), 120., "|cffffff00 NOTE: Protect the front line fortresses, if the fortresses are destroyed, the game fails!")
@@ -12262,9 +12262,9 @@ function Trig_Sec_Ami1_Actions takes nothing returns nothing
             else
             endif
             if(Trig_Sec_Ami1_Func009Func001Func087C())then
-                call UnitAddItemByIdSwapped(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[179], udg_M9P2Q7U5l4V5W9O45lO7041D2G5MK3[1])
-                call UnitAddItemByIdSwapped(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[179], udg_M9P2Q7U5l4V5W9O45lO7041D2G5MK3[2])
-                call UnitAddItemByIdSwapped(udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3[179], udg_M9P2Q7U5l4V5W9O45lO7041D2G5MK3[3])
+                call UnitAddItemByIdSwapped(udg_ItemPool[179], udg_M9P2Q7U5l4V5W9O45lO7041D2G5MK3[1])
+                call UnitAddItemByIdSwapped(udg_ItemPool[179], udg_M9P2Q7U5l4V5W9O45lO7041D2G5MK3[2])
+                call UnitAddItemByIdSwapped(udg_ItemPool[179], udg_M9P2Q7U5l4V5W9O45lO7041D2G5MK3[3])
                 call SetUnitAbilityLevelSwapped('A002', udg_M9P2Q7U5l4V5W9O45lO7041D2G5MK3[1], 3)
                 call SetUnitAbilityLevelSwapped('A002', udg_M9P2Q7U5l4V5W9O45lO7041D2G5MK3[2], 3)
                 call SetUnitAbilityLevelSwapped('A002', udg_M9P2Q7U5l4V5W9O45lO7041D2G5MK3[3], 3)
@@ -12329,7 +12329,7 @@ endfunction
 function InitTrig_Sec_Ami1 takes nothing returns nothing
     set gg_trg_Sec_Ami1 = CreateTrigger()
     call DisableTrigger(gg_trg_Sec_Ami1)
-    call TriggerRegisterTimerExpireEventBJ(gg_trg_Sec_Ami1, udg_M9P2Q7U5l4V5W9O45lO7041D2IG5K3[2])
+    call TriggerRegisterTimerExpireEventBJ(gg_trg_Sec_Ami1, udg_Timers[2])
     call TriggerAddAction(gg_trg_Sec_Ami1, function Trig_Sec_Ami1_Actions)
 endfunction
 function Trig_SEC_AmiGoIN_Func001C takes nothing returns boolean
@@ -12384,16 +12384,16 @@ function Trig_Sec_XH_Func009C takes nothing returns boolean
     return true
 endfunction
 function Trig_Sec_XH_Actions takes nothing returns nothing
-    set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1] = GetUnitsInRectOfPlayer(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[0], Player(9))
+    set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1] = GetUnitsInRectOfPlayer(udg_MapAreas[0], Player(9))
     call ForGroupBJ(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1], function Trig_Sec_XH_Func002A)
     call GroupClear(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1])
     call DestroyGroup(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1])
-    set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1] = GetUnitsInRectOfPlayer(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[0], Player(9))
+    set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1] = GetUnitsInRectOfPlayer(udg_MapAreas[0], Player(9))
     set bj_forLoopAIndex = 114
     set bj_forLoopAIndexEnd = 116
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-        set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1] = GetUnitsInRectOfPlayer(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[GetForLoopIndexA()], Player(9))
+        set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1] = GetUnitsInRectOfPlayer(udg_MapAreas[GetForLoopIndexA()], Player(9))
         call ForGroupBJ(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1], function Trig_Sec_XH_Func007Func002A)
         call GroupClear(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1])
         call DestroyGroup(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1])
@@ -12405,7 +12405,7 @@ function Trig_Sec_XH_Actions takes nothing returns nothing
         set bj_forLoopAIndexEnd = 2
         loop
             exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-            set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1] = GetUnitsInRectOfPlayer(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[GetForLoopIndexA()], Player(11))
+            set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1] = GetUnitsInRectOfPlayer(udg_MapAreas[GetForLoopIndexA()], Player(11))
             set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[2] = GetRandomSubGroup((2 * (udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[14] + 1)), udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1])
             call ForGroupBJ(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[2], function Trig_Sec_XH_Func009Func003Func003A)
             call GroupClear(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1])
@@ -12418,7 +12418,7 @@ function Trig_Sec_XH_Actions takes nothing returns nothing
         set bj_forLoopAIndexEnd = 4
         loop
             exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-            set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1] = GetUnitsInRectOfPlayer(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[GetForLoopIndexA()], Player(11))
+            set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1] = GetUnitsInRectOfPlayer(udg_MapAreas[GetForLoopIndexA()], Player(11))
             set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[2] = GetRandomSubGroup((2 * (udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[14] + 1)), udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1])
             call ForGroupBJ(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[2], function Trig_Sec_XH_Func009Func004Func003A)
             call GroupClear(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1])
@@ -12480,7 +12480,7 @@ function Trig_Sec_GoBack_Func002A takes nothing returns nothing
     endif
 endfunction
 function Trig_Sec_GoBack_Actions takes nothing returns nothing
-    set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[3] = GetUnitsInRectOfPlayer(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[100], Player(10))
+    set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[3] = GetUnitsInRectOfPlayer(udg_MapAreas[100], Player(10))
     call ForGroupBJ(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[3], function Trig_Sec_GoBack_Func002A)
     call GroupClear(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[3])
     call DestroyGroup(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[3])
@@ -12580,7 +12580,7 @@ function Trig_Sec_AI_Func002C takes nothing returns boolean
 endfunction
 function Trig_Sec_AI_Actions takes nothing returns nothing
     if(Trig_Sec_AI_Func002C())then
-        call KillUnit(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetAttacker()))])
+        call KillUnit(udg_AllPlayerUnits[GetConvertedPlayerId(GetOwningPlayer(GetAttacker()))])
         call SetPlayerStateBJ(GetOwningPlayer(GetAttacker()), PLAYER_STATE_RESOURCE_GOLD, 0)
         call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_WARNING, ("|cffFF0066 TRAITOR ALERT: Player " + (GetPlayerName(GetOwningPlayer(GetAttacker())) + " has betrayed the alliance by attacking allies and has been dealt with accordingly!")))
     else
@@ -12601,12 +12601,12 @@ function Trig_Thr_login_Actions takes nothing returns nothing
     set udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[6] = GetRectCenter(gg_rct_______Road006)
     set udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[11] = GetRectCenter(gg_rct_______Road007)
     set udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[12] = GetRectCenter(gg_rct_______Road008)
-    set udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[101] = gg_rct_______Road001
-    set udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[102] = gg_rct_______Road002
-    set udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[103] = gg_rct_______Road003
-    set udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[104] = gg_rct_______Road004
-    set udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[105] = gg_rct_______Road005
-    set udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[106] = gg_rct_______Road006
+    set udg_MapAreas[101] = gg_rct_______Road001
+    set udg_MapAreas[102] = gg_rct_______Road002
+    set udg_MapAreas[103] = gg_rct_______Road003
+    set udg_MapAreas[104] = gg_rct_______Road004
+    set udg_MapAreas[105] = gg_rct_______Road005
+    set udg_MapAreas[106] = gg_rct_______Road006
     set udg_Act3Units[1] = 'h00X'
     set udg_Act3Units[2] = 'h00Y'
     set udg_Act3Units[3] = 'u00F'
@@ -12809,7 +12809,7 @@ function Trig_Thr_Ami_Actions takes nothing returns nothing
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         call CreateNUnitsAtLoc(2, udg_Act3Units[1], Player(10), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[GetForLoopIndexA()], bj_UNIT_FACING)
         call CreateNUnitsAtLoc(2, udg_Act3Units[2], Player(10), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[GetForLoopIndexA()], bj_UNIT_FACING)
-        set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1] = GetUnitsInRectOfPlayer(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[(100 + GetForLoopIndexA())], Player(10))
+        set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1] = GetUnitsInRectOfPlayer(udg_MapAreas[(100 + GetForLoopIndexA())], Player(10))
         call ForGroupBJ(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1], function Trig_Thr_Ami_Func007Func004A)
         call GroupClear(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1])
         call DestroyGroup(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1])
@@ -12821,7 +12821,7 @@ function Trig_Thr_Ami_Actions takes nothing returns nothing
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         call CreateNUnitsAtLoc(2, udg_Act3Units[3], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[GetForLoopIndexA()], bj_UNIT_FACING)
         call CreateNUnitsAtLoc(2, udg_Act3Units[4], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[GetForLoopIndexA()], bj_UNIT_FACING)
-        set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1] = GetUnitsInRectOfPlayer(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[(100 + GetForLoopIndexA())], Player(11))
+        set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1] = GetUnitsInRectOfPlayer(udg_MapAreas[(100 + GetForLoopIndexA())], Player(11))
         call ForGroupBJ(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1], function Trig_Thr_Ami_Func008Func004A)
         call GroupClear(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1])
         call DestroyGroup(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1])
@@ -12861,7 +12861,7 @@ function Trig_Thr_Ami2_Actions takes nothing returns nothing
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         call CreateNUnitsAtLoc(2, udg_Act3Units[5], Player(10), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[GetForLoopIndexA()], bj_UNIT_FACING)
         call CreateNUnitsAtLoc(2, udg_Act3Units[6], Player(10), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[GetForLoopIndexA()], bj_UNIT_FACING)
-        set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[2] = GetUnitsInRectOfPlayer(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[(100 + GetForLoopIndexA())], Player(10))
+        set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[2] = GetUnitsInRectOfPlayer(udg_MapAreas[(100 + GetForLoopIndexA())], Player(10))
         call ForGroupBJ(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[2], function Trig_Thr_Ami2_Func002Func004A)
         call GroupClear(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[2])
         call DestroyGroup(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[2])
@@ -12876,7 +12876,7 @@ function Trig_Thr_Ami2_Actions takes nothing returns nothing
         call SetUnitColor(GetLastCreatedUnit(), PLAYER_COLOR_ORANGE)
         call CreateNUnitsAtLoc(1, udg_Act3Units[8], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[GetForLoopIndexA()], bj_UNIT_FACING)
         call SetUnitColor(GetLastCreatedUnit(), PLAYER_COLOR_ORANGE)
-        set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[2] = GetUnitsInRectOfPlayer(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[(100 + GetForLoopIndexA())], Player(11))
+        set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[2] = GetUnitsInRectOfPlayer(udg_MapAreas[(100 + GetForLoopIndexA())], Player(11))
         call ForGroupBJ(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[2], function Trig_Thr_Ami2_Func003Func007A)
         call GroupClear(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[2])
         call DestroyGroup(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[2])
@@ -12927,7 +12927,7 @@ function Trig_Thr_Ami3_Actions takes nothing returns nothing
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         call CreateNUnitsAtLoc(2, udg_Act3Units[9], Player(10), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[GetForLoopIndexA()], bj_UNIT_FACING)
-        set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[3] = GetUnitsInRectOfPlayer(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[(100 + GetForLoopIndexA())], Player(10))
+        set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[3] = GetUnitsInRectOfPlayer(udg_MapAreas[(100 + GetForLoopIndexA())], Player(10))
         call ForGroupBJ(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[3], function Trig_Thr_Ami3_Func002Func003A)
         call GroupClear(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[3])
         call DestroyGroup(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[3])
@@ -12938,7 +12938,7 @@ function Trig_Thr_Ami3_Actions takes nothing returns nothing
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         call CreateNUnitsAtLoc(2, udg_Act3Units[10], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[GetForLoopIndexA()], bj_UNIT_FACING)
-        set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[3] = GetUnitsInRectOfPlayer(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[(100 + GetForLoopIndexA())], Player(11))
+        set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[3] = GetUnitsInRectOfPlayer(udg_MapAreas[(100 + GetForLoopIndexA())], Player(11))
         call ForGroupBJ(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[3], function Trig_Thr_Ami3_Func003Func003A)
         call GroupClear(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[3])
         call DestroyGroup(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[3])
@@ -12972,7 +12972,7 @@ function Trig_Thr_Ami4_Actions takes nothing returns nothing
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         call CreateNUnitsAtLoc(2, udg_Act3Units[11], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[GetForLoopIndexA()], bj_UNIT_FACING)
-        set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[4] = GetUnitsInRectOfPlayer(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[(100 + GetForLoopIndexA())], Player(11))
+        set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[4] = GetUnitsInRectOfPlayer(udg_MapAreas[(100 + GetForLoopIndexA())], Player(11))
         call ForGroupBJ(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[4], function Trig_Thr_Ami4_Func002Func003A)
         call GroupClear(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[4])
         call DestroyGroup(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[4])
@@ -13006,7 +13006,7 @@ function Trig_Thr_Ami5_Actions takes nothing returns nothing
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         call CreateNUnitsAtLoc(2, udg_Act3Units[12], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[GetForLoopIndexA()], bj_UNIT_FACING)
-        set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[5] = GetUnitsInRectOfPlayer(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[(100 + GetForLoopIndexA())], Player(11))
+        set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[5] = GetUnitsInRectOfPlayer(udg_MapAreas[(100 + GetForLoopIndexA())], Player(11))
         call ForGroupBJ(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[5], function Trig_Thr_Ami5_Func002Func003A)
         call GroupClear(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[5])
         call DestroyGroup(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[5])
@@ -13040,7 +13040,7 @@ function Trig_Thr_Ami6_Actions takes nothing returns nothing
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         call CreateNUnitsAtLoc(2, udg_Act3Units[13], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[GetForLoopIndexA()], bj_UNIT_FACING)
-        set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[6] = GetUnitsInRectOfPlayer(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[(100 + GetForLoopIndexA())], Player(11))
+        set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[6] = GetUnitsInRectOfPlayer(udg_MapAreas[(100 + GetForLoopIndexA())], Player(11))
         call ForGroupBJ(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[6], function Trig_Thr_Ami6_Func002Func003A)
         call GroupClear(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[6])
         call DestroyGroup(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[6])
@@ -13649,7 +13649,7 @@ function Trig_Thr_AmiAi3_Func007C takes nothing returns boolean
 endfunction
 function Trig_Thr_AmiAi3_Actions takes nothing returns nothing
     if(Trig_Thr_AmiAi3_Func001C())then
-        call KillUnit(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetAttacker()))])
+        call KillUnit(udg_AllPlayerUnits[GetConvertedPlayerId(GetOwningPlayer(GetAttacker()))])
         call SetPlayerStateBJ(GetOwningPlayer(GetAttacker()), PLAYER_STATE_RESOURCE_GOLD, 0)
         call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_WARNING, ("|cffFF0066 TREACHERY DETECTED: Player " + (GetPlayerName(GetOwningPlayer(GetAttacker())) + " has committed treason by attacking the Allied Fortress and has been severely punished!")))
     else
