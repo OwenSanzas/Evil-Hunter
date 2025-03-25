@@ -1,8 +1,9 @@
 globals
     unit bronze_chest_unit = null
     unit treasure_chest_unit = null
-    integer array udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3
-    button array udg_M9P2QS7U5l4V5W9O45lO7041D2G5K3
+    integer array udg_ChampSelection
+    integer array udg_Act3Units
+    button array udg_Difficulty
     unit array udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3
     integer array udg_M9P2Q7U5l4V5W9O45lO70841D2G5K3
     integer array udg_M9P2Q7U5314V5W9O45lO7041D2G5K3
@@ -6464,25 +6465,25 @@ function InitTrig_Area_GoBack takes nothing returns nothing
     call TriggerAddAction(gg_trg_Area_GoBack, function Trig_Area_GoBack_Actions)
 endfunction
 function Trig_Hero_type_Actions takes nothing returns nothing
-    set udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[1] = 'H001'
-    set udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[2] = 'O003'
-    set udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[3] = 'O006'
-    set udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[4] = 'H00B'
-    set udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[11] = 'O000'
-    set udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[12] = 'N00G'
-    set udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[13] = 'O005'
-    set udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[14] = 'E001'
-    set udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[15] = 'H00A'
-    set udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[21] = 'H009'
-    set udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[22] = 'U001'
-    set udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[23] = 'H008'
-    set udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[24] = 'O002'
-    set udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[31] = 'H002'
-    set udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[32] = 'H006'
-    set udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[33] = 'H005'
-    set udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[34] = 'E000'
-    set udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[35] = 'O001'
-    set udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[36] = 'N00H'
+    set udg_ChampSelection[1] = 'H001'
+    set udg_ChampSelection[2] = 'O003'
+    set udg_ChampSelection[3] = 'O006'
+    set udg_ChampSelection[4] = 'H00B'
+    set udg_ChampSelection[11] = 'O000'
+    set udg_ChampSelection[12] = 'N00G'
+    set udg_ChampSelection[13] = 'O005'
+    set udg_ChampSelection[14] = 'E001'
+    set udg_ChampSelection[15] = 'H00A'
+    set udg_ChampSelection[21] = 'H009'
+    set udg_ChampSelection[22] = 'U001'
+    set udg_ChampSelection[23] = 'H008'
+    set udg_ChampSelection[24] = 'O002'
+    set udg_ChampSelection[31] = 'H002'
+    set udg_ChampSelection[32] = 'H006'
+    set udg_ChampSelection[33] = 'H005'
+    set udg_ChampSelection[34] = 'E000'
+    set udg_ChampSelection[35] = 'O001'
+    set udg_ChampSelection[36] = 'N00H'
     call DisableTrigger(GetTriggeringTrigger())
 endfunction
 function InitTrig_Hero_type takes nothing returns nothing
@@ -6495,7 +6496,7 @@ function Trig_Hero_show_Actions takes nothing returns nothing
     set bj_forLoopAIndexEnd = 4
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-        call CreateNUnitsAtLoc(1, udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[GetForLoopIndexA()], Player(PLAYER_NEUTRAL_PASSIVE), OffsetLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], ( - 800. + I2R((GetForLoopIndexA() * 200))), 400.), bj_UNIT_FACING)
+        call CreateNUnitsAtLoc(1, udg_ChampSelection[GetForLoopIndexA()], Player(PLAYER_NEUTRAL_PASSIVE), OffsetLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], ( - 800. + I2R((GetForLoopIndexA() * 200))), 400.), bj_UNIT_FACING)
         call UnitAddItemByIdSwapped('I00V', GetLastCreatedUnit())
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[199] = GetUnitLoc(GetLastCreatedUnit())
         call CreateTextTagLocBJ("Guardian", OffsetLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[199], .0, - 100.), 0, 10, 50., 100, 80., 20.)
@@ -6506,7 +6507,7 @@ function Trig_Hero_show_Actions takes nothing returns nothing
     set bj_forLoopAIndexEnd = 5
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-        call CreateNUnitsAtLoc(1, udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[(GetForLoopIndexA() + 10)], Player(PLAYER_NEUTRAL_PASSIVE), OffsetLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], ( - 800. + I2R((GetForLoopIndexA() * 200))), 150.), bj_UNIT_FACING)
+        call CreateNUnitsAtLoc(1, udg_ChampSelection[(GetForLoopIndexA() + 10)], Player(PLAYER_NEUTRAL_PASSIVE), OffsetLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], ( - 800. + I2R((GetForLoopIndexA() * 200))), 150.), bj_UNIT_FACING)
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[199] = GetUnitLoc(GetLastCreatedUnit())
         call UnitAddItemByIdSwapped('I00W', GetLastCreatedUnit())
         call CreateTextTagLocBJ("Warrior", OffsetLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[199], .0, - 100.), 0, 10, 50., 100, 80., 20.)
@@ -6517,7 +6518,7 @@ function Trig_Hero_show_Actions takes nothing returns nothing
     set bj_forLoopAIndexEnd = 4
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-        call CreateNUnitsAtLoc(1, udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[(GetForLoopIndexA() + 20)], Player(PLAYER_NEUTRAL_PASSIVE), OffsetLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], ( - 800. + I2R((GetForLoopIndexA() * 200))), - 100.), bj_UNIT_FACING)
+        call CreateNUnitsAtLoc(1, udg_ChampSelection[(GetForLoopIndexA() + 20)], Player(PLAYER_NEUTRAL_PASSIVE), OffsetLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], ( - 800. + I2R((GetForLoopIndexA() * 200))), - 100.), bj_UNIT_FACING)
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[199] = GetUnitLoc(GetLastCreatedUnit())
         call UnitAddItemByIdSwapped('I00Y', GetLastCreatedUnit())
         call CreateTextTagLocBJ("Archer", OffsetLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[199], .0, - 100.), 0, 10, 50., 100, 80., 20.)
@@ -6528,7 +6529,7 @@ function Trig_Hero_show_Actions takes nothing returns nothing
     set bj_forLoopAIndexEnd = 6
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-        call CreateNUnitsAtLoc(1, udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[(GetForLoopIndexA() + 30)], Player(PLAYER_NEUTRAL_PASSIVE), OffsetLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], ( - 800. + I2R((GetForLoopIndexA() * 200))), - 350.), bj_UNIT_FACING)
+        call CreateNUnitsAtLoc(1, udg_ChampSelection[(GetForLoopIndexA() + 30)], Player(PLAYER_NEUTRAL_PASSIVE), OffsetLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], ( - 800. + I2R((GetForLoopIndexA() * 200))), - 350.), bj_UNIT_FACING)
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[199] = GetUnitLoc(GetLastCreatedUnit())
         call UnitAddItemByIdSwapped('I00X', GetLastCreatedUnit())
         call CreateTextTagLocBJ("Mage", OffsetLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[199], .0, - 100.), 0, 10, 50., 100, 80., 20.)
@@ -6646,15 +6647,15 @@ function Trig_Dialog_Actions takes nothing returns nothing
     call DialogClear(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1])
     call DialogSetMessage(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "Game Difficulty")
     call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "Novice (Familiarize yourself with the map)")
-    set udg_M9P2QS7U5l4V5W9O45lO7041D2G5K3[1] = GetLastCreatedButtonBJ()
+    set udg_Difficulty[1] = GetLastCreatedButtonBJ()
     call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "Normal (Higher Challenge)")
-    set udg_M9P2QS7U5l4V5W9O45lO7041D2G5K3[2] = GetLastCreatedButtonBJ()
+    set udg_Difficulty[2] = GetLastCreatedButtonBJ()
     call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "Intermediate (Limit of the random game)")
-    set udg_M9P2QS7U5l4V5W9O45lO7041D2G5K3[3] = GetLastCreatedButtonBJ()
+    set udg_Difficulty[3] = GetLastCreatedButtonBJ()
     call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "Advanced (Professional team)")
-    set udg_M9P2QS7U5l4V5W9O45lO7041D2G5K3[4] = GetLastCreatedButtonBJ()
+    set udg_Difficulty[4] = GetLastCreatedButtonBJ()
     call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "Hell (Impossible!)")
-    set udg_M9P2QS7U5l4V5W9O45lO7041D2G5K3[5] = GetLastCreatedButtonBJ()
+    set udg_Difficulty[5] = GetLastCreatedButtonBJ()
     set bj_forLoopAIndex = 1
     set bj_forLoopAIndexEnd = 10
     loop
@@ -6674,31 +6675,31 @@ function InitTrig_Dialog takes nothing returns nothing
     call TriggerAddAction(gg_trg_Dialog, function Trig_Dialog_Actions)
 endfunction
 function Trig_Dialog_select_Func001Func001Func001Func001Func001C takes nothing returns boolean
-    if(not(GetClickedButtonBJ() == udg_M9P2QS7U5l4V5W9O45lO7041D2G5K3[5]))then
+    if(not(GetClickedButtonBJ() == udg_Difficulty[5]))then
         return false
     endif
     return true
 endfunction
 function Trig_Dialog_select_Func001Func001Func001Func001C takes nothing returns boolean
-    if(not(GetClickedButtonBJ() == udg_M9P2QS7U5l4V5W9O45lO7041D2G5K3[4]))then
+    if(not(GetClickedButtonBJ() == udg_Difficulty[4]))then
         return false
     endif
     return true
 endfunction
 function Trig_Dialog_select_Func001Func001Func001C takes nothing returns boolean
-    if(not(GetClickedButtonBJ() == udg_M9P2QS7U5l4V5W9O45lO7041D2G5K3[3]))then
+    if(not(GetClickedButtonBJ() == udg_Difficulty[3]))then
         return false
     endif
     return true
 endfunction
 function Trig_Dialog_select_Func001Func001C takes nothing returns boolean
-    if(not(GetClickedButtonBJ() == udg_M9P2QS7U5l4V5W9O45lO7041D2G5K3[2]))then
+    if(not(GetClickedButtonBJ() == udg_Difficulty[2]))then
         return false
     endif
     return true
 endfunction
 function Trig_Dialog_select_Func001C takes nothing returns boolean
-    if(not(GetClickedButtonBJ() == udg_M9P2QS7U5l4V5W9O45lO7041D2G5K3[1]))then
+    if(not(GetClickedButtonBJ() == udg_Difficulty[1]))then
         return false
     endif
     return true
@@ -12606,20 +12607,20 @@ function Trig_Thr_login_Actions takes nothing returns nothing
     set udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[104] = gg_rct_______Road004
     set udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[105] = gg_rct_______Road005
     set udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[106] = gg_rct_______Road006
-    set udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[101] = 'h00X'
-    set udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[102] = 'h00Y'
-    set udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[103] = 'u00F'
-    set udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[104] = 'u00G'
-    set udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[105] = 'h00Z'
-    set udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[106] = 'h010'
-    set udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[107] = 'n02D'
-    set udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[108] = 'u00H'
-    set udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[109] = 'e007'
-    set udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[110] = 'n02F'
-    set udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[111] = 'n02B'
-    set udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[112] = 'n00J'
-    set udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[113] = 'n02C'
-    set udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[114] = 'u004'
+    set udg_Act3Units[1] = 'h00X'
+    set udg_Act3Units[2] = 'h00Y'
+    set udg_Act3Units[3] = 'u00F'
+    set udg_Act3Units[4] = 'u00G'
+    set udg_Act3Units[5] = 'h00Z'
+    set udg_Act3Units[6] = 'h010'
+    set udg_Act3Units[7] = 'n02D'
+    set udg_Act3Units[8] = 'u00H'
+    set udg_Act3Units[9] = 'e007'
+    set udg_Act3Units[10] = 'n02F'
+    set udg_Act3Units[11] = 'n02B'
+    set udg_Act3Units[12] = 'n00J'
+    set udg_Act3Units[13] = 'n02C'
+    set udg_Act3Units[14] = 'u004'
     set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[101] = 'A0C1'
     set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[102] = 'A0C2'
     set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[103] = 'A0C1'
@@ -12806,8 +12807,8 @@ function Trig_Thr_Ami_Actions takes nothing returns nothing
     set bj_forLoopAIndexEnd = 3
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-        call CreateNUnitsAtLoc(2, udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[101], Player(10), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[GetForLoopIndexA()], bj_UNIT_FACING)
-        call CreateNUnitsAtLoc(2, udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[102], Player(10), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[GetForLoopIndexA()], bj_UNIT_FACING)
+        call CreateNUnitsAtLoc(2, udg_Act3Units[1], Player(10), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[GetForLoopIndexA()], bj_UNIT_FACING)
+        call CreateNUnitsAtLoc(2, udg_Act3Units[2], Player(10), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[GetForLoopIndexA()], bj_UNIT_FACING)
         set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1] = GetUnitsInRectOfPlayer(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[(100 + GetForLoopIndexA())], Player(10))
         call ForGroupBJ(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1], function Trig_Thr_Ami_Func007Func004A)
         call GroupClear(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1])
@@ -12818,8 +12819,8 @@ function Trig_Thr_Ami_Actions takes nothing returns nothing
     set bj_forLoopAIndexEnd = 6
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-        call CreateNUnitsAtLoc(2, udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[103], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[GetForLoopIndexA()], bj_UNIT_FACING)
-        call CreateNUnitsAtLoc(2, udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[104], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[GetForLoopIndexA()], bj_UNIT_FACING)
+        call CreateNUnitsAtLoc(2, udg_Act3Units[3], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[GetForLoopIndexA()], bj_UNIT_FACING)
+        call CreateNUnitsAtLoc(2, udg_Act3Units[4], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[GetForLoopIndexA()], bj_UNIT_FACING)
         set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1] = GetUnitsInRectOfPlayer(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[(100 + GetForLoopIndexA())], Player(11))
         call ForGroupBJ(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1], function Trig_Thr_Ami_Func008Func004A)
         call GroupClear(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[1])
@@ -12858,8 +12859,8 @@ function Trig_Thr_Ami2_Actions takes nothing returns nothing
     set bj_forLoopAIndexEnd = 3
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-        call CreateNUnitsAtLoc(2, udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[105], Player(10), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[GetForLoopIndexA()], bj_UNIT_FACING)
-        call CreateNUnitsAtLoc(2, udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[106], Player(10), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[GetForLoopIndexA()], bj_UNIT_FACING)
+        call CreateNUnitsAtLoc(2, udg_Act3Units[5], Player(10), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[GetForLoopIndexA()], bj_UNIT_FACING)
+        call CreateNUnitsAtLoc(2, udg_Act3Units[6], Player(10), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[GetForLoopIndexA()], bj_UNIT_FACING)
         set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[2] = GetUnitsInRectOfPlayer(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[(100 + GetForLoopIndexA())], Player(10))
         call ForGroupBJ(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[2], function Trig_Thr_Ami2_Func002Func004A)
         call GroupClear(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[2])
@@ -12870,10 +12871,10 @@ function Trig_Thr_Ami2_Actions takes nothing returns nothing
     set bj_forLoopAIndexEnd = 6
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-        call CreateNUnitsAtLoc(2, udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[107], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[GetForLoopIndexA()], bj_UNIT_FACING)
-        call CreateNUnitsAtLoc(1, udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[108], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[GetForLoopIndexA()], bj_UNIT_FACING)
+        call CreateNUnitsAtLoc(2, udg_Act3Units[7], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[GetForLoopIndexA()], bj_UNIT_FACING)
+        call CreateNUnitsAtLoc(1, udg_Act3Units[8], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[GetForLoopIndexA()], bj_UNIT_FACING)
         call SetUnitColor(GetLastCreatedUnit(), PLAYER_COLOR_ORANGE)
-        call CreateNUnitsAtLoc(1, udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[108], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[GetForLoopIndexA()], bj_UNIT_FACING)
+        call CreateNUnitsAtLoc(1, udg_Act3Units[8], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[GetForLoopIndexA()], bj_UNIT_FACING)
         call SetUnitColor(GetLastCreatedUnit(), PLAYER_COLOR_ORANGE)
         set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[2] = GetUnitsInRectOfPlayer(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[(100 + GetForLoopIndexA())], Player(11))
         call ForGroupBJ(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[2], function Trig_Thr_Ami2_Func003Func007A)
@@ -12925,7 +12926,7 @@ function Trig_Thr_Ami3_Actions takes nothing returns nothing
     set bj_forLoopAIndexEnd = 3
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-        call CreateNUnitsAtLoc(2, udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[109], Player(10), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[GetForLoopIndexA()], bj_UNIT_FACING)
+        call CreateNUnitsAtLoc(2, udg_Act3Units[9], Player(10), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[GetForLoopIndexA()], bj_UNIT_FACING)
         set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[3] = GetUnitsInRectOfPlayer(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[(100 + GetForLoopIndexA())], Player(10))
         call ForGroupBJ(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[3], function Trig_Thr_Ami3_Func002Func003A)
         call GroupClear(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[3])
@@ -12936,7 +12937,7 @@ function Trig_Thr_Ami3_Actions takes nothing returns nothing
     set bj_forLoopAIndexEnd = 6
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-        call CreateNUnitsAtLoc(2, udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[110], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[GetForLoopIndexA()], bj_UNIT_FACING)
+        call CreateNUnitsAtLoc(2, udg_Act3Units[10], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[GetForLoopIndexA()], bj_UNIT_FACING)
         set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[3] = GetUnitsInRectOfPlayer(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[(100 + GetForLoopIndexA())], Player(11))
         call ForGroupBJ(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[3], function Trig_Thr_Ami3_Func003Func003A)
         call GroupClear(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[3])
@@ -12970,7 +12971,7 @@ function Trig_Thr_Ami4_Actions takes nothing returns nothing
     set bj_forLoopAIndexEnd = 6
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-        call CreateNUnitsAtLoc(2, udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[111], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[GetForLoopIndexA()], bj_UNIT_FACING)
+        call CreateNUnitsAtLoc(2, udg_Act3Units[11], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[GetForLoopIndexA()], bj_UNIT_FACING)
         set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[4] = GetUnitsInRectOfPlayer(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[(100 + GetForLoopIndexA())], Player(11))
         call ForGroupBJ(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[4], function Trig_Thr_Ami4_Func002Func003A)
         call GroupClear(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[4])
@@ -13004,7 +13005,7 @@ function Trig_Thr_Ami5_Actions takes nothing returns nothing
     set bj_forLoopAIndexEnd = 6
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-        call CreateNUnitsAtLoc(2, udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[112], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[GetForLoopIndexA()], bj_UNIT_FACING)
+        call CreateNUnitsAtLoc(2, udg_Act3Units[12], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[GetForLoopIndexA()], bj_UNIT_FACING)
         set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[5] = GetUnitsInRectOfPlayer(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[(100 + GetForLoopIndexA())], Player(11))
         call ForGroupBJ(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[5], function Trig_Thr_Ami5_Func002Func003A)
         call GroupClear(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[5])
@@ -13038,7 +13039,7 @@ function Trig_Thr_Ami6_Actions takes nothing returns nothing
     set bj_forLoopAIndexEnd = 6
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-        call CreateNUnitsAtLoc(2, udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[113], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[GetForLoopIndexA()], bj_UNIT_FACING)
+        call CreateNUnitsAtLoc(2, udg_Act3Units[13], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[GetForLoopIndexA()], bj_UNIT_FACING)
         set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[6] = GetUnitsInRectOfPlayer(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[(100 + GetForLoopIndexA())], Player(11))
         call ForGroupBJ(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[6], function Trig_Thr_Ami6_Func002Func003A)
         call GroupClear(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[6])
@@ -13061,11 +13062,11 @@ function Trig_Thr_Ami7_Func004C takes nothing returns boolean
 endfunction
 function Trig_Thr_Ami7_Actions takes nothing returns nothing
     set udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[0] = PolarProjectionBJ(udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[12], 50., 90.)
-    call CreateNUnitsAtLoc(1, udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[114], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[0], bj_UNIT_FACING)
+    call CreateNUnitsAtLoc(1, udg_Act3Units[14], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[0], bj_UNIT_FACING)
     call IssuePointOrderLoc(GetLastCreatedUnit(), "attack", udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[11])
     if(Trig_Thr_Ami7_Func004C())then
         set udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[0] = PolarProjectionBJ(udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[12], 50., 270.)
-        call CreateNUnitsAtLoc(1, udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[114], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[0], bj_UNIT_FACING)
+        call CreateNUnitsAtLoc(1, udg_Act3Units[14], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[0], bj_UNIT_FACING)
         call IssuePointOrderLoc(GetLastCreatedUnit(), "attack", udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[11])
     else
     endif
@@ -13507,10 +13508,10 @@ function Trig_Thr_AmiUP_Actions takes nothing returns nothing
     if(Trig_Thr_AmiUP_Func009C())then
         call EnableTrigger(gg_trg_Thr_Ami7)
         set udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[0] = PolarProjectionBJ(udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[12], 80., 90.)
-        call CreateNUnitsAtLoc(1, udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[114], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[0], bj_UNIT_FACING)
+        call CreateNUnitsAtLoc(1, udg_Act3Units[14], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[0], bj_UNIT_FACING)
         call IssuePointOrderLoc(GetLastCreatedUnit(), "attack", udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[11])
         set udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[0] = PolarProjectionBJ(udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[12], 80., 270.)
-        call CreateNUnitsAtLoc(1, udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3[114], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[0], bj_UNIT_FACING)
+        call CreateNUnitsAtLoc(1, udg_Act3Units[14], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[0], bj_UNIT_FACING)
         call IssuePointOrderLoc(GetLastCreatedUnit(), "attack", udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[11])
     else
     endif
