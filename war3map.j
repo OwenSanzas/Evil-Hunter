@@ -227,14 +227,14 @@ globals
     trigger gg_trg_Code = null
     trigger gg_trg_Save = null
     trigger gg_trg_Load = null
-    trigger gg_trg_Skill1 = null
-    trigger gg_trg_Skill2 = null
-    trigger gg_trg_Skill3 = null
-    trigger gg_trg_Skill4 = null
-    trigger gg_trg_Skill5 = null
-    trigger gg_trg_Skill6 = null
-    trigger gg_trg_Skill7 = null
-    trigger gg_trg_Skill8 = null
+    trigger gg_trg_GeneralSkill = null
+    trigger gg_trg_HealingSkill = null
+    trigger gg_trg_DefensiveSKill = null
+    trigger gg_trg_MeleeAttackSkill = null
+    trigger gg_trg_ArcherAttackSKill = null
+    trigger gg_trg_MageAttackSKill = null
+    trigger gg_trg_MeleeSupportSkill = null
+    trigger gg_trg_MageAndArcherSupportSkill = null
     trigger gg_trg_Skill_buy1 = null
     trigger gg_trg_Skill_buy2 = null
     trigger gg_trg_Skill_buy3 = null
@@ -6879,7 +6879,7 @@ function InitTrig_Open_Boss takes nothing returns nothing
     call TriggerAddCondition(gg_trg_Open_Boss, Condition(function Trig_Open_Boss_Conditions))
     call TriggerAddAction(gg_trg_Open_Boss, function Trig_Open_Boss_Actions)
 endfunction
-function Trig_Skill1_Actions takes nothing returns nothing
+function Trig_InitGeneralSkills_Actions takes nothing returns nothing
     // ---------------- 8 Aura Skills START ------------------
     set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[1] = 'A02C'
     set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[2] = 'A02D'
@@ -6933,11 +6933,11 @@ function Trig_Skill1_Actions takes nothing returns nothing
     set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[53] = 'A031'
     call DestroyTrigger(GetTriggeringTrigger())
 endfunction
-function InitTrig_Skill1 takes nothing returns nothing
-    set gg_trg_Skill1 = CreateTrigger()
-    call TriggerAddAction(gg_trg_Skill1, function Trig_Skill1_Actions)
+function InitTrig_GeneralSkill takes nothing returns nothing
+    set gg_trg_GeneralSkill = CreateTrigger()
+    call TriggerAddAction(gg_trg_GeneralSkill, function Trig_InitGeneralSkills_Actions)
 endfunction
-function Trig_Skill2_Actions takes nothing returns nothing
+function Trig_HealingSkill_Actions takes nothing returns nothing
     set udg_M9P2Q7U5l4V5W9O45lO7D041D2G5K3[1] = 'A02U'
     set udg_M9P2Q7U5l4V5W9O45lO7D041D2G5K3[2] = 'A04T'
     set udg_M9P2Q7U5l4V5W9O45lO7D041D2G5K3[3] = 'A036'
@@ -6945,11 +6945,11 @@ function Trig_Skill2_Actions takes nothing returns nothing
     set udg_M9P2Q7U5l4V5W9O45lO7D041D2G5K3[5] = 'A03G'
     call DestroyTrigger(GetTriggeringTrigger())
 endfunction
-function InitTrig_Skill2 takes nothing returns nothing
-    set gg_trg_Skill2 = CreateTrigger()
-    call TriggerAddAction(gg_trg_Skill2, function Trig_Skill2_Actions)
+function InitTrig_HealingSkill takes nothing returns nothing
+    set gg_trg_HealingSkill = CreateTrigger()
+    call TriggerAddAction(gg_trg_HealingSkill, function Trig_HealingSkill_Actions)
 endfunction
-function Trig_Skill3_Actions takes nothing returns nothing
+function Trig_DefensiveSKill_Actions takes nothing returns nothing
     set udg_M9P2Q7U5l4V5W9O45lO70S41D2G5K3[1] = 'A048'
     set udg_M9P2Q7U5l4V5W9O45lO70S41D2G5K3[2] = 'A02Q'
     set udg_M9P2Q7U5l4V5W9O45lO70S41D2G5K3[3] = 'A05F'
@@ -6958,11 +6958,11 @@ function Trig_Skill3_Actions takes nothing returns nothing
     set udg_M9P2Q7U5l4V5W9O45lO70S41D2G5K3[6] = 'A038'
     call DestroyTrigger(GetTriggeringTrigger())
 endfunction
-function InitTrig_Skill3 takes nothing returns nothing
-    set gg_trg_Skill3 = CreateTrigger()
-    call TriggerAddAction(gg_trg_Skill3, function Trig_Skill3_Actions)
+function InitTrig_DefensiveSKill takes nothing returns nothing
+    set gg_trg_DefensiveSKill = CreateTrigger()
+    call TriggerAddAction(gg_trg_DefensiveSKill, function Trig_DefensiveSKill_Actions)
 endfunction
-function Trig_Skill4_Actions takes nothing returns nothing
+function Trig_MeleeAttackSkill_Actions takes nothing returns nothing
     set udg_M9P2Q7U5l4V5W9O45lO7041DD2G5K3[1] = 'A0C9'
     set udg_M9P2Q7U5l4V5W9O45lO7041DD2G5K3[2] = 'A05J'
     set udg_M9P2Q7U5l4V5W9O45lO7041DD2G5K3[3] = 'A03L'
@@ -6978,11 +6978,11 @@ function Trig_Skill4_Actions takes nothing returns nothing
     set udg_M9P2Q7U5l4V5W9O45lO7041DD2G5K3[13] = 'A03U'
     call DestroyTrigger(GetTriggeringTrigger())
 endfunction
-function InitTrig_Skill4 takes nothing returns nothing
-    set gg_trg_Skill4 = CreateTrigger()
-    call TriggerAddAction(gg_trg_Skill4, function Trig_Skill4_Actions)
+function InitTrig_MeleeAttackSkill takes nothing returns nothing
+    set gg_trg_MeleeAttackSkill = CreateTrigger()
+    call TriggerAddAction(gg_trg_MeleeAttackSkill, function Trig_MeleeAttackSkill_Actions)
 endfunction
-function Trig_Skill5_Actions takes nothing returns nothing
+function Trig_ArcherAttackSKill_Actions takes nothing returns nothing
     set udg_M9P2Q7UD5l4V5W9O45lO704DD2G5K3[1] = 'A068'
     set udg_M9P2Q7UD5l4V5W9O45lO704DD2G5K3[2] = 'A06J'
     set udg_M9P2Q7UD5l4V5W9O45lO704DD2G5K3[3] = 'A067'
@@ -6994,11 +6994,11 @@ function Trig_Skill5_Actions takes nothing returns nothing
     set udg_M9P2Q7UD5l4V5W9O45lO704DD2G5K3[9] = 'A05L'
     call DestroyTrigger(GetTriggeringTrigger())
 endfunction
-function InitTrig_Skill5 takes nothing returns nothing
-    set gg_trg_Skill5 = CreateTrigger()
-    call TriggerAddAction(gg_trg_Skill5, function Trig_Skill5_Actions)
+function InitTrig_ArcherAttackSKill takes nothing returns nothing
+    set gg_trg_ArcherAttackSKill = CreateTrigger()
+    call TriggerAddAction(gg_trg_ArcherAttackSKill, function Trig_ArcherAttackSKill_Actions)
 endfunction
-function Trig_Skill6_Actions takes nothing returns nothing
+function Trig_MageAttackSKill_Actions takes nothing returns nothing
     set udg_M9P2Q7U5l4V5W9O45lO7041D2DG5K3[1] = 'A06B'
     set udg_M9P2Q7U5l4V5W9O45lO7041D2DG5K3[2] = 'A02R'
     set udg_M9P2Q7U5l4V5W9O45lO7041D2DG5K3[3] = 'A03T'
@@ -7012,11 +7012,11 @@ function Trig_Skill6_Actions takes nothing returns nothing
     set udg_M9P2Q7U5l4V5W9O45lO7041D2DG5K3[11] = 'A06H'
     call DestroyTrigger(GetTriggeringTrigger())
 endfunction
-function InitTrig_Skill6 takes nothing returns nothing
-    set gg_trg_Skill6 = CreateTrigger()
-    call TriggerAddAction(gg_trg_Skill6, function Trig_Skill6_Actions)
+function InitTrig_MageAttackSKill takes nothing returns nothing
+    set gg_trg_MageAttackSKill = CreateTrigger()
+    call TriggerAddAction(gg_trg_MageAttackSKill, function Trig_MageAttackSKill_Actions)
 endfunction
-function Trig_Skill7_Actions takes nothing returns nothing
+function Trig_MeleeSupportSkill_Actions takes nothing returns nothing
     set udg_M9P2Q7U5l4V5W9O45lOD7041D2G5K3[1] = 'A03S'
     set udg_M9P2Q7U5l4V5W9O45lOD7041D2G5K3[2] = 'A04L'
     set udg_M9P2Q7U5l4V5W9O45lOD7041D2G5K3[3] = 'A05R'
@@ -7028,11 +7028,11 @@ function Trig_Skill7_Actions takes nothing returns nothing
     set udg_M9P2Q7U5l4V5W9O45lOD7041D2G5K3[9] = 'A03S'
     call DestroyTrigger(GetTriggeringTrigger())
 endfunction
-function InitTrig_Skill7 takes nothing returns nothing
-    set gg_trg_Skill7 = CreateTrigger()
-    call TriggerAddAction(gg_trg_Skill7, function Trig_Skill7_Actions)
+function InitTrig_MeleeSupportSkill takes nothing returns nothing
+    set gg_trg_MeleeSupportSkill = CreateTrigger()
+    call TriggerAddAction(gg_trg_MeleeSupportSkill, function Trig_MeleeSupportSkill_Actions)
 endfunction
-function Trig_Skill8_Actions takes nothing returns nothing
+function Trig_MageAndArcherSupportSkill_Actions takes nothing returns nothing
     set udg_M9P2Q7U5l4V5W9O45lDO7041D2G5K3[1] = 'A018'
     set udg_M9P2Q7U5l4V5W9O45lDO7041D2G5K3[2] = 'A03C'
     set udg_M9P2Q7U5l4V5W9O45lDO7041D2G5K3[3] = 'A03C'
@@ -7050,9 +7050,9 @@ function Trig_Skill8_Actions takes nothing returns nothing
     set udg_M9P2Q7U5l4V5W9O45lDO7041D2G5K3[15] = 'A043'
     call DestroyTrigger(GetTriggeringTrigger())
 endfunction
-function InitTrig_Skill8 takes nothing returns nothing
-    set gg_trg_Skill8 = CreateTrigger()
-    call TriggerAddAction(gg_trg_Skill8, function Trig_Skill8_Actions)
+function InitTrig_MageAndArcherSupportSkill takes nothing returns nothing
+    set gg_trg_MageAndArcherSupportSkill = CreateTrigger()
+    call TriggerAddAction(gg_trg_MageAndArcherSupportSkill, function Trig_MageAndArcherSupportSkill_Actions)
 endfunction
 function Trig_Skill_buy1_Conditions takes nothing returns boolean
     if(not(GetItemTypeId(GetManipulatedItem()) == 'I00T'))then
@@ -13785,14 +13785,14 @@ function InitCustomTriggers takes nothing returns nothing
     call InitTrig_Dialog_select()
     call InitTrig_Hero_close()
     call InitTrig_Open_Boss()
-    call InitTrig_Skill1()
-    call InitTrig_Skill2()
-    call InitTrig_Skill3()
-    call InitTrig_Skill4()
-    call InitTrig_Skill5()
-    call InitTrig_Skill6()
-    call InitTrig_Skill7()
-    call InitTrig_Skill8()
+    call InitTrig_GeneralSkill()
+    call InitTrig_HealingSkill()
+    call InitTrig_DefensiveSKill()
+    call InitTrig_MeleeAttackSkill()
+    call InitTrig_ArcherAttackSKill()
+    call InitTrig_MageAttackSKill()
+    call InitTrig_MeleeSupportSkill()
+    call InitTrig_MageAndArcherSupportSkill()
     call InitTrig_Skill_buy1()
     call InitTrig_Skill_buy2()
     call InitTrig_Skill_buy3()
@@ -13867,14 +13867,14 @@ function RunInitializationTriggers takes nothing returns nothing
     call ConditionalTriggerExecute(gg_trg_Ogre_Show)
     call ConditionalTriggerExecute(gg_trg_Ogre_Show2)
     call ConditionalTriggerExecute(gg_trg_Hero_type)
-    call ConditionalTriggerExecute(gg_trg_Skill1)
-    call ConditionalTriggerExecute(gg_trg_Skill2)
-    call ConditionalTriggerExecute(gg_trg_Skill3)
-    call ConditionalTriggerExecute(gg_trg_Skill4)
-    call ConditionalTriggerExecute(gg_trg_Skill5)
-    call ConditionalTriggerExecute(gg_trg_Skill6)
-    call ConditionalTriggerExecute(gg_trg_Skill7)
-    call ConditionalTriggerExecute(gg_trg_Skill8)
+    call ConditionalTriggerExecute(gg_trg_GeneralSkill)
+    call ConditionalTriggerExecute(gg_trg_HealingSkill)
+    call ConditionalTriggerExecute(gg_trg_DefensiveSKill)
+    call ConditionalTriggerExecute(gg_trg_MeleeAttackSkill)
+    call ConditionalTriggerExecute(gg_trg_ArcherAttackSKill)
+    call ConditionalTriggerExecute(gg_trg_MageAttackSKill)
+    call ConditionalTriggerExecute(gg_trg_MeleeSupportSkill)
+    call ConditionalTriggerExecute(gg_trg_MageAndArcherSupportSkill)
     call ConditionalTriggerExecute(gg_trg_Itemtype)
     call ConditionalTriggerExecute(gg_trg_ItemSet)
     call ConditionalTriggerExecute(gg_trg_Sec_Login)
