@@ -1,6 +1,6 @@
 globals
-    unit niaa = null
-    unit niab = null
+    unit bronze_chest_unit = null
+    unit treasure_chest_unit = null
     integer array udg_M9P2Q7U5Wl4V5W9O45lO7041D2G5K3
     button array udg_M9P2QS7U5l4V5W9O45lO7041D2G5K3
     unit array udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3
@@ -959,11 +959,11 @@ function Trig________________u_Actions takes nothing returns nothing
     call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200])
     set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(gg_rct_______Map)
     call CreateNUnitsAtLoc(1, 'n01Z', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
-    set niaa = GetLastCreatedUnit()
+    set bronze_chest_unit = GetLastCreatedUnit()
     call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200])
     set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200] = GetRandomLocInRect(gg_rct_______Baowu05)
     call CreateNUnitsAtLoc(1, 'n020', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
-    set niab = GetLastCreatedUnit()
+    set treasure_chest_unit = GetLastCreatedUnit()
     call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200])
     call DestroyTrigger(GetTriggeringTrigger())
 endfunction
@@ -1235,6 +1235,33 @@ function InitTrig_help takes nothing returns nothing
     set gg_trg_help = CreateTrigger()
     call TriggerAddAction(gg_trg_help, function Trig_help_Actions)
 endfunction
+
+// ----------------------------- Role Checker START ------------------------------------
+function IsMage_Func takes nothing returns boolean
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 6) == "[Mage]"))then
+        return false
+    endif
+    return true
+endfunction
+function IsArcher_Func takes nothing returns boolean
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 8) == "[Archer]"))then
+        return false
+    endif
+    return true
+endfunction
+function IsWarrior_Func takes nothing returns boolean
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 9) == "[Warrior]"))then
+        return false
+    endif
+    return true
+endfunction
+function IsGuardian_Func takes nothing returns boolean
+    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 10) == "[Guardian]"))then
+        return false
+    endif
+    return true
+endfunction
+// ----------------------------- Role Checker END ------------------------------------
 
 // ----------------------------- 工资相关函数 START--------------------------------
 // TODO: 设置工资
@@ -2758,7 +2785,7 @@ function Trig_OgreDie_Func007Func004C takes nothing returns boolean
     endif
     return true
 endfunction
-function Trig_OgreDie_Func007C takes nothing returns boolean
+function Trig_WoodenChestDie_Func takes nothing returns boolean
     if(not(GetUnitTypeId(GetTriggerUnit()) == 'n01Y'))then
         return false
     endif
@@ -2791,7 +2818,7 @@ function Trig_OgreDie_Func009Func007C takes nothing returns boolean
     endif
     return true
 endfunction
-function Trig_OgreDie_Func009C takes nothing returns boolean
+function Trig_IronChestDie_Func takes nothing returns boolean
     if(not(GetUnitTypeId(GetTriggerUnit()) == 'n01X'))then
         return false
     endif
@@ -2998,6 +3025,8 @@ function Trig_OgreDie_Func020Func003C takes nothing returns boolean
     endif
     return true
 endfunction
+
+// 魔族小队长死亡
 function Trig_OgreDie_Func020C takes nothing returns boolean
     if(not(GetUnitTypeId(GetTriggerUnit()) == 'n01D'))then
         return false
@@ -3041,7 +3070,7 @@ function Trig_OgreDie_Actions takes nothing returns nothing
         call MultiboardSetItemValueBJ(GetLastCreatedMultiboard(), 10, (GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) + 1), (udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ()))] + I2S(R2I(udg_M9P2Q7U5l4V5W39O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 10) + 3)]))))
     else
     endif
-    if(Trig_OgreDie_Func007C())then
+    if(Trig_WoodenChestDie_Func())then
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 15)] = GetRandomLocInRect(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[GetRandomInt(1, 4)])
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)] = GetUnitLoc(GetDyingUnit())
         call CreateNUnitsAtLoc(1, 'n01Y', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 15)], bj_UNIT_FACING)
@@ -3054,7 +3083,7 @@ function Trig_OgreDie_Actions takes nothing returns nothing
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
     else
     endif
-    if(Trig_OgreDie_Func009C())then
+    if(Trig_IronChestDie_Func())then
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 15)] = GetRandomLocInRect(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[GetRandomInt(1, 4)])
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)] = GetUnitLoc(GetDyingUnit())
         call CreateNUnitsAtLoc(1, 'n01X', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 15)], bj_UNIT_FACING)
@@ -3093,8 +3122,8 @@ function Trig_OgreDie_Actions takes nothing returns nothing
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 15)] = GetRandomLocInRect(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[GetRandomInt(1, 4)])
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)] = GetUnitLoc(GetDyingUnit())
         call CreateNUnitsAtLoc(1, 'n01Z', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 15)], bj_UNIT_FACING)
-        set niaa = GetLastCreatedUnit()
-        call PingMinimapForPlayer(GetLocalPlayer(), GetUnitX(niaa), GetUnitY(niaa), 20.00)
+        set bronze_chest_unit = GetLastCreatedUnit()
+        call PingMinimapForPlayer(GetLocalPlayer(), GetUnitX(bronze_chest_unit), GetUnitY(bronze_chest_unit), 20.00)
         call SetUnitRescueRange(GetLastCreatedUnit(), 3000.)
         if(Trig_OgreDie_Func011Func005C())then
             if(Trig_OgreDie_Func011Func005Func002C())then
@@ -3127,8 +3156,8 @@ function Trig_OgreDie_Actions takes nothing returns nothing
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 15)] = GetRandomLocInRect(udg_M9P2Q7U5l4V51W9O45lO7047D2G5K3[0])
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)] = GetUnitLoc(GetDyingUnit())
         call CreateNUnitsAtLoc(1, 'n020', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 15)], bj_UNIT_FACING)
-        set niab = GetLastCreatedUnit()
-        call PingMinimapForPlayer(GetLocalPlayer(), GetUnitX(niab), GetUnitY(niab), 20.00)
+        set treasure_chest_unit = GetLastCreatedUnit()
+        call PingMinimapForPlayer(GetLocalPlayer(), GetUnitX(treasure_chest_unit), GetUnitY(treasure_chest_unit), 20.00)
         call SetUnitRescueRange(GetLastCreatedUnit(), 3000.)
         if(Trig_OgreDie_Func013Func007C())then
             if(Trig_OgreDie_Func013Func007Func001C())then
@@ -3196,6 +3225,7 @@ function Trig_OgreDie_Actions takes nothing returns nothing
     else
     endif
     if(Trig_OgreDie_Func020C())then
+        // 魔族小队长死亡
         set udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[15] = (udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[15] - 1)
         if(Trig_OgreDie_Func020Func003C())then
             set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)] = GetUnitLoc(GetDyingUnit())
@@ -3813,7 +3843,7 @@ function Trig_XH_Func002Func001Func002Func003001 takes nothing returns boolean
     return(GetHeroStatBJ(bj_HEROSTAT_INT, udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()], false) > 40)
 endfunction
 function Trig_XH_Func002Func001Func002C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()]), 1, 5) == "[力]"))then
+    if(not(SubStringBJ(GetUnitName(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()]), 1, 10) == "[Guardian]"))then
         return false
     endif
     return true
@@ -3828,7 +3858,7 @@ function Trig_XH_Func002Func001Func003Func003001 takes nothing returns boolean
     return(GetHeroStatBJ(bj_HEROSTAT_INT, udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()], false) > 60)
 endfunction
 function Trig_XH_Func002Func001Func003C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()]), 1, 5) == "[敏]"))then
+    if(not(SubStringBJ(GetUnitName(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()]), 1, 9) == "[Warrior]"))then
         return false
     endif
     return true
@@ -3843,7 +3873,7 @@ function Trig_XH_Func002Func001Func004Func003001 takes nothing returns boolean
     return(GetHeroStatBJ(bj_HEROSTAT_INT, udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()], false) > 65)
 endfunction
 function Trig_XH_Func002Func001Func004C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()]), 1, 5) == "[弓]"))then
+    if(not(SubStringBJ(GetUnitName(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()]), 1, 8) == "[Archer]"))then
         return false
     endif
     return true
@@ -3858,7 +3888,7 @@ function Trig_XH_Func002Func001Func005Func003001 takes nothing returns boolean
     return(GetHeroStatBJ(bj_HEROSTAT_INT, udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()], false) > 225)
 endfunction
 function Trig_XH_Func002Func001Func005C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()]), 1, 5) == "[魔]"))then
+    if(not(SubStringBJ(GetUnitName(udg_M9P2Q7U5l4V15W9O45lO7041D2G5K3[GetForLoopIndexA()]), 1, 6) == "[Mage]"))then
         return false
     endif
     return true
@@ -4010,6 +4040,7 @@ function InitTrig_XH2 takes nothing returns nothing
     call TriggerAddAction(gg_trg_XH2, function Trig_XH2_Actions)
 endfunction
 function Trig_PetA1_Actions takes nothing returns nothing
+    // 储存58个坐骑的ID
     set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[1] = 'nplg'
     set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[2] = 'nsll'
     set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[3] = 'nslv'
@@ -6569,8 +6600,8 @@ function Trig_Hero_choice_Actions takes nothing returns nothing
             set udg_unit_key = 0
         endif
         if(GetTriggerPlayer() == GetLocalPlayer()) then
-            call PingMinimapForPlayer(GetLocalPlayer(), GetUnitX(niaa), GetUnitY(niaa), 20.00)
-            call PingMinimapForPlayer(GetLocalPlayer(), GetUnitX(niab), GetUnitY(niab), 20.00)
+            call PingMinimapForPlayer(GetLocalPlayer(), GetUnitX(bronze_chest_unit), GetUnitY(bronze_chest_unit), 20.00)
+            call PingMinimapForPlayer(GetLocalPlayer(), GetUnitX(treasure_chest_unit), GetUnitY(treasure_chest_unit), 20.00)
         endif
         call AdjustPlayerStateBJ(500, GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD)
         call SetPlayerStateBJ(GetTriggerPlayer(), PLAYER_STATE_FOOD_CAP_CEILING, 100)
@@ -6846,6 +6877,11 @@ function InitTrig_Open_Boss takes nothing returns nothing
     call TriggerAddAction(gg_trg_Open_Boss, function Trig_Open_Boss_Actions)
 endfunction
 function Trig_Skill1_Actions takes nothing returns nothing
+    // 储存技能ID
+
+    // ---------------- 8 Aura Skills START ------------------
+
+    // SPELLBOOK SKILLS - aura skills directly goes to player's spellbook
     set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[1] = 'A02C'
     set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[2] = 'A02D'
     set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[3] = 'A02E'
@@ -6854,6 +6890,8 @@ function Trig_Skill1_Actions takes nothing returns nothing
     set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[6] = 'A04Z'
     set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[7] = 'A02I'
     set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[8] = 'A04B'
+
+    // REAL SKILLS
     set udg_M9P2Q7U5l4V5W9O45lOS7041D2G5K3[1] = 'A02O'
     set udg_M9P2Q7U5l4V5W9O45lOS7041D2G5K3[2] = 'A046'
     set udg_M9P2Q7U5l4V5W9O45lOS7041D2G5K3[3] = 'A055'
@@ -6862,6 +6900,9 @@ function Trig_Skill1_Actions takes nothing returns nothing
     set udg_M9P2Q7U5l4V5W9O45lOS7041D2G5K3[6] = 'A04G'
     set udg_M9P2Q7U5l4V5W9O45lOS7041D2G5K3[7] = 'A05D'
     set udg_M9P2Q7U5l4V5W9O45lOS7041D2G5K3[8] = 'A02X'
+    // ---------------- 8 Aura Skills END ------------------
+
+    // Other Skills
     set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[21] = 'A03G'
     set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[22] = 'A03G'
     set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[23] = 'A060'
@@ -6902,11 +6943,20 @@ function InitTrig_Skill1 takes nothing returns nothing
     call TriggerAddAction(gg_trg_Skill1, function Trig_Skill1_Actions)
 endfunction
 function Trig_Skill2_Actions takes nothing returns nothing
+    // ----------------- Healing Skills START -----------------
+    /*
+    A02U: Holy Light
+    A04T: 生命恢复
+    A036: 圣光守卫
+    A06A: 医疗气雾
+    A03G: [Mage ONLY] 医疗波
+    */
     set udg_M9P2Q7U5l4V5W9O45lO7D041D2G5K3[1] = 'A02U'
     set udg_M9P2Q7U5l4V5W9O45lO7D041D2G5K3[2] = 'A04T'
     set udg_M9P2Q7U5l4V5W9O45lO7D041D2G5K3[3] = 'A036'
     set udg_M9P2Q7U5l4V5W9O45lO7D041D2G5K3[4] = 'A06A'
     set udg_M9P2Q7U5l4V5W9O45lO7D041D2G5K3[5] = 'A03G'
+    // ----------------- Healing Skills END -----------------
     call DestroyTrigger(GetTriggeringTrigger())
 endfunction
 function InitTrig_Skill2 takes nothing returns nothing
@@ -7094,30 +7144,6 @@ function Trig_Skill_buy2_Conditions takes nothing returns boolean
     endif
     return true
 endfunction
-function Trig_Skill_buy2_Func002Func001Func001Func001C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 6) == "[Mage]"))then
-        return false
-    endif
-    return true
-endfunction
-function Trig_Skill_buy2_Func002Func001Func001C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 8) == "[Archer]"))then
-        return false
-    endif
-    return true
-endfunction
-function Trig_Skill_buy2_Func002Func001C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 9) == "[Warrior]"))then
-        return false
-    endif
-    return true
-endfunction
-function Trig_Skill_buy2_Func002C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 10) == "[Guardian]"))then
-        return false
-    endif
-    return true
-endfunction
 function Trig_Skill_buy2_Func004Func001C takes nothing returns boolean
     if(not(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] == udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]))then
         return false
@@ -7138,16 +7164,17 @@ function Trig_Skill_buy2_Func006Func001C takes nothing returns boolean
 endfunction
 function Trig_Skill_buy2_Actions takes nothing returns nothing
     call RemoveItem(GetManipulatedItem())
-    if(Trig_Skill_buy2_Func002C())then
+    if(IsGuardian_Func())then
         set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lO7D041D2G5K3[GetRandomInt(1, 4)]
     else
-        if(Trig_Skill_buy2_Func002Func001C())then
+        if(IsWarrior_Func())then
             set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lO7D041D2G5K3[GetRandomInt(1, 4)]
         else
-            if(Trig_Skill_buy2_Func002Func001Func001C())then
+            if(IsArcher_Func())then
                 set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lO7D041D2G5K3[GetRandomInt(1, 4)]
             else
-                if(Trig_Skill_buy2_Func002Func001Func001Func001C())then
+                if(IsMage_Func())then
+                    // ONLY mage can lean healing waves
                     set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lO7D041D2G5K3[GetRandomInt(1, 5)]
                 else
                 endif
@@ -7201,30 +7228,6 @@ function Trig_Skill_buy3_Conditions takes nothing returns boolean
     endif
     return true
 endfunction
-function Trig_Skill_buy3_Func003Func001Func001Func001C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 6) == "[Mage]"))then
-        return false
-    endif
-    return true
-endfunction
-function Trig_Skill_buy3_Func003Func001Func001C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 8) == "[Archer]"))then
-        return false
-    endif
-    return true
-endfunction
-function Trig_Skill_buy3_Func003Func001C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 9) == "[Warrior]"))then
-        return false
-    endif
-    return true
-endfunction
-function Trig_Skill_buy3_Func003C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 10) == "[Guardian]"))then
-        return false
-    endif
-    return true
-endfunction
 function Trig_Skill_buy3_Func005Func001C takes nothing returns boolean
     if(not(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] == udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]))then
         return false
@@ -7245,16 +7248,16 @@ function Trig_Skill_buy3_Func007Func001C takes nothing returns boolean
 endfunction
 function Trig_Skill_buy3_Actions takes nothing returns nothing
     call RemoveItem(GetManipulatedItem())
-    if(Trig_Skill_buy3_Func003C())then
+    if(IsGuardian_Func())then
         set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lO7041DD2G5K3[GetRandomInt(1, 13)]
     else
-        if(Trig_Skill_buy3_Func003Func001C())then
+        if(IsWarrior_Func())then
             set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lO7041DD2G5K3[GetRandomInt(1, 13)]
         else
-            if(Trig_Skill_buy3_Func003Func001Func001C())then
+            if(IsArcher_Func())then
                 set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7UD5l4V5W9O45lO704DD2G5K3[GetRandomInt(1, 9)]
             else
-                if(Trig_Skill_buy3_Func003Func001Func001Func001C())then
+                if(IsMage_Func())then
                     set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lO7041D2DG5K3[GetRandomInt(1, 11)]
                 else
                 endif
@@ -7308,30 +7311,6 @@ function Trig_Skill_buy4_Conditions takes nothing returns boolean
     endif
     return true
 endfunction
-function Trig_Skill_buy4_Func003Func001Func002Func002C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 6) == "[Mage]"))then
-        return false
-    endif
-    return true
-endfunction
-function Trig_Skill_buy4_Func003Func001Func002C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 8) == "[Archer]"))then
-        return false
-    endif
-    return true
-endfunction
-function Trig_Skill_buy4_Func003Func001C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 9) == "[Warrior]"))then
-        return false
-    endif
-    return true
-endfunction
-function Trig_Skill_buy4_Func003C takes nothing returns boolean
-    if(not(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 10) == "[Guardian]"))then
-        return false
-    endif
-    return true
-endfunction
 function Trig_Skill_buy4_Func005Func001C takes nothing returns boolean
     if(not(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] == udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]))then
         return false
@@ -7352,16 +7331,16 @@ function Trig_Skill_buy4_Func007Func001C takes nothing returns boolean
 endfunction
 function Trig_Skill_buy4_Actions takes nothing returns nothing
     call RemoveItem(GetManipulatedItem())
-    if(Trig_Skill_buy4_Func003C())then
+    if(IsGuardian_Func())then
         set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lOD7041D2G5K3[GetRandomInt(1, 9)]
     else
-        if(Trig_Skill_buy4_Func003Func001C())then
+        if(IsWarrior_Func())then
             set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lOD7041D2G5K3[GetRandomInt(1, 9)]
         else
-            if(Trig_Skill_buy4_Func003Func001Func002C())then
+            if(IsArcher_Func())then
                 set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lOD7041D2G5K3[GetRandomInt(2, 7)]
             else
-                if(Trig_Skill_buy4_Func003Func001Func002Func002C())then
+                if(IsMage_Func())then
                     set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lDO7041D2G5K3[GetRandomInt(1, 15)]
                 else
                 endif
