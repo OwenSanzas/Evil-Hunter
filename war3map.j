@@ -9240,7 +9240,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
         call SetItemUserData(GetLastCreatedItem(), 21)
         set udg_M9P2Q7U5l4O5WD9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))] = GetLastCreatedItem()
 call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_ITEMACQUIRED, "|cff00FFFF You now possess the Angel Bracelet. You can now attack neutral monsters. Neutral monsters have a chance to drop components for crafting special weapons.")
-call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + (" has combined (Heavenly) Fortune Ring + (Heavenly) Vitality Ring + (Heavenly) Life Ring to craft the equipment: " + GetItemName(GetLastCreatedItem()))))
+call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + (" has combined (Angel) Fortune Ring + (Angel) Vitality Ring + (Angel) Life Ring to craft the item: " + GetItemName(GetLastCreatedItem()))))
     else
     endif
     if(Trig_ItemUp_Func022C())then
@@ -9249,7 +9249,8 @@ call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerNam
         call RemoveItem(GetItemOfTypeFromUnitBJ(GetTriggerUnit(), 'I00H'))
         call UnitAddItemByIdSwapped('I02J', GetTriggerUnit())
         set udg_M9P2Q7U5l4O5WD9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))] = GetLastCreatedItem()
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("集齐[天]魔力护符+[天]魔力球+[天]魔法挂坠 合成了装备：" + GetItemName(GetLastCreatedItem()))))
+        // [Angel] Arcane Orb, [Angel] Arcane Pendant, [Angel] Arcane Charm
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + (" has combined [Angel] Arcane Orb + [Angel] Arcane Pendant + [Angel] Arcane Charm to craft the item: " + GetItemName(GetLastCreatedItem()))))
     else
     endif
     if(Trig_ItemUp_Func023C())then
@@ -9258,7 +9259,7 @@ call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerNam
         call UnitAddItemByIdSwapped('I04P', GetTriggerUnit())
         call SetItemUserData(GetLastCreatedItem(), 21)
         set udg_M9P2Q7U5l4O5WD9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))] = GetLastCreatedItem()
-        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("集齐 |cffCC33FF天使手镯|r+|cffCC33FF魔源结晶|r 合成了装备：" + GetItemName(GetLastCreatedItem()))))
+        call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + (" has combined |cffCC33FF (Angel) Angel Bracelet |r + |cffCC33FF [Angel] Arcane Source Crystal |r to craft the item: " + GetItemName(GetLastCreatedItem()))))
     else
     endif
     if(Trig_ItemUp_Func024C())then
@@ -9915,7 +9916,7 @@ function Trig_SQ_Actions takes nothing returns nothing
         call GroupClear(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[0])
         call DestroyGroup(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[0])
         call RemoveRect(udg_M9P2Q7U5l4V5W9O45lO7041D2G5K37[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
-        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  血腥阿修罗")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  Nether - Blood Dance")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -9928,7 +9929,7 @@ function Trig_SQ_Actions takes nothing returns nothing
         call CreateNUnitsAtLoc(1, udg_M9P2Q7U5l4V5W9O45lO7041D2PG5K3[GetRandomInt(1, 3)], GetOwningPlayer(GetAttacker()), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)], bj_UNIT_FACING)
         call SetUnitUserData(GetLastCreatedUnit(), 4)
         call UnitApplyTimedLifeBJ(10., 'BTLF', GetLastCreatedUnit())
-        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  自然的惩罚·梦幻之花")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100., .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  Enchanted Flower")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100., .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 3.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -10373,7 +10374,7 @@ function Trig_Arm1_Actions takes nothing returns nothing
         endloop
         call RemoveRect(udg_M9P2Q7U5l4V5W9O45lO7041D2G5K37[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)])
-        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  诺姆之怒")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  Gnome's Wrath")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 2.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
@@ -10391,7 +10392,7 @@ function Trig_Arm1_Actions takes nothing returns nothing
         call UnitApplyTimedLifeBJ(6., 'BTLF', GetLastCreatedUnit())
         call ShowUnitHide(GetLastCreatedUnit())
         call IssuePointOrderLoc(GetLastCreatedUnit(), "stampede", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 12)])
-        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  鬼哭神嚎")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
+        call CreateTextTagLocBJ(("Level " + (I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)]) + "  Demon Soul Devour")), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)], 150., 8., 100, 100, .0, 50.)
         call SetTextTagPermanent(GetLastCreatedTextTag(), false)
         call SetTextTagLifespan(GetLastCreatedTextTag(), 3.)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetAttacker())) * 18) + 11)])
