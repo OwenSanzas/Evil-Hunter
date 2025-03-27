@@ -12,17 +12,17 @@ globals
     integer array udg_NoUse2_ForFutureUse
     timer array udg_Timers
     timerdialog array udg_TimerDialog
-    integer array udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3
-    integer array udg_M9P2Q7U5l4V5W9O45lO7D041D2G5K3
-    integer array udg_M9P2Q7U5l4V5W9O45lO70S41D2G5K3
-    integer array udg_M9P2Q7U5l4V5W9O45lO7041DD2G5K3
-    integer array udg_M9P2Q7UD5l4V5W9O45lO704DD2G5K3
-    integer array udg_M9P2Q7U5l4V5W9O45lO7041D2DG5K3
-    integer array udg_M9P2Q7U5l4V5W9O45lOD7041D2G5K3
-    integer array udg_M9P2Q7U5l4V5W9O45lDO7041D2G5K3
-    integer array udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3
-    button array udg_M9P2Q7U5l4VS5W9O45lO7041D2G5K3
-    dialog array udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3
+    integer array udg_GeneralSkills
+    integer array udg_HealingSkills
+    integer array udg_DefensiveSkills
+    integer array udg_MeleeAttackSkills
+    integer array udg_ArcherAttackSkills
+    integer array udg_MageAttackSkills
+    integer array udg_MeleeSupportSkills
+    integer array udg_MageAndArcherSupportSkills
+    integer array udg_PlayerCurrentSkills
+    button array udg_SkillUpAndDownButtons
+    dialog array udg_Dialogs
     integer array udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3
     unit array udg_M9P2Q7U5l4V5W9O45lO7041D2G5MK3
     integer array udg_M9P2Q7U5l4V5W9O45lOS7041D2G5K3
@@ -348,7 +348,7 @@ function InitGlobals takes nothing returns nothing
     set i = 0
     loop
         exitwhen(i > 80)
-        set udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[i] = DialogCreate()
+        set udg_Dialogs[i] = DialogCreate()
         set i = i + 1
     endloop
     set i = 0
@@ -1620,10 +1620,10 @@ function Trig_PlayerKill_Actions takes nothing returns nothing
     if(Trig_PlayerKill_Func006C())then
         call RemoveUnit(FirstOfGroup(GetUnitsInRectMatching(GetPlayableMapRect(), Condition(function Trig_PlayerKill_Func006Func001001001002))))
         call CreateNUnitsAtLoc(1, udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[901], Player(PLAYER_NEUTRAL_PASSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[901], bj_UNIT_FACING)
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[103], GetLastCreatedUnit())
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[104], GetLastCreatedUnit())
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[105], GetLastCreatedUnit())
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[106], GetLastCreatedUnit())
+        call UnitAddAbilityBJ(udg_GeneralSkills[103], GetLastCreatedUnit())
+        call UnitAddAbilityBJ(udg_GeneralSkills[104], GetLastCreatedUnit())
+        call UnitAddAbilityBJ(udg_GeneralSkills[105], GetLastCreatedUnit())
+        call UnitAddAbilityBJ(udg_GeneralSkills[106], GetLastCreatedUnit())
         call SetUnitUserData(GetLastCreatedUnit(), 901)
         call SetUnitMoveSpeed(GetLastCreatedUnit(), 200.)
         call IssuePointOrderLoc(GetLastCreatedUnit(), "patrol", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[902])
@@ -1714,10 +1714,10 @@ function Trig_PlayerLeave_Actions takes nothing returns nothing
     if(Trig_PlayerLeave_Func017C())then
         call RemoveUnit(FirstOfGroup(GetUnitsInRectMatching(GetPlayableMapRect(), Condition(function Trig_PlayerLeave_Func017Func001001001002))))
         call CreateNUnitsAtLoc(1, udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[901], Player(PLAYER_NEUTRAL_PASSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[901], bj_UNIT_FACING)
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[103], GetLastCreatedUnit())
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[104], GetLastCreatedUnit())
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[105], GetLastCreatedUnit())
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[106], GetLastCreatedUnit())
+        call UnitAddAbilityBJ(udg_GeneralSkills[103], GetLastCreatedUnit())
+        call UnitAddAbilityBJ(udg_GeneralSkills[104], GetLastCreatedUnit())
+        call UnitAddAbilityBJ(udg_GeneralSkills[105], GetLastCreatedUnit())
+        call UnitAddAbilityBJ(udg_GeneralSkills[106], GetLastCreatedUnit())
         call SetUnitUserData(GetLastCreatedUnit(), 901)
         call SetUnitMoveSpeed(GetLastCreatedUnit(), 200.)
         call IssuePointOrderLoc(GetLastCreatedUnit(), "patrol", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[902])
@@ -2379,23 +2379,23 @@ function Trig_OgreAdd_Actions takes nothing returns nothing
             call CreateNUnitsAtLoc(1, 'n02R', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
             call CreateNUnitsAtLoc(1, 'n02H', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
             if(Trig_OgreAdd_Func015Func002Func005C())then
-                set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[20] = udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[GetRandomInt(21, 53)]
-                call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[20], GetLastCreatedUnit())
-                call SetUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[20], GetLastCreatedUnit(), (udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[14] + 1))
+                set udg_GeneralSkills[20] = udg_GeneralSkills[GetRandomInt(21, 53)]
+                call UnitAddAbilityBJ(udg_GeneralSkills[20], GetLastCreatedUnit())
+                call SetUnitAbilityLevelSwapped(udg_GeneralSkills[20], GetLastCreatedUnit(), (udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[14] + 1))
             else
             endif
             call CreateNUnitsAtLoc(1, 'n02H', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
             if(Trig_OgreAdd_Func015Func002Func007C())then
-                set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[20] = udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[GetRandomInt(21, 53)]
-                call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[20], GetLastCreatedUnit())
-                call SetUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[20], GetLastCreatedUnit(), (udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[14] + 1))
+                set udg_GeneralSkills[20] = udg_GeneralSkills[GetRandomInt(21, 53)]
+                call UnitAddAbilityBJ(udg_GeneralSkills[20], GetLastCreatedUnit())
+                call SetUnitAbilityLevelSwapped(udg_GeneralSkills[20], GetLastCreatedUnit(), (udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[14] + 1))
             else
             endif
             if(Trig_OgreAdd_Func015Func002Func009C())then
                 call CreateNUnitsAtLoc(1, 'n02X', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200], bj_UNIT_FACING)
-                set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[20] = udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[GetRandomInt(21, 53)]
-                call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[20], GetLastCreatedUnit())
-                call SetUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[20], GetLastCreatedUnit(), (udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[14] + 1))
+                set udg_GeneralSkills[20] = udg_GeneralSkills[GetRandomInt(21, 53)]
+                call UnitAddAbilityBJ(udg_GeneralSkills[20], GetLastCreatedUnit())
+                call SetUnitAbilityLevelSwapped(udg_GeneralSkills[20], GetLastCreatedUnit(), (udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[14] + 1))
             else
             endif
             call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[200])
@@ -3380,9 +3380,9 @@ function Trig_HeroUP2_Actions takes nothing returns nothing
         call DestroyGroup(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[0])
         call EnableTrigger(gg_trg_AI02)
         set udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[19] = (udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[19] + (udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[18] * 2))
-        set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[103] = 'A0BS'
-        set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[104] = 'A0BW'
-        set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[105] = 'A0C3'
+        set udg_GeneralSkills[103] = 'A0BS'
+        set udg_GeneralSkills[104] = 'A0BW'
+        set udg_GeneralSkills[105] = 'A0C3'
         call DisableTrigger(GetTriggeringTrigger())
     else
     endif
@@ -3440,10 +3440,10 @@ function Trig_HeroUP3_Actions takes nothing returns nothing
         call ForGroupBJ(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[0], function Trig_HeroUP3_Func001Func002A)
         call DestroyGroup(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[0])
         set udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[19] = (udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[19] + (udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[18] * 3))
-        set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[103] = 'A0BV'
-        set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[104] = 'A0BZ'
-        set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[105] = 'A0C6'
-        set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[106] = 'A020'
+        set udg_GeneralSkills[103] = 'A0BV'
+        set udg_GeneralSkills[104] = 'A0BZ'
+        set udg_GeneralSkills[105] = 'A0C6'
+        set udg_GeneralSkills[106] = 'A020'
         set udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[12] = 0
         call ForGroupBJ(GetUnitsInRectMatching(GetPlayableMapRect(), Condition(function Trig_HeroUP3_Func001Func011001002)), function Trig_HeroUP3_Func001Func011A)
         call DisableTrigger(GetTriggeringTrigger())
@@ -6197,10 +6197,10 @@ function Trig_Ogre_Relive_Actions takes nothing returns nothing
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
         call PolledWait(120.)
         call CreateNUnitsAtLoc(1, udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[GetRandomInt(541, 544)], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[udg_unit_key], 240.)
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[103], GetLastCreatedUnit())
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[104], GetLastCreatedUnit())
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[105], GetLastCreatedUnit())
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[106], GetLastCreatedUnit())
+        call UnitAddAbilityBJ(udg_GeneralSkills[103], GetLastCreatedUnit())
+        call UnitAddAbilityBJ(udg_GeneralSkills[104], GetLastCreatedUnit())
+        call UnitAddAbilityBJ(udg_GeneralSkills[105], GetLastCreatedUnit())
+        call UnitAddAbilityBJ(udg_GeneralSkills[106], GetLastCreatedUnit())
         call SetUnitUserData(GetLastCreatedUnit(), udg_unit_key)
         return
     else
@@ -6245,10 +6245,10 @@ function Trig_Ogre_Relive_Actions takes nothing returns nothing
         endif
         call PolledWait(80.)
         call CreateNUnitsAtLoc(1, udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[GetRandomInt(551, 554)], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[udg_unit_key], GetRandomReal(0, 360.))
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[103], GetLastCreatedUnit())
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[104], GetLastCreatedUnit())
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[105], GetLastCreatedUnit())
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[106], GetLastCreatedUnit())
+        call UnitAddAbilityBJ(udg_GeneralSkills[103], GetLastCreatedUnit())
+        call UnitAddAbilityBJ(udg_GeneralSkills[104], GetLastCreatedUnit())
+        call UnitAddAbilityBJ(udg_GeneralSkills[105], GetLastCreatedUnit())
+        call UnitAddAbilityBJ(udg_GeneralSkills[106], GetLastCreatedUnit())
         call SetUnitUserData(GetLastCreatedUnit(), udg_unit_key)
         call SetUnitScalePercent(GetLastCreatedUnit(), GetRandomReal(80., 120.), 100, 100)
         return
@@ -6276,10 +6276,10 @@ function Trig_Ogre_Relive_Actions takes nothing returns nothing
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
         call PolledWait(180.)
         call CreateNUnitsAtLoc(1, udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[udg_unit_key], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[udg_unit_key], DistanceBetweenPoints(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[udg_unit_key], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[800]))
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[103], GetLastCreatedUnit())
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[104], GetLastCreatedUnit())
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[105], GetLastCreatedUnit())
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[106], GetLastCreatedUnit())
+        call UnitAddAbilityBJ(udg_GeneralSkills[103], GetLastCreatedUnit())
+        call UnitAddAbilityBJ(udg_GeneralSkills[104], GetLastCreatedUnit())
+        call UnitAddAbilityBJ(udg_GeneralSkills[105], GetLastCreatedUnit())
+        call UnitAddAbilityBJ(udg_GeneralSkills[106], GetLastCreatedUnit())
         call SetUnitUserData(GetLastCreatedUnit(), udg_unit_key)
         return
     else
@@ -6301,10 +6301,10 @@ function Trig_Ogre_Relive_Actions takes nothing returns nothing
     if(Trig_Ogre_Relive_Func023C())then
         call PolledWait(13.)
         call CreateNUnitsAtLoc(1, udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[801], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[udg_unit_key], GetRandomReal(0, 360.))
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[103], GetLastCreatedUnit())
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[104], GetLastCreatedUnit())
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[105], GetLastCreatedUnit())
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[106], GetLastCreatedUnit())
+        call UnitAddAbilityBJ(udg_GeneralSkills[103], GetLastCreatedUnit())
+        call UnitAddAbilityBJ(udg_GeneralSkills[104], GetLastCreatedUnit())
+        call UnitAddAbilityBJ(udg_GeneralSkills[105], GetLastCreatedUnit())
+        call UnitAddAbilityBJ(udg_GeneralSkills[106], GetLastCreatedUnit())
         call SetUnitUserData(GetLastCreatedUnit(), udg_unit_key)
         call SetUnitScalePercent(GetLastCreatedUnit(), GetRandomReal(70., 100.), 100, 100)
         return
@@ -6313,10 +6313,10 @@ function Trig_Ogre_Relive_Actions takes nothing returns nothing
     if(Trig_Ogre_Relive_Func024C())then
         call PolledWait(13.)
         call CreateNUnitsAtLoc(1, udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[802], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[udg_unit_key], GetRandomReal(0, 360.))
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[103], GetLastCreatedUnit())
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[104], GetLastCreatedUnit())
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[105], GetLastCreatedUnit())
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[106], GetLastCreatedUnit())
+        call UnitAddAbilityBJ(udg_GeneralSkills[103], GetLastCreatedUnit())
+        call UnitAddAbilityBJ(udg_GeneralSkills[104], GetLastCreatedUnit())
+        call UnitAddAbilityBJ(udg_GeneralSkills[105], GetLastCreatedUnit())
+        call UnitAddAbilityBJ(udg_GeneralSkills[106], GetLastCreatedUnit())
         call SetUnitUserData(GetLastCreatedUnit(), udg_unit_key)
         call SetUnitScalePercent(GetLastCreatedUnit(), GetRandomReal(80., 120.), 100, 100)
         return
@@ -6325,10 +6325,10 @@ function Trig_Ogre_Relive_Actions takes nothing returns nothing
     if(Trig_Ogre_Relive_Func025C())then
         call PolledWait(13.)
         call CreateNUnitsAtLoc(1, udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[803], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[udg_unit_key], GetRandomReal(0, 360.))
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[103], GetLastCreatedUnit())
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[104], GetLastCreatedUnit())
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[105], GetLastCreatedUnit())
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[106], GetLastCreatedUnit())
+        call UnitAddAbilityBJ(udg_GeneralSkills[103], GetLastCreatedUnit())
+        call UnitAddAbilityBJ(udg_GeneralSkills[104], GetLastCreatedUnit())
+        call UnitAddAbilityBJ(udg_GeneralSkills[105], GetLastCreatedUnit())
+        call UnitAddAbilityBJ(udg_GeneralSkills[106], GetLastCreatedUnit())
         call SetUnitUserData(GetLastCreatedUnit(), udg_unit_key)
         call SetUnitScalePercent(GetLastCreatedUnit(), GetRandomReal(80., 120.), 100, 100)
         return
@@ -6375,10 +6375,10 @@ function Trig_Ogre_Relive_Actions takes nothing returns nothing
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
         call PolledWait(180.)
         call CreateNUnitsAtLoc(1, udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[901], Player(PLAYER_NEUTRAL_PASSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[901], bj_UNIT_FACING)
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[103], GetLastCreatedUnit())
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[104], GetLastCreatedUnit())
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[105], GetLastCreatedUnit())
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[106], GetLastCreatedUnit())
+        call UnitAddAbilityBJ(udg_GeneralSkills[103], GetLastCreatedUnit())
+        call UnitAddAbilityBJ(udg_GeneralSkills[104], GetLastCreatedUnit())
+        call UnitAddAbilityBJ(udg_GeneralSkills[105], GetLastCreatedUnit())
+        call UnitAddAbilityBJ(udg_GeneralSkills[106], GetLastCreatedUnit())
         call SetUnitUserData(GetLastCreatedUnit(), 901)
         call SetUnitMoveSpeed(GetLastCreatedUnit(), 200.)
         call IssuePointOrderLoc(GetLastCreatedUnit(), "patrol", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[902])
@@ -6418,10 +6418,10 @@ function Trig_Ogre_Relive_Actions takes nothing returns nothing
         call SetUnitScalePercent(GetLastCreatedUnit(), udg_M9P2Q7U5l4V5W9O45lO70h41D2G5K3[udg_M9P2Q7U53l4V5W9O45lO7041D2G5K3[0]], 100, 100)
         call UnitAddAbilityBJ('A020', GetLastCreatedUnit())
         call UnitAddAbilityBJ('A0C7', GetLastCreatedUnit())
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[103], GetLastCreatedUnit())
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[104], GetLastCreatedUnit())
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[105], GetLastCreatedUnit())
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[106], GetLastCreatedUnit())
+        call UnitAddAbilityBJ(udg_GeneralSkills[103], GetLastCreatedUnit())
+        call UnitAddAbilityBJ(udg_GeneralSkills[104], GetLastCreatedUnit())
+        call UnitAddAbilityBJ(udg_GeneralSkills[105], GetLastCreatedUnit())
+        call UnitAddAbilityBJ(udg_GeneralSkills[106], GetLastCreatedUnit())
         set udg_M9P2Q7U5l4V5W9O45lO7041D2G5MK3[udg_unit_key] = GetLastCreatedUnit()
         call SetUnitUserData(GetLastCreatedUnit(), udg_unit_key)
         call SetUnitMoveSpeed(GetLastCreatedUnit(), 150.)
@@ -6589,9 +6589,9 @@ function Trig_Hero_choice_Actions takes nothing returns nothing
         call UnitAddAbilityBJ('A00L', GetTriggerUnit())
         call UnitMakeAbilityPermanent(GetTriggerUnit(), true, 'A00L')
         if(Trig_Hero_choice_Func001Func012C())then
-            set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 1)] = 'A03C'
-            call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 1)], GetTriggerUnit())
-            call UnitMakeAbilityPermanent(GetTriggerUnit(), true, udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 1)])
+            set udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 1)] = 'A03C'
+            call UnitAddAbilityBJ(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 1)], GetTriggerUnit())
+            call UnitMakeAbilityPermanent(GetTriggerUnit(), true, udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 1)])
         else
         endif
         if(Trig_Hero_choice_Func001Func014C())then
@@ -6644,24 +6644,24 @@ function Trig_Dialog_Func015Func001C takes nothing returns boolean
 endfunction
 function Trig_Dialog_Actions takes nothing returns nothing
     call TriggerSleepAction(2.)
-    call DialogClear(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1])
-    call DialogSetMessage(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "Game Difficulty")
-    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "Novice (Familiarize yourself with the map)")
+    call DialogClear(udg_Dialogs[1])
+    call DialogSetMessage(udg_Dialogs[1], "Game Difficulty")
+    call DialogAddButtonBJ(udg_Dialogs[1], "Novice (Familiarize yourself with the map)")
     set udg_Difficulty[1] = GetLastCreatedButtonBJ()
-    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "Normal (Higher Challenge)")
+    call DialogAddButtonBJ(udg_Dialogs[1], "Normal (Higher Challenge)")
     set udg_Difficulty[2] = GetLastCreatedButtonBJ()
-    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "Intermediate (Limit of the random game)")
+    call DialogAddButtonBJ(udg_Dialogs[1], "Intermediate (Limit of the random game)")
     set udg_Difficulty[3] = GetLastCreatedButtonBJ()
-    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "Advanced (Professional team)")
+    call DialogAddButtonBJ(udg_Dialogs[1], "Advanced (Professional team)")
     set udg_Difficulty[4] = GetLastCreatedButtonBJ()
-    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], "Hell (Impossible!)")
+    call DialogAddButtonBJ(udg_Dialogs[1], "Hell (Impossible!)")
     set udg_Difficulty[5] = GetLastCreatedButtonBJ()
     set bj_forLoopAIndex = 1
     set bj_forLoopAIndexEnd = 10
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         if(Trig_Dialog_Func015Func001C())then
-            call DialogDisplayBJ(true, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1], ConvertedPlayer(GetForLoopIndexA()))
+            call DialogDisplayBJ(true, udg_Dialogs[1], ConvertedPlayer(GetForLoopIndexA()))
             return
             call DestroyTrigger(GetTriggeringTrigger())
         else
@@ -6837,7 +6837,7 @@ function Trig_Dialog_select_Actions takes nothing returns nothing
 endfunction
 function InitTrig_Dialog_select takes nothing returns nothing
     set gg_trg_Dialog_select = CreateTrigger()
-    call TriggerRegisterDialogEventBJ(gg_trg_Dialog_select, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[1])
+    call TriggerRegisterDialogEventBJ(gg_trg_Dialog_select, udg_Dialogs[1])
     call TriggerAddAction(gg_trg_Dialog_select, function Trig_Dialog_select_Actions)
 endfunction
 function Trig_Hero_close_Func001C takes nothing returns boolean
@@ -6882,14 +6882,14 @@ function InitTrig_Open_Boss takes nothing returns nothing
 endfunction
 function Trig_InitGeneralSkills_Actions takes nothing returns nothing
     // ---------------- 8 Aura Skills START ------------------
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[1] = 'A02C'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[2] = 'A02D'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[3] = 'A02E'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[4] = 'A02H'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[5] = 'A02F'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[6] = 'A04Z'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[7] = 'A02I'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[8] = 'A04B'
+    set udg_GeneralSkills[1] = 'A02C'
+    set udg_GeneralSkills[2] = 'A02D'
+    set udg_GeneralSkills[3] = 'A02E'
+    set udg_GeneralSkills[4] = 'A02H'
+    set udg_GeneralSkills[5] = 'A02F'
+    set udg_GeneralSkills[6] = 'A04Z'
+    set udg_GeneralSkills[7] = 'A02I'
+    set udg_GeneralSkills[8] = 'A04B'
     set udg_M9P2Q7U5l4V5W9O45lOS7041D2G5K3[1] = 'A02O'
     set udg_M9P2Q7U5l4V5W9O45lOS7041D2G5K3[2] = 'A046'
     set udg_M9P2Q7U5l4V5W9O45lOS7041D2G5K3[3] = 'A055'
@@ -6899,39 +6899,39 @@ function Trig_InitGeneralSkills_Actions takes nothing returns nothing
     set udg_M9P2Q7U5l4V5W9O45lOS7041D2G5K3[7] = 'A05D'
     set udg_M9P2Q7U5l4V5W9O45lOS7041D2G5K3[8] = 'A02X'
     // ---------------- 8 Aura Skills END ------------------
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[21] = 'A03G'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[22] = 'A03G'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[23] = 'A060'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[24] = 'A03I'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[25] = 'A038'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[26] = 'A068'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[27] = 'A04H'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[28] = 'A03Y'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[29] = 'A03L'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[30] = 'A06K'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[31] = 'A01A'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[32] = 'A01X'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[33] = 'A068'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[34] = 'A05U'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[35] = 'A04P'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[36] = 'A068'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[37] = 'A03A'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[38] = 'A060'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[39] = 'A04I'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[40] = 'A02Y'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[41] = 'A05R'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[42] = 'A02Y'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[43] = 'A018'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[44] = 'A05U'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[45] = 'A068'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[46] = 'A04C'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[47] = 'A04H'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[48] = 'A031'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[49] = 'A03I'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[50] = 'A060'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[51] = 'A062'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[52] = 'A03I'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[53] = 'A031'
+    set udg_GeneralSkills[21] = 'A03G'
+    set udg_GeneralSkills[22] = 'A03G'
+    set udg_GeneralSkills[23] = 'A060'
+    set udg_GeneralSkills[24] = 'A03I'
+    set udg_GeneralSkills[25] = 'A038'
+    set udg_GeneralSkills[26] = 'A068'
+    set udg_GeneralSkills[27] = 'A04H'
+    set udg_GeneralSkills[28] = 'A03Y'
+    set udg_GeneralSkills[29] = 'A03L'
+    set udg_GeneralSkills[30] = 'A06K'
+    set udg_GeneralSkills[31] = 'A01A'
+    set udg_GeneralSkills[32] = 'A01X'
+    set udg_GeneralSkills[33] = 'A068'
+    set udg_GeneralSkills[34] = 'A05U'
+    set udg_GeneralSkills[35] = 'A04P'
+    set udg_GeneralSkills[36] = 'A068'
+    set udg_GeneralSkills[37] = 'A03A'
+    set udg_GeneralSkills[38] = 'A060'
+    set udg_GeneralSkills[39] = 'A04I'
+    set udg_GeneralSkills[40] = 'A02Y'
+    set udg_GeneralSkills[41] = 'A05R'
+    set udg_GeneralSkills[42] = 'A02Y'
+    set udg_GeneralSkills[43] = 'A018'
+    set udg_GeneralSkills[44] = 'A05U'
+    set udg_GeneralSkills[45] = 'A068'
+    set udg_GeneralSkills[46] = 'A04C'
+    set udg_GeneralSkills[47] = 'A04H'
+    set udg_GeneralSkills[48] = 'A031'
+    set udg_GeneralSkills[49] = 'A03I'
+    set udg_GeneralSkills[50] = 'A060'
+    set udg_GeneralSkills[51] = 'A062'
+    set udg_GeneralSkills[52] = 'A03I'
+    set udg_GeneralSkills[53] = 'A031'
     call DestroyTrigger(GetTriggeringTrigger())
 endfunction
 function InitTrig_GeneralSkill takes nothing returns nothing
@@ -6939,11 +6939,11 @@ function InitTrig_GeneralSkill takes nothing returns nothing
     call TriggerAddAction(gg_trg_GeneralSkill, function Trig_InitGeneralSkills_Actions)
 endfunction
 function Trig_HealingSkill_Actions takes nothing returns nothing
-    set udg_M9P2Q7U5l4V5W9O45lO7D041D2G5K3[1] = 'A02U'
-    set udg_M9P2Q7U5l4V5W9O45lO7D041D2G5K3[2] = 'A04T'
-    set udg_M9P2Q7U5l4V5W9O45lO7D041D2G5K3[3] = 'A036'
-    set udg_M9P2Q7U5l4V5W9O45lO7D041D2G5K3[4] = 'A06A'
-    set udg_M9P2Q7U5l4V5W9O45lO7D041D2G5K3[5] = 'A03G'
+    set udg_HealingSkills[1] = 'A02U'
+    set udg_HealingSkills[2] = 'A04T'
+    set udg_HealingSkills[3] = 'A036'
+    set udg_HealingSkills[4] = 'A06A'
+    set udg_HealingSkills[5] = 'A03G'
     call DestroyTrigger(GetTriggeringTrigger())
 endfunction
 function InitTrig_HealingSkill takes nothing returns nothing
@@ -6951,12 +6951,12 @@ function InitTrig_HealingSkill takes nothing returns nothing
     call TriggerAddAction(gg_trg_HealingSkill, function Trig_HealingSkill_Actions)
 endfunction
 function Trig_DefensiveSKill_Actions takes nothing returns nothing
-    set udg_M9P2Q7U5l4V5W9O45lO70S41D2G5K3[1] = 'A048'
-    set udg_M9P2Q7U5l4V5W9O45lO70S41D2G5K3[2] = 'A02Q'
-    set udg_M9P2Q7U5l4V5W9O45lO70S41D2G5K3[3] = 'A05F'
-    set udg_M9P2Q7U5l4V5W9O45lO70S41D2G5K3[4] = 'A03Q'
-    set udg_M9P2Q7U5l4V5W9O45lO70S41D2G5K3[5] = 'A04U'
-    set udg_M9P2Q7U5l4V5W9O45lO70S41D2G5K3[6] = 'A038'
+    set udg_DefensiveSkills[1] = 'A048'
+    set udg_DefensiveSkills[2] = 'A02Q'
+    set udg_DefensiveSkills[3] = 'A05F'
+    set udg_DefensiveSkills[4] = 'A03Q'
+    set udg_DefensiveSkills[5] = 'A04U'
+    set udg_DefensiveSkills[6] = 'A038'
     call DestroyTrigger(GetTriggeringTrigger())
 endfunction
 function InitTrig_DefensiveSKill takes nothing returns nothing
@@ -6964,19 +6964,19 @@ function InitTrig_DefensiveSKill takes nothing returns nothing
     call TriggerAddAction(gg_trg_DefensiveSKill, function Trig_DefensiveSKill_Actions)
 endfunction
 function Trig_MeleeAttackSkill_Actions takes nothing returns nothing
-    set udg_M9P2Q7U5l4V5W9O45lO7041DD2G5K3[1] = 'A0C9'
-    set udg_M9P2Q7U5l4V5W9O45lO7041DD2G5K3[2] = 'A05J'
-    set udg_M9P2Q7U5l4V5W9O45lO7041DD2G5K3[3] = 'A03L'
-    set udg_M9P2Q7U5l4V5W9O45lO7041DD2G5K3[4] = 'A051'
-    set udg_M9P2Q7U5l4V5W9O45lO7041DD2G5K3[5] = 'A051'
-    set udg_M9P2Q7U5l4V5W9O45lO7041DD2G5K3[6] = 'A04E'
-    set udg_M9P2Q7U5l4V5W9O45lO7041DD2G5K3[7] = 'A06G'
-    set udg_M9P2Q7U5l4V5W9O45lO7041DD2G5K3[8] = 'A03B'
-    set udg_M9P2Q7U5l4V5W9O45lO7041DD2G5K3[9] = 'A06K'
-    set udg_M9P2Q7U5l4V5W9O45lO7041DD2G5K3[10] = 'A03P'
-    set udg_M9P2Q7U5l4V5W9O45lO7041DD2G5K3[11] = 'A0C9'
-    set udg_M9P2Q7U5l4V5W9O45lO7041DD2G5K3[12] = 'A01X'
-    set udg_M9P2Q7U5l4V5W9O45lO7041DD2G5K3[13] = 'A03U'
+    set udg_MeleeAttackSkills[1] = 'A0C9'
+    set udg_MeleeAttackSkills[2] = 'A05J'
+    set udg_MeleeAttackSkills[3] = 'A03L'
+    set udg_MeleeAttackSkills[4] = 'A051'
+    set udg_MeleeAttackSkills[5] = 'A051'
+    set udg_MeleeAttackSkills[6] = 'A04E'
+    set udg_MeleeAttackSkills[7] = 'A06G'
+    set udg_MeleeAttackSkills[8] = 'A03B'
+    set udg_MeleeAttackSkills[9] = 'A06K'
+    set udg_MeleeAttackSkills[10] = 'A03P'
+    set udg_MeleeAttackSkills[11] = 'A0C9'
+    set udg_MeleeAttackSkills[12] = 'A01X'
+    set udg_MeleeAttackSkills[13] = 'A03U'
     call DestroyTrigger(GetTriggeringTrigger())
 endfunction
 function InitTrig_MeleeAttackSkill takes nothing returns nothing
@@ -6984,15 +6984,15 @@ function InitTrig_MeleeAttackSkill takes nothing returns nothing
     call TriggerAddAction(gg_trg_MeleeAttackSkill, function Trig_MeleeAttackSkill_Actions)
 endfunction
 function Trig_ArcherAttackSKill_Actions takes nothing returns nothing
-    set udg_M9P2Q7UD5l4V5W9O45lO704DD2G5K3[1] = 'A068'
-    set udg_M9P2Q7UD5l4V5W9O45lO704DD2G5K3[2] = 'A06J'
-    set udg_M9P2Q7UD5l4V5W9O45lO704DD2G5K3[3] = 'A067'
-    set udg_M9P2Q7UD5l4V5W9O45lO704DD2G5K3[4] = 'A01Q'
-    set udg_M9P2Q7UD5l4V5W9O45lO704DD2G5K3[5] = 'A01Q'
-    set udg_M9P2Q7UD5l4V5W9O45lO704DD2G5K3[6] = 'A037'
-    set udg_M9P2Q7UD5l4V5W9O45lO704DD2G5K3[7] = 'A04P'
-    set udg_M9P2Q7UD5l4V5W9O45lO704DD2G5K3[8] = 'A039'
-    set udg_M9P2Q7UD5l4V5W9O45lO704DD2G5K3[9] = 'A05L'
+    set udg_ArcherAttackSkills[1] = 'A068'
+    set udg_ArcherAttackSkills[2] = 'A06J'
+    set udg_ArcherAttackSkills[3] = 'A067'
+    set udg_ArcherAttackSkills[4] = 'A01Q'
+    set udg_ArcherAttackSkills[5] = 'A01Q'
+    set udg_ArcherAttackSkills[6] = 'A037'
+    set udg_ArcherAttackSkills[7] = 'A04P'
+    set udg_ArcherAttackSkills[8] = 'A039'
+    set udg_ArcherAttackSkills[9] = 'A05L'
     call DestroyTrigger(GetTriggeringTrigger())
 endfunction
 function InitTrig_ArcherAttackSKill takes nothing returns nothing
@@ -7000,17 +7000,17 @@ function InitTrig_ArcherAttackSKill takes nothing returns nothing
     call TriggerAddAction(gg_trg_ArcherAttackSKill, function Trig_ArcherAttackSKill_Actions)
 endfunction
 function Trig_MageAttackSKill_Actions takes nothing returns nothing
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2DG5K3[1] = 'A06B'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2DG5K3[2] = 'A02R'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2DG5K3[3] = 'A03T'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2DG5K3[4] = 'A01F'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2DG5K3[5] = 'A06I'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2DG5K3[6] = 'A02T'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2DG5K3[7] = 'A060'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2DG5K3[8] = 'A00E'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2DG5K3[9] = 'A063'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2DG5K3[10] = 'A04I'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2DG5K3[11] = 'A06H'
+    set udg_MageAttackSkills[1] = 'A06B'
+    set udg_MageAttackSkills[2] = 'A02R'
+    set udg_MageAttackSkills[3] = 'A03T'
+    set udg_MageAttackSkills[4] = 'A01F'
+    set udg_MageAttackSkills[5] = 'A06I'
+    set udg_MageAttackSkills[6] = 'A02T'
+    set udg_MageAttackSkills[7] = 'A060'
+    set udg_MageAttackSkills[8] = 'A00E'
+    set udg_MageAttackSkills[9] = 'A063'
+    set udg_MageAttackSkills[10] = 'A04I'
+    set udg_MageAttackSkills[11] = 'A06H'
     call DestroyTrigger(GetTriggeringTrigger())
 endfunction
 function InitTrig_MageAttackSKill takes nothing returns nothing
@@ -7018,15 +7018,15 @@ function InitTrig_MageAttackSKill takes nothing returns nothing
     call TriggerAddAction(gg_trg_MageAttackSKill, function Trig_MageAttackSKill_Actions)
 endfunction
 function Trig_MeleeSupportSkill_Actions takes nothing returns nothing
-    set udg_M9P2Q7U5l4V5W9O45lOD7041D2G5K3[1] = 'A03S'
-    set udg_M9P2Q7U5l4V5W9O45lOD7041D2G5K3[2] = 'A04L'
-    set udg_M9P2Q7U5l4V5W9O45lOD7041D2G5K3[3] = 'A05R'
-    set udg_M9P2Q7U5l4V5W9O45lOD7041D2G5K3[4] = 'A059'
-    set udg_M9P2Q7U5l4V5W9O45lOD7041D2G5K3[5] = 'A03A'
-    set udg_M9P2Q7U5l4V5W9O45lOD7041D2G5K3[6] = 'A03C'
-    set udg_M9P2Q7U5l4V5W9O45lOD7041D2G5K3[7] = 'A02Y'
-    set udg_M9P2Q7U5l4V5W9O45lOD7041D2G5K3[8] = 'A03S'
-    set udg_M9P2Q7U5l4V5W9O45lOD7041D2G5K3[9] = 'A03S'
+    set udg_MeleeSupportSkills[1] = 'A03S'
+    set udg_MeleeSupportSkills[2] = 'A04L'
+    set udg_MeleeSupportSkills[3] = 'A05R'
+    set udg_MeleeSupportSkills[4] = 'A059'
+    set udg_MeleeSupportSkills[5] = 'A03A'
+    set udg_MeleeSupportSkills[6] = 'A03C'
+    set udg_MeleeSupportSkills[7] = 'A02Y'
+    set udg_MeleeSupportSkills[8] = 'A03S'
+    set udg_MeleeSupportSkills[9] = 'A03S'
     call DestroyTrigger(GetTriggeringTrigger())
 endfunction
 function InitTrig_MeleeSupportSkill takes nothing returns nothing
@@ -7034,21 +7034,21 @@ function InitTrig_MeleeSupportSkill takes nothing returns nothing
     call TriggerAddAction(gg_trg_MeleeSupportSkill, function Trig_MeleeSupportSkill_Actions)
 endfunction
 function Trig_MageAndArcherSupportSkill_Actions takes nothing returns nothing
-    set udg_M9P2Q7U5l4V5W9O45lDO7041D2G5K3[1] = 'A018'
-    set udg_M9P2Q7U5l4V5W9O45lDO7041D2G5K3[2] = 'A03C'
-    set udg_M9P2Q7U5l4V5W9O45lDO7041D2G5K3[3] = 'A03C'
-    set udg_M9P2Q7U5l4V5W9O45lDO7041D2G5K3[4] = 'A01A'
-    set udg_M9P2Q7U5l4V5W9O45lDO7041D2G5K3[5] = 'A05U'
-    set udg_M9P2Q7U5l4V5W9O45lDO7041D2G5K3[6] = 'A04W'
-    set udg_M9P2Q7U5l4V5W9O45lDO7041D2G5K3[7] = 'A05Z'
-    set udg_M9P2Q7U5l4V5W9O45lDO7041D2G5K3[8] = 'A04C'
-    set udg_M9P2Q7U5l4V5W9O45lDO7041D2G5K3[9] = 'A03D'
-    set udg_M9P2Q7U5l4V5W9O45lDO7041D2G5K3[10] = 'A04Y'
-    set udg_M9P2Q7U5l4V5W9O45lDO7041D2G5K3[11] = 'A04H'
-    set udg_M9P2Q7U5l4V5W9O45lDO7041D2G5K3[12] = 'A031'
-    set udg_M9P2Q7U5l4V5W9O45lDO7041D2G5K3[13] = 'A03I'
-    set udg_M9P2Q7U5l4V5W9O45lDO7041D2G5K3[14] = 'A05A'
-    set udg_M9P2Q7U5l4V5W9O45lDO7041D2G5K3[15] = 'A043'
+    set udg_MageAndArcherSupportSkills[1] = 'A018'
+    set udg_MageAndArcherSupportSkills[2] = 'A03C'
+    set udg_MageAndArcherSupportSkills[3] = 'A03C'
+    set udg_MageAndArcherSupportSkills[4] = 'A01A'
+    set udg_MageAndArcherSupportSkills[5] = 'A05U'
+    set udg_MageAndArcherSupportSkills[6] = 'A04W'
+    set udg_MageAndArcherSupportSkills[7] = 'A05Z'
+    set udg_MageAndArcherSupportSkills[8] = 'A04C'
+    set udg_MageAndArcherSupportSkills[9] = 'A03D'
+    set udg_MageAndArcherSupportSkills[10] = 'A04Y'
+    set udg_MageAndArcherSupportSkills[11] = 'A04H'
+    set udg_MageAndArcherSupportSkills[12] = 'A031'
+    set udg_MageAndArcherSupportSkills[13] = 'A03I'
+    set udg_MageAndArcherSupportSkills[14] = 'A05A'
+    set udg_MageAndArcherSupportSkills[15] = 'A043'
     call DestroyTrigger(GetTriggeringTrigger())
 endfunction
 function InitTrig_MageAndArcherSupportSkill takes nothing returns nothing
@@ -7062,7 +7062,7 @@ function Trig_Skill_buy1_Conditions takes nothing returns boolean
     return true
 endfunction
 function Trig_Skill_buy1_Func006Func001C takes nothing returns boolean
-    if(not(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] == udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]))then
+    if(not(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] == udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]))then
         return false
     endif
     return true
@@ -7074,7 +7074,7 @@ function Trig_Skill_buy1_Func008Func001Func001C takes nothing returns boolean
     return true
 endfunction
 function Trig_Skill_buy1_Func008Func001C takes nothing returns boolean
-    if(not(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] == udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 17)]))then
+    if(not(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] == udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 17)]))then
         return false
     endif
     return true
@@ -7082,13 +7082,13 @@ endfunction
 function Trig_Skill_buy1_Actions takes nothing returns nothing
     call RemoveItem(GetManipulatedItem())
     set udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) * 18)] = GetRandomInt(1, 8)
-    set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) * 18)]]
+    set udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_GeneralSkills[udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) * 18)]]
     set bj_forLoopAIndex = 7
     set bj_forLoopAIndexEnd = 16
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         if(Trig_Skill_buy1_Func006Func001C())then
-            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_WARNING, ("The Sacred Obelisk has answered your prayer, granting you the skill: <" + (GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">, but unfortunately you have already learned this aura ability")))
+            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_WARNING, ("The Sacred Obelisk has answered your prayer, granting you the skill: <" + (GetAbilityName(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">, but unfortunately you have already learned this aura ability")))
             call AdjustPlayerStateBJ(1000, GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD)
             return
         else
@@ -7100,12 +7100,12 @@ function Trig_Skill_buy1_Actions takes nothing returns nothing
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         if(Trig_Skill_buy1_Func008Func001C())then
-            set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]
-            call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)], GetTriggerUnit())
-            call UnitMakeAbilityPermanent(GetTriggerUnit(), true, udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)])
+            set udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]
+            call UnitAddAbilityBJ(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)], GetTriggerUnit())
+            call UnitMakeAbilityPermanent(GetTriggerUnit(), true, udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)])
             call UnitMakeAbilityPermanent(GetTriggerUnit(), true, udg_M9P2Q7U5l4V5W9O45lOS7041D2G5K3[udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) * 18)]])
-            call SetPlayerAbilityAvailableBJ(false, udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)], GetOwningPlayer(GetTriggerUnit()))
-            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, ("The Sacred Obelisk has answered your prayer, granting you the skill: <" + (GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">")))
+            call SetPlayerAbilityAvailableBJ(false, udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)], GetOwningPlayer(GetTriggerUnit()))
+            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, ("The Sacred Obelisk has answered your prayer, granting you the skill: <" + (GetAbilityName(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">")))
             call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, "|cff00FFFF Skill Tip: Press [↓] (Down Arrow) to upgrade skills. Press [→] (Right Arrow) to delete skills. |r")
             return
         else
@@ -7132,7 +7132,7 @@ function Trig_Skill_buy2_Conditions takes nothing returns boolean
     return true
 endfunction
 function Trig_Skill_buy2_Func004Func001C takes nothing returns boolean
-    if(not(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] == udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]))then
+    if(not(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] == udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]))then
         return false
     endif
     return true
@@ -7144,7 +7144,7 @@ function Trig_Skill_buy2_Func006Func001Func001C takes nothing returns boolean
     return true
 endfunction
 function Trig_Skill_buy2_Func006Func001C takes nothing returns boolean
-    if(not(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] == udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 17)]))then
+    if(not(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] == udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 17)]))then
         return false
     endif
     return true
@@ -7152,16 +7152,16 @@ endfunction
 function Trig_Skill_buy2_Actions takes nothing returns nothing
     call RemoveItem(GetManipulatedItem())
     if(IsCurrentUnitGuardian())then
-        set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lO7D041D2G5K3[GetRandomInt(1, 4)]
+        set udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_HealingSkills[GetRandomInt(1, 4)]
     else
         if(IsCurrentUnitWarrior())then
-            set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lO7D041D2G5K3[GetRandomInt(1, 4)]
+            set udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_HealingSkills[GetRandomInt(1, 4)]
         else
             if(IsCurrentUnitArcher())then
-                set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lO7D041D2G5K3[GetRandomInt(1, 4)]
+                set udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_HealingSkills[GetRandomInt(1, 4)]
             else
                 if(IsCurrentUnitMage())then
-                    set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lO7D041D2G5K3[GetRandomInt(1, 5)]
+                    set udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_HealingSkills[GetRandomInt(1, 5)]
                 else
                 endif
             endif
@@ -7172,7 +7172,7 @@ function Trig_Skill_buy2_Actions takes nothing returns nothing
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         if(Trig_Skill_buy2_Func004Func001C())then
-            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_WARNING, ("The Sacred Obelisk has answered your prayer, granting you the skill: <" + (GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">, but unfortunately you have already learned this healing ability")))
+            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_WARNING, ("The Sacred Obelisk has answered your prayer, granting you the skill: <" + (GetAbilityName(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">, but unfortunately you have already learned this healing ability")))
             call AdjustPlayerStateBJ(200, GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD)
             return
         else
@@ -7184,10 +7184,10 @@ function Trig_Skill_buy2_Actions takes nothing returns nothing
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         if(Trig_Skill_buy2_Func006Func001C())then
-            set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]
-            call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)], GetTriggerUnit())
-            call UnitMakeAbilityPermanent(GetTriggerUnit(), true, udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)])
-            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, ("The Sacred Obelisk has answered your prayer, granting you the skill: <" + (GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">")))
+            set udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]
+            call UnitAddAbilityBJ(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)], GetTriggerUnit())
+            call UnitMakeAbilityPermanent(GetTriggerUnit(), true, udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)])
+            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, ("The Sacred Obelisk has answered your prayer, granting you the skill: <" + (GetAbilityName(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">")))
             call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, "|cff00FFFF Skill Tip: Press [↓] (Down Arrow) to upgrade skills. Press [→] (Right Arrow) to delete skills. |r")
             return
         else
@@ -7215,7 +7215,7 @@ function Trig_Skill_buy3_Conditions takes nothing returns boolean
     return true
 endfunction
 function Trig_Skill_buy3_Func005Func001C takes nothing returns boolean
-    if(not(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] == udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]))then
+    if(not(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] == udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]))then
         return false
     endif
     return true
@@ -7227,7 +7227,7 @@ function Trig_Skill_buy3_Func007Func001Func001C takes nothing returns boolean
     return true
 endfunction
 function Trig_Skill_buy3_Func007Func001C takes nothing returns boolean
-    if(not(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] == udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 17)]))then
+    if(not(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] == udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 17)]))then
         return false
     endif
     return true
@@ -7235,16 +7235,16 @@ endfunction
 function Trig_Skill_buy3_Actions takes nothing returns nothing
     call RemoveItem(GetManipulatedItem())
     if(IsCurrentUnitGuardian())then
-        set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lO7041DD2G5K3[GetRandomInt(1, 13)]
+        set udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_MeleeAttackSkills[GetRandomInt(1, 13)]
     else
         if(IsCurrentUnitWarrior())then
-            set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lO7041DD2G5K3[GetRandomInt(1, 13)]
+            set udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_MeleeAttackSkills[GetRandomInt(1, 13)]
         else
             if(IsCurrentUnitArcher())then
-                set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7UD5l4V5W9O45lO704DD2G5K3[GetRandomInt(1, 9)]
+                set udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_ArcherAttackSkills[GetRandomInt(1, 9)]
             else
                 if(IsCurrentUnitMage())then
-                    set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lO7041D2DG5K3[GetRandomInt(1, 11)]
+                    set udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_MageAttackSkills[GetRandomInt(1, 11)]
                 else
                 endif
             endif
@@ -7255,7 +7255,7 @@ function Trig_Skill_buy3_Actions takes nothing returns nothing
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         if(Trig_Skill_buy3_Func005Func001C())then
-            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_WARNING, ("The Sacred Obelisk has answered your prayer, granting you the skill: <" + (GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">, but unfortunately you have already learned this attack ability")))
+            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_WARNING, ("The Sacred Obelisk has answered your prayer, granting you the skill: <" + (GetAbilityName(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">, but unfortunately you have already learned this attack ability")))
             call AdjustPlayerStateBJ(200, GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD)
             return
         else
@@ -7267,10 +7267,10 @@ function Trig_Skill_buy3_Actions takes nothing returns nothing
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         if(Trig_Skill_buy3_Func007Func001C())then
-            set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]
-            call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)], GetTriggerUnit())
-            call UnitMakeAbilityPermanent(GetTriggerUnit(), true, udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)])
-            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, ("The Sacred Obelisk has answered your prayer, granting you the skill: <" + (GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">")))
+            set udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]
+            call UnitAddAbilityBJ(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)], GetTriggerUnit())
+            call UnitMakeAbilityPermanent(GetTriggerUnit(), true, udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)])
+            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, ("The Sacred Obelisk has answered your prayer, granting you the skill: <" + (GetAbilityName(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">")))
             call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, "|cff00FFFF Skill Tip: Press [↓] (Down Arrow) to upgrade skills. Press [→] (Right Arrow) to delete skills. |r")
             return
         else
@@ -7298,7 +7298,7 @@ function Trig_Skill_buy4_Conditions takes nothing returns boolean
     return true
 endfunction
 function Trig_Skill_buy4_Func005Func001C takes nothing returns boolean
-    if(not(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] == udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]))then
+    if(not(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] == udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]))then
         return false
     endif
     return true
@@ -7310,7 +7310,7 @@ function Trig_Skill_buy4_Func007Func001Func001C takes nothing returns boolean
     return true
 endfunction
 function Trig_Skill_buy4_Func007Func001C takes nothing returns boolean
-    if(not(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] == udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 17)]))then
+    if(not(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] == udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 17)]))then
         return false
     endif
     return true
@@ -7318,16 +7318,16 @@ endfunction
 function Trig_Skill_buy4_Actions takes nothing returns nothing
     call RemoveItem(GetManipulatedItem())
     if(IsCurrentUnitGuardian())then
-        set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lOD7041D2G5K3[GetRandomInt(1, 9)]
+        set udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_MeleeSupportSkills[GetRandomInt(1, 9)]
     else
         if(IsCurrentUnitWarrior())then
-            set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lOD7041D2G5K3[GetRandomInt(1, 9)]
+            set udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_MeleeSupportSkills[GetRandomInt(1, 9)]
         else
             if(IsCurrentUnitArcher())then
-                set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lOD7041D2G5K3[GetRandomInt(2, 7)]
+                set udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_MeleeSupportSkills[GetRandomInt(2, 7)]
             else
                 if(IsCurrentUnitMage())then
-                    set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lDO7041D2G5K3[GetRandomInt(1, 15)]
+                    set udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_MageAndArcherSupportSkills[GetRandomInt(1, 15)]
                 else
                 endif
             endif
@@ -7338,7 +7338,7 @@ function Trig_Skill_buy4_Actions takes nothing returns nothing
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         if(Trig_Skill_buy4_Func005Func001C())then
-            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_WARNING, ("The Sacred Obelisk has answered your prayer, granting you the skill: <" + (GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">, but unfortunately you have already learned this support ability")))
+            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_WARNING, ("The Sacred Obelisk has answered your prayer, granting you the skill: <" + (GetAbilityName(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">, but unfortunately you have already learned this support ability")))
             call AdjustPlayerStateBJ(200, GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD)
             return
         else
@@ -7350,10 +7350,10 @@ function Trig_Skill_buy4_Actions takes nothing returns nothing
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         if(Trig_Skill_buy4_Func007Func001C())then
-            set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]
-            call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)], GetTriggerUnit())
-            call UnitMakeAbilityPermanent(GetTriggerUnit(), true, udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)])
-            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, ("The Sacred Obelisk has answered your prayer, granting you the skill: <" + (GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">")))
+            set udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]
+            call UnitAddAbilityBJ(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)], GetTriggerUnit())
+            call UnitMakeAbilityPermanent(GetTriggerUnit(), true, udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)])
+            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, ("The Sacred Obelisk has answered your prayer, granting you the skill: <" + (GetAbilityName(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">")))
             call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, "|cff00FFFF Skill Tip: Press [↓] (Down Arrow) to upgrade skills. Press [→] (Right Arrow) to delete skills. |r")
             return
         else
@@ -7381,7 +7381,7 @@ function Trig_Skill_buy5_Conditions takes nothing returns boolean
     return true
 endfunction
 function Trig_Skill_buy5_Func005Func001C takes nothing returns boolean
-    if(not(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] == udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]))then
+    if(not(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] == udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]))then
         return false
     endif
     return true
@@ -7393,7 +7393,7 @@ function Trig_Skill_buy5_Func007Func001Func001C takes nothing returns boolean
     return true
 endfunction
 function Trig_Skill_buy5_Func007Func001C takes nothing returns boolean
-    if(not(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] == udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 17)]))then
+    if(not(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] == udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 17)]))then
         return false
     endif
     return true
@@ -7401,7 +7401,7 @@ endfunction
 function Trig_Skill_buy5_Actions takes nothing returns nothing
     call RemoveItem(GetManipulatedItem())
     if(IsCurrentUnitGuardian())then
-        set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lO70S41D2G5K3[GetRandomInt(1, 6)]
+        set udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_DefensiveSkills[GetRandomInt(1, 6)]
     else
         if(IsCurrentUnitWarrior())then
             call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_WARNING, "Only Guardian champions can learn defensive skills!")
@@ -7427,7 +7427,7 @@ function Trig_Skill_buy5_Actions takes nothing returns nothing
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         if(Trig_Skill_buy5_Func005Func001C())then
-            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_WARNING, ("The Sacred Obelisk has answered your prayer, granting you the skill: <" + (GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">, but unfortunately you have already learned this defensive skill")))
+            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_WARNING, ("The Sacred Obelisk has answered your prayer, granting you the skill: <" + (GetAbilityName(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">, but unfortunately you have already learned this defensive skill")))
             call AdjustPlayerStateBJ(200, GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD)
             return
         else
@@ -7439,10 +7439,10 @@ function Trig_Skill_buy5_Actions takes nothing returns nothing
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         if(Trig_Skill_buy5_Func007Func001C())then
-            set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]
-            call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)], GetTriggerUnit())
-            call UnitMakeAbilityPermanent(GetTriggerUnit(), true, udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)])
-            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, ("The Sacred Obelisk has answered your prayer, granting you the skill: <" + (GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">")))
+            set udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]
+            call UnitAddAbilityBJ(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)], GetTriggerUnit())
+            call UnitMakeAbilityPermanent(GetTriggerUnit(), true, udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)])
+            call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, ("The Sacred Obelisk has answered your prayer, granting you the skill: <" + (GetAbilityName(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)]) + ">")))
             call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, "|cff00FFFF Skill Tip: Press [↓] (Down Arrow) to upgrade skills. Press [→] (Right Arrow) to delete skills. |r")
             return
         else
@@ -7470,7 +7470,7 @@ function Trig_Skill_del_Func002C takes nothing returns boolean
     return true
 endfunction
 function Trig_Skill_del_Func006Func001C takes nothing returns boolean
-    if(not(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] != udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 17)]))then
+    if(not(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] != udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 17)]))then
         return false
     endif
     return true
@@ -7478,28 +7478,28 @@ endfunction
 function Trig_Skill_del_Actions takes nothing returns nothing
     call ForceUIKeyBJ(GetTriggerPlayer(), "M")
     if(Trig_Skill_del_Func002C())then
-        call DialogClear(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)])
-        call DialogSetMessage(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], "System Tip:")
-        call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], "You cannot perform this operation in the death state")
-        call DialogDisplayBJ(true, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], GetTriggerPlayer())
+        call DialogClear(udg_Dialogs[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)])
+        call DialogSetMessage(udg_Dialogs[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], "System Tip:")
+        call DialogAddButtonBJ(udg_Dialogs[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], "You cannot perform this operation in the death state")
+        call DialogDisplayBJ(true, udg_Dialogs[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], GetTriggerPlayer())
         return
     else
     endif
-    call DialogClear(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)])
-    call DialogSetMessage(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], "Delete skills in the skill panel")
+    call DialogClear(udg_Dialogs[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)])
+    call DialogSetMessage(udg_Dialogs[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], "Delete skills in the skill panel")
     set bj_forLoopAIndex = 1
     set bj_forLoopAIndexEnd = 5
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         if(Trig_Skill_del_Func006Func001C())then
-            call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())]))
-            set udg_M9P2Q7U5l4VS5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = GetLastCreatedButtonBJ()
+            call DialogAddButtonBJ(udg_Dialogs[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], GetAbilityName(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())]))
+            set udg_SkillUpAndDownButtons[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = GetLastCreatedButtonBJ()
         else
         endif
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
     endloop
-    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], "Cancel deletion")
-    call DialogDisplayBJ(true, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], GetTriggerPlayer())
+    call DialogAddButtonBJ(udg_Dialogs[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], "Cancel deletion")
+    call DialogDisplayBJ(true, udg_Dialogs[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], GetTriggerPlayer())
 endfunction
 function InitTrig_Skill_del takes nothing returns nothing
     set gg_trg_Skill_del = CreateTrigger()
@@ -7529,13 +7529,13 @@ function Trig_Skill_delsave_Func002Func001Func002Func001C takes nothing returns 
     return true
 endfunction
 function Trig_Skill_delsave_Func002Func001Func002C takes nothing returns boolean
-    if(not(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] == 'A02Q'))then
+    if(not(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] == 'A02Q'))then
         return false
     endif
     return true
 endfunction
 function Trig_Skill_delsave_Func002Func001C takes nothing returns boolean
-    if(not(GetClickedButtonBJ() == udg_M9P2Q7U5l4VS5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())]))then
+    if(not(GetClickedButtonBJ() == udg_SkillUpAndDownButtons[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())]))then
         return false
     endif
     return true
@@ -7559,8 +7559,8 @@ function Trig_Skill_delsave_Actions takes nothing returns nothing
                 endif
             else
             endif
-            call UnitRemoveAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())], udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())])
-            set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[17]
+            call UnitRemoveAbilityBJ(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())], udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())])
+            set udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = udg_PlayerCurrentSkills[17]
         else
         endif
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
@@ -7568,15 +7568,15 @@ function Trig_Skill_delsave_Actions takes nothing returns nothing
 endfunction
 function InitTrig_Skill_delsave takes nothing returns nothing
     set gg_trg_Skill_delsave = CreateTrigger()
-    call TriggerRegisterDialogEventBJ(gg_trg_Skill_delsave, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[11])
-    call TriggerRegisterDialogEventBJ(gg_trg_Skill_delsave, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[12])
-    call TriggerRegisterDialogEventBJ(gg_trg_Skill_delsave, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[13])
-    call TriggerRegisterDialogEventBJ(gg_trg_Skill_delsave, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[14])
-    call TriggerRegisterDialogEventBJ(gg_trg_Skill_delsave, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[15])
-    call TriggerRegisterDialogEventBJ(gg_trg_Skill_delsave, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[16])
-    call TriggerRegisterDialogEventBJ(gg_trg_Skill_delsave, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[17])
-    call TriggerRegisterDialogEventBJ(gg_trg_Skill_delsave, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[18])
-    call TriggerRegisterDialogEventBJ(gg_trg_Skill_delsave, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[19])
+    call TriggerRegisterDialogEventBJ(gg_trg_Skill_delsave, udg_Dialogs[11])
+    call TriggerRegisterDialogEventBJ(gg_trg_Skill_delsave, udg_Dialogs[12])
+    call TriggerRegisterDialogEventBJ(gg_trg_Skill_delsave, udg_Dialogs[13])
+    call TriggerRegisterDialogEventBJ(gg_trg_Skill_delsave, udg_Dialogs[14])
+    call TriggerRegisterDialogEventBJ(gg_trg_Skill_delsave, udg_Dialogs[15])
+    call TriggerRegisterDialogEventBJ(gg_trg_Skill_delsave, udg_Dialogs[16])
+    call TriggerRegisterDialogEventBJ(gg_trg_Skill_delsave, udg_Dialogs[17])
+    call TriggerRegisterDialogEventBJ(gg_trg_Skill_delsave, udg_Dialogs[18])
+    call TriggerRegisterDialogEventBJ(gg_trg_Skill_delsave, udg_Dialogs[19])
     call TriggerAddAction(gg_trg_Skill_delsave, function Trig_Skill_delsave_Actions)
 endfunction
 function Trig_Skill_del2_Func002C takes nothing returns boolean
@@ -7586,7 +7586,7 @@ function Trig_Skill_del2_Func002C takes nothing returns boolean
     return true
 endfunction
 function Trig_Skill_del2_Func006Func001C takes nothing returns boolean
-    if(not(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] != udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 17)]))then
+    if(not(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] != udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 17)]))then
         return false
     endif
     return true
@@ -7594,28 +7594,28 @@ endfunction
 function Trig_Skill_del2_Actions takes nothing returns nothing
     call ForceUIKeyBJ(GetTriggerPlayer(), "M")
     if(Trig_Skill_del2_Func002C())then
-        call DialogClear(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)])
-        call DialogSetMessage(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], "System Tip:")
-        call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], "You cannot perform this operation in the death state")
-        call DialogDisplayBJ(true, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], GetTriggerPlayer())
+        call DialogClear(udg_Dialogs[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)])
+        call DialogSetMessage(udg_Dialogs[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], "System Tip:")
+        call DialogAddButtonBJ(udg_Dialogs[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], "You cannot perform this operation in the death state")
+        call DialogDisplayBJ(true, udg_Dialogs[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], GetTriggerPlayer())
         return
     else
     endif
-    call DialogClear(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 20)])
-    call DialogSetMessage(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 20)], "Delete skills in the magic book")
+    call DialogClear(udg_Dialogs[(GetConvertedPlayerId(GetTriggerPlayer()) + 20)])
+    call DialogSetMessage(udg_Dialogs[(GetConvertedPlayerId(GetTriggerPlayer()) + 20)], "Delete skills in the magic book")
     set bj_forLoopAIndex = 7
     set bj_forLoopAIndexEnd = 16
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         if(Trig_Skill_del2_Func006Func001C())then
-            call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 20)], GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())]))
-            set udg_M9P2Q7U5l4VS5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = GetLastCreatedButtonBJ()
+            call DialogAddButtonBJ(udg_Dialogs[(GetConvertedPlayerId(GetTriggerPlayer()) + 20)], GetAbilityName(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())]))
+            set udg_SkillUpAndDownButtons[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = GetLastCreatedButtonBJ()
         else
         endif
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
     endloop
-    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 20)], "Cancel deletion")
-    call DialogDisplayBJ(true, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 20)], GetTriggerPlayer())
+    call DialogAddButtonBJ(udg_Dialogs[(GetConvertedPlayerId(GetTriggerPlayer()) + 20)], "Cancel deletion")
+    call DialogDisplayBJ(true, udg_Dialogs[(GetConvertedPlayerId(GetTriggerPlayer()) + 20)], GetTriggerPlayer())
 endfunction
 function InitTrig_Skill_del2 takes nothing returns nothing
     set gg_trg_Skill_del2 = CreateTrigger()
@@ -7639,7 +7639,7 @@ function Trig_Skill_delsave2_Func001C takes nothing returns boolean
     return true
 endfunction
 function Trig_Skill_delsave2_Func002Func001C takes nothing returns boolean
-    if(not(GetClickedButtonBJ() == udg_M9P2Q7U5l4VS5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())]))then
+    if(not(GetClickedButtonBJ() == udg_SkillUpAndDownButtons[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())]))then
         return false
     endif
     return true
@@ -7655,8 +7655,8 @@ function Trig_Skill_delsave2_Actions takes nothing returns nothing
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         if(Trig_Skill_delsave2_Func002Func001C())then
-            call UnitRemoveAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())], udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())])
-            set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[17]
+            call UnitRemoveAbilityBJ(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())], udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())])
+            set udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = udg_PlayerCurrentSkills[17]
         else
         endif
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
@@ -7664,15 +7664,15 @@ function Trig_Skill_delsave2_Actions takes nothing returns nothing
 endfunction
 function InitTrig_Skill_delsave2 takes nothing returns nothing
     set gg_trg_Skill_delsave2 = CreateTrigger()
-    call TriggerRegisterDialogEventBJ(gg_trg_Skill_delsave2, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[21])
-    call TriggerRegisterDialogEventBJ(gg_trg_Skill_delsave2, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[22])
-    call TriggerRegisterDialogEventBJ(gg_trg_Skill_delsave2, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[23])
-    call TriggerRegisterDialogEventBJ(gg_trg_Skill_delsave2, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[24])
-    call TriggerRegisterDialogEventBJ(gg_trg_Skill_delsave2, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[25])
-    call TriggerRegisterDialogEventBJ(gg_trg_Skill_delsave2, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[26])
-    call TriggerRegisterDialogEventBJ(gg_trg_Skill_delsave2, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[27])
-    call TriggerRegisterDialogEventBJ(gg_trg_Skill_delsave2, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[28])
-    call TriggerRegisterDialogEventBJ(gg_trg_Skill_delsave2, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[29])
+    call TriggerRegisterDialogEventBJ(gg_trg_Skill_delsave2, udg_Dialogs[21])
+    call TriggerRegisterDialogEventBJ(gg_trg_Skill_delsave2, udg_Dialogs[22])
+    call TriggerRegisterDialogEventBJ(gg_trg_Skill_delsave2, udg_Dialogs[23])
+    call TriggerRegisterDialogEventBJ(gg_trg_Skill_delsave2, udg_Dialogs[24])
+    call TriggerRegisterDialogEventBJ(gg_trg_Skill_delsave2, udg_Dialogs[25])
+    call TriggerRegisterDialogEventBJ(gg_trg_Skill_delsave2, udg_Dialogs[26])
+    call TriggerRegisterDialogEventBJ(gg_trg_Skill_delsave2, udg_Dialogs[27])
+    call TriggerRegisterDialogEventBJ(gg_trg_Skill_delsave2, udg_Dialogs[28])
+    call TriggerRegisterDialogEventBJ(gg_trg_Skill_delsave2, udg_Dialogs[29])
     call TriggerAddAction(gg_trg_Skill_delsave2, function Trig_Skill_delsave2_Actions)
 endfunction
 function Trig_Skill_up_Func002C takes nothing returns boolean
@@ -7682,10 +7682,10 @@ function Trig_Skill_up_Func002C takes nothing returns boolean
     return true
 endfunction
 function Trig_Skill_up_Func008Func001C takes nothing returns boolean
-    if(not(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] != udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 17)]))then
+    if(not(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] != udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 17)]))then
         return false
     endif
-    if(not(GetUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())], udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())]) < 5))then
+    if(not(GetUnitAbilityLevelSwapped(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())], udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())]) < 5))then
         return false
     endif
     return true
@@ -7693,30 +7693,30 @@ endfunction
 function Trig_Skill_up_Actions takes nothing returns nothing
     call ForceUIKeyBJ(GetTriggerPlayer(), "M")
     if(Trig_Skill_up_Func002C())then
-        call DialogClear(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)])
-        call DialogSetMessage(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], "System Tip:")
-        call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], "You cannot perform this operation in the death state")
-        call DialogDisplayBJ(true, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], GetTriggerPlayer())
+        call DialogClear(udg_Dialogs[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)])
+        call DialogSetMessage(udg_Dialogs[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], "System Tip:")
+        call DialogAddButtonBJ(udg_Dialogs[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], "You cannot perform this operation in the death state")
+        call DialogDisplayBJ(true, udg_Dialogs[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], GetTriggerPlayer())
         return
     else
     endif
     set udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] = 0
-    call DialogClear(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 30)])
-    call DialogSetMessage(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 30)], "Upgrade skills in the skill panel")
+    call DialogClear(udg_Dialogs[(GetConvertedPlayerId(GetTriggerPlayer()) + 30)])
+    call DialogSetMessage(udg_Dialogs[(GetConvertedPlayerId(GetTriggerPlayer()) + 30)], "Upgrade skills in the skill panel")
     set bj_forLoopAIndex = 1
     set bj_forLoopAIndexEnd = 5
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         if(Trig_Skill_up_Func008Func001C())then
-            set udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] = GetUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())], udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())])
-            call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 30)], ((((((("Cost: " + I2S(((udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[14]) * 100))) + "Gold") + I2S(((udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[15]) * 10))) + "XP ") + GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())])) + "") + I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])))
-            set udg_M9P2Q7U5l4VS5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = GetLastCreatedButtonBJ()
+            set udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] = GetUnitAbilityLevelSwapped(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())], udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())])
+            call DialogAddButtonBJ(udg_Dialogs[(GetConvertedPlayerId(GetTriggerPlayer()) + 30)], ((((((("Cost: " + I2S(((udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[14]) * 100))) + "Gold") + I2S(((udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[15]) * 10))) + "XP ") + GetAbilityName(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())])) + "") + I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])))
+            set udg_SkillUpAndDownButtons[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = GetLastCreatedButtonBJ()
         else
         endif
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
     endloop
-    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 30)], "Cancel upgrade")
-    call DialogDisplayBJ(true, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 30)], GetTriggerPlayer())
+    call DialogAddButtonBJ(udg_Dialogs[(GetConvertedPlayerId(GetTriggerPlayer()) + 30)], "Cancel upgrade")
+    call DialogDisplayBJ(true, udg_Dialogs[(GetConvertedPlayerId(GetTriggerPlayer()) + 30)], GetTriggerPlayer())
 endfunction
 function InitTrig_Skill_up takes nothing returns nothing
     set gg_trg_Skill_up = CreateTrigger()
@@ -7752,7 +7752,7 @@ function Trig_Skill_upsave_Func003Func001Func006C takes nothing returns boolean
     return true
 endfunction
 function Trig_Skill_upsave_Func003Func001C takes nothing returns boolean
-    if(not(GetClickedButtonBJ() == udg_M9P2Q7U5l4VS5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())]))then
+    if(not(GetClickedButtonBJ() == udg_SkillUpAndDownButtons[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())]))then
         return false
     endif
     return true
@@ -7769,7 +7769,7 @@ function Trig_Skill_upsave_Actions takes nothing returns nothing
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         if(Trig_Skill_upsave_Func003Func001C())then
-            set udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] = GetUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())], udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())])
+            set udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] = GetUnitAbilityLevelSwapped(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())], udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())])
             if(Trig_Skill_upsave_Func003Func001Func006C())then
                 call QuestMessageBJ(GetForceOfPlayer(GetTriggerPlayer()), bj_QUESTMESSAGE_WARNING, "|cffcc6699 Your gold is not enough to pay for the upgrade!")
                 return
@@ -7780,7 +7780,7 @@ function Trig_Skill_upsave_Actions takes nothing returns nothing
                 else
                 endif
             endif
-            call SetUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())], udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())], (udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + 1))
+            call SetUnitAbilityLevelSwapped(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())], udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())], (udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + 1))
             set udg_M9P2Q7U5l4V5W9O45lO704N1D2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = (udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + 1)
             call AdjustPlayerStateBJ((((udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[14]) * 100) * - 1), GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD)
             set udg_M9P2Q7U5l4V5W39O45lO7041D2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 10) + 3)] = (udg_M9P2Q7U5l4V5W39O45lO7041D2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 10) + 3)] - I2R(((udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[15]) * 10)))
@@ -7793,15 +7793,15 @@ function Trig_Skill_upsave_Actions takes nothing returns nothing
 endfunction
 function InitTrig_Skill_upsave takes nothing returns nothing
     set gg_trg_Skill_upsave = CreateTrigger()
-    call TriggerRegisterDialogEventBJ(gg_trg_Skill_upsave, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[31])
-    call TriggerRegisterDialogEventBJ(gg_trg_Skill_upsave, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[32])
-    call TriggerRegisterDialogEventBJ(gg_trg_Skill_upsave, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[33])
-    call TriggerRegisterDialogEventBJ(gg_trg_Skill_upsave, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[34])
-    call TriggerRegisterDialogEventBJ(gg_trg_Skill_upsave, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[35])
-    call TriggerRegisterDialogEventBJ(gg_trg_Skill_upsave, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[36])
-    call TriggerRegisterDialogEventBJ(gg_trg_Skill_upsave, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[37])
-    call TriggerRegisterDialogEventBJ(gg_trg_Skill_upsave, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[38])
-    call TriggerRegisterDialogEventBJ(gg_trg_Skill_upsave, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[39])
+    call TriggerRegisterDialogEventBJ(gg_trg_Skill_upsave, udg_Dialogs[31])
+    call TriggerRegisterDialogEventBJ(gg_trg_Skill_upsave, udg_Dialogs[32])
+    call TriggerRegisterDialogEventBJ(gg_trg_Skill_upsave, udg_Dialogs[33])
+    call TriggerRegisterDialogEventBJ(gg_trg_Skill_upsave, udg_Dialogs[34])
+    call TriggerRegisterDialogEventBJ(gg_trg_Skill_upsave, udg_Dialogs[35])
+    call TriggerRegisterDialogEventBJ(gg_trg_Skill_upsave, udg_Dialogs[36])
+    call TriggerRegisterDialogEventBJ(gg_trg_Skill_upsave, udg_Dialogs[37])
+    call TriggerRegisterDialogEventBJ(gg_trg_Skill_upsave, udg_Dialogs[38])
+    call TriggerRegisterDialogEventBJ(gg_trg_Skill_upsave, udg_Dialogs[39])
     call TriggerAddAction(gg_trg_Skill_upsave, function Trig_Skill_upsave_Actions)
 endfunction
 function Trig_Skill_up2_Func002C takes nothing returns boolean
@@ -7811,7 +7811,7 @@ function Trig_Skill_up2_Func002C takes nothing returns boolean
     return true
 endfunction
 function Trig_Skill_up2_Func008Func002Func002Func001C takes nothing returns boolean
-    if(not(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[GetForLoopIndexB()] == udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())]))then
+    if(not(udg_GeneralSkills[GetForLoopIndexB()] == udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())]))then
         return false
     endif
     if(not(GetUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lOS7041D2G5K3[GetForLoopIndexB()], udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())]) < 5))then
@@ -7823,7 +7823,7 @@ function Trig_Skill_up2_Func008Func002Func002Func001C takes nothing returns bool
     return true
 endfunction
 function Trig_Skill_up2_Func008Func002C takes nothing returns boolean
-    if(not(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] != udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 17)]))then
+    if(not(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] != udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 17)]))then
         return false
     endif
     return true
@@ -7831,16 +7831,16 @@ endfunction
 function Trig_Skill_up2_Actions takes nothing returns nothing
     call ForceUIKeyBJ(GetTriggerPlayer(), "M")
     if(Trig_Skill_up2_Func002C())then
-        call DialogClear(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)])
-        call DialogSetMessage(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], "System Tip:")
-        call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], "You cannot perform this operation in the death state")
-        call DialogDisplayBJ(true, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], GetTriggerPlayer())
+        call DialogClear(udg_Dialogs[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)])
+        call DialogSetMessage(udg_Dialogs[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], "System Tip:")
+        call DialogAddButtonBJ(udg_Dialogs[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], "You cannot perform this operation in the death state")
+        call DialogDisplayBJ(true, udg_Dialogs[(GetConvertedPlayerId(GetTriggerPlayer()) + 10)], GetTriggerPlayer())
         return
     else
     endif
     set udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] = 0
-    call DialogClear(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 40)])
-    call DialogSetMessage(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 40)], "Upgrade skills in the skill panel")
+    call DialogClear(udg_Dialogs[(GetConvertedPlayerId(GetTriggerPlayer()) + 40)])
+    call DialogSetMessage(udg_Dialogs[(GetConvertedPlayerId(GetTriggerPlayer()) + 40)], "Upgrade skills in the skill panel")
     set bj_forLoopAIndex = 7
     set bj_forLoopAIndexEnd = 16
     loop
@@ -7853,9 +7853,9 @@ function Trig_Skill_up2_Actions takes nothing returns nothing
                 exitwhen bj_forLoopBIndex > bj_forLoopBIndexEnd
                 if(Trig_Skill_up2_Func008Func002Func002Func001C())then
                     set udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] = GetUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lOS7041D2G5K3[GetForLoopIndexB()], udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())])
-                    set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lOS7041D2G5K3[GetForLoopIndexB()]
-                    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 40)], ((((((("Cost: " + I2S(((udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[14]) * 500))) + "Gold") + I2S(((udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[15]) * 50))) + "XP ") + GetAbilityName(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)])) + "") + I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])))
-                    set udg_M9P2Q7U5l4VS5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = GetLastCreatedButtonBJ()
+                    set udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lOS7041D2G5K3[GetForLoopIndexB()]
+                    call DialogAddButtonBJ(udg_Dialogs[(GetConvertedPlayerId(GetTriggerPlayer()) + 40)], ((((((("Cost: " + I2S(((udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[14]) * 500))) + "Gold") + I2S(((udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[15]) * 50))) + "XP ") + GetAbilityName(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)])) + "") + I2S(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())])))
+                    set udg_SkillUpAndDownButtons[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = GetLastCreatedButtonBJ()
                     set udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] = 9999
                 else
                 endif
@@ -7865,8 +7865,8 @@ function Trig_Skill_up2_Actions takes nothing returns nothing
         endif
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
     endloop
-    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 40)], "Cancel upgrade")
-    call DialogDisplayBJ(true, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetTriggerPlayer()) + 40)], GetTriggerPlayer())
+    call DialogAddButtonBJ(udg_Dialogs[(GetConvertedPlayerId(GetTriggerPlayer()) + 40)], "Cancel upgrade")
+    call DialogDisplayBJ(true, udg_Dialogs[(GetConvertedPlayerId(GetTriggerPlayer()) + 40)], GetTriggerPlayer())
 endfunction
 function InitTrig_Skill_up2 takes nothing returns nothing
     set gg_trg_Skill_up2 = CreateTrigger()
@@ -7890,7 +7890,7 @@ function Trig_Skill_upsave2_Func001C takes nothing returns boolean
     return true
 endfunction
 function Trig_Skill_upsave2_Func012Func001Func004Func001C takes nothing returns boolean
-    if(not(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[GetForLoopIndexB()] == udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())]))then
+    if(not(udg_GeneralSkills[GetForLoopIndexB()] == udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())]))then
         return false
     endif
     return true
@@ -7908,7 +7908,7 @@ function Trig_Skill_upsave2_Func012Func001Func006C takes nothing returns boolean
     return true
 endfunction
 function Trig_Skill_upsave2_Func012Func001C takes nothing returns boolean
-    if(not(GetClickedButtonBJ() == udg_M9P2Q7U5l4VS5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())]))then
+    if(not(GetClickedButtonBJ() == udg_SkillUpAndDownButtons[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())]))then
         return false
     endif
     return true
@@ -7931,7 +7931,7 @@ function Trig_Skill_upsave2_Actions takes nothing returns nothing
                 exitwhen bj_forLoopBIndex > bj_forLoopBIndexEnd
                 if(Trig_Skill_upsave2_Func012Func001Func004Func001C())then
                     set udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] = GetUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lOS7041D2G5K3[GetForLoopIndexB()], udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())])
-                    set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lOS7041D2G5K3[GetForLoopIndexB()]
+                    set udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)] = udg_M9P2Q7U5l4V5W9O45lOS7041D2G5K3[GetForLoopIndexB()]
                 else
                 endif
                 set bj_forLoopBIndex = bj_forLoopBIndex + 1
@@ -7946,8 +7946,8 @@ function Trig_Skill_upsave2_Actions takes nothing returns nothing
                 else
                 endif
             endif
-            call SetUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)], udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())], (udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + 1))
-            call SetUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())], udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())], (udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + 1))
+            call SetUnitAbilityLevelSwapped(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 18)], udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())], (udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + 1))
+            call SetUnitAbilityLevelSwapped(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())], udg_AllPlayerUnits[GetConvertedPlayerId(GetTriggerPlayer())], (udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + 1))
             set udg_M9P2Q7U5l4V5W9O45lO704N1D2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = (udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + 1)
             call AdjustPlayerStateBJ((((udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[14]) * 500) * - 1), GetTriggerPlayer(), PLAYER_STATE_RESOURCE_GOLD)
             set udg_M9P2Q7U5l4V5W39O45lO7041D2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 10) + 3)] = (udg_M9P2Q7U5l4V5W39O45lO7041D2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 10) + 3)] - I2R(((udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())] + udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[15]) * 50)))
@@ -7960,15 +7960,15 @@ function Trig_Skill_upsave2_Actions takes nothing returns nothing
 endfunction
 function InitTrig_Skill_upsave2 takes nothing returns nothing
     set gg_trg_Skill_upsave2 = CreateTrigger()
-    call TriggerRegisterDialogEventBJ(gg_trg_Skill_upsave2, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[41])
-    call TriggerRegisterDialogEventBJ(gg_trg_Skill_upsave2, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[42])
-    call TriggerRegisterDialogEventBJ(gg_trg_Skill_upsave2, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[43])
-    call TriggerRegisterDialogEventBJ(gg_trg_Skill_upsave2, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[44])
-    call TriggerRegisterDialogEventBJ(gg_trg_Skill_upsave2, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[45])
-    call TriggerRegisterDialogEventBJ(gg_trg_Skill_upsave2, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[46])
-    call TriggerRegisterDialogEventBJ(gg_trg_Skill_upsave2, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[47])
-    call TriggerRegisterDialogEventBJ(gg_trg_Skill_upsave2, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[48])
-    call TriggerRegisterDialogEventBJ(gg_trg_Skill_upsave2, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[49])
+    call TriggerRegisterDialogEventBJ(gg_trg_Skill_upsave2, udg_Dialogs[41])
+    call TriggerRegisterDialogEventBJ(gg_trg_Skill_upsave2, udg_Dialogs[42])
+    call TriggerRegisterDialogEventBJ(gg_trg_Skill_upsave2, udg_Dialogs[43])
+    call TriggerRegisterDialogEventBJ(gg_trg_Skill_upsave2, udg_Dialogs[44])
+    call TriggerRegisterDialogEventBJ(gg_trg_Skill_upsave2, udg_Dialogs[45])
+    call TriggerRegisterDialogEventBJ(gg_trg_Skill_upsave2, udg_Dialogs[46])
+    call TriggerRegisterDialogEventBJ(gg_trg_Skill_upsave2, udg_Dialogs[47])
+    call TriggerRegisterDialogEventBJ(gg_trg_Skill_upsave2, udg_Dialogs[48])
+    call TriggerRegisterDialogEventBJ(gg_trg_Skill_upsave2, udg_Dialogs[49])
     call TriggerAddAction(gg_trg_Skill_upsave2, function Trig_Skill_upsave2_Actions)
 endfunction
 function Trig_Hero_move_Func018C takes nothing returns boolean
@@ -8001,31 +8001,31 @@ endfunction
 function Trig_Hero_move_Actions takes nothing returns nothing
     call ForceUIKeyBJ(GetOwningPlayer(GetTriggerUnit()), "S")
     if(Trig_Hero_move_Func002C())then
-        call DialogClear(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 10)])
-        call DialogSetMessage(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 10)], "System Tip:")
-        call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 10)], "You cannot perform this operation in the death state")
-        call DialogDisplayBJ(true, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 10)], GetTriggerPlayer())
+        call DialogClear(udg_Dialogs[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 10)])
+        call DialogSetMessage(udg_Dialogs[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 10)], "System Tip:")
+        call DialogAddButtonBJ(udg_Dialogs[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 10)], "You cannot perform this operation in the death state")
+        call DialogDisplayBJ(true, udg_Dialogs[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 10)], GetTriggerPlayer())
         return
     else
     endif
-    call DialogClear(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 50)])
-    call DialogSetMessage(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 50)], "Please select the teleport location")
+    call DialogClear(udg_Dialogs[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 50)])
+    call DialogSetMessage(udg_Dialogs[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 50)], "Please select the teleport location")
     if(Trig_Hero_move_Func006C())then
-        call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 50)], "Cancel operation")
-        set udg_M9P2Q7U5l4VS5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 0)] = GetLastCreatedButtonBJ()
+        call DialogAddButtonBJ(udg_Dialogs[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 50)], "Cancel operation")
+        set udg_SkillUpAndDownButtons[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 0)] = GetLastCreatedButtonBJ()
     else
     endif
-    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 50)], "The obelisk at the top left")
-    set udg_M9P2Q7U5l4VS5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 1)] = GetLastCreatedButtonBJ()
-    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 50)], "The obelisk at the bottom left")
-    set udg_M9P2Q7U5l4VS5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 2)] = GetLastCreatedButtonBJ()
-    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 50)], "The obelisk at the right")
-    set udg_M9P2Q7U5l4VS5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 3)] = GetLastCreatedButtonBJ()
-    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 50)], "The obelisk at the snowland")
-    set udg_M9P2Q7U5l4VS5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 4)] = GetLastCreatedButtonBJ()
-    call DialogAddButtonBJ(udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 50)], "Enter the vault")
-    set udg_M9P2Q7U5l4VS5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 5)] = GetLastCreatedButtonBJ()
-    call DialogDisplayBJ(true, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 50)], GetOwningPlayer(GetTriggerUnit()))
+    call DialogAddButtonBJ(udg_Dialogs[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 50)], "The obelisk at the top left")
+    set udg_SkillUpAndDownButtons[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 1)] = GetLastCreatedButtonBJ()
+    call DialogAddButtonBJ(udg_Dialogs[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 50)], "The obelisk at the bottom left")
+    set udg_SkillUpAndDownButtons[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 2)] = GetLastCreatedButtonBJ()
+    call DialogAddButtonBJ(udg_Dialogs[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 50)], "The obelisk at the right")
+    set udg_SkillUpAndDownButtons[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 3)] = GetLastCreatedButtonBJ()
+    call DialogAddButtonBJ(udg_Dialogs[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 50)], "The obelisk at the snowland")
+    set udg_SkillUpAndDownButtons[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 4)] = GetLastCreatedButtonBJ()
+    call DialogAddButtonBJ(udg_Dialogs[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 50)], "Enter the vault")
+    set udg_SkillUpAndDownButtons[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 18) + 5)] = GetLastCreatedButtonBJ()
+    call DialogDisplayBJ(true, udg_Dialogs[(GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) + 50)], GetOwningPlayer(GetTriggerUnit()))
 endfunction
 function InitTrig_Hero_move takes nothing returns nothing
     set gg_trg_Hero_move = CreateTrigger()
@@ -8041,13 +8041,13 @@ function Trig_Hero_move2_Func001C takes nothing returns boolean
     return true
 endfunction
 function Trig_Hero_move2_Func002C takes nothing returns boolean
-    if(not(GetClickedButtonBJ() == udg_M9P2Q7U5l4VS5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 0)]))then
+    if(not(GetClickedButtonBJ() == udg_SkillUpAndDownButtons[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 0)]))then
         return false
     endif
     return true
 endfunction
 function Trig_Hero_move2_Func004Func001C takes nothing returns boolean
-    if(not(GetClickedButtonBJ() == udg_M9P2Q7U5l4VS5W9O45lO7041D2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())]))then
+    if(not(GetClickedButtonBJ() == udg_SkillUpAndDownButtons[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())]))then
         return false
     endif
     return true
@@ -8080,25 +8080,25 @@ function Trig_Hero_move2_Actions takes nothing returns nothing
 endfunction
 function InitTrig_Hero_move2 takes nothing returns nothing
     set gg_trg_Hero_move2 = CreateTrigger()
-    call TriggerRegisterDialogEventBJ(gg_trg_Hero_move2, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[51])
-    call TriggerRegisterDialogEventBJ(gg_trg_Hero_move2, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[52])
-    call TriggerRegisterDialogEventBJ(gg_trg_Hero_move2, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[53])
-    call TriggerRegisterDialogEventBJ(gg_trg_Hero_move2, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[54])
-    call TriggerRegisterDialogEventBJ(gg_trg_Hero_move2, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[55])
-    call TriggerRegisterDialogEventBJ(gg_trg_Hero_move2, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[56])
-    call TriggerRegisterDialogEventBJ(gg_trg_Hero_move2, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[57])
-    call TriggerRegisterDialogEventBJ(gg_trg_Hero_move2, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[58])
-    call TriggerRegisterDialogEventBJ(gg_trg_Hero_move2, udg_M9P2Q7U5l43V5W9O45lO7041D2G5K3[59])
+    call TriggerRegisterDialogEventBJ(gg_trg_Hero_move2, udg_Dialogs[51])
+    call TriggerRegisterDialogEventBJ(gg_trg_Hero_move2, udg_Dialogs[52])
+    call TriggerRegisterDialogEventBJ(gg_trg_Hero_move2, udg_Dialogs[53])
+    call TriggerRegisterDialogEventBJ(gg_trg_Hero_move2, udg_Dialogs[54])
+    call TriggerRegisterDialogEventBJ(gg_trg_Hero_move2, udg_Dialogs[55])
+    call TriggerRegisterDialogEventBJ(gg_trg_Hero_move2, udg_Dialogs[56])
+    call TriggerRegisterDialogEventBJ(gg_trg_Hero_move2, udg_Dialogs[57])
+    call TriggerRegisterDialogEventBJ(gg_trg_Hero_move2, udg_Dialogs[58])
+    call TriggerRegisterDialogEventBJ(gg_trg_Hero_move2, udg_Dialogs[59])
     call TriggerAddAction(gg_trg_Hero_move2, function Trig_Hero_move2_Actions)
 endfunction
 function Trig_Skill_MQ_Func002Func001Func001Func001C takes nothing returns boolean
-    if(not(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + udg_M9P2Q7U5l4V5W9O45l4O7041D2G5K3[(30 + GetConvertedPlayerId(GetTriggerPlayer()))])] == udg_M9P2Q7U5l4V5W9O45lO7D041D2G5K3[udg_M9P2Q7U5l4V5W9O45l4O7041D2G5K3[(40 + GetConvertedPlayerId(GetTriggerPlayer()))]]))then
+    if(not(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + udg_M9P2Q7U5l4V5W9O45l4O7041D2G5K3[(30 + GetConvertedPlayerId(GetTriggerPlayer()))])] == udg_HealingSkills[udg_M9P2Q7U5l4V5W9O45l4O7041D2G5K3[(40 + GetConvertedPlayerId(GetTriggerPlayer()))]]))then
         return false
     endif
     return true
 endfunction
 function Trig_Skill_MQ_Func002Func001Func002Func001C takes nothing returns boolean
-    if(not(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + udg_M9P2Q7U5l4V5W9O45l4O7041D2G5K3[(30 + GetConvertedPlayerId(GetTriggerPlayer()))])] == udg_M9P2Q7U5l4V5W9O45lO7041D2DG5K3[udg_M9P2Q7U5l4V5W9O45l4O7041D2G5K3[(40 + GetConvertedPlayerId(GetTriggerPlayer()))]]))then
+    if(not(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + udg_M9P2Q7U5l4V5W9O45l4O7041D2G5K3[(30 + GetConvertedPlayerId(GetTriggerPlayer()))])] == udg_MageAttackSkills[udg_M9P2Q7U5l4V5W9O45l4O7041D2G5K3[(40 + GetConvertedPlayerId(GetTriggerPlayer()))]]))then
         return false
     endif
     return true
@@ -8139,7 +8139,7 @@ function Trig_Skill_MQ_Actions takes nothing returns nothing
             loop
                 exitwhen udg_M9P2Q7U5l4V5W9O45l4O7041D2G5K3[(40 + GetConvertedPlayerId(GetTriggerPlayer()))] > 5
                 if(Trig_Skill_MQ_Func002Func001Func001Func001C())then
-                    call IncUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + udg_M9P2Q7U5l4V5W9O45l4O7041D2G5K3[(30 + GetConvertedPlayerId(GetTriggerPlayer()))])], GetTriggerUnit())
+                    call IncUnitAbilityLevelSwapped(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + udg_M9P2Q7U5l4V5W9O45l4O7041D2G5K3[(30 + GetConvertedPlayerId(GetTriggerPlayer()))])], GetTriggerUnit())
                 else
                 endif
                 set udg_M9P2Q7U5l4V5W9O45l4O7041D2G5K3[(40 + GetConvertedPlayerId(GetTriggerPlayer()))] = udg_M9P2Q7U5l4V5W9O45l4O7041D2G5K3[(40 + GetConvertedPlayerId(GetTriggerPlayer()))] + 1
@@ -8148,7 +8148,7 @@ function Trig_Skill_MQ_Actions takes nothing returns nothing
             loop
                 exitwhen udg_M9P2Q7U5l4V5W9O45l4O7041D2G5K3[(40 + GetConvertedPlayerId(GetTriggerPlayer()))] > 11
                 if(Trig_Skill_MQ_Func002Func001Func002Func001C())then
-                    call IncUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + udg_M9P2Q7U5l4V5W9O45l4O7041D2G5K3[(30 + GetConvertedPlayerId(GetTriggerPlayer()))])], GetTriggerUnit())
+                    call IncUnitAbilityLevelSwapped(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + udg_M9P2Q7U5l4V5W9O45l4O7041D2G5K3[(30 + GetConvertedPlayerId(GetTriggerPlayer()))])], GetTriggerUnit())
                 else
                 endif
                 set udg_M9P2Q7U5l4V5W9O45l4O7041D2G5K3[(40 + GetConvertedPlayerId(GetTriggerPlayer()))] = udg_M9P2Q7U5l4V5W9O45l4O7041D2G5K3[(40 + GetConvertedPlayerId(GetTriggerPlayer()))] + 1
@@ -8176,13 +8176,13 @@ function InitTrig_Skill_MQ takes nothing returns nothing
     call TriggerAddAction(gg_trg_Skill_MQ, function Trig_Skill_MQ_Actions)
 endfunction
 function Trig_Skill_MQ2_Func001Func001Func001Func001Func001C takes nothing returns boolean
-    if(not(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + udg_M9P2Q7U5l4V5W9O45l4O7041D2G5K3[(30 + GetConvertedPlayerId(GetTriggerPlayer()))])] == udg_M9P2Q7U5l4V5W9O45lO7D041D2G5K3[udg_M9P2Q7U5l4V5W9O45l4O7041D2G5K3[(40 + GetConvertedPlayerId(GetTriggerPlayer()))]]))then
+    if(not(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + udg_M9P2Q7U5l4V5W9O45l4O7041D2G5K3[(30 + GetConvertedPlayerId(GetTriggerPlayer()))])] == udg_HealingSkills[udg_M9P2Q7U5l4V5W9O45l4O7041D2G5K3[(40 + GetConvertedPlayerId(GetTriggerPlayer()))]]))then
         return false
     endif
     return true
 endfunction
 function Trig_Skill_MQ2_Func001Func001Func001Func002Func001C takes nothing returns boolean
-    if(not(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + udg_M9P2Q7U5l4V5W9O45l4O7041D2G5K3[(30 + GetConvertedPlayerId(GetTriggerPlayer()))])] == udg_M9P2Q7U5l4V5W9O45lO7041D2DG5K3[udg_M9P2Q7U5l4V5W9O45l4O7041D2G5K3[(40 + GetConvertedPlayerId(GetTriggerPlayer()))]]))then
+    if(not(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + udg_M9P2Q7U5l4V5W9O45l4O7041D2G5K3[(30 + GetConvertedPlayerId(GetTriggerPlayer()))])] == udg_MageAttackSkills[udg_M9P2Q7U5l4V5W9O45l4O7041D2G5K3[(40 + GetConvertedPlayerId(GetTriggerPlayer()))]]))then
         return false
     endif
     return true
@@ -8221,7 +8221,7 @@ function Trig_Skill_MQ2_Actions takes nothing returns nothing
                 loop
                     exitwhen udg_M9P2Q7U5l4V5W9O45l4O7041D2G5K3[(40 + GetConvertedPlayerId(GetTriggerPlayer()))] > 5
                     if(Trig_Skill_MQ2_Func001Func001Func001Func001Func001C())then
-                        call DecUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + udg_M9P2Q7U5l4V5W9O45l4O7041D2G5K3[(30 + GetConvertedPlayerId(GetTriggerPlayer()))])], GetTriggerUnit())
+                        call DecUnitAbilityLevelSwapped(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + udg_M9P2Q7U5l4V5W9O45l4O7041D2G5K3[(30 + GetConvertedPlayerId(GetTriggerPlayer()))])], GetTriggerUnit())
                     else
                     endif
                     set udg_M9P2Q7U5l4V5W9O45l4O7041D2G5K3[(40 + GetConvertedPlayerId(GetTriggerPlayer()))] = udg_M9P2Q7U5l4V5W9O45l4O7041D2G5K3[(40 + GetConvertedPlayerId(GetTriggerPlayer()))] + 1
@@ -8230,7 +8230,7 @@ function Trig_Skill_MQ2_Actions takes nothing returns nothing
                 loop
                     exitwhen udg_M9P2Q7U5l4V5W9O45l4O7041D2G5K3[(40 + GetConvertedPlayerId(GetTriggerPlayer()))] > 11
                     if(Trig_Skill_MQ2_Func001Func001Func001Func002Func001C())then
-                        call DecUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + udg_M9P2Q7U5l4V5W9O45l4O7041D2G5K3[(30 + GetConvertedPlayerId(GetTriggerPlayer()))])], GetTriggerUnit())
+                        call DecUnitAbilityLevelSwapped(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + udg_M9P2Q7U5l4V5W9O45l4O7041D2G5K3[(30 + GetConvertedPlayerId(GetTriggerPlayer()))])], GetTriggerUnit())
                     else
                     endif
                     set udg_M9P2Q7U5l4V5W9O45l4O7041D2G5K3[(40 + GetConvertedPlayerId(GetTriggerPlayer()))] = udg_M9P2Q7U5l4V5W9O45l4O7041D2G5K3[(40 + GetConvertedPlayerId(GetTriggerPlayer()))] + 1
@@ -8280,43 +8280,43 @@ function Trig_Itemfrist_Func002C takes nothing returns boolean
     return true
 endfunction
 function Trig_Itemfrist_Func004Func002Func001C takes nothing returns boolean
-    if(not(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] == 'A02T'))then
+    if(not(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] == 'A02T'))then
         return false
     endif
-    if(not(GetUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())], GetTriggerUnit()) >= 5))then
+    if(not(GetUnitAbilityLevelSwapped(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())], GetTriggerUnit()) >= 5))then
         return false
     endif
     return true
 endfunction
 function Trig_Itemfrist_Func004Func002Func002C takes nothing returns boolean
-    if(not(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] == 'A01A'))then
+    if(not(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] == 'A01A'))then
         return false
     endif
-    if(not(GetUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())], GetTriggerUnit()) >= 5))then
+    if(not(GetUnitAbilityLevelSwapped(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())], GetTriggerUnit()) >= 5))then
         return false
     endif
     return true
 endfunction
 function Trig_Itemfrist_Func004Func002Func003C takes nothing returns boolean
-    if(not(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] == 'A018'))then
+    if(not(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] == 'A018'))then
         return false
     endif
-    if(not(GetUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())], GetTriggerUnit()) >= 5))then
+    if(not(GetUnitAbilityLevelSwapped(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())], GetTriggerUnit()) >= 5))then
         return false
     endif
     return true
 endfunction
 function Trig_Itemfrist_Func004Func004Func001Func001001 takes nothing returns boolean
-    return(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] == 'A02T')
+    return(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] == 'A02T')
 endfunction
 function Trig_Itemfrist_Func004Func004Func001Func002001 takes nothing returns boolean
-    return(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] == 'A01A')
+    return(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] == 'A01A')
 endfunction
 function Trig_Itemfrist_Func004Func004Func001Func003001 takes nothing returns boolean
-    return(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] == 'A018')
+    return(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] == 'A018')
 endfunction
 function Trig_Itemfrist_Func004Func004Func003Func001C takes nothing returns boolean
-    if(not(udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] == udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 17)]))then
+    if(not(udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] == udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + 17)]))then
         return false
     endif
     return true
@@ -8373,17 +8373,17 @@ function Trig_Itemfrist_Actions takes nothing returns nothing
             loop
                 exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
                 if(Trig_Itemfrist_Func004Func004Func001Func001001())then
-                    set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[17]
+                    set udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = udg_PlayerCurrentSkills[17]
                 else
                     call DoNothing()
                 endif
                 if(Trig_Itemfrist_Func004Func004Func001Func002001())then
-                    set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[17]
+                    set udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = udg_PlayerCurrentSkills[17]
                 else
                     call DoNothing()
                 endif
                 if(Trig_Itemfrist_Func004Func004Func001Func003001())then
-                    set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[17]
+                    set udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = udg_PlayerCurrentSkills[17]
                 else
                     call DoNothing()
                 endif
@@ -8398,7 +8398,7 @@ function Trig_Itemfrist_Actions takes nothing returns nothing
             loop
                 exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
                 if(Trig_Itemfrist_Func004Func004Func003Func001C())then
-                    set udg_M9P2Q7U5l4V5W9O45lO7041DG2G5K3[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = 'A06C'
+                    set udg_PlayerCurrentSkills[((GetConvertedPlayerId(GetTriggerPlayer()) * 18) + GetForLoopIndexA())] = 'A06C'
                     call UnitAddAbilityBJ('A06C', GetTriggerUnit())
                     call UnitMakeAbilityPermanent(GetTriggerUnit(), true, 'A06C')
                     call QuestMessageBJ(GetForceOfPlayer(GetOwningPlayer(GetTriggerUnit())), bj_QUESTMESSAGE_ITEMACQUIRED, "After a thorough study, you finally learned the advanced fire magic - summoning the fire spirit.")
@@ -12300,10 +12300,10 @@ function Trig_Sec_Ami1_Actions takes nothing returns nothing
             call TriggerSleepAction(.1)
             call EnableTrigger(gg_trg_Thr_AmiAi5)
             call TriggerSleepAction(.1)
-            set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[103] = 'A0C1'
-            set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[104] = 'A0C2'
-            set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[105] = 'A0C2'
-            set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[106] = 'AIcs'
+            set udg_GeneralSkills[103] = 'A0C1'
+            set udg_GeneralSkills[104] = 'A0C2'
+            set udg_GeneralSkills[105] = 'A0C2'
+            set udg_GeneralSkills[106] = 'AIcs'
             call TriggerSleepAction(1.)
             call IssueTargetOrder(gg_unit_h012_0019, "drain", gg_unit_h012_0024)
             call IssueTargetOrder(gg_unit_h012_0024, "drain", gg_unit_h012_0021)
@@ -12621,12 +12621,12 @@ function Trig_Thr_login_Actions takes nothing returns nothing
     set udg_Act3Units[12] = 'n00J'
     set udg_Act3Units[13] = 'n02C'
     set udg_Act3Units[14] = 'u004'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[101] = 'A0C1'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[102] = 'A0C2'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[103] = 'A0C1'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[104] = 'A0C2'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[105] = 'A0C2'
-    set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[106] = 'AIcs'
+    set udg_GeneralSkills[101] = 'A0C1'
+    set udg_GeneralSkills[102] = 'A0C2'
+    set udg_GeneralSkills[103] = 'A0C1'
+    set udg_GeneralSkills[104] = 'A0C2'
+    set udg_GeneralSkills[105] = 'A0C2'
+    set udg_GeneralSkills[106] = 'AIcs'
     call AddItemToStockBJ('I02D', gg_unit_n02E_0037, 1, 0)
     call AddItemToStockBJ('I045', gg_unit_n02E_0037, 1, 0)
     call DestroyTrigger(GetTriggeringTrigger())
@@ -12783,15 +12783,15 @@ function Trig_Thr_Ami_Func003A takes nothing returns nothing
 endfunction
 function Trig_Thr_Ami_Func007Func004A takes nothing returns nothing
     call IssuePointOrderLoc(GetEnumUnit(), "attack", udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[(3 + GetForLoopIndexA())])
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[101], GetEnumUnit())
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[102], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[101], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[102], GetEnumUnit())
 endfunction
 function Trig_Thr_Ami_Func008Func004A takes nothing returns nothing
     call IssuePointOrderLoc(GetEnumUnit(), "attack", udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[(GetForLoopIndexA() - 3)])
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[103], GetEnumUnit())
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[104], GetEnumUnit())
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[105], GetEnumUnit())
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[106], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[103], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[104], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[105], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[106], GetEnumUnit())
 endfunction
 function Trig_Thr_Ami_Actions takes nothing returns nothing
     if(Trig_Thr_Ami_Func001C())then
@@ -12843,15 +12843,15 @@ function Trig_Thr_Ami2_Conditions takes nothing returns boolean
 endfunction
 function Trig_Thr_Ami2_Func002Func004A takes nothing returns nothing
     call IssuePointOrderLoc(GetEnumUnit(), "attack", udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[(3 + GetForLoopIndexA())])
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[101], GetEnumUnit())
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[102], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[101], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[102], GetEnumUnit())
 endfunction
 function Trig_Thr_Ami2_Func003Func007A takes nothing returns nothing
     call IssuePointOrderLoc(GetEnumUnit(), "attack", udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[(GetForLoopIndexA() - 3)])
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[103], GetEnumUnit())
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[104], GetEnumUnit())
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[105], GetEnumUnit())
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[106], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[103], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[104], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[105], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[106], GetEnumUnit())
 endfunction
 function Trig_Thr_Ami2_Actions takes nothing returns nothing
     set udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[14] = (udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[14] + 12)
@@ -12898,8 +12898,8 @@ function Trig_Thr_Ami3_Conditions takes nothing returns boolean
 endfunction
 function Trig_Thr_Ami3_Func002Func003A takes nothing returns nothing
     call IssuePointOrderLoc(GetEnumUnit(), "attack", udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[(3 + GetForLoopIndexA())])
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[101], GetEnumUnit())
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[102], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[101], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[102], GetEnumUnit())
 endfunction
 function Trig_Thr_Ami3_Func003Func003Func006C takes nothing returns boolean
     if(not(udg_M9P2XQ7U5l4V5W9O45lO7041D2G5K3[14] >= 3))then
@@ -12909,14 +12909,14 @@ function Trig_Thr_Ami3_Func003Func003Func006C takes nothing returns boolean
 endfunction
 function Trig_Thr_Ami3_Func003Func003A takes nothing returns nothing
     call IssuePointOrderLoc(GetEnumUnit(), "attack", udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[(GetForLoopIndexA() - 3)])
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[103], GetEnumUnit())
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[104], GetEnumUnit())
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[105], GetEnumUnit())
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[106], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[103], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[104], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[105], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[106], GetEnumUnit())
     if(Trig_Thr_Ami3_Func003Func003Func006C())then
-        set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[20] = udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[GetRandomInt(21, 53)]
-        call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[20], GetEnumUnit())
-        call SetUnitAbilityLevelSwapped(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[20], GetEnumUnit(), 5)
+        set udg_GeneralSkills[20] = udg_GeneralSkills[GetRandomInt(21, 53)]
+        call UnitAddAbilityBJ(udg_GeneralSkills[20], GetEnumUnit())
+        call SetUnitAbilityLevelSwapped(udg_GeneralSkills[20], GetEnumUnit(), 5)
     else
     endif
 endfunction
@@ -12960,10 +12960,10 @@ function Trig_Thr_Ami4_Conditions takes nothing returns boolean
 endfunction
 function Trig_Thr_Ami4_Func002Func003A takes nothing returns nothing
     call IssuePointOrderLoc(GetEnumUnit(), "attack", udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[(GetForLoopIndexA() - 3)])
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[103], GetEnumUnit())
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[104], GetEnumUnit())
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[105], GetEnumUnit())
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[106], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[103], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[104], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[105], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[106], GetEnumUnit())
 endfunction
 function Trig_Thr_Ami4_Actions takes nothing returns nothing
     set udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[14] = (udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[14] + 6)
@@ -12994,10 +12994,10 @@ function Trig_Thr_Ami5_Conditions takes nothing returns boolean
 endfunction
 function Trig_Thr_Ami5_Func002Func003A takes nothing returns nothing
     call IssuePointOrderLoc(GetEnumUnit(), "attack", udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[(GetForLoopIndexA() - 3)])
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[103], GetEnumUnit())
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[104], GetEnumUnit())
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[105], GetEnumUnit())
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[106], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[103], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[104], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[105], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[106], GetEnumUnit())
 endfunction
 function Trig_Thr_Ami5_Actions takes nothing returns nothing
     set udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[14] = (udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[14] + 6)
@@ -13028,10 +13028,10 @@ function Trig_Thr_Ami6_Conditions takes nothing returns boolean
 endfunction
 function Trig_Thr_Ami6_Func002Func003A takes nothing returns nothing
     call IssuePointOrderLoc(GetEnumUnit(), "attack", udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3[(GetForLoopIndexA() - 3)])
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[103], GetEnumUnit())
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[104], GetEnumUnit())
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[105], GetEnumUnit())
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[106], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[103], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[104], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[105], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[106], GetEnumUnit())
 endfunction
 function Trig_Thr_Ami6_Actions takes nothing returns nothing
     set udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[14] = (udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[14] + 6)
@@ -13078,7 +13078,7 @@ function InitTrig_Thr_Ami7 takes nothing returns nothing
     call TriggerAddAction(gg_trg_Thr_Ami7, function Trig_Thr_Ami7_Actions)
 endfunction
 function Trig_Thr_ArmUP_Func001Func006A takes nothing returns nothing
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[101], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[101], GetEnumUnit())
 endfunction
 function Trig_Thr_ArmUP_Func001C takes nothing returns boolean
     if(not(GetItemTypeId(GetSoldItem()) == 'I02D'))then
@@ -13087,7 +13087,7 @@ function Trig_Thr_ArmUP_Func001C takes nothing returns boolean
     return true
 endfunction
 function Trig_Thr_ArmUP_Func002Func006A takes nothing returns nothing
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[101], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[101], GetEnumUnit())
 endfunction
 function Trig_Thr_ArmUP_Func002C takes nothing returns boolean
     if(not(GetItemTypeId(GetSoldItem()) == 'I04D'))then
@@ -13096,7 +13096,7 @@ function Trig_Thr_ArmUP_Func002C takes nothing returns boolean
     return true
 endfunction
 function Trig_Thr_ArmUP_Func003Func006A takes nothing returns nothing
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[101], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[101], GetEnumUnit())
 endfunction
 function Trig_Thr_ArmUP_Func003C takes nothing returns boolean
     if(not(GetItemTypeId(GetSoldItem()) == 'I04L'))then
@@ -13105,7 +13105,7 @@ function Trig_Thr_ArmUP_Func003C takes nothing returns boolean
     return true
 endfunction
 function Trig_Thr_ArmUP_Func004Func005A takes nothing returns nothing
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[101], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[101], GetEnumUnit())
 endfunction
 function Trig_Thr_ArmUP_Func004C takes nothing returns boolean
     if(not(GetItemTypeId(GetSoldItem()) == 'I04M'))then
@@ -13114,7 +13114,7 @@ function Trig_Thr_ArmUP_Func004C takes nothing returns boolean
     return true
 endfunction
 function Trig_Thr_ArmUP_Func006Func006A takes nothing returns nothing
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[102], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[102], GetEnumUnit())
 endfunction
 function Trig_Thr_ArmUP_Func006C takes nothing returns boolean
     if(not(GetItemTypeId(GetSoldItem()) == 'I045'))then
@@ -13123,7 +13123,7 @@ function Trig_Thr_ArmUP_Func006C takes nothing returns boolean
     return true
 endfunction
 function Trig_Thr_ArmUP_Func007Func006A takes nothing returns nothing
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[102], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[102], GetEnumUnit())
 endfunction
 function Trig_Thr_ArmUP_Func007C takes nothing returns boolean
     if(not(GetItemTypeId(GetSoldItem()) == 'I042'))then
@@ -13132,7 +13132,7 @@ function Trig_Thr_ArmUP_Func007C takes nothing returns boolean
     return true
 endfunction
 function Trig_Thr_ArmUP_Func008Func006A takes nothing returns nothing
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[102], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[102], GetEnumUnit())
 endfunction
 function Trig_Thr_ArmUP_Func008C takes nothing returns boolean
     if(not(GetItemTypeId(GetSoldItem()) == 'I043'))then
@@ -13141,7 +13141,7 @@ function Trig_Thr_ArmUP_Func008C takes nothing returns boolean
     return true
 endfunction
 function Trig_Thr_ArmUP_Func009Func005A takes nothing returns nothing
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[102], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[102], GetEnumUnit())
 endfunction
 function Trig_Thr_ArmUP_Func009C takes nothing returns boolean
     if(not(GetItemTypeId(GetSoldItem()) == 'I049'))then
@@ -13154,7 +13154,7 @@ function Trig_Thr_ArmUP_Actions takes nothing returns nothing
         call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetOwningPlayer(GetBuyingUnit())) + "|cff00AAFF Upgraded Allied Soldier Weapons to Level 2!|r"))
         call RemoveItemFromStockBJ('I02D', gg_unit_n02E_0037)
         call AddItemToStockBJ('I04D', gg_unit_n02E_0037, 1, 0)
-        set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[101] = 'A0BT'
+        set udg_GeneralSkills[101] = 'A0BT'
         set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[22] = GetUnitsOfPlayerAndTypeId(Player(10), 'h00G')
         call ForGroupBJ(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[22], function Trig_Thr_ArmUP_Func001Func006A)
         call GroupClear(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[22])
@@ -13165,7 +13165,7 @@ function Trig_Thr_ArmUP_Actions takes nothing returns nothing
         call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetOwningPlayer(GetBuyingUnit())) + "|cff00AAFF Upgraded Allied Soldier Weapons to Level 3!|r"))
         call RemoveItemFromStockBJ('I04D', gg_unit_n02E_0037)
         call AddItemToStockBJ('I04L', gg_unit_n02E_0037, 1, 0)
-        set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[101] = 'A0BV'
+        set udg_GeneralSkills[101] = 'A0BV'
         set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[22] = GetUnitsOfPlayerAndTypeId(Player(10), 'h00G')
         call ForGroupBJ(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[22], function Trig_Thr_ArmUP_Func002Func006A)
         call GroupClear(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[22])
@@ -13176,7 +13176,7 @@ function Trig_Thr_ArmUP_Actions takes nothing returns nothing
         call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetOwningPlayer(GetBuyingUnit())) + "|cff00AAFF Upgraded Allied Soldier Weapons to Level 4!|r"))
         call RemoveItemFromStockBJ('I04L', gg_unit_n02E_0037)
         call AddItemToStockBJ('I04M', gg_unit_n02E_0037, 1, 0)
-        set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[101] = 'A0C7'
+        set udg_GeneralSkills[101] = 'A0C7'
         set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[22] = GetUnitsOfPlayerAndTypeId(Player(10), 'h00G')
         call ForGroupBJ(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[22], function Trig_Thr_ArmUP_Func003Func006A)
         call GroupClear(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[22])
@@ -13186,7 +13186,7 @@ function Trig_Thr_ArmUP_Actions takes nothing returns nothing
     if(Trig_Thr_ArmUP_Func004C())then
         call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetOwningPlayer(GetBuyingUnit())) + "|cff00AAFF Upgraded Allied Soldier Weapons to Level 5!|r"))
         call RemoveItemFromStockBJ('I04M', gg_unit_n02E_0037)
-        set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[101] = 'A0C8'
+        set udg_GeneralSkills[101] = 'A0C8'
         set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[22] = GetUnitsOfPlayerAndTypeId(Player(10), 'h00G')
         call ForGroupBJ(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[22], function Trig_Thr_ArmUP_Func004Func005A)
         call GroupClear(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[22])
@@ -13197,7 +13197,7 @@ function Trig_Thr_ArmUP_Actions takes nothing returns nothing
         call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetOwningPlayer(GetBuyingUnit())) + "|cff00AAFF Upgraded Allied Soldier Armor to Level 2!|r"))
         call RemoveItemFromStockBJ('I045', gg_unit_n02E_0037)
         call AddItemToStockBJ('I042', gg_unit_n02E_0037, 1, 1)
-        set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[102] = 'A0BW'
+        set udg_GeneralSkills[102] = 'A0BW'
         set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[22] = GetUnitsOfPlayerAndTypeId(Player(10), 'h00G')
         call ForGroupBJ(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[22], function Trig_Thr_ArmUP_Func006Func006A)
         call GroupClear(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[22])
@@ -13208,7 +13208,7 @@ function Trig_Thr_ArmUP_Actions takes nothing returns nothing
         call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetOwningPlayer(GetBuyingUnit())) + "|cff00AAFF Upgraded Allied Soldier Armor to Level 3!|r"))
         call RemoveItemFromStockBJ('I042', gg_unit_n02E_0037)
         call AddItemToStockBJ('I043', gg_unit_n02E_0037, 1, 1)
-        set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[102] = 'A0BX'
+        set udg_GeneralSkills[102] = 'A0BX'
         set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[22] = GetUnitsOfPlayerAndTypeId(Player(10), 'h00G')
         call ForGroupBJ(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[22], function Trig_Thr_ArmUP_Func007Func006A)
         call GroupClear(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[22])
@@ -13219,7 +13219,7 @@ function Trig_Thr_ArmUP_Actions takes nothing returns nothing
         call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetOwningPlayer(GetBuyingUnit())) + "|cff00AAFF Upgraded Allied Soldier Armor to Level 4!|r"))
         call RemoveItemFromStockBJ('I043', gg_unit_n02E_0037)
         call AddItemToStockBJ('I049', gg_unit_n02E_0037, 1, 1)
-        set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[102] = 'A0BY'
+        set udg_GeneralSkills[102] = 'A0BY'
         set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[22] = GetUnitsOfPlayerAndTypeId(Player(10), 'h00G')
         call ForGroupBJ(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[22], function Trig_Thr_ArmUP_Func008Func006A)
         call GroupClear(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[22])
@@ -13229,7 +13229,7 @@ function Trig_Thr_ArmUP_Actions takes nothing returns nothing
     if(Trig_Thr_ArmUP_Func009C())then
         call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetOwningPlayer(GetBuyingUnit())) + "|cff00AAFF Upgraded Allied Soldier Armor to Level 5!|r"))
         call RemoveItemFromStockBJ('I049', gg_unit_n02E_0037)
-        set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[102] = 'A0BZ'
+        set udg_GeneralSkills[102] = 'A0BZ'
         set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[22] = GetUnitsOfPlayerAndTypeId(Player(10), 'h00G')
         call ForGroupBJ(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[22], function Trig_Thr_ArmUP_Func009Func005A)
         call GroupClear(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[22])
@@ -13244,8 +13244,8 @@ function InitTrig_Thr_ArmUP takes nothing returns nothing
     call TriggerAddAction(gg_trg_Thr_ArmUP, function Trig_Thr_ArmUP_Actions)
 endfunction
 function Trig_Thr_AmiUP_Func001Func002Func007A takes nothing returns nothing
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[103], GetEnumUnit())
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[104], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[103], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[104], GetEnumUnit())
 endfunction
 function Trig_Thr_AmiUP_Func001Func002C takes nothing returns boolean
     if(not(udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[17] == 1))then
@@ -13254,8 +13254,8 @@ function Trig_Thr_AmiUP_Func001Func002C takes nothing returns boolean
     return true
 endfunction
 function Trig_Thr_AmiUP_Func001Func003Func007A takes nothing returns nothing
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[103], GetEnumUnit())
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[104], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[103], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[104], GetEnumUnit())
 endfunction
 function Trig_Thr_AmiUP_Func001Func003C takes nothing returns boolean
     if(not(udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[17] == 2))then
@@ -13264,8 +13264,8 @@ function Trig_Thr_AmiUP_Func001Func003C takes nothing returns boolean
     return true
 endfunction
 function Trig_Thr_AmiUP_Func001Func004Func007A takes nothing returns nothing
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[103], GetEnumUnit())
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[104], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[103], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[104], GetEnumUnit())
 endfunction
 function Trig_Thr_AmiUP_Func001Func004C takes nothing returns boolean
     if(not(udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[17] == 3))then
@@ -13274,8 +13274,8 @@ function Trig_Thr_AmiUP_Func001Func004C takes nothing returns boolean
     return true
 endfunction
 function Trig_Thr_AmiUP_Func001Func005Func007A takes nothing returns nothing
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[103], GetEnumUnit())
-    call UnitAddAbilityBJ(udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[104], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[103], GetEnumUnit())
+    call UnitAddAbilityBJ(udg_GeneralSkills[104], GetEnumUnit())
 endfunction
 function Trig_Thr_AmiUP_Func001Func005C takes nothing returns boolean
     if(not(udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[17] == 4))then
@@ -13408,9 +13408,9 @@ function Trig_Thr_AmiUP_Actions takes nothing returns nothing
         set udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[16] = 0
         if(Trig_Thr_AmiUP_Func001Func002C())then
             call DisplayTextToForce(GetPlayersAll(), "|cffFF0000 The Demon Legion has upgraded their weapons and armor to level 2!|r")
-            set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[103] = 'A0BS'
-            set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[104] = 'A0BW'
-            set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[105] = 'A0C3'
+            set udg_GeneralSkills[103] = 'A0BS'
+            set udg_GeneralSkills[104] = 'A0BW'
+            set udg_GeneralSkills[105] = 'A0C3'
             set udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[17] = 2
             set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[21] = GetUnitsOfPlayerAndTypeId(Player(11), 'u00C')
             call ForGroupBJ(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[21], function Trig_Thr_AmiUP_Func001Func002Func007A)
@@ -13421,9 +13421,9 @@ function Trig_Thr_AmiUP_Actions takes nothing returns nothing
         endif
         if(Trig_Thr_AmiUP_Func001Func003C())then
             call DisplayTextToForce(GetPlayersAll(), "|cffFF0000 The Demon Legion has upgraded their weapons and armor to level 3!|r")
-            set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[103] = 'A0BT'
-            set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[104] = 'A0BX'
-            set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[105] = 'A0C4'
+            set udg_GeneralSkills[103] = 'A0BT'
+            set udg_GeneralSkills[104] = 'A0BX'
+            set udg_GeneralSkills[105] = 'A0C4'
             set udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[17] = 3
             set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[21] = GetUnitsOfPlayerAndTypeId(Player(11), 'u00C')
             call ForGroupBJ(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[21], function Trig_Thr_AmiUP_Func001Func003Func007A)
@@ -13434,9 +13434,9 @@ function Trig_Thr_AmiUP_Actions takes nothing returns nothing
         endif
         if(Trig_Thr_AmiUP_Func001Func004C())then
             call DisplayTextToForce(GetPlayersAll(), "|cffFF0000 The Demon Legion has upgraded their weapons and armor to level 4!|r")
-            set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[103] = 'A0BU'
-            set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[104] = 'A0BY'
-            set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[105] = 'A0C5'
+            set udg_GeneralSkills[103] = 'A0BU'
+            set udg_GeneralSkills[104] = 'A0BY'
+            set udg_GeneralSkills[105] = 'A0C5'
             set udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[17] = 4
             set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[21] = GetUnitsOfPlayerAndTypeId(Player(11), 'u00C')
             call ForGroupBJ(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[21], function Trig_Thr_AmiUP_Func001Func004Func007A)
@@ -13447,9 +13447,9 @@ function Trig_Thr_AmiUP_Actions takes nothing returns nothing
         endif
         if(Trig_Thr_AmiUP_Func001Func005C())then
             call DisplayTextToForce(GetPlayersAll(), "|cffFF0000 The Demon Legion has upgraded their weapons and armor to level 5!|r")
-            set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[103] = 'A0BV'
-            set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[104] = 'A0BZ'
-            set udg_M9P2Q7U5l4V5W9O45lO704F1D2G5K3[105] = 'A0C6'
+            set udg_GeneralSkills[103] = 'A0BV'
+            set udg_GeneralSkills[104] = 'A0BZ'
+            set udg_GeneralSkills[105] = 'A0C6'
             set udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[17] = 5
             set udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[21] = GetUnitsOfPlayerAndTypeId(Player(11), 'u00C')
             call ForGroupBJ(udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3[21], function Trig_Thr_AmiUP_Func001Func005Func007A)
