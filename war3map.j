@@ -46,7 +46,7 @@ globals
     unit array udg_M9P2Q7UF5l4V5W9O45lO7041D2G5K3
     location array udg_M9P2Q7U5l4V5W9O45lO7041TD2G5K3
     group array udg_M9P2SQ7U5l4V5W9O45lO7041D2G5K3
-    integer array udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33
+    integer array udg_AllMountBeasts
     real array udg_M9P2Q7U5l4V5W9O45lO70h41D2G5K3
     unit array udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3
     location array udg_M9P2Q7U5l4V5W9O45lO7041D2G5K3h
@@ -4043,45 +4043,45 @@ function InitTrig_XH2 takes nothing returns nothing
 endfunction
 function Trig_PetA1_Actions takes nothing returns nothing
     // ------------------------------- Store Mount ID START --------------------------------
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[1] = 'nplg'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[2] = 'nsll'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[3] = 'nslv'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[4] = 'nthl'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[5] = 'npfm'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[6] = 'nfel'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[7] = 'nwld'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[8] = 'nwlg'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[9] = 'nwlt'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[10] = 'nwwd'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[11] = 'nwwf'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[12] = 'nltl'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[13] = 'nspd'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[14] = 'nslr'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[15] = 'nstw'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[16] = 'nslh'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[17] = 'nmdr'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[18] = 'nmit'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[19] = 'nnwq'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[20] = 'nnws'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[21] = 'nnwa'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[22] = 'nqb1'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[23] = 'nscb'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[24] = 'nwwg'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[25] = 'nlkl'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[26] = 'nlsn'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[27] = 'nlds'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[28] = 'ntrd'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[29] = 'ntrg'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[30] = 'ntrs'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[31] = 'nsnp'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[32] = 'nqb4'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[33] = 'ucry'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[52] = 'n02L'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[53] = 'n02N'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[54] = 'n02M'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[55] = 'n02P'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[56] = 'h01D'
-    set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[58] = 'u00K'
+    set udg_AllMountBeasts[1] = 'nplg'
+    set udg_AllMountBeasts[2] = 'nsll'
+    set udg_AllMountBeasts[3] = 'nslv'
+    set udg_AllMountBeasts[4] = 'nthl'
+    set udg_AllMountBeasts[5] = 'npfm'
+    set udg_AllMountBeasts[6] = 'nfel'
+    set udg_AllMountBeasts[7] = 'nwld'
+    set udg_AllMountBeasts[8] = 'nwlg'
+    set udg_AllMountBeasts[9] = 'nwlt'
+    set udg_AllMountBeasts[10] = 'nwwd'
+    set udg_AllMountBeasts[11] = 'nwwf'
+    set udg_AllMountBeasts[12] = 'nltl'
+    set udg_AllMountBeasts[13] = 'nspd'
+    set udg_AllMountBeasts[14] = 'nslr'
+    set udg_AllMountBeasts[15] = 'nstw'
+    set udg_AllMountBeasts[16] = 'nslh'
+    set udg_AllMountBeasts[17] = 'nmdr'
+    set udg_AllMountBeasts[18] = 'nmit'
+    set udg_AllMountBeasts[19] = 'nnwq'
+    set udg_AllMountBeasts[20] = 'nnws'
+    set udg_AllMountBeasts[21] = 'nnwa'
+    set udg_AllMountBeasts[22] = 'nqb1'
+    set udg_AllMountBeasts[23] = 'nscb'
+    set udg_AllMountBeasts[24] = 'nwwg'
+    set udg_AllMountBeasts[25] = 'nlkl'
+    set udg_AllMountBeasts[26] = 'nlsn'
+    set udg_AllMountBeasts[27] = 'nlds'
+    set udg_AllMountBeasts[28] = 'ntrd'
+    set udg_AllMountBeasts[29] = 'ntrg'
+    set udg_AllMountBeasts[30] = 'ntrs'
+    set udg_AllMountBeasts[31] = 'nsnp'
+    set udg_AllMountBeasts[32] = 'nqb4'
+    set udg_AllMountBeasts[33] = 'ucry'
+    set udg_AllMountBeasts[52] = 'n02L'
+    set udg_AllMountBeasts[53] = 'n02N'
+    set udg_AllMountBeasts[54] = 'n02M'
+    set udg_AllMountBeasts[55] = 'n02P'
+    set udg_AllMountBeasts[56] = 'h01D'
+    set udg_AllMountBeasts[58] = 'u00K'
     // ------------------------------- Store Mount ID END --------------------------------
 
     set udg_M9P2Q7U5l4V5W9O45lO70h41D2G5K3[1] = 140.
@@ -4187,7 +4187,8 @@ function Trig_PetA1_Actions takes nothing returns nothing
     set udg_M9P2Q7U5l4V5W9O45lO70h41D2G5K3[661] = 240.
     set udg_M9P2Q7U5l4V5W9O45lO70h41D2G5K3[662] = 260.
     set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[201] = Location( - 544., - 12973.)
-    call CreateNUnitsAtLoc(1, udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[29], Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[201], bj_UNIT_FACING)
+    // TODO：没懂什么意思
+    call CreateNUnitsAtLoc(1, udg_AllMountBeasts[29], Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[201], bj_UNIT_FACING)
     call UnitAddAbilityBJ('A0CE', GetLastCreatedUnit())
     call SetUnitAbilityLevelSwapped('A0CE', GetLastCreatedUnit(), 1)
     call UnitApplyTimedLifeBJ(.1, 'BTLF', GetLastCreatedUnit())
@@ -4199,7 +4200,7 @@ function Trig_PetA1_Actions takes nothing returns nothing
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[904] = GetRandomLocInRect(gg_rct_______Map)
         set udg_M9P2Q7U53l4V5W9O45lO7041D2G5K3[0] = GetRandomInt(1, 33)
-        call CreateNUnitsAtLoc(1, udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[udg_M9P2Q7U53l4V5W9O45lO7041D2G5K3[0]], Player(PLAYER_NEUTRAL_PASSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[904], bj_UNIT_FACING)
+        call CreateNUnitsAtLoc(1, udg_AllMountBeasts[udg_M9P2Q7U53l4V5W9O45lO7041D2G5K3[0]], Player(PLAYER_NEUTRAL_PASSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[904], bj_UNIT_FACING)
         call SetUnitScalePercent(GetLastCreatedUnit(), udg_M9P2Q7U5l4V5W9O45lO70h41D2G5K3[udg_M9P2Q7U53l4V5W9O45lO7041D2G5K3[0]], 100, 100)
         call UnitAddAbilityBJ('A020', GetLastCreatedUnit())
         call UnitAddAbilityBJ('A0C7', GetLastCreatedUnit())
@@ -4234,7 +4235,7 @@ function Trig_PetA2_Func001C takes nothing returns boolean
     return true
 endfunction
 function Trig_PetA2_Func002Func003Func001C takes nothing returns boolean
-    if(not(GetUnitTypeId(GetSpellTargetUnit()) == udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[GetForLoopIndexA()]))then
+    if(not(GetUnitTypeId(GetSpellTargetUnit()) == udg_AllMountBeasts[GetForLoopIndexA()]))then
         return false
     endif
     return true
@@ -4319,7 +4320,7 @@ function Trig_PetB1_Func001C takes nothing returns boolean
     return true
 endfunction
 function Trig_PetB1_Func008Func001Func001C takes nothing returns boolean
-    if(not(GetUnitTypeId(udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))]) == udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[GetForLoopIndexA()]))then
+    if(not(GetUnitTypeId(udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))]) == udg_AllMountBeasts[GetForLoopIndexA()]))then
         return false
     endif
     return true
@@ -4354,7 +4355,7 @@ function Trig_PetB1_Actions takes nothing returns nothing
     else
     endif
     set udg_M9P2Q7U5l4V5W9O45lO7041D2G5K3h[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 10) + 4)] = GetUnitLoc(GetTriggerUnit())
-    call CreateNUnitsAtLoc(1, udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[(GetItemUserData(GetManipulatedItem()) - 1000)], GetOwningPlayer(GetTriggerUnit()), udg_M9P2Q7U5l4V5W9O45lO7041D2G5K3h[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 10) + 4)], GetUnitFacing(GetTriggerUnit()))
+    call CreateNUnitsAtLoc(1, udg_AllMountBeasts[(GetItemUserData(GetManipulatedItem()) - 1000)], GetOwningPlayer(GetTriggerUnit()), udg_M9P2Q7U5l4V5W9O45lO7041D2G5K3h[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 10) + 4)], GetUnitFacing(GetTriggerUnit()))
     call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2G5K3h[((GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit())) * 10) + 4)])
     set udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))] = GetLastCreatedUnit()
     call SetUnitUserData(GetLastCreatedUnit(), GetUnitUserData(GetTriggerUnit()))
@@ -4408,7 +4409,7 @@ function Trig_PetB2_Func001C takes nothing returns boolean
     return true
 endfunction
 function Trig_PetB2_Func017Func001Func001C takes nothing returns boolean
-    if(not(GetUnitTypeId(udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))]) == udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[GetForLoopIndexA()]))then
+    if(not(GetUnitTypeId(udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))]) == udg_AllMountBeasts[GetForLoopIndexA()]))then
         return false
     endif
     return true
@@ -4531,7 +4532,7 @@ function Trig_PetD1_Conditions takes nothing returns boolean
     return true
 endfunction
 function Trig_PetD1_Func001Func002Func001C takes nothing returns boolean
-    if(not(GetUnitTypeId(udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())]) == udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[GetForLoopIndexB()]))then
+    if(not(GetUnitTypeId(udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())]) == udg_AllMountBeasts[GetForLoopIndexB()]))then
         return false
     endif
     return true
@@ -4950,7 +4951,7 @@ function Trig_PetG1_Actions takes nothing returns nothing
     if(Trig_PetG1_Func006C())then
         if(Trig_PetG1_Func006Func001C())then
             set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[904] = GetUnitLoc(GetTriggerUnit())
-            call CreateNUnitsAtLoc(1, udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[58], Player(PLAYER_NEUTRAL_PASSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[904], bj_UNIT_FACING)
+            call CreateNUnitsAtLoc(1, udg_AllMountBeasts[58], Player(PLAYER_NEUTRAL_PASSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[904], bj_UNIT_FACING)
             call UnitAddAbilityBJ('Amrf', GetLastCreatedUnit())
             call UnitRemoveAbilityBJ('Amrf', GetLastCreatedUnit())
             call SetUnitFlyHeight(GetLastCreatedUnit(), 280., .0)
@@ -4970,7 +4971,7 @@ function Trig_PetG1_Actions takes nothing returns nothing
         endif
         if(Trig_PetG1_Func006Func002C())then
             set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[904] = GetUnitLoc(GetTriggerUnit())
-            call CreateNUnitsAtLoc(1, udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[54], Player(PLAYER_NEUTRAL_PASSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[904], bj_UNIT_FACING)
+            call CreateNUnitsAtLoc(1, udg_AllMountBeasts[54], Player(PLAYER_NEUTRAL_PASSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[904], bj_UNIT_FACING)
             call UnitAddAbilityBJ('Amrf', GetLastCreatedUnit())
             call UnitRemoveAbilityBJ('Amrf', GetLastCreatedUnit())
             call SetUnitFlyHeight(GetLastCreatedUnit(), 280., .0)
@@ -4991,7 +4992,7 @@ function Trig_PetG1_Actions takes nothing returns nothing
         endif
         if(Trig_PetG1_Func006Func003C())then
             set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[904] = GetUnitLoc(GetTriggerUnit())
-            call CreateNUnitsAtLoc(1, udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[52], Player(PLAYER_NEUTRAL_PASSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[904], bj_UNIT_FACING)
+            call CreateNUnitsAtLoc(1, udg_AllMountBeasts[52], Player(PLAYER_NEUTRAL_PASSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[904], bj_UNIT_FACING)
             call UnitAddAbilityBJ('Amrf', GetLastCreatedUnit())
             call UnitRemoveAbilityBJ('Amrf', GetLastCreatedUnit())
             call SetUnitFlyHeight(GetLastCreatedUnit(), 280., .0)
@@ -5012,7 +5013,7 @@ function Trig_PetG1_Actions takes nothing returns nothing
         endif
         if(Trig_PetG1_Func006Func004C())then
             set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[904] = GetUnitLoc(GetDyingUnit())
-            call CreateNUnitsAtLoc(1, udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[56], Player(PLAYER_NEUTRAL_PASSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[904], bj_UNIT_FACING)
+            call CreateNUnitsAtLoc(1, udg_AllMountBeasts[56], Player(PLAYER_NEUTRAL_PASSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[904], bj_UNIT_FACING)
             call UnitAddAbilityBJ('Amrf', GetLastCreatedUnit())
             call UnitRemoveAbilityBJ('Amrf', GetLastCreatedUnit())
             call SetUnitFlyHeight(GetLastCreatedUnit(), 280., .0)
@@ -5033,7 +5034,7 @@ function Trig_PetG1_Actions takes nothing returns nothing
         endif
         if(Trig_PetG1_Func006Func005C())then
             set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[904] = GetUnitLoc(GetTriggerUnit())
-            call CreateNUnitsAtLoc(1, udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[53], Player(PLAYER_NEUTRAL_PASSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[904], bj_UNIT_FACING)
+            call CreateNUnitsAtLoc(1, udg_AllMountBeasts[53], Player(PLAYER_NEUTRAL_PASSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[904], bj_UNIT_FACING)
             call UnitAddAbilityBJ('Amrf', GetLastCreatedUnit())
             call UnitRemoveAbilityBJ('Amrf', GetLastCreatedUnit())
             call SetUnitFlyHeight(GetLastCreatedUnit(), 280., .0)
@@ -5054,7 +5055,7 @@ function Trig_PetG1_Actions takes nothing returns nothing
         endif
         if(Trig_PetG1_Func006Func006C())then
             set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[904] = GetUnitLoc(GetTriggerUnit())
-            call CreateNUnitsAtLoc(1, udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[55], Player(PLAYER_NEUTRAL_PASSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[904], bj_UNIT_FACING)
+            call CreateNUnitsAtLoc(1, udg_AllMountBeasts[55], Player(PLAYER_NEUTRAL_PASSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[904], bj_UNIT_FACING)
             call UnitAddAbilityBJ('Amrf', GetLastCreatedUnit())
             call UnitRemoveAbilityBJ('Amrf', GetLastCreatedUnit())
             call SetUnitFlyHeight(GetLastCreatedUnit(), 280., .0)
@@ -5082,7 +5083,7 @@ function InitTrig_PetG1 takes nothing returns nothing
     call TriggerAddAction(gg_trg_PetG1, function Trig_PetG1_Actions)
 endfunction
 function Trig_PetH1_Func001Func002Func001C takes nothing returns boolean
-    if(not(GetUnitTypeId(udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())]) == udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[GetForLoopIndexB()]))then
+    if(not(GetUnitTypeId(udg_M9P2Q7U5l4V5W9O45lO704K1D2G5K3[GetConvertedPlayerId(GetTriggerPlayer())]) == udg_AllMountBeasts[GetForLoopIndexB()]))then
         return false
     endif
     return true
@@ -6414,7 +6415,7 @@ function Trig_Ogre_Relive_Actions takes nothing returns nothing
         call PolledWait(120.)
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[904] = GetRandomLocInRect(gg_rct_______Map)
         set udg_M9P2Q7U53l4V5W9O45lO7041D2G5K3[0] = GetRandomInt(1, 33)
-        call CreateNUnitsAtLoc(1, udg_M9P2Q7U5l4V5W9O45lO7041D2G5K33[udg_M9P2Q7U53l4V5W9O45lO7041D2G5K3[0]], Player(PLAYER_NEUTRAL_PASSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[904], bj_UNIT_FACING)
+        call CreateNUnitsAtLoc(1, udg_AllMountBeasts[udg_M9P2Q7U53l4V5W9O45lO7041D2G5K3[0]], Player(PLAYER_NEUTRAL_PASSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[904], bj_UNIT_FACING)
         call SetUnitScalePercent(GetLastCreatedUnit(), udg_M9P2Q7U5l4V5W9O45lO70h41D2G5K3[udg_M9P2Q7U53l4V5W9O45lO7041D2G5K3[0]], 100, 100)
         call UnitAddAbilityBJ('A020', GetLastCreatedUnit())
         call UnitAddAbilityBJ('A0C7', GetLastCreatedUnit())
