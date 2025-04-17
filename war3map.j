@@ -30,7 +30,7 @@ globals
     location array udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3
     string array udg_M9P2Q7U5l34V5W9O45lO7041D2G5K3
     item array udg_M9P2Q7U5l4O5WD9O45lO7041D2G5K3
-    integer array udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3
+    integer array udg_SnowSwampVolcanoDeath_Monsters
     unit udg_M9P2Q7U5l4V5W9OB45lO7041D2G5K3 = null
     integer udg_unit_key = 0
     sound array udg_M9P2Q7U5l4V5W9O45lO7J041D2G5K3
@@ -71,7 +71,7 @@ globals
     integer array udg_M9P2Q7U5lC4V5W9O45lO7041D2G5K3
     location array udg_M9PA2Q7U5l4V5W9O45lO7041D2G5K3
     integer array udg_M9P2Q7US5l4V5W9O45lO7041D2G5K3
-    unit array udg_M9P2Q7U5l4V5W9O4D5lO7041D2G5K3
+    unit array udg_Act2Units
     integer array udg_M9P2Q7U5l4V5W9O45lO7041D2GJ5K3
     integer array udg_M9P2Q7U5lV4V5W9O45lO7041D2G5K3
     trigger array udg_M9P2Q7U5l4V5WX9O45lO7041D2G5K3
@@ -1412,8 +1412,36 @@ function Trig_PlayerInput_Func004C takes nothing returns boolean
     return GetEventPlayerChatString() == "-give"
 endfunction
 
-function Trig_PlayerInput_Func005C takes nothing returns boolean
-    return GetEventPlayerChatString() == "-i"
+function Trig_PlayerInput_GameInfo1 takes nothing returns boolean
+    return GetEventPlayerChatString() == "-i1"
+endfunction
+
+function Trig_PlayerInput_GameInfo2 takes nothing returns boolean
+    return GetEventPlayerChatString() == "-i2"
+endfunction
+
+function Trig_PlayerInput_GameInfo3 takes nothing returns boolean
+    return GetEventPlayerChatString() == "-i3"
+endfunction
+
+function Trig_PlayerInput_GameInfo4 takes nothing returns boolean
+    return GetEventPlayerChatString() == "-i4"
+endfunction
+
+function Trig_PlayerInput_GameInfo5 takes nothing returns boolean
+    return GetEventPlayerChatString() == "-i5"
+endfunction
+
+function Trig_PlayerInput_GameInfo6 takes nothing returns boolean
+    return GetEventPlayerChatString() == "-i6"
+endfunction
+
+function Trig_PlayerInput_GameInfo7 takes nothing returns boolean
+    return GetEventPlayerChatString() == "-i7"
+endfunction
+
+function Trig_PlayerInput_GameInfo8 takes nothing returns boolean
+    return GetEventPlayerChatString() == "-i8"
 endfunction
 
 function Trig_PlayerInput_Func004Actions takes nothing returns nothing
@@ -1448,67 +1476,78 @@ function Trig_PlayerInput_Func004Actions takes nothing returns nothing
     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "|cff00ff00Item is given！|r")
 endfunction
 
-function Trig_PlayerInput_Func005Actions takes nothing returns nothing
+function Trig_PlayerInput_ShowGameInfo1 takes nothing returns nothing
     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "Quick Start:")
-    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "0. Find Wooden Chests all over the map for better items. Then Iron/Bronze Chests (dmg > 50/100)")
-    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "1. Buy Skill at Holy Obelisk, use arrow keys to upgrade/delete.")
-    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "2. At Least one healing skill is recommended for every player.")
-    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "3. Don't attack neutral units too soon, instead, try to capture neutral beasts by ensnaring them.")
-    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "4. Don't raise your lvl too fast, enemies will become stronger according to the highest level of players.")
-    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "5. Always share useful items with your team!")
-    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "6. (Angel) items => Angel Wings should be the first goal for every player!")
-    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "Items to Craft:")
-    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "1. Mage: Items with [water],[nether],[elven king] prefix. Random Weapon: ELven Branch + Rune Gem + Sorcerer's Staff")
-    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "2. Warrior/Guardian: Items with (fire),(earth),(death),(war) prefix. Random Weapon: Crimson Dragon Fang + Formation Crystal + Runic Blade")
-    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "3. Archer: Items with [wind]/[thunder] prefix. Random Weapon: Black Dragon Sinew + Crystal Arrow + Arcane Longbow")
-    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "Best Skills:")
-    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "1. Mage: Healing Wave, Holy Light, Flame Storm, Inner Fire")
-    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "2. Warrior: Critical Attack, Holy Light, Blade Wheel Formation, ")
-    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "3. Guardian: Holy Light, Defensive Skills")
-
-    // if(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 6) == "[Mage]")then
-    //     // show info of Mage
-    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "How to play Mage:")
-    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "In General, a mage is a powerful class that excels at both damage dealing and healing.")
-    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "Important Tips:")
-    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "1. Be sure to learn Healing Wave, as this is a powerful healing ability exclusive to mages")
-    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "2. Look for items with the [water] prefix to craft Tidalord's Battle Armor")
-    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "3. Collect Elven Branch + Runic Gem + Sorcerer's Staff to randomly craft Legendary/Divine Weapons")
-    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "Best Equipment Sets:")
-    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "- Tidalord's Battle Armor + Tidal Sovereign's Scepter")
-    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "- Netherworld Sovereign Plate + Netherworld Sovereign Rod")
-    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "- Elven Sovereign Scepter + Elven Sovereign Armor")
-    // endif
-    // if(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 9) == "[Warrior]")then
-    //     // show info of Warrior
-    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "How to play Warrior:")
-    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "In General, a warrior is a class that excels at both damage dealing and defense.")
-    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "Important Tips:")
-    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "1. Aim for War God Set (control), Death God Set (building destruction) and Fire God Set (highest damage)")
-    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "2. Look for items with (fire)/[fire] and (earth)/[earth] prefixes for your main equipment crafting")
-    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "3. You can start hunting treasure chests after obtaining your first Legendary/Divine weapon")
-    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "4. Mirror Image is a must-learn skill; Holy Light and Blade Wheel Formation are also excellent choices")
-    // endif
-    // if(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 10) == "[Guardian]")then
-    //     // show info of Guardian
-    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "How to play Guardian:")
-    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "In General, a guardian is one of the most important roles in your team.")
-    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "Important Tips:")
-    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "1. The only class that can learn defensive skills, making it essential for team survival")
-    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "2. With proper skills, you'll have incredible durability in combat")
-    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "3. Equipment progression is slower in early game, so you'll need help from teammates")
-    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "4. Look for items with (earth) and [earth] prefixes for your equipment crafting")
-    // endif
-    // if(SubStringBJ(GetUnitName(GetTriggerUnit()), 1, 8) == "[Archer]")then
-    //     // show info of Archer
-    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "How to play Archer:")
-    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "In General, an archer is a high damage but fragile class.")
-    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "Important Tips:")
-    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "1. Not recommended in the current version - while Archers have the highest damage sets (Thunder God and Wind God), they are very fragile")
-    //     call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "2. Look for items with [wind] and (wind) prefixes to craft your equipment")
-    // endif
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "Basic Info: Merge 3 items have same prefix. Prefix: Angel, Fire, Earth, Death, War, Wind, Thunder, Nether, Elven King")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "1. Focus on wooden chest for angel items. You MUST have Angel Wings before the first boss.")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "2. Mobs will buffed according to the highest level of players (don't raise your level too fast!!).")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "3. Buy skill at 4 Holy Obelisks, use arrow keys [up]/[right] or [down]/[left] to upgrade/delete.")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "4. Tip: Buy one healing skill & one attack skill for every player.")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "5. Tip: Don't focus on killing mobs, focus on chests and items.")
 endfunction
 
+function Trig_PlayerInput_ShowGameInfo2 takes nothing returns nothing
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "Guide:")  
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "Be Nice to your teammates! Be patient! Share items!")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "Destroy wooden chests for Angel Wings (Very Important!).")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "When you have 1 special weapon and 1 armor, go to snowland/deathland to craft more powerful items.")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "Don't auto neutral units before you have a special weapon/armor. Ensnare them instead.")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "When you have a lvl 5 attack skill/special weapon, go to the middle area for treasure chests.")
+endfunction
+
+function Trig_PlayerInput_ShowGameInfo3 takes nothing returns nothing
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "Items Crafting:")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "0. When your dmg > 50, you can destroy iron chests.")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "1. When your dmg > 100, you can destroy bronze chests.")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "2. When your dmg > 150, you can destroy treasure chests.")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "3. Always share useful items with your team!")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "4. Recommended Builds: Fire -> Warrior, Wind -> Archer, Earth -> Guardian, Water -> Mage")
+endfunction
+
+function Trig_PlayerInput_ShowGameInfo4 takes nothing returns nothing
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "Special/Legendary/Divine Items:")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "0. Merge Fire, Earth, Wind, Water, Death, War, Nether, Elven King items to get legendary/divine armors")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "1. Special Weapons:")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "- Warrior/Guardian: Crimson Dragon Fang + Formation Crystal + Runic Blade")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "- Archer: Black Dragon Sinew + Crystal Arrow + Arcane Longbow")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "- Mage: Elven Branch + Runic Gem + Sorcerer's Staff")
+endfunction
+
+function Trig_PlayerInput_ShowGameInfo5 takes nothing returns nothing
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "Recommended Builds1:")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "Warrior/Guardian (DPS): |cffFFFF80Flame|cffFFAA55lord's |cffFF552BWar|cffFF0000blades|r + |cffFFAA55Flamelord's |cffFF552BBattle Armor|r")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "Warrior/Guardian (Control): |cff8000FFWar|cff8055FFgod's |cff80AAFFSacred |cff80FFFFAxe|r + |cff8000FFWar|cff8055FFgod's |cff80AAFFHallowed |cff80FFFFPlate|r")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "Warrior/Guardian (Tank): |cff00FFFFTerra |cff00FFBFLord's |cff00FF80Ham|cff00FF40mer|r + |cff00FFFFTerra|cff00FFBFlord's |cff00FF80Battle |cff00FF40Armor|r")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "Warrior/Guardian (Support): |cff3E3E3ERea|cff696969per's |cff959595War|cffC0C0C0blade|r + |cff3E3E3EDeath |cff696969God's |cff959595Battle|cffC0C0C0plate|r")
+endfunction
+
+function Trig_PlayerInput_ShowGameInfo6 takes nothing returns nothing
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "Recommended Builds2:") 
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "Archer (Support/Control): |cffFFFF00Tem|cffE6FF33pest |cffCCFF66God's |cffB3FF99Warbow|r + Name=|cffFFFF00Tempest|cffE6FF33lord's |cffCCFF66Battle |cffB3FF99Armor|r")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "Archer (DPS): |cff00FF00Thun|cff55FF00der|cffAAFF00lord's |cffFFFF00Spike|r + |cff00FF00Thun|cff55FF00der|cffAAFF00lord's |cffFFFF00Battle Armor|r")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "Mage (Healing/Support/Control):|cff00FFFFTidal |cff00D5FFSover|cff00AAFFeign's |cff0080FFScepter|r + |cff00FFFFTidal|cff00D5FFlord's |cff00AAFFBattle |cff0080FFArmor|r")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "Mage (DPS):|cffFF0000Nether|cffAA5500world |cff55AA00Sovereign |cff00FF00Rod|r + |cffFF0000Nether|cffAA5500world |cff55AA00Sovereign |cff00FF00Plate|r")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "Mage (Control/Summoner): |cff00FFFFElven |cff00FFBFSovereign |cff00FF80Scep|cff00FF40ter|r + |cff00FFFFElven |cff00FFBFSovereign |cff00FF80|cff00FF40Armor|r")
+endfunction
+
+function Trig_PlayerInput_ShowGameInfo7 takes nothing returns nothing
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "War Beast (Mount) System:") 
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "0. Learn Ensnare skill at Holy Obelisk.")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "1. Ensnare neutral beasts to ride them.")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "2. For dragons and phoenixes, after their death, a drake will spawn. Use Ensnare to the drake.")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "3. When Ensnared, an egg will generated, use it to get a mount. In spellbook, beast courier will be available.")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "4. Tips: One player can capture mounts for all teammates.")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "5. Tips: War Beast will automatically attack enemies, which may raise your lvl too fast.")
+endfunction
+
+function Trig_PlayerInput_ShowGameInfo8 takes nothing returns nothing
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "Skills:")  
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "0. Each Player should have at least one healing skill.")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "1. Warrior: Mirror Image, Bash are recommended.")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "2. Guardian: Defensive Skills are recommended.")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "3. Mage: 2 healing skills are recommended, Healing Wave + Holy Light.")
+    call DisplayTextToPlayer(GetTriggerPlayer(), 0, 0, "4. Mage: Inner Fire/Slow + Flame Storm + Pyromancy Guide = Summon Fire Elemental")
+endfunction
 
 //------------------- 自定义玩家输入函数 END -------------------
 function Trig_PlayerInput_Actions takes nothing returns nothing
@@ -1521,8 +1560,36 @@ function Trig_PlayerInput_Actions takes nothing returns nothing
         call Trig_PlayerInput_Func004Actions()
     endif
 
-    if Trig_PlayerInput_Func005C() then
-        call Trig_PlayerInput_Func005Actions()
+    if Trig_PlayerInput_GameInfo1() then
+        call Trig_PlayerInput_ShowGameInfo1()
+    endif
+
+    if Trig_PlayerInput_GameInfo2() then
+        call Trig_PlayerInput_ShowGameInfo2()
+    endif
+
+    if Trig_PlayerInput_GameInfo3() then
+        call Trig_PlayerInput_ShowGameInfo3()
+    endif
+
+    if Trig_PlayerInput_GameInfo4() then
+        call Trig_PlayerInput_ShowGameInfo4()
+    endif
+
+    if Trig_PlayerInput_GameInfo5() then
+        call Trig_PlayerInput_ShowGameInfo5()
+    endif
+
+    if Trig_PlayerInput_GameInfo6() then
+        call Trig_PlayerInput_ShowGameInfo6()
+    endif
+
+    if Trig_PlayerInput_GameInfo7() then
+        call Trig_PlayerInput_ShowGameInfo7()
+    endif
+
+    if Trig_PlayerInput_GameInfo8() then
+        call Trig_PlayerInput_ShowGameInfo8()
     endif
 
     if(Trig_PlayerInput_Func002C())then
@@ -1611,7 +1678,7 @@ function Trig_PlayerKill_Actions takes nothing returns nothing
     if(Trig_PlayerKill_Func005C())then
         call RemoveUnit(FirstOfGroup(GetUnitsInRectMatching(GetPlayableMapRect(), Condition(function Trig_PlayerKill_Func005Func001001001002))))
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[895] = GetRandomLocInRect(gg_rct_Ogre_Shu)
-        call CreateNUnitsAtLoc(1, udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[895], Player(PLAYER_NEUTRAL_PASSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[895], bj_UNIT_FACING)
+        call CreateNUnitsAtLoc(1, udg_SnowSwampVolcanoDeath_Monsters[895], Player(PLAYER_NEUTRAL_PASSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[895], bj_UNIT_FACING)
         call SetUnitUserData(GetLastCreatedUnit(), 895)
         set udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[895] = 0
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[895])
@@ -1619,7 +1686,7 @@ function Trig_PlayerKill_Actions takes nothing returns nothing
     endif
     if(Trig_PlayerKill_Func006C())then
         call RemoveUnit(FirstOfGroup(GetUnitsInRectMatching(GetPlayableMapRect(), Condition(function Trig_PlayerKill_Func006Func001001001002))))
-        call CreateNUnitsAtLoc(1, udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[901], Player(PLAYER_NEUTRAL_PASSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[901], bj_UNIT_FACING)
+        call CreateNUnitsAtLoc(1, udg_SnowSwampVolcanoDeath_Monsters[901], Player(PLAYER_NEUTRAL_PASSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[901], bj_UNIT_FACING)
         call UnitAddAbilityBJ(udg_GeneralSkills[103], GetLastCreatedUnit())
         call UnitAddAbilityBJ(udg_GeneralSkills[104], GetLastCreatedUnit())
         call UnitAddAbilityBJ(udg_GeneralSkills[105], GetLastCreatedUnit())
@@ -1705,7 +1772,7 @@ function Trig_PlayerLeave_Actions takes nothing returns nothing
     if(Trig_PlayerLeave_Func016C())then
         call RemoveUnit(FirstOfGroup(GetUnitsInRectMatching(GetPlayableMapRect(), Condition(function Trig_PlayerLeave_Func016Func001001001002))))
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[895] = GetRandomLocInRect(gg_rct_Ogre_Shu)
-        call CreateNUnitsAtLoc(1, udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[895], Player(PLAYER_NEUTRAL_PASSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[895], bj_UNIT_FACING)
+        call CreateNUnitsAtLoc(1, udg_SnowSwampVolcanoDeath_Monsters[895], Player(PLAYER_NEUTRAL_PASSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[895], bj_UNIT_FACING)
         call SetUnitUserData(GetLastCreatedUnit(), 895)
         set udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[895] = 0
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[895])
@@ -1713,7 +1780,7 @@ function Trig_PlayerLeave_Actions takes nothing returns nothing
     endif
     if(Trig_PlayerLeave_Func017C())then
         call RemoveUnit(FirstOfGroup(GetUnitsInRectMatching(GetPlayableMapRect(), Condition(function Trig_PlayerLeave_Func017Func001001001002))))
-        call CreateNUnitsAtLoc(1, udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[901], Player(PLAYER_NEUTRAL_PASSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[901], bj_UNIT_FACING)
+        call CreateNUnitsAtLoc(1, udg_SnowSwampVolcanoDeath_Monsters[901], Player(PLAYER_NEUTRAL_PASSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[901], bj_UNIT_FACING)
         call UnitAddAbilityBJ(udg_GeneralSkills[103], GetLastCreatedUnit())
         call UnitAddAbilityBJ(udg_GeneralSkills[104], GetLastCreatedUnit())
         call UnitAddAbilityBJ(udg_GeneralSkills[105], GetLastCreatedUnit())
@@ -2769,113 +2836,19 @@ function Trig_OgreDie_Conditions takes nothing returns boolean
     endif
     return true
 endfunction
-function Trig_OgreDie_Func005C takes nothing returns boolean
+function Trig_EnemyUnitDie takes nothing returns boolean
+    // 判断是否是玩家击杀了敌军，而不是箱子
+
+    // 条件：击杀目标的所属玩家ID在1-10之间 -> 人类玩家
     if(not(GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) < 11))then
         return false
     endif
     if(not(GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) > 0))then
         return false
     endif
+
+    // 条件：被击杀目标必须是玩家11的盟友单位 -> 第一幕敌军，第二幕敌军，第三幕敌军
     if(not(IsUnitAlly(GetTriggerUnit(), Player(11)) == true))then
-        return false
-    endif
-    return true
-endfunction
-function Trig_OgreDie_Func007Func004C takes nothing returns boolean
-    if(not(GetRandomInt(1, 20) > 16))then
-        return false
-    endif
-    return true
-endfunction
-function Trig_WoodenChestDie_Func takes nothing returns boolean
-    if(not(GetUnitTypeId(GetTriggerUnit()) == 'n01Y'))then
-        return false
-    endif
-    return true
-endfunction
-function Trig_OgreDie_Func009Func005C takes nothing returns boolean
-    if(not(GetRandomInt(1, 20) > 18))then
-        return false
-    endif
-    return true
-endfunction
-function Trig_OgreDie_Func009Func007Func001Func001001 takes nothing returns boolean
-    return(GetUnitUserData(GetKillingUnitBJ()) == 1)
-endfunction
-function Trig_OgreDie_Func009Func007Func001Func002001 takes nothing returns boolean
-    return(GetUnitUserData(GetKillingUnitBJ()) == 3)
-endfunction
-function Trig_OgreDie_Func009Func007Func001Func003001 takes nothing returns boolean
-    return(GetUnitUserData(GetKillingUnitBJ()) == 4)
-endfunction
-function Trig_OgreDie_Func009Func007Func001C takes nothing returns boolean
-    if(not(GetRandomInt(20, 20) > 7))then
-        return false
-    endif
-    return true
-endfunction
-function Trig_OgreDie_Func009Func007C takes nothing returns boolean
-    if(not(GetRandomInt(17, 17) == 17))then
-        return false
-    endif
-    return true
-endfunction
-function Trig_IronChestDie_Func takes nothing returns boolean
-    if(not(GetUnitTypeId(GetTriggerUnit()) == 'n01X'))then
-        return false
-    endif
-    return true
-endfunction
-function Trig_OgreDie_Func011Func005Func002Func002001 takes nothing returns boolean
-    return(GetUnitUserData(GetKillingUnitBJ()) == 1)
-endfunction
-function Trig_OgreDie_Func011Func005Func002Func003001 takes nothing returns boolean
-    return(GetUnitUserData(GetKillingUnitBJ()) == 3)
-endfunction
-function Trig_OgreDie_Func011Func005Func002Func004001 takes nothing returns boolean
-    return(GetUnitUserData(GetKillingUnitBJ()) == 4)
-endfunction
-function Trig_OgreDie_Func011Func005Func002C takes nothing returns boolean
-    if(not(GetRandomInt(20, 20) > 5))then
-        return false
-    endif
-    return true
-endfunction
-function Trig_OgreDie_Func011Func005C takes nothing returns boolean
-    if(not(GetRandomInt(20, 20) > 10))then
-        return false
-    endif
-    return true
-endfunction
-function Trig_OgreDie_Func011C takes nothing returns boolean
-    if(not(GetUnitTypeId(GetTriggerUnit()) == 'n01Z'))then
-        return false
-    endif
-    return true
-endfunction
-function Trig_OgreDie_Func013Func007Func001C takes nothing returns boolean
-    if(not(GetRandomInt(10, 10) > 5))then
-        return false
-    endif
-    return true
-endfunction
-function Trig_OgreDie_Func013Func007Func003001 takes nothing returns boolean
-    return(GetUnitUserData(GetKillingUnitBJ()) == 1)
-endfunction
-function Trig_OgreDie_Func013Func007Func004001 takes nothing returns boolean
-    return(GetUnitUserData(GetKillingUnitBJ()) == 3)
-endfunction
-function Trig_OgreDie_Func013Func007Func005001 takes nothing returns boolean
-    return(GetUnitUserData(GetKillingUnitBJ()) == 4)
-endfunction
-function Trig_OgreDie_Func013Func007C takes nothing returns boolean
-    if(not(GetRandomInt(20, 20) == 20))then
-        return false
-    endif
-    return true
-endfunction
-function Trig_OgreDie_Func013C takes nothing returns boolean
-    if(not(GetUnitTypeId(GetTriggerUnit()) == 'n020'))then
         return false
     endif
     return true
@@ -2921,12 +2894,6 @@ function Trig_OgreDie_Func015Func005Func001Func004001 takes nothing returns bool
 endfunction
 function Trig_OgreDie_Func015Func005Func001C takes nothing returns boolean
     if(not(GetRandomInt(20, 20) > 10))then
-        return false
-    endif
-    return true
-endfunction
-function Trig_OgreDie_Func015Func005C takes nothing returns boolean
-    if(not(GetRandomInt(1, 30) == 27))then
         return false
     endif
     return true
@@ -3062,8 +3029,9 @@ function Trig_OgreDie_Func022C takes nothing returns boolean
     endif
     return true
 endfunction
-function Trig_OgreDie_Actions takes nothing returns nothing
-    if(Trig_OgreDie_Func005C())then
+function Trig_EnemyUnitDIe_Actions takes nothing returns nothing
+    // 击杀敌军 -> 更新击杀统计 (意味着击杀箱子不更新函数)
+    if(Trig_EnemyUnitDie())then
         set udg_M9P2Q7U5l4V5W39O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 10) + 1)] = (udg_M9P2Q7U5l4V5W39O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 10) + 1)] + .1)
         set udg_M9P2Q7U5l4V5W39O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 10) + 2)] = (udg_M9P2Q7U5l4V5W39O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 10) + 2)] + 1.)
         set udg_M9P2Q7U5l4V5W39O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 10) + 3)] = (udg_M9P2Q7U5l4V5W39O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 10) + 3)] + 1.)
@@ -3072,47 +3040,59 @@ function Trig_OgreDie_Actions takes nothing returns nothing
         call MultiboardSetItemValueBJ(GetLastCreatedMultiboard(), 10, (GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) + 1), (udg_M9P2Q7U5l4V53W9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ()))] + I2S(R2I(udg_M9P2Q7U5l4V5W39O45lO7041D2G5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 10) + 3)]))))
     else
     endif
-    if(Trig_WoodenChestDie_Func())then
+
+    // 击杀木箱
+    if(GetUnitTypeId(GetTriggerUnit()) == 'n01Y')then
+        // 每次木箱被击杀，都会在地图上随机一个位置生成一个木箱
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 15)] = GetRandomLocInRect(udg_MapAreas[GetRandomInt(1, 4)])
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)] = GetUnitLoc(GetDyingUnit())
         call CreateNUnitsAtLoc(1, 'n01Y', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 15)], bj_UNIT_FACING)
-        if(Trig_OgreDie_Func007Func004C())then
+        // 木箱掉落物品 -> 14-21号物品为天字Angel套装，1-21号物品为所有白色物品 + 复活十字章
+        // 当前天字物品直接掉落概率为 -> 1/4
+        if(GetRandomInt(1, 4) == 4)then
             call CreateItemLoc(udg_ItemPool[GetRandomInt(14, 21)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
         else
             call CreateItemLoc(udg_ItemPool[GetRandomInt(1, 21)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
         endif
+        // 清理location point
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 15)])
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
     else
     endif
-    if(Trig_IronChestDie_Func())then
+
+    // 击杀铁箱
+    if(GetUnitTypeId(GetTriggerUnit()) == 'n01X')then
+        // 每次铁箱被击杀，都会在地图上随机一个位置生成一个铁箱
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 15)] = GetRandomLocInRect(udg_MapAreas[GetRandomInt(1, 4)])
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)] = GetUnitLoc(GetDyingUnit())
         call CreateNUnitsAtLoc(1, 'n01X', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 15)], bj_UNIT_FACING)
         call SetUnitRescueRange(GetLastCreatedUnit(), 3000.)
-        if(Trig_OgreDie_Func009Func005C())then
+
+        // 铁箱掉落物品 -> 61-68号物品为蓝色物品，41-48号物品为绿色物品
+        // 当前蓝色物品直接掉落概率为 -> 1/10
+        if(GetRandomInt(1, 20) > 18)then
             call CreateItemLoc(udg_ItemPool[GetRandomInt(61, 68)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
         else
             call CreateItemLoc(udg_ItemPool[GetRandomInt(41, 48)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
         endif
-        if(Trig_OgreDie_Func009Func007C())then
-            if(Trig_OgreDie_Func009Func007Func001C())then
-                if(Trig_OgreDie_Func009Func007Func001Func001001())then
-                    call CreateItemLoc(udg_ItemPool[GetRandomInt(141, 143)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
-                else
-                    call DoNothing()
-                endif
-                if(Trig_OgreDie_Func009Func007Func001Func002001())then
-                    call CreateItemLoc(udg_ItemPool[GetRandomInt(144, 146)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
-                else
-                    call DoNothing()
-                endif
-                if(Trig_OgreDie_Func009Func007Func001Func003001())then
-                    call CreateItemLoc(udg_ItemPool[GetRandomInt(147, 149)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
-                else
-                    call DoNothing()
-                endif
+        
+        // 根据击杀者的职业，掉落专属武器合成物品
+        // 当前专属武器合成物品直接掉落概率为 -> 1/15
+        if(GetRandomInt(1, 15) == 15) then
+            if(GetUnitUserData(GetKillingUnitBJ()) == 1) then
+                call CreateItemLoc(udg_ItemPool[GetRandomInt(141, 143)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
             else
+                call DoNothing()
+            endif
+            if(GetUnitUserData(GetKillingUnitBJ()) == 3) then
+                call CreateItemLoc(udg_ItemPool[GetRandomInt(144, 146)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
+            else
+                call DoNothing()
+            endif
+            if(GetUnitUserData(GetKillingUnitBJ()) == 4) then
+                call CreateItemLoc(udg_ItemPool[GetRandomInt(147, 149)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
+            else
+                call DoNothing()
             endif
         else
         endif
@@ -3120,99 +3100,105 @@ function Trig_OgreDie_Actions takes nothing returns nothing
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
     else
     endif
-    if(Trig_OgreDie_Func011C())then
+
+    // 击杀铜箱
+    if(GetUnitTypeId(GetTriggerUnit()) == 'n01Z')then
+        // 铜箱被击杀，随机再生成一个铜箱
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 15)] = GetRandomLocInRect(udg_MapAreas[GetRandomInt(1, 4)])
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)] = GetUnitLoc(GetDyingUnit())
         call CreateNUnitsAtLoc(1, 'n01Z', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 15)], bj_UNIT_FACING)
+        
+        // Feature: 铜箱位置标亮在地图上
         set bronze_chest_unit = GetLastCreatedUnit()
         call PingMinimapForPlayer(GetLocalPlayer(), GetUnitX(bronze_chest_unit), GetUnitY(bronze_chest_unit), 20.00)
         call SetUnitRescueRange(GetLastCreatedUnit(), 3000.)
-        if(Trig_OgreDie_Func011Func005C())then
-            if(Trig_OgreDie_Func011Func005Func002C())then
-                if(Trig_OgreDie_Func011Func005Func002Func002001())then
-                    call CreateItemLoc(udg_ItemPool[GetRandomInt(141, 143)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
-                else
-                    call DoNothing()
-                endif
-                if(Trig_OgreDie_Func011Func005Func002Func003001())then
-                    call CreateItemLoc(udg_ItemPool[GetRandomInt(144, 146)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
-                else
-                    call DoNothing()
-                endif
-                if(Trig_OgreDie_Func011Func005Func002Func004001())then
-                    call CreateItemLoc(udg_ItemPool[GetRandomInt(147, 149)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
-                else
-                    call DoNothing()
-                endif
-            else
+
+        // 50% 生成随机特殊武器配件（任意职业）
+        if(GetRandomInt(1, 20) > 10)then
                 call CreateItemLoc(udg_ItemPool[GetRandomInt(141, 149)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
-            endif
-        else
         endif
+
+        // 生成正常蓝色物品
         call CreateItemLoc(udg_ItemPool[GetRandomInt(61, 68)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
+        
+        // 清除location
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 15)])
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
     else
     endif
-    if(Trig_OgreDie_Func013C())then
+
+    // 击杀宝箱
+    if(GetUnitTypeId(GetTriggerUnit()) == 'n020')then
+        // 宝箱击杀，生成新的
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 15)] = GetRandomLocInRect(udg_MapAreas[0])
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)] = GetUnitLoc(GetDyingUnit())
         call CreateNUnitsAtLoc(1, 'n020', Player(PLAYER_NEUTRAL_AGGRESSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 15)], bj_UNIT_FACING)
         set treasure_chest_unit = GetLastCreatedUnit()
         call PingMinimapForPlayer(GetLocalPlayer(), GetUnitX(treasure_chest_unit), GetUnitY(treasure_chest_unit), 20.00)
         call SetUnitRescueRange(GetLastCreatedUnit(), 3000.)
-        if(Trig_OgreDie_Func013Func007C())then
-            if(Trig_OgreDie_Func013Func007Func001C())then
+
+        // 宝箱物品掉落逻辑：
+        // 一定生成一个蓝色装备
+        // 除此之外一定生成以下装备：
+        // 黑暗之心，1/8
+        // 恶魔之翼，1/8
+        // 武器配件, 6/8
+        if(GetRandomInt(1, 20) > 16)then
+            if(GetRandomInt(1, 20) > 10)then
+                // 掉落黑暗之心
                 call CreateItemLoc(udg_ItemPool[180], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
             else
+                // 掉落恶魔之翼
                 call CreateItemLoc(udg_ItemPool[179], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
                 call SetItemUserData(GetLastCreatedItem(), 21)
             endif
         else
-            if(Trig_OgreDie_Func013Func007Func003001())then
+            if(GetUnitUserData(GetKillingUnitBJ()) == 1)then
                 call CreateItemLoc(udg_ItemPool[GetRandomInt(141, 143)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
             else
                 call DoNothing()
             endif
-            if(Trig_OgreDie_Func013Func007Func004001())then
+            if(GetUnitUserData(GetKillingUnitBJ()) == 3)then
                 call CreateItemLoc(udg_ItemPool[GetRandomInt(144, 146)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
             else
                 call DoNothing()
             endif
-            if(Trig_OgreDie_Func013Func007Func005001())then
+            if(GetUnitUserData(GetKillingUnitBJ()) == 4)then
                 call CreateItemLoc(udg_ItemPool[GetRandomInt(147, 149)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
             else
                 call DoNothing()
             endif
-            call CreateItemLoc(udg_ItemPool[GetRandomInt(61, 68)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
         endif
+
+        call CreateItemLoc(udg_ItemPool[GetRandomInt(61, 68)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 15)])
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
     else
     endif
+
+    // 击杀敌军有概率获得武器配件 
+    // 击杀列表：n004, n001 n000 n00C n00F n00D n01G n02H n02R
+    // 击杀以上单位，1/30获得武器配件
     if(Trig_OgreDie_Func015C())then
         set udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[14] = (udg_M9P2Q7U5314V5W9O45lO7041D2G5K3[14] - 1)
-        if(Trig_OgreDie_Func015Func005C())then
-            if(Trig_OgreDie_Func015Func005Func001C())then
-                set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)] = GetUnitLoc(GetDyingUnit())
-                if(Trig_OgreDie_Func015Func005Func001Func002001())then
-                    call CreateItemLoc(udg_ItemPool[GetRandomInt(141, 143)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
-                else
-                    call DoNothing()
-                endif
-                if(Trig_OgreDie_Func015Func005Func001Func003001())then
-                    call CreateItemLoc(udg_ItemPool[GetRandomInt(144, 146)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
-                else
-                    call DoNothing()
-                endif
-                if(Trig_OgreDie_Func015Func005Func001Func004001())then
-                    call CreateItemLoc(udg_ItemPool[GetRandomInt(147, 149)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
-                else
-                    call DoNothing()
-                endif
-                call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
+        if(GetRandomInt(1, 30) == 27)then
+            set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)] = GetUnitLoc(GetDyingUnit())
+            if(Trig_OgreDie_Func015Func005Func001Func002001())then
+                call CreateItemLoc(udg_ItemPool[GetRandomInt(141, 143)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
             else
+                call DoNothing()
             endif
+            if(Trig_OgreDie_Func015Func005Func001Func003001())then
+                call CreateItemLoc(udg_ItemPool[GetRandomInt(144, 146)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
+            else
+                call DoNothing()
+            endif
+            if(Trig_OgreDie_Func015Func005Func001Func004001())then
+                call CreateItemLoc(udg_ItemPool[GetRandomInt(147, 149)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
+            else
+                call DoNothing()
+            endif
+            call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 16)])
         else
         endif
     else
@@ -3297,7 +3283,7 @@ function InitTrig_OgreDie takes nothing returns nothing
     set gg_trg_OgreDie = CreateTrigger()
     call TriggerRegisterAnyUnitEventBJ(gg_trg_OgreDie, EVENT_PLAYER_UNIT_DEATH)
     call TriggerAddCondition(gg_trg_OgreDie, Condition(function Trig_OgreDie_Conditions))
-    call TriggerAddAction(gg_trg_OgreDie, function Trig_OgreDie_Actions)
+    call TriggerAddAction(gg_trg_OgreDie, function Trig_EnemyUnitDIe_Actions)
 endfunction
 function Trig_HeroUP_Conditions takes nothing returns boolean
     if(not(IsUnitAlly(GetTriggerUnit(), Player(0)) == true))then
@@ -5209,14 +5195,14 @@ function InitTrig_PetJ takes nothing returns nothing
 endfunction
 function Trig_Ogre_Show_Actions takes nothing returns nothing
     set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[500] = Location(17948., - 2397.)
-    set udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[501] = 'n00W'
-    set udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[502] = 'n01S'
-    set udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[503] = 'n00R'
-    set udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[504] = 'n00T'
-    set udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[511] = 'n00M'
-    set udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[512] = 'n00O'
-    set udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[513] = 'n00V'
-    set udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[514] = 'n00U'
+    set udg_SnowSwampVolcanoDeath_Monsters[501] = 'n00W'
+    set udg_SnowSwampVolcanoDeath_Monsters[502] = 'n01S'
+    set udg_SnowSwampVolcanoDeath_Monsters[503] = 'n00R'
+    set udg_SnowSwampVolcanoDeath_Monsters[504] = 'n00T'
+    set udg_SnowSwampVolcanoDeath_Monsters[511] = 'n00M'
+    set udg_SnowSwampVolcanoDeath_Monsters[512] = 'n00O'
+    set udg_SnowSwampVolcanoDeath_Monsters[513] = 'n00V'
+    set udg_SnowSwampVolcanoDeath_Monsters[514] = 'n00U'
     set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[501] = Location(21901., 169.)
     set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[502] = Location(21614., - 64.)
     set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[503] = Location(22220., - 207.)
@@ -5268,7 +5254,7 @@ function Trig_Ogre_Show_Actions takes nothing returns nothing
     set bj_forLoopAIndexEnd = 2
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-        call CreateNUnitsAtLoc(1, udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[GetRandomInt(501, 504)], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[(598 + GetForLoopIndexA())], AngleBetweenPoints(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[(598 + GetForLoopIndexA())], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[500]))
+        call CreateNUnitsAtLoc(1, udg_SnowSwampVolcanoDeath_Monsters[GetRandomInt(501, 504)], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[(598 + GetForLoopIndexA())], AngleBetweenPoints(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[(598 + GetForLoopIndexA())], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[500]))
         call SetUnitUserData(GetLastCreatedUnit(), (598 + GetForLoopIndexA()))
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
     endloop
@@ -5276,19 +5262,19 @@ function Trig_Ogre_Show_Actions takes nothing returns nothing
     set bj_forLoopAIndexEnd = 45
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-        call CreateNUnitsAtLoc(1, udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[GetRandomInt(511, 513)], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[(500 + GetForLoopIndexA())], AngleBetweenPoints(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[(500 + GetForLoopIndexA())], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[500]))
+        call CreateNUnitsAtLoc(1, udg_SnowSwampVolcanoDeath_Monsters[GetRandomInt(511, 513)], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[(500 + GetForLoopIndexA())], AngleBetweenPoints(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[(500 + GetForLoopIndexA())], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[500]))
         call SetUnitUserData(GetLastCreatedUnit(), (500 + GetForLoopIndexA()))
         call SetUnitScalePercent(GetLastCreatedUnit(), GetRandomReal(80., 120.), 100, 100)
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
     endloop
-    set udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[521] = 'n010'
-    set udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[522] = 'n01L'
-    set udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[523] = 'n00X'
-    set udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[524] = 'n00Y'
-    set udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[531] = 'n00Z'
-    set udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[532] = 'n011'
-    set udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[533] = 'n01T'
-    set udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[534] = 'n014'
+    set udg_SnowSwampVolcanoDeath_Monsters[521] = 'n010'
+    set udg_SnowSwampVolcanoDeath_Monsters[522] = 'n01L'
+    set udg_SnowSwampVolcanoDeath_Monsters[523] = 'n00X'
+    set udg_SnowSwampVolcanoDeath_Monsters[524] = 'n00Y'
+    set udg_SnowSwampVolcanoDeath_Monsters[531] = 'n00Z'
+    set udg_SnowSwampVolcanoDeath_Monsters[532] = 'n011'
+    set udg_SnowSwampVolcanoDeath_Monsters[533] = 'n01T'
+    set udg_SnowSwampVolcanoDeath_Monsters[534] = 'n014'
     set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[601] = Location(16042., 1578.)
     set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[602] = Location(15462., 1508.)
     set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[603] = Location(15050., 1368.)
@@ -5356,7 +5342,7 @@ function Trig_Ogre_Show_Actions takes nothing returns nothing
     set bj_forLoopAIndexEnd = 2
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-        call CreateNUnitsAtLoc(1, udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[GetRandomInt(521, 524)], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[(698 + GetForLoopIndexA())], 240.)
+        call CreateNUnitsAtLoc(1, udg_SnowSwampVolcanoDeath_Monsters[GetRandomInt(521, 524)], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[(698 + GetForLoopIndexA())], 240.)
         call SetUnitUserData(GetLastCreatedUnit(), (698 + GetForLoopIndexA()))
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
     endloop
@@ -5364,19 +5350,19 @@ function Trig_Ogre_Show_Actions takes nothing returns nothing
     set bj_forLoopAIndexEnd = 61
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-        call CreateNUnitsAtLoc(1, udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[GetRandomInt(531, 534)], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[(600 + GetForLoopIndexA())], GetRandomReal(0, 360.))
+        call CreateNUnitsAtLoc(1, udg_SnowSwampVolcanoDeath_Monsters[GetRandomInt(531, 534)], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[(600 + GetForLoopIndexA())], GetRandomReal(0, 360.))
         call SetUnitUserData(GetLastCreatedUnit(), (600 + GetForLoopIndexA()))
         call SetUnitScalePercent(GetLastCreatedUnit(), GetRandomReal(80., 120.), 100, 100)
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
     endloop
-    set udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[541] = 'u008'
-    set udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[542] = 'n015'
-    set udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[543] = 'n017'
-    set udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[544] = 'n016'
-    set udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[551] = 'n01A'
-    set udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[552] = 'n01B'
-    set udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[553] = 'n018'
-    set udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[554] = 'n019'
+    set udg_SnowSwampVolcanoDeath_Monsters[541] = 'u008'
+    set udg_SnowSwampVolcanoDeath_Monsters[542] = 'n015'
+    set udg_SnowSwampVolcanoDeath_Monsters[543] = 'n017'
+    set udg_SnowSwampVolcanoDeath_Monsters[544] = 'n016'
+    set udg_SnowSwampVolcanoDeath_Monsters[551] = 'n01A'
+    set udg_SnowSwampVolcanoDeath_Monsters[552] = 'n01B'
+    set udg_SnowSwampVolcanoDeath_Monsters[553] = 'n018'
+    set udg_SnowSwampVolcanoDeath_Monsters[554] = 'n019'
     set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[701] = Location(21574., - 13488.)
     set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[702] = Location(22227., - 13169.)
     set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[703] = Location(21840., - 12865.)
@@ -5420,7 +5406,7 @@ function Trig_Ogre_Show_Actions takes nothing returns nothing
     set bj_forLoopAIndexEnd = 2
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-        call CreateNUnitsAtLoc(1, udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[GetRandomInt(541, 544)], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[(798 + GetForLoopIndexA())], 220.)
+        call CreateNUnitsAtLoc(1, udg_SnowSwampVolcanoDeath_Monsters[GetRandomInt(541, 544)], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[(798 + GetForLoopIndexA())], 220.)
         call SetUnitUserData(GetLastCreatedUnit(), (798 + GetForLoopIndexA()))
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
     endloop
@@ -5428,7 +5414,7 @@ function Trig_Ogre_Show_Actions takes nothing returns nothing
     set bj_forLoopAIndexEnd = 37
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-        call CreateNUnitsAtLoc(1, udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[GetRandomInt(551, 554)], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[(700 + GetForLoopIndexA())], GetRandomReal(0, 360.))
+        call CreateNUnitsAtLoc(1, udg_SnowSwampVolcanoDeath_Monsters[GetRandomInt(551, 554)], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[(700 + GetForLoopIndexA())], GetRandomReal(0, 360.))
         call SetUnitUserData(GetLastCreatedUnit(), (700 + GetForLoopIndexA()))
         call SetUnitScalePercent(GetLastCreatedUnit(), GetRandomReal(80., 120.), 100, 100)
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
@@ -5441,15 +5427,15 @@ function InitTrig_Ogre_Show takes nothing returns nothing
 endfunction
 function Trig_Ogre_Show2_Actions takes nothing returns nothing
     set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[890] = Location(5539., - 8236.)
-    set udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[895] = 'n01F'
-    set udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[896] = 'n003'
-    set udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[897] = 'n021'
-    set udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[898] = 'n023'
-    set udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[899] = 'n00E'
-    set udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[900] = 'n022'
-    set udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[801] = 'n006'
-    set udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[802] = 'n025'
-    set udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[803] = 'n024'
+    set udg_SnowSwampVolcanoDeath_Monsters[895] = 'n01F'
+    set udg_SnowSwampVolcanoDeath_Monsters[896] = 'n003'
+    set udg_SnowSwampVolcanoDeath_Monsters[897] = 'n021'
+    set udg_SnowSwampVolcanoDeath_Monsters[898] = 'n023'
+    set udg_SnowSwampVolcanoDeath_Monsters[899] = 'n00E'
+    set udg_SnowSwampVolcanoDeath_Monsters[900] = 'n022'
+    set udg_SnowSwampVolcanoDeath_Monsters[801] = 'n006'
+    set udg_SnowSwampVolcanoDeath_Monsters[802] = 'n025'
+    set udg_SnowSwampVolcanoDeath_Monsters[803] = 'n024'
     set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[801] = Location(5997., - 1101.)
     set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[802] = Location(6311., - 2037.)
     set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[803] = Location(5483., - 1832.)
@@ -5485,7 +5471,7 @@ function Trig_Ogre_Show2_Actions takes nothing returns nothing
     set bj_forLoopAIndexEnd = 6
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-        call CreateNUnitsAtLoc(1, udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[(895 + GetForLoopIndexA())], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[(895 + GetForLoopIndexA())], AngleBetweenPoints(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[(895 + GetForLoopIndexA())], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[890]))
+        call CreateNUnitsAtLoc(1, udg_SnowSwampVolcanoDeath_Monsters[(895 + GetForLoopIndexA())], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[(895 + GetForLoopIndexA())], AngleBetweenPoints(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[(895 + GetForLoopIndexA())], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[890]))
         call SetUnitUserData(GetLastCreatedUnit(), (895 + GetForLoopIndexA()))
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
     endloop
@@ -5493,7 +5479,7 @@ function Trig_Ogre_Show2_Actions takes nothing returns nothing
     set bj_forLoopAIndexEnd = 12
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-        call CreateNUnitsAtLoc(1, udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[801], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[(800 + GetForLoopIndexA())], GetRandomReal(0, 360.))
+        call CreateNUnitsAtLoc(1, udg_SnowSwampVolcanoDeath_Monsters[801], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[(800 + GetForLoopIndexA())], GetRandomReal(0, 360.))
         call SetUnitUserData(GetLastCreatedUnit(), (800 + GetForLoopIndexA()))
         call SetUnitScalePercent(GetLastCreatedUnit(), GetRandomReal(80., 120.), 100, 100)
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
@@ -5502,7 +5488,7 @@ function Trig_Ogre_Show2_Actions takes nothing returns nothing
     set bj_forLoopAIndexEnd = 8
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-        call CreateNUnitsAtLoc(1, udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[802], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[(830 + GetForLoopIndexA())], GetRandomReal(0, 360.))
+        call CreateNUnitsAtLoc(1, udg_SnowSwampVolcanoDeath_Monsters[802], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[(830 + GetForLoopIndexA())], GetRandomReal(0, 360.))
         call SetUnitUserData(GetLastCreatedUnit(), (830 + GetForLoopIndexA()))
         call SetUnitScalePercent(GetLastCreatedUnit(), GetRandomReal(80., 120.), 100, 100)
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
@@ -5511,24 +5497,24 @@ function Trig_Ogre_Show2_Actions takes nothing returns nothing
     set bj_forLoopAIndexEnd = 5
     loop
         exitwhen bj_forLoopAIndex > bj_forLoopAIndexEnd
-        call CreateNUnitsAtLoc(1, udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[803], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[(850 + GetForLoopIndexA())], GetRandomReal(0, 360.))
+        call CreateNUnitsAtLoc(1, udg_SnowSwampVolcanoDeath_Monsters[803], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[(850 + GetForLoopIndexA())], GetRandomReal(0, 360.))
         call SetUnitUserData(GetLastCreatedUnit(), (850 + GetForLoopIndexA()))
         call SetUnitScalePercent(GetLastCreatedUnit(), GetRandomReal(80., 120.), 100, 100)
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
     endloop
-    set udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[901] = 'n01P'
-    set udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[911] = 'n026'
-    set udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[912] = 'n027'
-    set udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[913] = 'n02A'
-    set udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[914] = 'n028'
-    set udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[915] = 'n029'
+    set udg_SnowSwampVolcanoDeath_Monsters[901] = 'n01P'
+    set udg_SnowSwampVolcanoDeath_Monsters[911] = 'n026'
+    set udg_SnowSwampVolcanoDeath_Monsters[912] = 'n027'
+    set udg_SnowSwampVolcanoDeath_Monsters[913] = 'n02A'
+    set udg_SnowSwampVolcanoDeath_Monsters[914] = 'n028'
+    set udg_SnowSwampVolcanoDeath_Monsters[915] = 'n029'
     set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[901] = Location(9097., - 14106.)
     set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[902] = Location(10716., 1721.)
-    call CreateNUnitsAtLoc(1, udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[901], Player(PLAYER_NEUTRAL_PASSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[901], bj_UNIT_FACING)
+    call CreateNUnitsAtLoc(1, udg_SnowSwampVolcanoDeath_Monsters[901], Player(PLAYER_NEUTRAL_PASSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[901], bj_UNIT_FACING)
     call SetUnitUserData(GetLastCreatedUnit(), 901)
     call SetUnitMoveSpeed(GetLastCreatedUnit(), 200.)
     call IssuePointOrderLoc(GetLastCreatedUnit(), "patrol", udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[902])
-    call CreateNUnitsAtLoc(1, udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[895], Player(PLAYER_NEUTRAL_PASSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[895], bj_UNIT_FACING)
+    call CreateNUnitsAtLoc(1, udg_SnowSwampVolcanoDeath_Monsters[895], Player(PLAYER_NEUTRAL_PASSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[895], bj_UNIT_FACING)
     call SetUnitUserData(GetLastCreatedUnit(), 895)
     call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[895])
     call DestroyTrigger(GetTriggeringTrigger())
@@ -5828,10 +5814,10 @@ function Trig_Ogre_Relive_Func018Func003C takes nothing returns boolean
     endif
     return true
 endfunction
-function Trig_Ogre_Relive_Func018Func004Func001001 takes nothing returns boolean
+function Trig_DragonFangDropRate takes nothing returns boolean
     return(GetRandomInt(10, 10) > 6)
 endfunction
-function Trig_Ogre_Relive_Func018Func004C takes nothing returns boolean
+function Trig_CrimsonDragon_Die takes nothing returns boolean
     if(not(GetUnitTypeId(GetDyingUnit()) == 'n022'))then
         return false
     endif
@@ -6020,7 +6006,7 @@ function Trig_Ogre_Relive_Actions takes nothing returns nothing
         endif
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
         call PolledWait(180.)
-        call CreateNUnitsAtLoc(1, udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[GetRandomInt(501, 504)], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[udg_unit_key], AngleBetweenPoints(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[udg_unit_key], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[500]))
+        call CreateNUnitsAtLoc(1, udg_SnowSwampVolcanoDeath_Monsters[GetRandomInt(501, 504)], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[udg_unit_key], AngleBetweenPoints(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[udg_unit_key], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[500]))
         call SetUnitUserData(GetLastCreatedUnit(), udg_unit_key)
         return
     else
@@ -6045,7 +6031,7 @@ function Trig_Ogre_Relive_Actions takes nothing returns nothing
         endif
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
         call PolledWait(180.)
-        call CreateNUnitsAtLoc(1, udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[GetRandomInt(511, 513)], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[udg_unit_key], AngleBetweenPoints(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[udg_unit_key], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[500]))
+        call CreateNUnitsAtLoc(1, udg_SnowSwampVolcanoDeath_Monsters[GetRandomInt(511, 513)], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[udg_unit_key], AngleBetweenPoints(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[udg_unit_key], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[500]))
         call SetUnitUserData(GetLastCreatedUnit(), udg_unit_key)
         call SetUnitScalePercent(GetLastCreatedUnit(), GetRandomReal(80., 120.), 100, 100)
         return
@@ -6074,7 +6060,7 @@ function Trig_Ogre_Relive_Actions takes nothing returns nothing
         endif
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
         call PolledWait(180.)
-        call CreateNUnitsAtLoc(1, udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[GetRandomInt(521, 524)], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[udg_unit_key], 240.)
+        call CreateNUnitsAtLoc(1, udg_SnowSwampVolcanoDeath_Monsters[GetRandomInt(521, 524)], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[udg_unit_key], 240.)
         call SetUnitUserData(GetLastCreatedUnit(), udg_unit_key)
         return
     else
@@ -6176,7 +6162,7 @@ function Trig_Ogre_Relive_Actions takes nothing returns nothing
             set bj_forLoopAIndex = bj_forLoopAIndex + 1
         endloop
         call PolledWait(180.)
-        call CreateNUnitsAtLoc(1, udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[GetRandomInt(531, 534)], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[udg_unit_key], GetRandomReal(0, 360.))
+        call CreateNUnitsAtLoc(1, udg_SnowSwampVolcanoDeath_Monsters[GetRandomInt(531, 534)], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[udg_unit_key], GetRandomReal(0, 360.))
         call SetUnitUserData(GetLastCreatedUnit(), udg_unit_key)
         call SetUnitScalePercent(GetLastCreatedUnit(), GetRandomReal(80., 120.), 100, 100)
         return
@@ -6197,7 +6183,7 @@ function Trig_Ogre_Relive_Actions takes nothing returns nothing
         endif
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
         call PolledWait(120.)
-        call CreateNUnitsAtLoc(1, udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[GetRandomInt(541, 544)], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[udg_unit_key], 240.)
+        call CreateNUnitsAtLoc(1, udg_SnowSwampVolcanoDeath_Monsters[GetRandomInt(541, 544)], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[udg_unit_key], 240.)
         call UnitAddAbilityBJ(udg_GeneralSkills[103], GetLastCreatedUnit())
         call UnitAddAbilityBJ(udg_GeneralSkills[104], GetLastCreatedUnit())
         call UnitAddAbilityBJ(udg_GeneralSkills[105], GetLastCreatedUnit())
@@ -6245,7 +6231,7 @@ function Trig_Ogre_Relive_Actions takes nothing returns nothing
         else
         endif
         call PolledWait(80.)
-        call CreateNUnitsAtLoc(1, udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[GetRandomInt(551, 554)], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[udg_unit_key], GetRandomReal(0, 360.))
+        call CreateNUnitsAtLoc(1, udg_SnowSwampVolcanoDeath_Monsters[GetRandomInt(551, 554)], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[udg_unit_key], GetRandomReal(0, 360.))
         call UnitAddAbilityBJ(udg_GeneralSkills[103], GetLastCreatedUnit())
         call UnitAddAbilityBJ(udg_GeneralSkills[104], GetLastCreatedUnit())
         call UnitAddAbilityBJ(udg_GeneralSkills[105], GetLastCreatedUnit())
@@ -6266,8 +6252,9 @@ function Trig_Ogre_Relive_Actions takes nothing returns nothing
                 call CreateItemLoc(udg_ItemPool[GetRandomInt(41, 48)], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
             endif
         endif
-        if(Trig_Ogre_Relive_Func018Func004C())then
-            if(Trig_Ogre_Relive_Func018Func004Func001001())then
+        if(Trig_CrimsonDragon_Die())then
+            if(Trig_DragonFangDropRate())then
+                // udg_ItemPool[142] is I1006 赤龙牙
                 call CreateItemLoc(udg_ItemPool[142], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
             else
                 call DoNothing()
@@ -6276,7 +6263,7 @@ function Trig_Ogre_Relive_Actions takes nothing returns nothing
         endif
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
         call PolledWait(180.)
-        call CreateNUnitsAtLoc(1, udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[udg_unit_key], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[udg_unit_key], DistanceBetweenPoints(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[udg_unit_key], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[800]))
+        call CreateNUnitsAtLoc(1, udg_SnowSwampVolcanoDeath_Monsters[udg_unit_key], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[udg_unit_key], DistanceBetweenPoints(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[udg_unit_key], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[800]))
         call UnitAddAbilityBJ(udg_GeneralSkills[103], GetLastCreatedUnit())
         call UnitAddAbilityBJ(udg_GeneralSkills[104], GetLastCreatedUnit())
         call UnitAddAbilityBJ(udg_GeneralSkills[105], GetLastCreatedUnit())
@@ -6301,7 +6288,7 @@ function Trig_Ogre_Relive_Actions takes nothing returns nothing
     endif
     if(Trig_Ogre_Relive_Func023C())then
         call PolledWait(13.)
-        call CreateNUnitsAtLoc(1, udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[801], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[udg_unit_key], GetRandomReal(0, 360.))
+        call CreateNUnitsAtLoc(1, udg_SnowSwampVolcanoDeath_Monsters[801], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[udg_unit_key], GetRandomReal(0, 360.))
         call UnitAddAbilityBJ(udg_GeneralSkills[103], GetLastCreatedUnit())
         call UnitAddAbilityBJ(udg_GeneralSkills[104], GetLastCreatedUnit())
         call UnitAddAbilityBJ(udg_GeneralSkills[105], GetLastCreatedUnit())
@@ -6313,7 +6300,7 @@ function Trig_Ogre_Relive_Actions takes nothing returns nothing
     endif
     if(Trig_Ogre_Relive_Func024C())then
         call PolledWait(13.)
-        call CreateNUnitsAtLoc(1, udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[802], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[udg_unit_key], GetRandomReal(0, 360.))
+        call CreateNUnitsAtLoc(1, udg_SnowSwampVolcanoDeath_Monsters[802], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[udg_unit_key], GetRandomReal(0, 360.))
         call UnitAddAbilityBJ(udg_GeneralSkills[103], GetLastCreatedUnit())
         call UnitAddAbilityBJ(udg_GeneralSkills[104], GetLastCreatedUnit())
         call UnitAddAbilityBJ(udg_GeneralSkills[105], GetLastCreatedUnit())
@@ -6325,7 +6312,7 @@ function Trig_Ogre_Relive_Actions takes nothing returns nothing
     endif
     if(Trig_Ogre_Relive_Func025C())then
         call PolledWait(13.)
-        call CreateNUnitsAtLoc(1, udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[803], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[udg_unit_key], GetRandomReal(0, 360.))
+        call CreateNUnitsAtLoc(1, udg_SnowSwampVolcanoDeath_Monsters[803], Player(11), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[udg_unit_key], GetRandomReal(0, 360.))
         call UnitAddAbilityBJ(udg_GeneralSkills[103], GetLastCreatedUnit())
         call UnitAddAbilityBJ(udg_GeneralSkills[104], GetLastCreatedUnit())
         call UnitAddAbilityBJ(udg_GeneralSkills[105], GetLastCreatedUnit())
@@ -6338,6 +6325,7 @@ function Trig_Ogre_Relive_Actions takes nothing returns nothing
     if(Trig_Ogre_Relive_Func027C())then
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)] = GetUnitLoc(GetDyingUnit())
         if(Trig_Ogre_Relive_Func027Func002C())then
+            // udg_ItemPool[148] is I1012 精灵树枝
             call CreateItemLoc(udg_ItemPool[148], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
         else
             if(Trig_Ogre_Relive_Func027Func002Func001C())then
@@ -6349,7 +6337,7 @@ function Trig_Ogre_Relive_Actions takes nothing returns nothing
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
         call PolledWait(180.)
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[895] = GetRandomLocInRect(gg_rct_Ogre_Shu)
-        call CreateNUnitsAtLoc(1, udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[895], Player(PLAYER_NEUTRAL_PASSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[895], bj_UNIT_FACING)
+        call CreateNUnitsAtLoc(1, udg_SnowSwampVolcanoDeath_Monsters[895], Player(PLAYER_NEUTRAL_PASSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[895], bj_UNIT_FACING)
         call SetUnitUserData(GetLastCreatedUnit(), 895)
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[895])
         return
@@ -6365,6 +6353,7 @@ function Trig_Ogre_Relive_Actions takes nothing returns nothing
     if(Trig_Ogre_Relive_Func031C())then
         set udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)] = GetUnitLoc(GetDyingUnit())
         if(Trig_Ogre_Relive_Func031Func002C())then
+            // udg_ItemPool[146] is I1007 黑龙筋
             call CreateItemLoc(udg_ItemPool[146], udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
         else
             if(Trig_Ogre_Relive_Func031Func002Func001C())then
@@ -6375,7 +6364,7 @@ function Trig_Ogre_Relive_Actions takes nothing returns nothing
         endif
         call RemoveLocation(udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[((GetConvertedPlayerId(GetOwningPlayer(GetKillingUnitBJ())) * 18) + 10)])
         call PolledWait(180.)
-        call CreateNUnitsAtLoc(1, udg_M9P2Q7UD5l4V5W9O45lO7041D2G5K3[901], Player(PLAYER_NEUTRAL_PASSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[901], bj_UNIT_FACING)
+        call CreateNUnitsAtLoc(1, udg_SnowSwampVolcanoDeath_Monsters[901], Player(PLAYER_NEUTRAL_PASSIVE), udg_M9P2Q7U5l4V5W9O45lO7041D2OG5K3[901], bj_UNIT_FACING)
         call UnitAddAbilityBJ(udg_GeneralSkills[103], GetLastCreatedUnit())
         call UnitAddAbilityBJ(udg_GeneralSkills[104], GetLastCreatedUnit())
         call UnitAddAbilityBJ(udg_GeneralSkills[105], GetLastCreatedUnit())
@@ -6722,7 +6711,7 @@ function Trig_Dialog_select_Actions takes nothing returns nothing
         call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_ALWAYSHINT, (GetPlayerName(GetTriggerPlayer()) + " chosed Novice Difficulty"))
         set udg_M9P2Q7U5l4V5W9O45lO70N41D2G5K3 = 700.
         call EnableTrigger(gg_trg_GongZi)
-        call StartTimerBJ(udg_Timers[1], false, 1200.)
+        call StartTimerBJ(udg_Timers[1], false, 600.)
         call CreateTimerDialogBJ(udg_Timers[1], " Novice Grace Period")
         set udg_TimerDialog[1] = GetLastCreatedTimerDialogBJ()
     else
@@ -8588,7 +8577,7 @@ function Trig_ItemUp_Func005C takes nothing returns boolean
     endif
     return true
 endfunction
-function Trig_ItemUp_Func008C takes nothing returns boolean
+function Trig_ItemUp_MeleeSpecialWeapon takes nothing returns boolean
     if(not(UnitHasItemOfTypeBJ(GetTriggerUnit(), 'I00Z') == true))then
         return false
     endif
@@ -8600,7 +8589,7 @@ function Trig_ItemUp_Func008C takes nothing returns boolean
     endif
     return true
 endfunction
-function Trig_ItemUp_Func009C takes nothing returns boolean
+function Trig_ItemUp_ArcherSpecialWeapon takes nothing returns boolean
     if(not(UnitHasItemOfTypeBJ(GetTriggerUnit(), 'I018') == true))then
         return false
     endif
@@ -8612,7 +8601,7 @@ function Trig_ItemUp_Func009C takes nothing returns boolean
     endif
     return true
 endfunction
-function Trig_ItemUp_Func010C takes nothing returns boolean
+function Trig_ItemUp_MageSpecialWeapon takes nothing returns boolean
     if(not(UnitHasItemOfTypeBJ(GetTriggerUnit(), 'I013') == true))then
         return false
     endif
@@ -9121,7 +9110,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
     else
     endif
     set udg_M9P2Q7U5l4O5WD9O45lO7041D2G5K3[GetConvertedPlayerId(GetOwningPlayer(GetTriggerUnit()))] = GetManipulatedItem()
-    if(Trig_ItemUp_Func008C())then
+    if(Trig_ItemUp_MeleeSpecialWeapon())then
         call RemoveItem(GetItemOfTypeFromUnitBJ(GetTriggerUnit(), 'I00Z'))
         call RemoveItem(GetItemOfTypeFromUnitBJ(GetTriggerUnit(), 'I006'))
         call RemoveItem(GetItemOfTypeFromUnitBJ(GetTriggerUnit(), 'I010'))
@@ -9131,7 +9120,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
         call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("集齐魔法剑+赤龙牙+阵法宝石 随机合成为：" + GetItemName(GetLastCreatedItem()))))
     else
     endif
-    if(Trig_ItemUp_Func009C())then
+    if(Trig_ItemUp_ArcherSpecialWeapon())then
         call RemoveItem(GetItemOfTypeFromUnitBJ(GetTriggerUnit(), 'I018'))
         call RemoveItem(GetItemOfTypeFromUnitBJ(GetTriggerUnit(), 'I004'))
         call RemoveItem(GetItemOfTypeFromUnitBJ(GetTriggerUnit(), 'I007'))
@@ -9141,7 +9130,7 @@ function Trig_ItemUp_Actions takes nothing returns nothing
         call QuestMessageBJ(GetPlayersAll(), bj_QUESTMESSAGE_UNITACQUIRED, (GetPlayerName(GetTriggerPlayer()) + ("集齐魔法弓+水晶箭+黑龙筋 随机合成为：" + GetItemName(GetLastCreatedItem()))))
     else
     endif
-    if(Trig_ItemUp_Func010C())then
+    if(Trig_ItemUp_MageSpecialWeapon())then
         call RemoveItem(GetItemOfTypeFromUnitBJ(GetTriggerUnit(), 'I013'))
         call RemoveItem(GetItemOfTypeFromUnitBJ(GetTriggerUnit(), 'I012'))
         call RemoveItem(GetItemOfTypeFromUnitBJ(GetTriggerUnit(), 'I011'))
@@ -11959,7 +11948,7 @@ function Trig_Sec_Start_Actions takes nothing returns nothing
     call CreateNUnitsAtLoc(1, 'H01E', Player(7), udg_M9PA2Q7U5l4V5W9O45lO7041D2G5K3[2], 270.)
     call SetUnitOwner(GetLastCreatedUnit(), Player(10), false)
     call SetUnitUserData(GetLastCreatedUnit(), 4)
-    set udg_M9P2Q7U5l4V5W9O4D5lO7041D2G5K3[1] = GetLastCreatedUnit()
+    set udg_Act2Units[1] = GetLastCreatedUnit()
     call SetUnitUserData(GetLastCreatedUnit(), 2002)
     call SetUnitAbilityLevelSwapped('A02R', GetLastCreatedUnit(), 5)
     call SetUnitAbilityLevelSwapped('A06H', GetLastCreatedUnit(), 5)
@@ -11968,7 +11957,7 @@ function Trig_Sec_Start_Actions takes nothing returns nothing
     call CreateNUnitsAtLoc(1, 'H01F', Player(7), udg_M9PA2Q7U5l4V5W9O45lO7041D2G5K3[3], 270.)
     call SetUnitOwner(GetLastCreatedUnit(), Player(10), false)
     call SetUnitUserData(GetLastCreatedUnit(), 1)
-    set udg_M9P2Q7U5l4V5W9O4D5lO7041D2G5K3[2] = GetLastCreatedUnit()
+    set udg_Act2Units[2] = GetLastCreatedUnit()
     call SetUnitUserData(GetLastCreatedUnit(), 2003)
     call SetUnitAbilityLevelSwapped('A05J', GetLastCreatedUnit(), 5)
     call SetUnitAbilityLevelSwapped('A03L', GetLastCreatedUnit(), 5)
@@ -12014,7 +12003,7 @@ function InitTrig_Sec_Start takes nothing returns nothing
     call DisableTrigger(gg_trg_Sec_Start)
     call TriggerAddAction(gg_trg_Sec_Start, function Trig_Sec_Start_Actions)
 endfunction
-function Trig_Sec_Ami1_Func002C takes nothing returns boolean
+function Trig_Act2_OpeningSound takes nothing returns boolean
     if(not(udg_M9P2Q7U5l4V5W97O45lO7041D2G5K3 == 1))then
         return false
     endif
@@ -12097,7 +12086,7 @@ function Trig_Sec_Ami1_Func009Func001Func087C takes nothing returns boolean
     return true
 endfunction
 function Trig_Sec_Ami1_Func009Func001C takes nothing returns boolean
-    if(not(GetUnitTypeId(udg_M9P2Q7U5l4V5W9O4D5lO7041D2G5K3[3]) == 'H01E'))then
+    if(not(GetUnitTypeId(udg_Act2Units[3]) == 'H01E'))then
         return false
     endif
     return true
@@ -12108,8 +12097,8 @@ function Trig_Sec_Ami1_Func009C takes nothing returns boolean
     endif
     return true
 endfunction
-function Trig_Sec_Ami1_Actions takes nothing returns nothing
-    if(Trig_Sec_Ami1_Func002C())then
+function Trig_Act2_Start takes nothing returns nothing
+    if(Trig_Act2_OpeningSound())then
         call PlaySoundBJ(gg_snd_Sec01)
     else
     endif
@@ -12170,16 +12159,16 @@ function Trig_Sec_Ami1_Actions takes nothing returns nothing
         call DisplayTimedTextToForce(GetPlayersAll(), 60., "|cffffff00 NEW MISSION: The Grand Sage has decided to investigate the Giant Stone Portal personally! You must escort the Sage safely while keeping enough forces to protect the General at the base. If either the Sage or the General falls, the mission fails! You must reach the portal before the 15th monster wave arrives or face certain defeat!")
         call PingMinimapLocForForce(GetPlayersAll(), udg_M9PA2Q7U5l4V5W9O45lO7041D2G5K3[0], 30.)
         call PingMinimapLocForForceEx(GetPlayersAll(), udg_M9PA2Q7U5l4V5W9O45lO7041D2G5K3[0], 30., bj_MINIMAPPINGSTYLE_FLASHY, .0, 50., 50.)
-        call SetUnitUserData(udg_M9P2Q7U5l4V5W9O4D5lO7041D2G5K3[1], 0)
-        call IssuePointOrderLoc(udg_M9P2Q7U5l4V5W9O4D5lO7041D2G5K3[1], "move", udg_M9PA2Q7U5l4V5W9O45lO7041D2G5K3[27])
+        call SetUnitUserData(udg_Act2Units[1], 0)
+        call IssuePointOrderLoc(udg_Act2Units[1], "move", udg_M9PA2Q7U5l4V5W9O45lO7041D2G5K3[27])
     else
     endif
     if(Trig_Sec_Ami1_Func009C())then
         if(Trig_Sec_Ami1_Func009Func001C())then
             set udg_M9P2Q7U5l4V5W97O45lO7041D2G5K3 = 17
             call PlaySoundBJ(gg_snd_Sound06)
-            call RemoveUnit(udg_M9P2Q7U5l4V5W9O4D5lO7041D2G5K3[1])
-            call RemoveUnit(udg_M9P2Q7U5l4V5W9O4D5lO7041D2G5K3[2])
+            call RemoveUnit(udg_Act2Units[1])
+            call RemoveUnit(udg_Act2Units[2])
             call DestroyTimerDialog(udg_TimerDialog[2])
             call DisplayTimedTextToForce(GetPlayersAll(), 120., "|cffffff00 BREAKTHROUGH: After intense study, the Grand Sage has discovered the Giant Stone Portal can open a gateway to the Demon Realm!")
             call DisplayTimedTextToForce(GetPlayersAll(), 120., "|cffffff00 ACT 3: Warriors, go to the Demon Realm and destroy the Demon Castle to restore peace to the world!")
@@ -12331,7 +12320,7 @@ function InitTrig_Sec_Ami1 takes nothing returns nothing
     set gg_trg_Sec_Ami1 = CreateTrigger()
     call DisableTrigger(gg_trg_Sec_Ami1)
     call TriggerRegisterTimerExpireEventBJ(gg_trg_Sec_Ami1, udg_Timers[2])
-    call TriggerAddAction(gg_trg_Sec_Ami1, function Trig_Sec_Ami1_Actions)
+    call TriggerAddAction(gg_trg_Sec_Ami1, function Trig_Act2_Start)
 endfunction
 function Trig_SEC_AmiGoIN_Func001C takes nothing returns boolean
     if(not(GetOwningPlayer(GetEnteringUnit()) == Player(9)))then
@@ -12372,14 +12361,14 @@ function Trig_Sec_XH_Func007Func002A takes nothing returns nothing
 endfunction
 function Trig_Sec_XH_Func009Func003Func003A takes nothing returns nothing
     call SetUnitUserData(GetEnumUnit(), 0)
-    call IssueTargetOrder(GetEnumUnit(), "attack", udg_M9P2Q7U5l4V5W9O4D5lO7041D2G5K3[1])
+    call IssueTargetOrder(GetEnumUnit(), "attack", udg_Act2Units[1])
 endfunction
 function Trig_Sec_XH_Func009Func004Func003A takes nothing returns nothing
     call SetUnitUserData(GetEnumUnit(), 0)
-    call IssueTargetOrder(GetEnumUnit(), "attack", udg_M9P2Q7U5l4V5W9O4D5lO7041D2G5K3[2])
+    call IssueTargetOrder(GetEnumUnit(), "attack", udg_Act2Units[2])
 endfunction
 function Trig_Sec_XH_Func009C takes nothing returns boolean
-    if(not(GetUnitUserData(udg_M9P2Q7U5l4V5W9O4D5lO7041D2G5K3[1]) == 0))then
+    if(not(GetUnitUserData(udg_Act2Units[1]) == 0))then
         return false
     endif
     return true
@@ -12401,7 +12390,7 @@ function Trig_Sec_XH_Actions takes nothing returns nothing
         set bj_forLoopAIndex = bj_forLoopAIndex + 1
     endloop
     if(Trig_Sec_XH_Func009C())then
-        call IssuePointOrderLoc(udg_M9P2Q7U5l4V5W9O4D5lO7041D2G5K3[1], "move", udg_M9PA2Q7U5l4V5W9O45lO7041D2G5K3[27])
+        call IssuePointOrderLoc(udg_Act2Units[1], "move", udg_M9PA2Q7U5l4V5W9O45lO7041D2G5K3[27])
         set bj_forLoopAIndex = 1
         set bj_forLoopAIndexEnd = 2
         loop
@@ -12494,7 +12483,7 @@ function InitTrig_Sec_GoBack takes nothing returns nothing
     call TriggerAddAction(gg_trg_Sec_GoBack, function Trig_Sec_GoBack_Actions)
 endfunction
 function Trig_SEC_heroIN_Conditions takes nothing returns boolean
-    if(not(GetTriggerUnit() == udg_M9P2Q7U5l4V5W9O4D5lO7041D2G5K3[1]))then
+    if(not(GetTriggerUnit() == udg_Act2Units[1]))then
         return false
     endif
     return true
@@ -12505,11 +12494,11 @@ function Trig_SEC_heroIN_Actions takes nothing returns nothing
     call DisplayTimedTextToForce(GetPlayersAll(), 60., "|cffffff00 NEW MISSION: Protect the Grand Sage and the General at the base. If either falls, the mission fails!")
     call PingMinimapLocForForce(GetPlayersAll(), udg_M9PA2Q7U5l4V5W9O45lO7041D2G5K3[27], 60.)
     call PingMinimapLocForForceEx(GetPlayersAll(), udg_M9PA2Q7U5l4V5W9O45lO7041D2G5K3[27], 60., bj_MINIMAPPINGSTYLE_FLASHY, .0, 50., 50.)
-    call SetUnitMoveSpeed(udg_M9P2Q7U5l4V5W9O4D5lO7041D2G5K3[1], .0)
+    call SetUnitMoveSpeed(udg_Act2Units[1], .0)
     set udg_M9PA2Q7U5l4V5W9O45lO7041D2G5K3[24] = GetRectCenter(gg_rct_______Second01)
     call UnitAddAbilityBJ('ANcl', GetTriggerUnit())
     call IssueImmediateOrder(GetTriggerUnit(), "channel")
-    set udg_M9P2Q7U5l4V5W9O4D5lO7041D2G5K3[3] = udg_M9P2Q7U5l4V5W9O4D5lO7041D2G5K3[1]
+    set udg_Act2Units[3] = udg_Act2Units[1]
     call TriggerSleepAction(60.)
     call DestroyTrigger(GetTriggeringTrigger())
 endfunction
@@ -12521,10 +12510,10 @@ function InitTrig_SEC_heroIN takes nothing returns nothing
     call TriggerAddAction(gg_trg_SEC_heroIN, function Trig_SEC_heroIN_Actions)
 endfunction
 function Trig_Sec_Die_Func001Func001C takes nothing returns boolean
-    if((GetTriggerUnit() == udg_M9P2Q7U5l4V5W9O4D5lO7041D2G5K3[1]))then
+    if((GetTriggerUnit() == udg_Act2Units[1]))then
         return true
     endif
-    if((GetTriggerUnit() == udg_M9P2Q7U5l4V5W9O4D5lO7041D2G5K3[2]))then
+    if((GetTriggerUnit() == udg_Act2Units[2]))then
         return true
     endif
     return false
@@ -12562,10 +12551,10 @@ function InitTrig_Sec_Die takes nothing returns nothing
     call TriggerAddAction(gg_trg_Sec_Die, function Trig_Sec_Die_Actions)
 endfunction
 function Trig_Sec_AI_Func002Func001C takes nothing returns boolean
-    if((GetTriggerUnit() == udg_M9P2Q7U5l4V5W9O4D5lO7041D2G5K3[1]))then
+    if((GetTriggerUnit() == udg_Act2Units[1]))then
         return true
     endif
-    if((GetTriggerUnit() == udg_M9P2Q7U5l4V5W9O4D5lO7041D2G5K3[2]))then
+    if((GetTriggerUnit() == udg_Act2Units[2]))then
         return true
     endif
     return false
